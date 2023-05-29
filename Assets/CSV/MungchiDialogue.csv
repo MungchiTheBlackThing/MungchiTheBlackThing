@@ -9,7 +9,7 @@ sub.mildew.second,cond1,view1,Mung,exp1,TEXT,linekey1,누워 놀기 좋지.,,,,,
 sub.mildew.second,cond2,view2,Mung,exp2,TEXT,linekey2,흥미롭다. 지금 누운 곳은 어디야?,,,,,engtext2,engchoice2
 sub.mildew.second,cond3,view3,Mung,exp3,TEXT,linekey3,고통의 풀밭.,,,,,engtext3,engchoice3
 sub.mildew.second,cond4,view4,Mung,exp4,TEXT,linekey4,어? …. 왜?,,,,,engtext4,engchoice4
-,,,,,TEXT,,"쟤네, 살기 좋은 어딘가에 안착한다면 곧 다글다글 번식해서 인간의 눈에 띌 거야.",,,,,,
+,,,,,TEXT,,"쟤네, ""살기"" 좋은 어딘가에 안착한다면 곧 다글다글 번식해서 인간의 눈에 띌 거야.",,,,,,
 ,,,,,TEXT,,머지않아 제거되겠지. 손쉽고 간편하게,,,,,,
 ,,,,,TEXT,,불타오르거나 녹아내리면서.,,,,,,
 ,,,,,TEXT,,살기 나쁜 어딘가에 안착한다면 인간의 눈은 피할 수 있을 거야.,,,,,,

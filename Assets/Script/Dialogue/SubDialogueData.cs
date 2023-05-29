@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -30,6 +31,7 @@ public class SubDialogueData : MonoBehaviour
     {
         korText.text = scriptData[currentTextIndex]["Kor Text"];
         type.text = scriptData[currentTextIndex]["Type"];
+        Debug.Log(korText.text);
     }
 
     public void OnNextText()
