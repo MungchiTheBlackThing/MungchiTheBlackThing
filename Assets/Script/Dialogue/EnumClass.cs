@@ -1,4 +1,5 @@
 namespace Assets.Script.Dialogue
 {
-    public enum Language{Korean, English}
+    public enum SCRIPT_TYPE { TEXT, CHOICE}
+    public enum LANGUAGE{KOREAN, ENGLISH}
 }

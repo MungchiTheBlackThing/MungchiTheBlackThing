@@ -905,9 +905,9 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1220627610}
-        m_TargetAssemblyTypeName: SubDialogueData, Assembly-CSharp
-        m_MethodName: OnSetEventID
-        m_Mode: 1
+        m_TargetAssemblyTypeName: SubDialogueManager, Assembly-CSharp
+        m_MethodName: SetEventID
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1357,7 +1357,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
 --- !u!1 &763869948
 GameObject:
@@ -1634,15 +1634,15 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1220627610}
-        m_TargetAssemblyTypeName: SubDialogueData, Assembly-CSharp
-        m_MethodName: OnNextText
+        m_TargetAssemblyTypeName: SubDialogueManager, Assembly-CSharp
+        m_MethodName: TEST_ChangeLanguage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: sub.mildew.first
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &887927482
@@ -1765,7 +1765,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1022928752
 GameObject:
@@ -1778,6 +1778,7 @@ GameObject:
   - component: {fileID: 1022928753}
   - component: {fileID: 1022928755}
   - component: {fileID: 1022928754}
+  - component: {fileID: 1022928756}
   m_Layer: 5
   m_Name: value
   m_TagString: Untagged
@@ -1902,6 +1903,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022928752}
   m_CullTransparentMesh: 1
+--- !u!114 &1022928756
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1022928752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 03d7e099e9b52ef44a8f21ad0d47102d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textMeshPro: {fileID: 0}
 --- !u!1 &1052572109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1968,7 +1982,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1220627607
 GameObject:
@@ -2015,7 +2029,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1220627610
 MonoBehaviour:
@@ -2029,9 +2043,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0696d8999c9d9d64a92c82ca574e5219, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  eventId: sub.mildew.first
+  eventID: 
   inputEventID: {fileID: 684494252}
-  korText: {fileID: 1022928754}
+  scriptText: {fileID: 1022928754}
   type: {fileID: 686205563}
 --- !u!1 &1291387850
 GameObject:
@@ -2330,6 +2344,51 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1487644948}
   m_CullTransparentMesh: 1
+--- !u!1 &1499762829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1499762830}
+  - component: {fileID: 1499762831}
+  m_Layer: 0
+  m_Name: UIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1499762830
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499762829}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1499762831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1499762829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41ab95cd40a047a42916222053f28d72, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  uiList: []
 --- !u!1 &1503795961
 GameObject:
   m_ObjectHideFlags: 0
@@ -2429,7 +2488,7 @@ RectTransform:
   - {fileID: 539906889}
   - {fileID: 887927480}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
