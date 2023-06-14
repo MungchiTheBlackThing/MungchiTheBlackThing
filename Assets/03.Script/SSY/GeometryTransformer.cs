@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class GeometryTransformer : MonoBehaviour
 {
-
     RectTransform currObject;
-    RectTransform[] childObjects;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,26 +14,21 @@ public class GeometryTransformer : MonoBehaviour
 
     /*Figma에서 가져온 layer 시작시 자동 배치 함수*/
     void InitScaleAndMove(){
-        int canvasHeight=Screen.height;
-        int canvasWidth=Screen.width;
-        childObjects=currObject.GetComponentsInChildren<RectTransform>();
+        //배수 나옴
 
-        Debug.Log(childObjects[0]);
+        /*비율 계산법
+        원하던 크기
+        2796(너비) x 1290(높이)
+        */
+
+        float canvasHeight=Screen.height;
+        float canvasWidth=Screen.width;
 
         foreach(RectTransform child in currObject){
-            if(child.name==currObject.name)
-                return;
+            Vector2 totalRatio=new Vector2(2796f/canvasWidth,1290f/canvasWidth);
             Vector2 ratio = new Vector2(canvasWidth/child.rect.width,canvasHeight/child.rect.height);
-            child.localScale=childObjects[0].localScale*ratio;
+            child.localScale=new Vector2(ratio[0]+totalRatio[0],ratio[1]);
             child.position=new Vector2(0,canvasHeight);
-            Debug.Log(child.name);
-            
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
