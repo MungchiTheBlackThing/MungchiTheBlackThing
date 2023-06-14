@@ -1,0 +1,34 @@
+﻿,,,,,,,,,[color=#000000][/color],,,,
+,,,,,,,,,[color=#000000][/color],,,,
+Event ID,조건,위치 (View),Character,Expression,Type,Line Key,Kor Text,Next Line,Kor Choice,Skip Line,Reward,Eng Text,Eng Choice
+sub.mildew.first,cond1,view1,Mung,exp1,TEXT,linekey1,난 이제 오랫동안 미동 없이 앉아서 저 아이들이 부유하는 걸 바라볼 거야.,next1,,,,engtext1,engchoice1
+sub.mildew.first,cond2,view2,Mung,exp2,TEXT,linekey2,"그 어떤 것도 바라지 않은 채, 바라만 볼 거야.",next2,,,,engtext2,engchoice2
+sub.mildew.first,cond3,view3,Player,exp3,CHOICE,linekey3,,next3,뭉치는 지루함을 좋아하는구나.|왜 바라만 보는데?,다음 줄 1|다음 줄 2,,engtext3,engchoice3
+sub.mildew.first,cond4,view4,Mung,exp4,TEXT,linekey4,응. 지루함은 찰기 없는 밀가루\n같은 감촉을 가지고 있거든.,next4,,,,engtext4,engchoice4
+sub.mildew.second,cond1,view1,Mung,exp1,TEXT,linekey1,누워 놀기 좋지.,,,,,engtext1,engchoice1
+sub.mildew.second,cond2,view2,Mung,exp2,TEXT,linekey2,흥미롭다. 지금 누운 곳은 어디야?,,,,,engtext2,engchoice2
+sub.mildew.second,cond3,view3,Mung,exp3,TEXT,linekey3,고통의 풀밭.,,,,,engtext3,engchoice3
+sub.mildew.second,cond4,view4,Mung,exp4,TEXT,linekey4,어? …. 왜?,,,,,engtext4,engchoice4
+,,,,,TEXT,,"쟤네, ""살기"" 좋은 어딘가에 안착한다면 곧 다글다글 번식해서 인간의 눈에 띌 거야.",,,,,,
+,,,,,TEXT,,머지않아 제거되겠지. 손쉽고 간편하게,,,,,,
+,,,,,TEXT,,불타오르거나 녹아내리면서.,,,,,,
+,,,,,TEXT,,살기 나쁜 어딘가에 안착한다면 인간의 눈은 피할 수 있을 거야.,,,,,,
+,,,,,TEXT,,그런데 굶어 죽을 거야.,,,,,,
+,,,,,TEXT,,"느리고 무정하게, 얄팍한 생명력을 흡착당하며 바스라지겠지.",,,,,,
+,,,,,,,난 그 무엇도 바라지 못해. 걸어 두었던 희망이 꺾여서 돌아오면…,,,,,,
+,,,,,,,아주 아플 테니까.,,,,,,
+,,,,,CHOICE,,,,고작 곰팡이일 뿐이야.\n보기에도 흉하고 인간에게 무익해.|저 빵 위로 떨어지는 애들도 있을걸.\n폭신한 침대에 뛰어드는 아이처럼.,,,,
+,,,,,,,……. <name>.,,,,,,
+,,,,,,,그건 나도 마찬가지 아니야?\n너에겐 나도 ‘고작’ 뭉치인 걸까.,,"아니, 아니야. 특별해.\n넌 사랑스럽고, 유일하잖아.|내 친구잖아.",,,,
+,,,,,,,,"아니, 아니야. 특별해. 넌 <내 친구고(친밀도 +)/유일하고> 사랑스럽잖아.",,,,,
+,,,,,,,기관지에 해롭지도 않고.,,,,,,
+,,,,,,,저런... 마음을 상하게 하려는 의도는 결코 아니었어.,,,,,,
+,,,,,,,그렇구나. 시간이 필요해. 잠시 혼자 있어도 될까. ,,,,,,
+,,,,,,,.......,,,,trigger:closet,,
+,,,,,,,정말 그럴까?,,,,,,
+,,,,,,,…….,,,,,,
+,,,,,,,그렇구나.,,,,,,
+,,,,,,,"고마워, OO. 난 이제 오랫동안 미동 없이 앉아서",,,,,,
+,,,,,,,저 아이들이 ‘빵 위로’ 떨어지길 바라 볼 거야.,,,,,,
+,,,,,,,아주 오랫동안.,,,,,,
+sub.,,,,,,,,,,,,,
