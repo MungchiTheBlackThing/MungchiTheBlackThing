@@ -5,12 +5,13 @@ using UnityEngine;
 public class ObjectTransformer : MonoBehaviour
 {
     RectTransform currObject;
-
+    RectTransform canvasRect;
 
     // Start is called before the first frame update
     void Start()
     {
         currObject=this.gameObject.GetComponent<RectTransform>();
+        //canvasRect=GameObject.
         InitScaleAndMove();
     }
 
@@ -23,7 +24,8 @@ public class ObjectTransformer : MonoBehaviour
             Vector2 totalRatio=new Vector2(2796f/canvasWidth,1290f/canvasWidth);
             Vector2 ratio = new Vector2(canvasWidth/child.rect.width,canvasHeight/child.rect.height);
             child.localScale=new Vector2(ratio[0],ratio[1]);
-            child.anchoredPosition=new Vector3(0,0);
+            child.position=new Vector2(0,canvasHeight);
+            //child.anchoredPosition=new Vector3(0,0);
         }
     }
 }
