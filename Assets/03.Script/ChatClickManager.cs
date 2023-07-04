@@ -32,13 +32,9 @@ public class ChatClickManager : MonoBehaviour
     public void RunScript(){
         if(currIdx>=idx.Length)
             return;
-        
-        Debug.Log(currIdx);
         Transform parentObject=this.gameObject.transform;
         if(parentObject.childCount>=3){
             Destroy(parentObject.GetChild(0).gameObject);
-                //클릭되었을때 부모의 자식 개수가 3개를 넘어서면 가장 최상위 자식 삭제
-                //Destroy(clickObject.transform.parent.GetChild(1));
         }
         GameObject newObject=Instantiate(dreamNPC[idx[currIdx]]) as GameObject; //gameObject 생성
         newObject.name=newObject.name.Substring(0,newObject.name.IndexOf('('));
