@@ -38,7 +38,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 968.64, y: 0}
+  m_SizeDelta: {x: 1016.8103, y: 0}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &657269529469412812
 MonoBehaviour:
@@ -56,7 +56,6 @@ MonoBehaviour:
   TextRect: {fileID: 657269529590285715}
   CharacterRect: {fileID: 657269529859141277}
   CharacterText: {fileID: 657269529643005940}
-  manager: {fileID: 794886480211446889, guid: ed2d6a56baf8a4630a5b6a182cded44a, type: 3}
 --- !u!114 &657269529469412813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,7 +134,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 218.59, y: 0}
+  m_AnchoredPosition: {x: 269.615, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &657269529511923008
@@ -191,8 +190,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 50
     m_Right: 50
-    m_Top: 65
-    m_Bottom: 65
+    m_Top: 100
+    m_Bottom: 100
   m_ChildAlignment: 4
   m_Spacing: 0
   m_ChildForceExpandWidth: 0
@@ -453,8 +452,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 35
-  m_fontSizeBase: 35
+  m_fontSize: 45
+  m_fontSizeBase: 45
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
