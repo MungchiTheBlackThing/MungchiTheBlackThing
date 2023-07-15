@@ -25,10 +25,9 @@ public class GeometryTransformer : MonoBehaviour
         float canvasWidth=Screen.width;
 
         foreach(RectTransform child in currObject){
-            Vector2 totalRatio=new Vector2(2796f/canvasWidth,1290f/canvasWidth);
             Vector2 ratio = new Vector2(canvasWidth/child.rect.width,canvasHeight/child.rect.height);
-            child.localScale=new Vector2(ratio[0]+totalRatio[0],ratio[1]);
-            child.position=new Vector2(0,canvasHeight);
+            child.localScale=new Vector2(39f,ratio[1]);
+            child.anchoredPosition=new Vector2(0,0);
         }
     }
 }

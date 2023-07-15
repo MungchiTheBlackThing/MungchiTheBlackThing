@@ -9,13 +9,52 @@ public class MainMoonRadioUIController : MonoBehaviour
     [SerializeField]
     GameObject moon_radio;
 
-    public void goEarthChannel(){
-        this.gameObject.SetActive(false);
-        earth_radio.SetActive(true);
+    [SerializeField]
+    GameObject radio_main;
+    [SerializeField]
+    GameObject alter_Moon;
+    [SerializeField]
+    GameObject radio_off;
+    int moon_Cnt;
+
+    void Start(){
+        moon_Cnt=0;
     }
 
-    public void goMoonChannel(){
-        this.gameObject.SetActive(false);
-        moon_radio.SetActive(true);
+    public int getMoonCnt(){
+        return moon_Cnt;
     }
+    public void goEarthChannel(){
+
+        this.gameObject.SetActive(false);
+        Instantiate(earth_radio,this.transform.parent);
+    }
+    //moon_Cnt는 시스템으로 이동해야함.. 왜냐하면, 하루가 지나면 reset될 수 있도록 설정하도록. 구현
+    public void goMoonChannel(){
+        moon_Cnt+=1;
+        if(moon_Cnt<=2){
+            Instantiate(moon_radio,this.transform.parent);
+        }else{
+            alter_Moon.SetActive(true);
+        }
+    }
+
+    public void stillChannel(){
+         alter_Moon.SetActive(false);
+    }
+
+    public void OnRadioOff(){
+        radio_main.SetActive(false);
+        radio_off.SetActive(true);
+    }
+
+    public void yesExit(){
+        Destroy(this.gameObject);
+    }
+
+    public void noExit(){
+        radio_main.SetActive(true);
+        radio_off.SetActive(false);
+    }
+
 }
