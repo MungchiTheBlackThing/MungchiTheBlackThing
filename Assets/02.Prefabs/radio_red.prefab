@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 657269529469412812}
   - component: {fileID: 657269529469412813}
   - component: {fileID: 657269529469412815}
+  - component: {fileID: 5198636553126326172}
   m_Layer: 0
   m_Name: radio_red
   m_TagString: Untagged
@@ -96,6 +97,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_HorizontalFit: 0
   m_VerticalFit: 2
+--- !u!95 &5198636553126326172
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 657269529469412803}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &657269529511923013
 GameObject:
   m_ObjectHideFlags: 0

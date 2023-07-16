@@ -19,6 +19,8 @@ public class ChatClickManager : MonoBehaviour
 
     [SerializeField]
     protected GameObject[] dreamNPC;
+    [SerializeField]
+    GameObject exit;
     public int currIdx=0;
     //임시 대사 저장
     protected List<string> txt= new List<string>(){
@@ -30,8 +32,12 @@ public class ChatClickManager : MonoBehaviour
         currIdx=0;
     }
     public void RunScript(){
-        if(currIdx>=idx.Length)
+        if(currIdx>=idx.Length){
+            if(!exit.activeSelf){
+                exit.SetActive(true);
+            }
             return;
+        }
         Transform parentObject=this.gameObject.transform;
         if(parentObject.childCount>=3){
             Destroy(parentObject.GetChild(0).gameObject);

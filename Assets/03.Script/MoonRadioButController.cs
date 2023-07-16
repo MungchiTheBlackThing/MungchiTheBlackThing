@@ -9,6 +9,8 @@ public class MoonRadioButController : MonoBehaviour
 
     [SerializeField]
     GameObject popup;
+    [SerializeField]
+    GameObject chat;
     GameObject main;
 
     void Start(){
@@ -18,6 +20,13 @@ public class MoonRadioButController : MonoBehaviour
         }
 
         popup.transform.GetChild(1).GetChild(2).GetChild(0).GetComponent<TMP_Text>().text="("+main.GetComponent<MainMoonRadioUIController>().getMoonCnt().ToString()+"/2)";
+
+        //실행시 5초 뒤에 깜빡 깜빡 등장.
+        Invoke("AppearOnScreen",1.5f);
+    }
+
+    void AppearOnScreen(){
+        chat.SetActive(true);
     }
     public void ExitMoonChannel(){
         //exitPopup setActive on

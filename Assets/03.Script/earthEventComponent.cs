@@ -8,9 +8,6 @@ public class earthEventComponent : MonoBehaviour
     void Start(){
         earthController=this.transform.parent.parent.GetComponent<EarthRadioUIController>();
     }
-    void EnterEvents(){
-        earthController.send2MoonButEventEnter();
-    }
     void ExitEvents(){
         earthController.send2MoonButEventExit();
     }

@@ -39,16 +39,10 @@ public class EarthRadioUIController : MonoBehaviour
         }else{ 
             answerTextBox.SetActive(true);
         }
-        inputText=text.text;
+        //inputText=text.text;
         //한글자라도 있으면 없애고, 한글자 존재하면 생김.
         //글씨 처리..
         //text.text는 moonbut누를시 전달될 string
-    }
-
-    public void send2MoonButEventEnter(){
-        GameObject.Find("answerGroup").gameObject.SetActive(false);
-        GameObject moonAnswer=send_earth.transform.Find("MoonAnswer").gameObject;
-        moonAnswer.SetActive(true);
     }
 
     public void send2MoonBut(){
@@ -56,11 +50,11 @@ public class EarthRadioUIController : MonoBehaviour
         //현재 누른 오브젝트 실행 후 애니메이션 끝나면 함수 실행
         GameObject currObj=UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
         currObj.GetComponent<Animator>().SetBool("isGoing",true);
+        send_earth.GetComponent<Animator>().SetBool("isGoing",true);
     }
 
     public void send2MoonButEventExit(){
-        GameObject moonAnswer=send_earth.transform.Find("MoonAnswer").gameObject;
-        moonAnswer.SetActive(false);
+        send_earth.SetActive(false);
         send_alert.SetActive(true);
 
     }
