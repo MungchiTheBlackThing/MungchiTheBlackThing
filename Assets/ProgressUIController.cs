@@ -20,7 +20,7 @@ public class ProgressUIController : MonoBehaviour
     [SerializeField]
     GameObject detailed_popup;
     [SerializeField]
-    GameObject menuUI;
+    GameObject menu_default;
 
     void Update()
     {
@@ -58,7 +58,7 @@ public class ProgressUIController : MonoBehaviour
             dragScroller.transform.parent.gameObject.SetActive(true);
         }else{
             this.gameObject.SetActive(false);
-            menuUI.gameObject.SetActive(true);
+            menu_default.gameObject.SetActive(true);
         }
         
     }
