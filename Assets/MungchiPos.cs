@@ -8,7 +8,8 @@ public class MungchiPos : MonoBehaviour
     [SerializeField]
     GameObject background;
 
-    public void onDialogue(){
-        background.SetActive(true);
+    public void onDialogue(GameObject parents){
+        parents.transform.Find(background.name).gameObject.SetActive(true);
+        Debug.Log(parents.name);
     }
 }
