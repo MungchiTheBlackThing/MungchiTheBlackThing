@@ -8,4 +8,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/01.Scenes/FigmaScene.unity
     guid: ebeec2d503240476aade9bfa22c8ff22
+  - enabled: 1
+    path: Assets/01.Scenes/CreateExp.unity
+    guid: cc3c92ca709294333a286212a9ac0d47
   m_configObjects: {}
