@@ -3302,7 +3302,7 @@ GameObject:
   - component: {fileID: 174805055}
   - component: {fileID: 174805054}
   m_Layer: 0
-  m_Name: "\u1100\u1165\u1106\u1175 (1) 1 [I1106:714;948:1184]"
+  m_Name: Spider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3320,13 +3320,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1202337735}
-  m_RootOrder: 1
+  m_Father: {fileID: 1850648421}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 28, y: -325.2389}
+  m_SizeDelta: {x: -57, y: -325.91788}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &174805054
 MonoBehaviour:
@@ -17750,7 +17750,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1850648421}
-  - {fileID: 174805053}
   m_Father: {fileID: 1375894156}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -29083,7 +29082,7 @@ GameObject:
   - component: {fileID: 1850648423}
   - component: {fileID: 1850648422}
   m_Layer: 0
-  m_Name: "\u1109\u1175\u11AF(\u1100\u1175\u11AB\u1100\u1165)   [885:1044]"
+  m_Name: Spider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29100,7 +29099,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 174805053}
   m_Father: {fileID: 1202337735}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30782,7 +30782,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1945719376
 RectTransform:
   m_ObjectHideFlags: 0
@@ -33870,7 +33870,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083401903}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1aa08ab6e0800fa44ae55d278d1423e3, type: 3}
   m_Name: 
