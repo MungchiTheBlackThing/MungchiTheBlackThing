@@ -8,11 +8,12 @@ public class NoteClick : MonoBehaviour, IPointerClickHandler
 {
     // Start is called before the first frame update
     public bool isnote = true;
+    public GameObject NoteBackground;
     public void OnPointerClick(PointerEventData eventData)
     {
         if (isnote == true)
         {
-            RectTransform leaf = this.GetComponentInChildren<RectTransform>();
+           NoteBackground.SetActive(true);
         }
         else
         {

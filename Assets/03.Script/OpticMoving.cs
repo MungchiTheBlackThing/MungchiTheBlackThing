@@ -8,6 +8,7 @@ public class OpticMoving : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 {
     RectTransform rectransform;
     public static Vector2 DefaultPos;
+    public GameObject target;
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
     {
@@ -32,7 +33,13 @@ public class OpticMoving : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
 
         for(int i=0;i<results.Count;i++)
             if(results[i].gameObject.tag=="Mungchi")
+            {
+                target.GetComponent<MungchiClick>().OnPointerClick(eventData);
                 Debug.Log("뭉치 찾음");
+                break;
+            }
+
+                
     }
 
 /*    
