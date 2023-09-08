@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 
 // 쌍안경 움직임을 가능하게 하는 코드
-public class OpticMoving : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
+public class OpticMoving : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler,IPointerDownHandler
 {
     RectTransform rectransform;
     public static Vector2 DefaultPos;
@@ -25,7 +25,17 @@ public class OpticMoving : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
         Vector2 mousePos = eventData.position;
         this.transform.position = mousePos;
     }
-    
+
+    void IPointerDownHandler.OnPointerDown(PointerEventData eventData){
+        List<RaycastResult> results=new();
+        EventSystem.current.RaycastAll(eventData, results);
+
+        for(int i=0;i<results.Count;i++)
+            if(results[i].gameObject.tag=="Mungchi")
+                Debug.Log("뭉치 찾음");
+    }
+
+/*    
     void Update()
     {
         RaycastHit2D[] hit;
@@ -37,4 +47,5 @@ public class OpticMoving : MonoBehaviour, IBeginDragHandler, IEndDragHandler, ID
                 Debug.Log(hit[i].collider.name);
             }
     }
+    */
 }
