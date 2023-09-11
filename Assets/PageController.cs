@@ -12,12 +12,13 @@ public class PageController : MonoBehaviour,IPointerDownHandler,IPointerUpHandle
     */
 
     Animator animator;
-    bool onClick=false;
     void Start(){
         animator=this.gameObject.transform.parent.GetComponent<Animator>();
+        Debug.Log(this.gameObject.name);
     }
     public void OnPointerDown(PointerEventData eventData)
     {
+        Debug.Log("실행");
         animator.SetBool("onClick",true);
     }
 
