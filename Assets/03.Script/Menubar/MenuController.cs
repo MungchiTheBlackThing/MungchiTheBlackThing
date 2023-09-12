@@ -19,6 +19,8 @@ public class MenuController : MonoBehaviour
     GameObject MyPageUI;
     [SerializeField]
     GameObject PolaroidUI;
+    [SerializeField]
+    GameObject Polaroid;
 
     public void onMenu(){
         if(!Icon.activeSelf){
@@ -48,6 +50,11 @@ public class MenuController : MonoBehaviour
         DayProgressUI.SetActive(true);
         MenuDefault.SetActive(false);
 
+    }
+
+    public void PolaroidCamera(){
+        MenuDefault.SetActive(false);
+        Polaroid.SetActive(true);
     }
 
     public void onClickHelper(){
