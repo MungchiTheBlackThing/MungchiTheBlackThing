@@ -6,15 +6,10 @@ using UnityEngine.EventSystems;
 public class Noteclose : MonoBehaviour, IPointerClickHandler
 {
     // Start is called before the first frame update
-
+    public GameObject NoteBackground;
     public void OnPointerClick(PointerEventData eventData)
     {
-       this.gameObject.SetActive(false);
+        Destroy(NoteBackground);
     }
-    void Start()
-    {
-        this.gameObject.SetActive(false);
-    }
-
     // Update is called once per frame
 }
