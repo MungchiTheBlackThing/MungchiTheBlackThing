@@ -1,10 +1,10 @@
 'use strict';
  
 const express = require('express');
- 
+require('dotenv').config();
 // 상수
-const PORT = 8080;
-const HOST = '0.0.0.0';
+const PORT = process.env.PORT
+const HOST = process.env.HOST
  
 // 앱
 const app = express();
