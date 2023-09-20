@@ -9,7 +9,8 @@
 /[Bb]uilds/
 /[Ll]ogs/
 /[Uu]ser[Ss]ettings/
-
+/[Bb]uildGame_BackUpThisFolder_ButDontShipItWithYourGame/
+/[Bb]uildGame/
 # MemoryCaptures can get excessive in size.
 # They also could contain extremely sensitive data
 /[Mm]emoryCaptures/
@@ -60,6 +61,7 @@ sysinfo.txt
 *.aab
 *.unitypackage
 *.app
+*.keystore
 
 # Crashlytics generated file
 crashlytics-build.properties
