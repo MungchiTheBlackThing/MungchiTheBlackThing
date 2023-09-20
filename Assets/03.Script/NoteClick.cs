@@ -8,6 +8,7 @@ public class NoteClick : MonoBehaviour,IPointerDownHandler
 {
     // Start is called before the first frame update
     public bool isnote = true;
+    public static bool CanScroll = true;
     public GameObject NoteBackground;
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
@@ -20,6 +21,9 @@ public class NoteClick : MonoBehaviour,IPointerDownHandler
             if(results[i].gameObject.tag== "Note")
             {
                 Instantiate(NoteBackground,GameObject.Find("Background").transform);
+                CanScroll = false;
+                Debug.Log(CanScroll.ToString());
+                break;
             }
 
     }

@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class MungchiClick : MonoBehaviour
 {
     // Start is called before the first frame update
-    public bool isinoptic = false;
+    public static bool isinoptic = false;
     Vector3 vel = Vector3.zero;
 
     public void OnMouseDown()
@@ -17,6 +17,7 @@ public class MungchiClick : MonoBehaviour
         for (int i = 0; i < animator.Length; i++)
         {
             animator[i].SetTrigger("Trigger");
+            animator[i].SetBool("BoolAni", true);
         }
     }
     //Animator[] animator = this.GetComponentsInChildren<Animator>();
@@ -36,7 +37,6 @@ public class MungchiClick : MonoBehaviour
         if(collision.tag == "optic")
         {
             isinoptic = true;
-            Debug.Log("true");
         }
     }
     public void OnTriggerExit2D(Collider2D collision)
@@ -44,7 +44,6 @@ public class MungchiClick : MonoBehaviour
         if (collision.tag == "optic")
         {
             isinoptic = false;
-            Debug.Log("false");
         }
     }
 

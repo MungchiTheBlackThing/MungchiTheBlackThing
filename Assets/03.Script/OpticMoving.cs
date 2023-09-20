@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class OpticMoving : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler,IPointerDownHandler
 {
     RectTransform rectransform;
-    public static Vector2 DefaultPos;
+    public Vector2 DefaultPos;
     public GameObject target;
 
     void IBeginDragHandler.OnBeginDrag(PointerEventData eventData)
