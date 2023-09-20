@@ -1,7 +1,15 @@
-FROM node:12-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm install --silent
-COPY . .
-CMD [ "npm", "start" ]
-EXPOSE 3000
+FROM node:alpine
+
+RUN mkdir -p /Docker
+
+WORKDIR /Docker
+
+COPY package*.json /Docker
+
+RUN npm install
+
+COPY . /Docker
+
+EXPOSE 8080
+
+CMD [ "node", "server.js" ]
