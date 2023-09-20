@@ -10,6 +10,10 @@ public class Noteclose : MonoBehaviour, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         Destroy(NoteBackground);
+        NoteClick.CanScroll = true;
     }
-    // Update is called once per frame
+    public void Start()
+    {
+        NoteClick.CanScroll = false;
+    }
 }

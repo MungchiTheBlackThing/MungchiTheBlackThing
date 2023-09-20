@@ -11,8 +11,11 @@ public class MainMungchiController : MonoBehaviour
     [SerializeField]
     GameObject mainDialogue;
     string currTime;
-    void Start(){
-        for(int i=0;i<this.gameObject.transform.childCount;i++){
+   
+    
+    void Start()
+    {
+        for (int i=0;i<this.gameObject.transform.childCount;i++){
             GameObject childs=this.gameObject.transform.GetChild(i).gameObject;
             if(childs.activeSelf){
                 currTime=childs.gameObject.name;
@@ -31,8 +34,8 @@ public class MainMungchiController : MonoBehaviour
             child.SetActive(true);
         }
         
-        
     }
+
 
     //그냥 버튼이랑 스크립트를 붙여서 instantiate하자 ^^,,,
 }
