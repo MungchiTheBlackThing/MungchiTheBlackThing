@@ -15,8 +15,7 @@ public class NoteClick : MonoBehaviour,IPointerDownHandler
 
         List<RaycastResult> results = new();
         EventSystem.current.RaycastAll(eventData, results);
-
-
+    
         for (int i = 0; i < results.Count; i++)
             if(results[i].gameObject.tag== "Note")
             {
