@@ -647,7 +647,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7107071153817030959}
   m_Layer: 0
-  m_Name: Bino2
+  m_Name: Bino_4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

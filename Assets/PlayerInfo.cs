@@ -6,7 +6,7 @@ public enum LetterDay{
     Day3=3,
     Day7=7,
     Day11=11,
-    Day2=2
+    Day12=12
 
 }
 public class PlayerInfo : MonoBehaviour
@@ -44,12 +44,18 @@ public class PlayerInfo : MonoBehaviour
                 }
                 if(timesBackground.GetChild(i).name.Contains("letter")){
                     Destroy(timesBackground.GetChild(i).gameObject);
-                }else if(currDay==(int)LetterDay.Day2||currDay==(int)LetterDay.Day3||currDay==(int)LetterDay.Day7||currDay==(int)LetterDay.Day11){
+                }else if(currDay==(int)LetterDay.Day12||currDay==(int)LetterDay.Day3||currDay==(int)LetterDay.Day7||currDay==(int)LetterDay.Day11){
                     //2일-3일 간의 관계 해결해야함.. 안그러면 중복으로 데이터를 가져옴
                     GameObject obj=Instantiate(Resources.Load<GameObject>("phase_letter"),timesBackground);
                     break;
                 }
-                //if(cu)
+
+                if(currDay==2){ //currDay 2 4 6 8 에 해당하면.. 
+                //bino_day+currDay.to_string() 해서, 키면된다.
+                    if(timesBackground.GetChild(i).name.Contains("bino")){
+                        timesBackground.GetChild(i).GetChild(0).gameObject.SetActive(true);
+                    }
+                }
             }
             Instantiate(Resources.Load<GameObject>("ch_books_"+currDay),timesBackground);
             if(currDay%2==0){

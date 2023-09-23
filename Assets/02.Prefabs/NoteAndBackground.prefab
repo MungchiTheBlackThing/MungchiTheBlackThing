@@ -259,7 +259,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8db6f225d69fcb14eaa351cffc645d3d, type: 3}
+  m_Sprite: {fileID: 21300000, guid: e31b37933dd51480d930cfedbd674a96, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -282,7 +282,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   NoteBackground: {fileID: 2401414708491280035}
-  NoteClick: {fileID: 0}
 --- !u!1 &2401414709166997075
 GameObject:
   m_ObjectHideFlags: 0

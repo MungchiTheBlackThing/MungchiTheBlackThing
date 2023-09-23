@@ -7,6 +7,9 @@ public class Cursor : MonoBehaviour
 {
     public bool isrelease = false;
     public GameObject target;
+    void Start(){
+        isrelease = false;
+    }
     private void Update() 
     {
         if (Input.GetMouseButton(0))
@@ -41,8 +44,4 @@ public class Cursor : MonoBehaviour
         transform.position = point;
     }
 
-    private void Start()
-    {
-        isrelease = false;
-    }
 }
