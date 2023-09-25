@@ -8,8 +8,10 @@ public class DefaultController : MonoBehaviour
     ScrollRect scrollRect;
     Vector2 DefaultPos;
     bool isBinoFirst;
+    bool isClose;
     public void Start()
     {
+        isClose=false;
         isBinoFirst=false;
         scrollRect = this.gameObject.GetComponent<ScrollRect>();
         RectTransform rectTransform = this.gameObject.GetComponent<RectTransform>();
@@ -42,4 +44,11 @@ public class DefaultController : MonoBehaviour
             isBinoFirst=!isBinoFirst;
         }
     }
+
+    public void OpenDoor(){
+        GameObject child=EventSystem.current.currentSelectedGameObject;
+        child.transform.parent.GetComponent<Animator>().SetBool("isClose",isClose);
+        isClose=!isClose;
+    }
+
 }

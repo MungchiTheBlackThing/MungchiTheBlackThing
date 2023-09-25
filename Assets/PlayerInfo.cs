@@ -1,14 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets.Script.DaysEnum;
 //enum 파일 만들어서 정리해 놓아야할듯
-public enum LetterDay{
-    Day3=3,
-    Day7=7,
-    Day11=11,
-    Day12=12
-
-}
 public class PlayerInfo : MonoBehaviour
 {
     /*DB 연결 시 수정되어야 하는 것
@@ -24,6 +18,8 @@ public class PlayerInfo : MonoBehaviour
     int currDay;
     [SerializeField]
     Transform timesBackground;
+    GameObject clothes;
+    GameObject letter;
     void Start(){
         /*데이터 베이스에 저장된 날로 업데이트 해야 한다.*/
         currDay=0; 
@@ -42,24 +38,39 @@ public class PlayerInfo : MonoBehaviour
                 if(timesBackground.GetChild(i).name.Contains("bread")&&currDay==8){
                     Destroy(timesBackground.GetChild(i).gameObject);
                 }
-                if(timesBackground.GetChild(i).name.Contains("letter")){
-                    Destroy(timesBackground.GetChild(i).gameObject);
-                }else if(currDay==(int)LetterDay.Day12||currDay==(int)LetterDay.Day3||currDay==(int)LetterDay.Day7||currDay==(int)LetterDay.Day11){
-                    //2일-3일 간의 관계 해결해야함.. 안그러면 중복으로 데이터를 가져옴
-                    GameObject obj=Instantiate(Resources.Load<GameObject>("phase_letter"),timesBackground);
-                    break;
-                }
 
-                if(currDay==2){ //currDay 2 4 6 8 에 해당하면.. 
+                if((currDay==(int)BinoDay.Day2)||(currDay==(int)BinoDay.Day5)||(currDay==(int)BinoDay.Day8)||(currDay==(int)BinoDay.Day10)||(currDay==(int)BinoDay.Day13)){ //currDay 2 4 6 8 에 해당하면.. 
                 //bino_day+currDay.to_string() 해서, 키면된다.
                     if(timesBackground.GetChild(i).name.Contains("bino")){
                         timesBackground.GetChild(i).GetChild(0).gameObject.SetActive(true);
                     }
+                }else{
+                    if(timesBackground.GetChild(i).name.Contains("bino")){
+                        timesBackground.GetChild(i).GetChild(0).gameObject.SetActive(false);
+                    }
                 }
             }
+
+            if((currDay==(int)LetterDay.Day3)||(currDay==(int)LetterDay.Day7)||(currDay==(int)LetterDay.Day11)||(currDay==(int)LetterDay.Day12))
+            {
+                if(letter==null)
+                //2일-3일 간의 관계 해결해야함.. 안그러면 중복으로 데이터를 가져옴
+                    letter=Instantiate(Resources.Load<GameObject>("phase_letter"),timesBackground);
+            }else{
+                if(letter!=null){
+                    Debug.Log(currDay);
+                    Destroy(letter);
+                    letter=null;
+                }
+            }
+
             Instantiate(Resources.Load<GameObject>("ch_books_"+currDay),timesBackground);
-            if(currDay%2==0){
-                Instantiate(Resources.Load<GameObject>("ch_clothes_"+currDay),timesBackground);
+            if(currDay%2!=0){
+                if(clothes!=null){
+                    Destroy(clothes);
+                    clothes=null;
+                }
+                clothes=Instantiate(Resources.Load<GameObject>("ch_clothes_"+currDay),timesBackground);
             }
             passTimes=!passTimes;
         }
