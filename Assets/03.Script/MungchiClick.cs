@@ -19,6 +19,11 @@ public class MungchiClick : MonoBehaviour
             animator[i].SetTrigger("Trigger");
             animator[i].SetBool("BoolAni", true);
         }
+        Invoke("CloseBino",2f);
+    }
+
+    void CloseBino(){
+        //X UI를 뜨도록 canvas를 킨다.
     }
     //Animator[] animator = this.GetComponentsInChildren<Animator>();
 
