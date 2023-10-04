@@ -648,13 +648,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7107071153817030959}
   m_Layer: 0
-<<<<<<<< HEAD:Assets/Resources/Bino_5.prefab
   m_Name: Bino_5
   m_TagString: Binocular
-========
-  m_Name: BinoDay4
-  m_TagString: Untagged
->>>>>>>> 9-14backup:Assets/02.Prefabs/BinoDay4.prefab
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
