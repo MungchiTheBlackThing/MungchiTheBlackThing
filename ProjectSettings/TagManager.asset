@@ -9,6 +9,7 @@ TagManager:
   - optic
   - Note
   - night
+  - Binocular
   layers:
   - Default
   - TransparentFX

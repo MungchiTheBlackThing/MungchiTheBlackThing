@@ -9,6 +9,8 @@ public class MungchiClick : MonoBehaviour
     // Start is called before the first frame update
     public static bool isinoptic = false;
     Vector3 vel = Vector3.zero;
+    [SerializeField]
+    GameObject exit;
 
     public void OnMouseDown()
     {
@@ -24,6 +26,7 @@ public class MungchiClick : MonoBehaviour
 
     void CloseBino(){
         //X UI를 뜨도록 canvas를 킨다.
+        Instantiate(exit,GameObject.Find("Canvas").transform);
     }
     //Animator[] animator = this.GetComponentsInChildren<Animator>();
 

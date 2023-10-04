@@ -446,6 +446,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96a9cd9779df3574da36e8571917b7f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  exit: {fileID: 3381943385127006650, guid: c9bc6a73942d54648a8cae6be6975fa2, type: 3}
 --- !u!58 &7107071153190112152
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -647,8 +648,8 @@ GameObject:
   m_Component:
   - component: {fileID: 7107071153817030959}
   m_Layer: 0
-  m_Name: Bino_4
-  m_TagString: Untagged
+  m_Name: Bino_5
+  m_TagString: Binocular
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

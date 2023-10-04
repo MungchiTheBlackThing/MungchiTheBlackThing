@@ -16,6 +16,9 @@ public class PlayerInfo : MonoBehaviour
     string currTime;
     [SerializeField]
     int currDay;
+    public int GetCurrDay(){
+        return currDay;
+    }
     [SerializeField]
     Transform timesBackground;
     GameObject clothes;
