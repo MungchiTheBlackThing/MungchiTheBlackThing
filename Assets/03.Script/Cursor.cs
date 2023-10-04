@@ -12,7 +12,6 @@ public class Cursor : MonoBehaviour
         if (Input.GetMouseButton(0))
         {
             ObjectMove();
-            
         }
         if (Input.GetMouseButtonDown(0))
         {
