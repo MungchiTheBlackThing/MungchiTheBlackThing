@@ -10,7 +10,6 @@ public class Tutorial : MonoBehaviour
     void Start()
     {
         Animator animator = this.GetComponentInChildren<Animator>();
-
         animator.SetTrigger("Tutorial");
     }
     // Update is called once per frame
