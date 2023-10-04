@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 using Assets.Script.DaysEnum;
 //enum 파일 만들어서 정리해 놓아야할듯
 public class PlayerInfo : MonoBehaviour
@@ -23,16 +24,20 @@ public class PlayerInfo : MonoBehaviour
     Transform timesBackground;
     GameObject clothes;
     GameObject letter;
+
+    [SerializeField]
+    TMP_Text tmp; //임시 테스트용 삭제 예정
     void Start(){
         /*데이터 베이스에 저장된 날로 업데이트 해야 한다.*/
         currDay=0; 
         timesBackground=GameObject.FindGameObjectWithTag(currTime).gameObject.transform;
     }
     // Update is called once per frame
-    void Update()
-    {
-    }
 
+    public void DisplayTest(){
+        passTimes=true;
+        tmp.text=(currDay+1).ToString();
+    }
     private void FixedUpdate() {
         if(passTimes&&currDay<15){
             currDay++;
