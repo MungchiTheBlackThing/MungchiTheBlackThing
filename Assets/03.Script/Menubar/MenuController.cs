@@ -25,16 +25,16 @@ public class MenuController : MonoBehaviour
     public void onMenu(){
         if(!Icon.activeSelf){
             Icon.transform.parent.gameObject.SetActive(true);
-            this.gameObject.GetComponent<Animator>().SetBool("isDowning",true);
+            this.gameObject.GetComponent<Animator>().SetBool("isDowning",false);
         }else{
             Icon.SetActive(false);
-            this.gameObject.GetComponent<Animator>().SetBool("isDowning",false);
+            this.gameObject.GetComponent<Animator>().SetBool("isDowning",true);
         }
     }
 
     public void offMenu(){
         if(Icon.activeSelf){
-            this.gameObject.GetComponent<Animator>().SetBool("isDowning",false);
+            this.gameObject.GetComponent<Animator>().SetBool("isDowning",true);
             Icon.SetActive(false);
         }
     }
