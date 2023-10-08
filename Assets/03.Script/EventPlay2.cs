@@ -12,7 +12,6 @@ public class EventPlay2 : MonoBehaviour,IPointerDownHandler
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
         Animator animator = Mungchi.GetComponent<Animator>();
-        NoteClick.CanScroll = false;
         Diary.SetActive(true);
         animator.SetTrigger("read");
         Debug.Log("read");
