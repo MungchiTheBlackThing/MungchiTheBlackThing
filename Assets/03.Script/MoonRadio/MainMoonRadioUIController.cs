@@ -49,6 +49,12 @@ public class MainMoonRadioUIController : MonoBehaviour
     }
 
     public void yesExit(){
+        //Background를 찾아 setActive true로 만든 후 파괴한다.
+        for(int i=0;i<this.transform.parent.childCount;i++){
+            if(this.transform.parent.GetChild(i).name=="Background"){
+                this.transform.parent.GetChild(i).gameObject.SetActive(true);
+            }
+        }
         Destroy(this.gameObject);
     }
 

@@ -10,7 +10,6 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setResolution();
         Camera.main.transform.position=new Vector3(0,0,-10f);
     }
 
