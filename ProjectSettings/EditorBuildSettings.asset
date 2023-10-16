@@ -6,15 +6,15 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 0
-    path: Assets/01.Scenes/FigmaScene.unity
-    guid: ebeec2d503240476aade9bfa22c8ff22
-  - enabled: 1
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 0
     path: Assets/01.Scenes/CreateExp.unity
     guid: cc3c92ca709294333a286212a9ac0d47
   - enabled: 0
     path: Assets/01.Scenes/SimJunHyun.unity
     guid: b3447cf604a3e634a9b525ccaa7bd33b
-  - enabled: 0
+  - enabled: 1
     path: Assets/01.Scenes/Tutorial.unity
     guid: 77eea7a2d9985e647b0eadd974385e8d
   m_configObjects: {}
