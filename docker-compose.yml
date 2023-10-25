@@ -7,7 +7,8 @@ services:
     volumes:
       - dbdata:/var/lib/mysql
     ports:
-      - 3309:3306
+      - 3306:3306
+    container_name: mysql_db
     cap_add:
       - SYS_NICE
     environment:
@@ -18,14 +19,14 @@ services:
 
   nodejs:
     restart: always
+    container_name: server
     build:
       context: ./Docker
       dockerfile: Dockerfile
     ports:
-      - 3000:8080
+      - 8080:8080
     volumes:
       - ./Docker/:/Docker
-      - ./Docker/node_modules/:/Docker/node_modules
     depends_on:
       - mysql
 

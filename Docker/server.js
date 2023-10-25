@@ -1,17 +1,17 @@
-'use strict';
 
-const express = require('express');
+const mysql = require('mysql');
 
-// 상수
-const PORT = 8080;
-const HOST = '0.0.0.0';
-
-// 앱
-const app = express();
-app.get('/', (req, res) => {
-  res.send('Hello World');
+const connection = mysql.createConnection({
+  host : 'mysql_db',
+  user : 'blackDot',
+  password: 'dot',
+  database : 'TheBlackThing'
 });
 
-app.listen(PORT, HOST, () => {
-  console.log(`Running on http://${HOST}:${PORT}`);
+connection.connect((err) => {
+  if (err) {
+    console.error('Error connecting to MySQL:', err);
+    return;
+  }
+  console.log('Connected to MySQL');
 });
