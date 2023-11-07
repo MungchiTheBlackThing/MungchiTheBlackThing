@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.Video;
 
 public class DialogueA : MonoBehaviour
 {
@@ -17,10 +18,6 @@ public class DialogueA : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void NextAni()
     {
