@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class EventPlayStart : MonoBehaviour,IPointerDownHandler
+public class EventPlayStart : MonoBehaviour
 {
     public GameObject Mungchi;
    
-    void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
+    public void Onclick()
     {
         Animator animator = Mungchi.GetComponent<Animator>();
         NoteClick.CanScroll = false;
@@ -16,12 +16,7 @@ public class EventPlayStart : MonoBehaviour,IPointerDownHandler
     }
     void Start()
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
+    // Update is called once per frame
 }
