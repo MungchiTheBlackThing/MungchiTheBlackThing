@@ -1033,6 +1033,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7912599221020610146}
     m_Modifications:
+    - target: {fileID: 1649603044248688437, guid: 03289ed5b2a07dd4f9cf2a096e0d4daf, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1649603045112639412, guid: 03289ed5b2a07dd4f9cf2a096e0d4daf, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1649603045112639414, guid: 03289ed5b2a07dd4f9cf2a096e0d4daf, type: 3}
       propertyPath: m_Name
       value: Day12Optic

@@ -21,7 +21,8 @@ public class GameManager : MonoBehaviour
             float newHeight = ((float)deviceWidth / deviceHeight) / ((float)setWidth / setHeight); // 새로운 높이
             Camera.main.rect = new Rect(0f, (1f - newHeight) / 2f, 1f, newHeight); // 새로운 Rect 적용
         }
-
+        Camera.main.aspect=Screen.width/Screen.height;
+        Camera.main.ResetAspect();
     }
 
     // Update is called once per frame

@@ -9,6 +9,15 @@ public class Cursor : MonoBehaviour
     public GameObject target;
     void Start(){
         isrelease = false;
+
+        var height = 2*Camera.main.orthographicSize-2; 
+        var width = height*Camera.main.aspect-2;
+
+        width=Random.Range(-(width/2),width/2);
+        height=Random.Range(-(height/2),height/2);
+        
+        this.transform.position=new Vector3(width,height);
+        //위치 랜덤으로 변경
     }
     private void Update() 
     {
