@@ -29,10 +29,6 @@ public class DialogueA2: MonoBehaviour
     void NextAni(UnityEngine.Video.VideoPlayer vid)
     {
         Transform transform = this.transform;
-        if (Current == EndDial)
-        {
-            return;
-        }
         //컨디션이 그 동영상에 기믹(?)을 추가해야해서 동영상을 잠깐 멈춰야함
         if (transform.GetChild(Current).CompareTag("Condition"))
         {
@@ -49,6 +45,10 @@ public class DialogueA2: MonoBehaviour
         transform.GetChild(Current).gameObject.SetActive(false);
         Current++;
         transform.GetChild(Current).gameObject.SetActive(true);
+        if (Current == EndDial)
+        {
+            return;
+        }
         Recursion(Current);
         conditionmet = false;
     }
