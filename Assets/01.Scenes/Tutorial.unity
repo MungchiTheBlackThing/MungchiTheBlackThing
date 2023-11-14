@@ -13925,11 +13925,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee52c2fdb3efd648b2996a68013a91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dials: []
-  Current: 0
-  EndDial: 0
-  vid: {fileID: 0}
-  conditionmet: 0
+  dialogues: []
 --- !u!95 &492034819
 Animator:
   serializedVersion: 4
@@ -23934,7 +23930,7 @@ GameObject:
   - component: {fileID: 904412988}
   m_Layer: 5
   m_Name: 2-3
-  m_TagString: Untagged
+  m_TagString: Condition
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36510,11 +36506,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee52c2fdb3efd648b2996a68013a91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dials: []
-  Current: 0
-  EndDial: 0
-  vid: {fileID: 0}
-  conditionmet: 0
+  dialogues: []
 --- !u!95 &1412231222
 Animator:
   serializedVersion: 4
@@ -38169,7 +38161,7 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 1
+  m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
 --- !u!222 &1472350947
@@ -41263,11 +41255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee52c2fdb3efd648b2996a68013a91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dials: []
-  Current: 0
-  EndDial: 0
-  vid: {fileID: 0}
-  conditionmet: 0
+  dialogues: []
 --- !u!1 &1631735648
 GameObject:
   m_ObjectHideFlags: 0
@@ -52199,11 +52187,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aee52c2fdb3efd648b2996a68013a91f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Dials: []
-  Current: 0
-  EndDial: 0
-  vid: {fileID: 0}
-  conditionmet: 0
+  dialogues: []
 --- !u!95 &1982010796
 Animator:
   serializedVersion: 4

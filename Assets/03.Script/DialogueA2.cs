@@ -5,56 +5,80 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Video;
 
-public class DialogueA2: MonoBehaviour
+public class DialogueA2 : MonoBehaviour
 {
-    public List<GameObject> Dials = new List<GameObject>();
-    public int Current = 0;
-    public int EndDial;
-    public VideoPlayer vid;
-    public bool conditionmet = false;
-    // Start is called before the first frame update
+    public List<GameObject> dialogues = new List<GameObject>();
+    private int currentDialogueIndex = 0;
+    private int endDialogueIndex;
+    private VideoPlayer videoPlayer;
+    private bool isstop = false;
+
     void Start()
     {
-        Transform transform = this.transform;
-        EndDial = transform.childCount - 1;
-        Recursion(0);
+        dialogues.Clear();
+        foreach (Transform child in transform)
+        {
+            dialogues.Add(child.gameObject);
+        }
+        endDialogueIndex = transform.childCount - 1;
+        InitializeDialogue(0);
     }
 
-    void Recursion(int Current)
+    void Update()
     {
-        vid = transform.GetChild(Current).GetChild(1).GetComponent<VideoPlayer>();
-        vid.loopPointReached += NextAni;
+        if (Input.GetKeyDown(KeyCode.Space) && isstop)
+        {
+            Debug.Log("스페이스바 눌림");
+            HandleNonCondition();
+            isstop = false;
+        }
     }
 
-    void NextAni(UnityEngine.Video.VideoPlayer vid)
+    void InitializeDialogue(int index)
     {
-        Transform transform = this.transform;
-        //컨디션이 그 동영상에 기믹(?)을 추가해야해서 동영상을 잠깐 멈춰야함
-        if (transform.GetChild(Current).CompareTag("Condition"))
-        {
-            //while (!conditionmet)
-            //{
-            //    if (CheckCondition())
-            //    {
-            //        conditionmet = true;
-            //    }
-            //}
+        videoPlayer = dialogues[index].transform.GetChild(1).GetComponent<VideoPlayer>();
+        videoPlayer.loopPointReached += OnVideoLoopPointReached;
+    }
 
-            /* while 문 쓰면 멈춤 ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ */
-        }
-        transform.GetChild(Current).gameObject.SetActive(false);
-        Current++;
-        transform.GetChild(Current).gameObject.SetActive(true);
-        if (Current == EndDial)
+    void OnVideoLoopPointReached(UnityEngine.Video.VideoPlayer vp)
+    {
+        if (dialogues[currentDialogueIndex].CompareTag("Condition"))
         {
-            return;
+            HandleCondition();
         }
-        Recursion(Current);
-        conditionmet = false;
+        else
+        {
+            HandleNonCondition();
+        }
+    }
+
+    void HandleCondition()
+    {
+        Debug.Log("Pause!");
+        isstop = true;
+        videoPlayer.Pause();
+        Debug.Log("어디서 멈추나1");
+    }
+
+    void HandleNonCondition()
+    {
+        SetDialogueActive(false);
+        currentDialogueIndex++;
+
+        if (currentDialogueIndex <= endDialogueIndex)
+        {
+            SetDialogueActive(true);
+            InitializeDialogue(currentDialogueIndex);
+        }
+    }
+
+    void SetDialogueActive(bool active)
+    {
+        dialogues[currentDialogueIndex].gameObject.SetActive(active);
     }
 
     bool CheckCondition()
     {
-        return false;
+        return false; // You can implement your condition check here
     }
 }
