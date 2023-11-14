@@ -4,9 +4,12 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    const int endDay = 15; //실제는 15를 초과하면 끝..
     const int setWidth=2796;
     const int setHeight=1920;
 
+    public int getEndDay()  { return endDay; }
     // Start is called before the first frame update
     void setResolution(){
         Camera.main.transform.position=new Vector3(0,0,-10f);
