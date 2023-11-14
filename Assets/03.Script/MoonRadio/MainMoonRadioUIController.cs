@@ -15,12 +15,18 @@ public class MainMoonRadioUIController : MonoBehaviour
     GameObject alter_Moon;
     [SerializeField]
     GameObject radio_off;
+    [SerializeField]
     int moon_Cnt;
 
     void Start(){
         moon_Cnt=0;
     }
 
+    public int setMoonCnt()
+    {
+        moon_Cnt+=1;
+        return moon_Cnt;
+    }
     public int getMoonCnt(){
         return moon_Cnt;
     }

@@ -97,7 +97,7 @@ MonoBehaviour:
   - {fileID: 715261443218929666, guid: 6babb9c4a09f24ed2ab30811139a88a7, type: 3}
   - {fileID: 657269529469412803, guid: 23a8e8c849c6a446c8a99c4e80ae9969, type: 3}
   exit: {fileID: 0}
-  currIdx: 0
+  currIdx: 3
 --- !u!1001 &150613495806386735
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class earthEventComponent : MonoBehaviour
 {
+    [SerializeField]
     EarthRadioUIController earthController;
-    void Start(){
-        earthController=this.transform.parent.parent.GetComponent<EarthRadioUIController>();
-    }
+
     void ExitEvents(){
         earthController.send2MoonButEventExit();
+        this.GetComponent<Animator>().SetBool("isGoing",false);
+        this.transform.parent.GetComponent<Animator>().SetBool("isGoing",true);
+        //textbox isSetActive(true)s
     }
 }
