@@ -33,7 +33,7 @@ public class PlayerInfo : MonoBehaviour
     void Start(){
         /*데이터 베이스에 저장된 날로 업데이트 해야 한다.*/
         currDay=0; 
-        timesBackground=GameObject.FindGameObjectWithTag(currTime).gameObject.transform;
+        //timesBackground=GameObject.FindGameObjectWithTag(currTime).gameObject.transform;
     }
     // Update is called once per frame
 
@@ -41,6 +41,7 @@ public class PlayerInfo : MonoBehaviour
         passTimes=true;
         tmp.text=(currDay+1).ToString();
     }
+    /* day사용을 위해서 잠시 꺼둔다
     private void FixedUpdate() {
         if(passTimes&&currDay<15){
             currDay++;
@@ -92,4 +93,5 @@ public class PlayerInfo : MonoBehaviour
             passTimes=!passTimes;
         }
     }
+    */
 }

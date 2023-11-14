@@ -19,6 +19,7 @@ public class EarthRadioUIController : MonoBehaviour
 
     string inputText;
     void Start(){
+
         answerTextBox=GameObject.Find("textbox").gameObject;
 
         for(int i=0;i<this.transform.parent.childCount;i++){
@@ -48,16 +49,16 @@ public class EarthRadioUIController : MonoBehaviour
     public void send2MoonBut(){
         //textfield가 사라진다.
         //현재 누른 오브젝트 실행 후 애니메이션 끝나면 함수 실행
-        Debug.Log(inputText);
+        //Debug.Log(inputText);
         GameObject currObj=UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject;
-        currObj.GetComponent<Animator>().SetBool("isGoing",true);
-        send_earth.GetComponent<Animator>().SetBool("isGoing",true);
+        currObj.GetComponent<Animator>().SetTrigger("isGoing");
+        send_earth.GetComponent<Animator>().SetTrigger("isGoing");
     }
 
     public void send2MoonButEventExit(){
         send_earth.SetActive(false);
         send_alert.SetActive(true);
-
+        Invoke("waitAlert",.5f);
     }
 
     //channel exit but 누른다.
@@ -78,10 +79,26 @@ public class EarthRadioUIController : MonoBehaviour
         //no일시... 물어봐야할듯 뭔데..? 
         close_alert.SetActive(false);
     }
+    void reset()
+    {
+        //돌아오는 애니메이터 
+        //animator.ResetTrigger("YourTrigger");
+    }
+    public void waitAlert()
+    {
+        StartCoroutine("waitForTransmission");
+    }
+    //waitForTransmission
+    public IEnumerator waitForTransmission(){
 
-    public void goMoonmain(){
-        main.SetActive(true);
-        Destroy(this.gameObject);
+        yield return new WaitForSeconds(2.0f);
+        send_alert.SetActive(false);
+        send_earth.SetActive(true);
+        reset();
+        yield return null;
+        
+        //main.SetActive(true);
+        //Destroy(this.gameObject);
     }
 
 }
