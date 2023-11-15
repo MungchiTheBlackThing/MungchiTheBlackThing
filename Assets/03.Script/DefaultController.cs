@@ -13,6 +13,8 @@ public class DefaultController : MonoBehaviour
     bool isClose;
     [SerializeField]
     PlayerInfo player; //이거 플레이어 말고 GameManager부분으로 이동해야할거같음.
+    [SerializeField]
+    GameObject moon_diary;
     Canvas canvas;
 
     public void Start()
@@ -62,5 +64,11 @@ public class DefaultController : MonoBehaviour
         GameObject selected=EventSystem.current.currentSelectedGameObject;
         selected.transform.parent.GetComponent<Animator>().SetBool("isClose",isClose);
         isClose=!isClose;
+    }
+
+    public void OpenDiary(){
+        if(player.GetCurrTime()!="night")
+            return ;
+        Instantiate(moon_diary,this.transform.parent);
     }
 }
