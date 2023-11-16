@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -570, y: -237}
+  m_AnchoredPosition: {x: -596, y: -226}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7290890459078732978
@@ -3020,6 +3020,10 @@ PrefabInstance:
       propertyPath: earthController
       value: 
       objectReference: {fileID: 8963485430247768340}
+    - target: {fileID: 3778277427151446634, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: fd9076dddac9946cc94cc91376ff6413, type: 3}
     - target: {fileID: 3778277427366478739, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

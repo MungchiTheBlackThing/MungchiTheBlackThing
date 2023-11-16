@@ -18,6 +18,7 @@ public class DefaultController : MonoBehaviour
 
     public void Start()
     {
+        this.gameObject.name = this.gameObject.name.Substring(0,this.gameObject.name.IndexOf('('));
         isClose=false;
         scrollRect = this.transform.parent.gameObject.GetComponent<ScrollRect>();
         DefaultPos = this.transform.position;
@@ -40,7 +41,21 @@ public class DefaultController : MonoBehaviour
     public void InstMoonSystem(){
         //if(player.GetCurrTime()!="night")
         //    return ;
-        Instantiate(moon_main,this.transform.parent.transform.parent);
+
+        //현재 this.gameObject.name에 해당하는 resource 불러오기 -> 3초 뒤 자동으로 사라짐
+        GameObject alter = Resources.Load<GameObject>(this.gameObject.name+"/alert_moonradio");
+
+        if(alter==null)
+            Instantiate(moon_main,this.transform.parent.transform.parent);
+        else
+        {
+            StartCoroutine(CloseMoonRadioAlter(Instantiate(alter,this.transform.parent)));
+        }
+    }
+
+    IEnumerator CloseMoonRadioAlter(GameObject alter){
+        yield return new WaitForSeconds(2f);
+        Destroy(alter);
     }
 
     //Animating 

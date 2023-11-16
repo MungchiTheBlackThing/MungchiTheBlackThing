@@ -387,7 +387,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4530070509629191606}
         m_TargetAssemblyTypeName: DefaultController, Assembly-CSharp
         m_MethodName: isClick
         m_Mode: 1
@@ -411,7 +411,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c45980f56a114348ad38611f49ec7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentSR: {fileID: 0}
 --- !u!95 &7991984466930334138
 Animator:
   serializedVersion: 4
@@ -595,6 +594,8 @@ GameObject:
   - component: {fileID: 7991984467075739552}
   - component: {fileID: 7991984467075739554}
   - component: {fileID: 7991984467075739555}
+  - component: {fileID: 4317984839570929884}
+  - component: {fileID: 3669943231464830858}
   m_Layer: 0
   m_Name: fix_moonradio_off
   m_TagString: Untagged
@@ -644,7 +645,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 0
+  m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -660,6 +661,74 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4317984839570929884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7991984467075739553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 7991984467075739555}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4530070509629191606}
+        m_TargetAssemblyTypeName: DefaultController, Assembly-CSharp
+        m_MethodName: InstMoonSystem
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3669943231464830858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7991984467075739553}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c45980f56a114348ad38611f49ec7f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7991984467243954219
 GameObject:
   m_ObjectHideFlags: 0
@@ -894,7 +963,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7991984467553661346}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 4530070509629191606}
+        m_TargetAssemblyTypeName: DefaultController, Assembly-CSharp
+        m_MethodName: setBinocular
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &7991984467553661348
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -907,7 +988,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c45980f56a114348ad38611f49ec7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentSR: {fileID: 0}
 --- !u!1 &7991984467615289947
 GameObject:
   m_ObjectHideFlags: 0
@@ -1182,7 +1262,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4530070509629191606}
         m_TargetAssemblyTypeName: DefaultController, Assembly-CSharp
         m_MethodName: OpenDoor
         m_Mode: 1
@@ -1206,7 +1286,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c45980f56a114348ad38611f49ec7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentSR: {fileID: 0}
 --- !u!1 &7991984468060919637
 GameObject:
   m_ObjectHideFlags: 0
@@ -1370,7 +1449,7 @@ GameObject:
   - component: {fileID: 7991984468291500668}
   - component: {fileID: 7991984468291500670}
   - component: {fileID: 7991984468291500671}
-  - component: {fileID: 7991984468291500665}
+  - component: {fileID: 4530070509629191606}
   m_Layer: 0
   m_Name: Morning
   m_TagString: morning
@@ -1457,7 +1536,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7991984468291500665
+--- !u!114 &4530070509629191606
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1466,10 +1545,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 7991984468291500669}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6c4abe4a1bf8a4d118072f393817478b, type: 3}
+  m_Script: {fileID: 11500000, guid: 4638ae836633d489cba6a88184f69c26, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Diary: {fileID: 1565715824248645364, guid: 39b52a39c6446419baa0b5d714e990e0, type: 3}
+  moon_main: {fileID: 1187872430623157293, guid: e2b41581d74dd4888b030eb286ec9031, type: 3}
+  moon_diary: {fileID: 1992561133626494820, guid: 39b52a39c6446419baa0b5d714e990e0, type: 3}
 --- !u!1 &7991984468317251320
 GameObject:
   m_ObjectHideFlags: 0
@@ -1744,7 +1824,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4530070509629191606}
         m_TargetAssemblyTypeName: DefaultController, Assembly-CSharp
         m_MethodName: OpenDoor
         m_Mode: 1
@@ -1768,7 +1848,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c45980f56a114348ad38611f49ec7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentSR: {fileID: 0}
 --- !u!1 &7991984468528023175
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,7 +1972,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4530070509629191606}
         m_TargetAssemblyTypeName: DefaultController, Assembly-CSharp
         m_MethodName: isClick
         m_Mode: 1
@@ -1917,7 +1996,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c45980f56a114348ad38611f49ec7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentSR: {fileID: 0}
 --- !u!95 &7991984468528023290
 Animator:
   serializedVersion: 4
@@ -2082,7 +2160,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 4530070509629191606}
         m_TargetAssemblyTypeName: DefaultController, Assembly-CSharp
         m_MethodName: isClick
         m_Mode: 1
@@ -2106,7 +2184,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c45980f56a114348ad38611f49ec7f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ParentSR: {fileID: 0}
 --- !u!1 &7991984468647917191
 GameObject:
   m_ObjectHideFlags: 0
