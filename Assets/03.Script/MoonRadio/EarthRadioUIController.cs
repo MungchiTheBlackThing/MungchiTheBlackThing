@@ -46,8 +46,17 @@ public class EarthRadioUIController : MonoBehaviour
         }
         textline_cnt=text.text.Length;
         Debug.Log(textline_cnt);
-        if(textline_cnt>500) line_within500 = false;
-        else line_within500=true;
+        if(textline_cnt>500)
+        {
+            line_within500 = false;
+            alter_wordsCnt.SetActive(true);
+            alter_wordsCnt.transform.GetChild(alter_wordsCnt.transform.childCount-1).gameObject.GetComponent<TMP_Text>().text=textline_cnt.ToString()+"/500";
+        }
+        else{
+            alter_wordsCnt.SetActive(false);
+            line_within500=true;
+        }
+
         //한글자라도 있으면 없애고, 한글자 존재하면 생김.
         //글씨 처리..
         //text.text는 moonbut누를시 전달될 string

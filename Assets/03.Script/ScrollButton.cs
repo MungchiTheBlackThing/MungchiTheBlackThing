@@ -7,20 +7,30 @@ using UnityEngine.UI;
 public class ScrollButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     // Start is called before the first frame update
-    public ScrollRect ParentSR;
+    ScrollRect ParentSR;
 
+    void Start()
+    {
+        ParentSR=GameObject.Find("Background").GetComponent<ScrollRect>();
+    }
     public void OnBeginDrag(PointerEventData e)
     {
+        if(e==null)
+            return;
         ParentSR.OnBeginDrag(e);
     }
 
     public void OnDrag(PointerEventData e)
     {
+        if(e==null)
+            return;
         ParentSR.OnDrag(e);
     }
 
     public void OnEndDrag(PointerEventData e)
     {
+        if(e==null)
+            return;
         ParentSR.OnEndDrag(e);
     }
 }
