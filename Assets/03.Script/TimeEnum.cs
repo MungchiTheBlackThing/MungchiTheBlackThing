@@ -13,4 +13,22 @@ namespace Assets.Script.TimeEnum
         T_NIGHT=20, //밤 시작
         T_DAWN=3, //새벽 시작
     };
+
+    public enum Chapter{
+        C_1DAY,
+        C_2DAY,
+        C_3DAY,
+        C_4DAY,
+        C_5DAY,
+        C_6DAY,
+        C_7DAY,
+        C_8DAY,
+        C_9DAY,
+        C_10DAY,
+        C_11DAY,
+        C_12DAY,
+        C_13DAY,
+        C_14DAY,
+        END
+    };
 }

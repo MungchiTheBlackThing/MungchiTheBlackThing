@@ -21,13 +21,14 @@ public class GameManager : MonoBehaviour
         /*데이터 베이스에 저장된 날로 업데이트 해야 한다.*/
         //currDay=0; 
         //플레이어 설정 세팅
-        setPlayer();
+        SetPlayer();
         //게임 배경화면 설정 세팅
-        initBackground();
+        InitBackground();
         //player의 정보를 가져오는 database를 호출한다.
         //timesBackground=GameObject.FindGameObjectWithTag(currTime).gameObject.transform;
     }
-    void setPlayer()
+    
+    void SetPlayer()
     {
         player=GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         //현재 시간을 체크한다. -> player controller에게 현재 시간 전달 
@@ -35,7 +36,7 @@ public class GameManager : MonoBehaviour
             player.EntryGame(DateTime.Now);
     }
 
-    void initBackground()
+    void InitBackground()
     {
         //현재 시만 가져온다. 
         Int32 hh=Int32.Parse(DateTime.Now.ToString(("HH"))); //현재 시간을 가져온다
