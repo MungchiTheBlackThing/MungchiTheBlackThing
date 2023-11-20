@@ -16,8 +16,10 @@ public class DefaultController : MonoBehaviour
     GameObject moon_diary;
     Canvas canvas;
 
+    PlayerController _player;
     public void Start()
     {
+        _player=GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         this.gameObject.name = this.gameObject.name.Substring(0,this.gameObject.name.IndexOf('('));
         isClose=false;
         scrollRect = this.transform.parent.gameObject.GetComponent<ScrollRect>();
@@ -69,7 +71,7 @@ public class DefaultController : MonoBehaviour
     public void setBinocular(){
         GameObject parent_Bino=EventSystem.current.currentSelectedGameObject;
         if(parent_Bino.transform.GetChild(0).gameObject.activeSelf){ 
-            //Instantiate(Resources.Load("Bino_"+player.GetCurrDay().ToString())); //Bino이름 동적으로 바꿔야함.
+            Instantiate(Resources.Load("Bino_"+_player.GetChapter().ToString())); //Bino이름 동적으로 바꿔야함.
             this.transform.parent.gameObject.SetActive(false);
             parent_Bino.transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -82,7 +84,7 @@ public class DefaultController : MonoBehaviour
     }
 
     public void OpenDiary(){
-        //if(player.GetCurrTime()!="night")
+        //if(_player.GetCurrTime()!="night")
         //    return ;
         Instantiate(moon_diary,this.transform.parent.transform.parent);
     }

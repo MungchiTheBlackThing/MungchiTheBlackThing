@@ -7,73 +7,63 @@ using Assets.Script.TimeEnum;
 public class GameManager : MonoBehaviour
 {
 
-    PlayerController player; //현재 플레이어의 컨트롤러 
-    const int endDay = 15; //실제는 15를 초과하면 끝..
+    bool isChapterUpdate=true;
+    ObjectManager _objManager;
+    PlayerController _player; //현재 플레이어의 컨트롤러 
     const int setWidth=2796;
     const int setHeight=1920;
 
     [SerializeField]
-    GameObject _backgroud;
+    GameObject _background;
     //현재 시간을 보여주기 위한 UI (Test용)
     GameObject _currTimeBackground; //현재 배경화면에 대한 데이터 정보 
     //현재 해당하는 시간 저장하는 list
+
     void Start(){
-        /*데이터 베이스에 저장된 날로 업데이트 해야 한다.*/
-        //currDay=0; 
-        //플레이어 설정 세팅
-        SetPlayer();
-        //게임 배경화면 설정 세팅
-        InitBackground();
-        //player의 정보를 가져오는 database를 호출한다.
-        //timesBackground=GameObject.FindGameObjectWithTag(currTime).gameObject.transform;
+        SetPlayer(); //캐릭터 생성
+        InitBackground(); //현재 시간에 따른 배경 생성
     }
     
     void SetPlayer()
     {
-        player=GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        _player=GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         //현재 시간을 체크한다. -> player controller에게 현재 시간 전달 
-        if(player!=null)
-            player.EntryGame(DateTime.Now);
+        if(_player!=null)
+            _player.EntryGame(DateTime.Now);
     }
-
     void InitBackground()
     {
         //현재 시만 가져온다. 
         Int32 hh=Int32.Parse(DateTime.Now.ToString(("HH"))); //현재 시간을 가져온다
         GameObject[] backgrounds=Resources.LoadAll<GameObject>("Background/");
+        if(_objManager==null)
+            _objManager=_background.GetComponent<ObjectManager>();
 
         for(int i=0;i<backgrounds.Length;i++)
         {
             if(hh>=(int)STime.T_DAWN&&hh<(int)STime.T_MORNING)
             {
-                _currTimeBackground=Instantiate(backgrounds[(int)STimeIdx.SI_DAWN],_backgroud.transform);
+                _currTimeBackground=Instantiate(backgrounds[(int)STimeIdx.SI_DAWN],_background.transform);
                 break;
             }
             if(hh<(int)STime.T_EVENING)
             {
-                _currTimeBackground=Instantiate(backgrounds[(int)STimeIdx.SI_MORNING],_backgroud.transform);
+                _currTimeBackground=Instantiate(backgrounds[(int)STimeIdx.SI_MORNING],_background.transform);
                 break;
             }
             else if(hh<(int)STime.T_NIGHT) 
             {
-                _currTimeBackground=Instantiate(backgrounds[(int)STimeIdx.SI_EVENING],_backgroud.transform);
+                _currTimeBackground=Instantiate(backgrounds[(int)STimeIdx.SI_EVENING],_background.transform);
                 break;
             }else
             {
-                _currTimeBackground=Instantiate(backgrounds[(int)STimeIdx.SI_NIGHT],_backgroud.transform);
+                _currTimeBackground=Instantiate(backgrounds[(int)STimeIdx.SI_NIGHT],_background.transform);
                 break;
             }
         }
+        _objManager.transChapter(_player.GetChapter()); //object manager에게 플레이어의 지금 챕터 전달하여, 배경화면 변경.
     }
-
-    void Update()
-    {
-        setResolution();
-    }
-
-    public int getEndDay()  { return endDay; } //enum으로 변경해야함.
-    // Start is called before the first frame update
-    void setResolution(){
+    void SetResolution(){
         Camera.main.transform.position=new Vector3(0,0,-10f);
         //현 기기의 너비와 높이
         int deviceWidth=Screen.width;
@@ -89,92 +79,38 @@ public class GameManager : MonoBehaviour
         Camera.main.aspect=Screen.width/Screen.height;
         Camera.main.ResetAspect();
     }
+    //플레이어가 초기에 들어올 때 현재 day에 따라 배경화면을 리셋한다.
 
-    /*DB 연결 시 수정되어야 하는 것
-    currDay : 현재 게임에 접속된 횟수 : 날짜(일 단위)
-    currTime : 현재 시간에 따른 낮인지, 저녁인지, 밤인지, 새벽인지를 나타내는 변수
-    */
-/*
-    [SerializeField]
-    bool passTimes;
-    // Start is called before the first frame update
-    [SerializeField]
-    string currTime; //현재 시간 - > 밤낮..ㅇㅇ
-    [SerializeField]
-    int currDay;//진행 시간
-    public int GetCurrDay(){
-        return currDay;
-    }
-    public string GetCurrTime(){
-        return currTime;
-    }
-    [SerializeField]
-    Transform timesBackground;
-    GameObject clothes;
-    GameObject letter;
+    void SetChapterUpdate()
+    {
+        int chapter=_player.GetChapter();
 
-    [SerializeField]
-    TMP_Text tmp; //임시 테스트용 삭제 예정
-    // Update is called once per frame
-
-    public void DisplayTest(){
-        passTimes=true;
-        tmp.text=(currDay+1).ToString();
-    }
-    // Update is called once per frame
-
-*/
-        /* day사용을 위해서 잠시 꺼둔다
-    private void FixedUpdate() {
-        if(passTimes&&currDay<15){
-            currDay++;
-
-            for(int i=0;i<timesBackground.childCount;i++){
-                if(timesBackground.GetChild(i).name.Contains("bread")&&currDay==8){
-                    Destroy(timesBackground.GetChild(i).gameObject);
-                }
-
-                if((currDay==(int)BinoDay.Day2)||(currDay==(int)BinoDay.Day5)||(currDay==(int)BinoDay.Day8)||(currDay==(int)BinoDay.Day10)||(currDay==(int)BinoDay.Day13)){ //currDay 2 4 6 8 에 해당하면.. 
-                //bino_day+currDay.to_string() 해서, 키면된다.
-                //13일차 확인하기
-                    if(timesBackground.GetChild(i).name.Contains("bino")){
-                        timesBackground.GetChild(i).GetChild(0).gameObject.SetActive(true);
-                    }
-                }else{
-                    if(timesBackground.GetChild(i).name.Contains("bino")){
-                        timesBackground.GetChild(i).GetChild(0).gameObject.SetActive(false);
-                    }
-                }
-            }
-
-            if((currDay==(int)LetterDay.Day3)||(currDay==(int)LetterDay.Day7)||(currDay==(int)LetterDay.Day11)||(currDay==(int)LetterDay.Day12))
-            {
-                if(letter==null){
-                //2일-3일 간의 관계 해결해야함.. 안그러면 중복으로 데이터를 가져옴
-                    letter=Instantiate(Resources.Load<GameObject>("phase_letter"),timesBackground);
-                    letter.name=letter.name.Substring(0,letter.name.IndexOf('('));
-                }
-                
-            }else{
-                if(letter!=null){
-                    Debug.Log(currDay);
-                    Destroy(letter);
-                    letter=null;
-                }
-            }
-
-            GameObject book=Instantiate(Resources.Load<GameObject>("ch_books_"+currDay),timesBackground);
-            book.name=book.name.Substring(0,book.name.IndexOf('('));
-            if(currDay%2!=0){
-                if(clothes!=null){
-                    Destroy(clothes);
-                    clothes=null;
-                }
-                clothes=Instantiate(Resources.Load<GameObject>("ch_clothes_"+currDay),timesBackground);
-                clothes.name=clothes.name.Substring(0,clothes.name.IndexOf('('));
-            }
-            passTimes=!passTimes;
+        switch(chapter)
+        {
+            case (int)Chapter.C_2DAY:
+            case (int)Chapter.C_5DAY:
+            case (int)Chapter.C_8DAY:
+            case (int)Chapter.C_10DAY:
+                _objManager.SetBino();
+                Invoke("PassTime",60f); //실질적 60분 but, 아직은 60초
+                //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
+            break;
         }
     }
-    */
+
+    void PassTime()
+    {
+        _objManager.CloseBino();
+    }
+    void Update()
+    {
+        SetResolution();
+
+        if(isChapterUpdate)
+        {    
+            SetChapterUpdate();
+            isChapterUpdate=false; //1번만 업데이트 하기 위해서 필요함
+            //isChapterUpdate는 time을 누르고, chapter가 다음 챕터로 넘어갈때 true로 변경된다.
+        }
+    }
 }

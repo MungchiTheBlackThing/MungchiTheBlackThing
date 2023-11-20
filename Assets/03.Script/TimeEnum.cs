@@ -15,7 +15,7 @@ namespace Assets.Script.TimeEnum
     };
 
     public enum Chapter{
-        C_1DAY,
+        C_1DAY=1,
         C_2DAY,
         C_3DAY,
         C_4DAY,
