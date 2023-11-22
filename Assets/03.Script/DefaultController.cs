@@ -14,7 +14,8 @@ public class DefaultController : MonoBehaviour
 
     [SerializeField]
     GameObject moon_diary;
-    Canvas canvas;
+
+    GameObject canvas;
 
     PlayerController _player;
     public void Start()
@@ -24,7 +25,7 @@ public class DefaultController : MonoBehaviour
         isClose=false;
         scrollRect = this.transform.parent.gameObject.GetComponent<ScrollRect>();
         DefaultPos = this.transform.position;
-        canvas=this.GetComponent<Canvas>();
+        canvas=GameObject.Find("Canvas");
     }
 
     public void Update()
@@ -72,7 +73,11 @@ public class DefaultController : MonoBehaviour
         GameObject parent_Bino=EventSystem.current.currentSelectedGameObject;
         if(parent_Bino.transform.GetChild(0).gameObject.activeSelf){ 
             Instantiate(Resources.Load("Bino_"+_player.GetChapter().ToString())); //Bino이름 동적으로 바꿔야함.
-            this.transform.parent.gameObject.SetActive(false);
+            //canvas내 모든 transform 전부 setActive(false);
+            for(int i=0;i<canvas.transform.childCount;i++)
+            {
+                canvas.transform.GetChild(i).gameObject.SetActive(false);
+            }  
             parent_Bino.transform.GetChild(0).gameObject.SetActive(false);
         }
     }

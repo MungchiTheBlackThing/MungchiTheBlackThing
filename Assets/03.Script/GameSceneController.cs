@@ -8,11 +8,13 @@ public class GameSceneController : MonoBehaviour
     Transform DialogueUI;
 
     void Start(){
-        Transform parent=GameObject.Find("Dialogue").transform;
-        DialogueUI=GameObject.Find("Dialogue").transform.GetChild(0);
+        DialogueUI=GameObject.Find("Canvas").transform;
     }
     public void exit(){
-        DialogueUI.gameObject.SetActive(true);
+        for(int i=0;i<DialogueUI.childCount;i++)
+        {
+            DialogueUI.GetChild(i).gameObject.SetActive(true);
+        }
         Destroy(this.gameObject);
         //현재 뭉치 GameObject를 삭제해야함.
         Destroy(GameObject.FindWithTag("Binocular").gameObject);//삭제하는데, Click_Alarm을 꺼줘야함.
