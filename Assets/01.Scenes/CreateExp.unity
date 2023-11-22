@@ -6968,8 +6968,7 @@ MonoBehaviour:
   MenuDefault: {fileID: 1338594602}
   Helper: {fileID: 625362963}
   MyPageUI: {fileID: 1825811694}
-  PolaroidUI: {fileID: 0}
-  Polaroid: {fileID: 0}
+  TimeUI: {fileID: 1676796745}
 --- !u!95 &540397718
 Animator:
   serializedVersion: 4
@@ -9926,7 +9925,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 828003526}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8930.769}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14792,7 +14791,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1243736580}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -8930.769}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -20432,7 +20431,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 103, y: -1008}
+  m_AnchoredPosition: {x: 103, y: -1109}
   m_SizeDelta: {x: 450, y: 225}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1676796748

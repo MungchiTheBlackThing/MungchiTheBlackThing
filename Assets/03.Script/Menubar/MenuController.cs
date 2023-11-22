@@ -18,15 +18,15 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     GameObject MyPageUI;
     [SerializeField]
-    GameObject PolaroidUI;
-    [SerializeField]
-    GameObject Polaroid;
+    GameObject TimeUI;
 
     public void onMenu(){
         if(!Icon.activeSelf){
+            TimeUI.SetActive(false);
             Icon.transform.parent.gameObject.SetActive(true);
             this.gameObject.GetComponent<Animator>().SetBool("isDowning",false);
         }else{
+            TimeUI.SetActive(true);
             Icon.SetActive(false);
             this.gameObject.GetComponent<Animator>().SetBool("isDowning",true);
         }
@@ -34,6 +34,7 @@ public class MenuController : MonoBehaviour
 
     public void offMenu(){
         if(Icon.activeSelf){
+            TimeUI.SetActive(true);
             this.gameObject.GetComponent<Animator>().SetBool("isDowning",true);
             Icon.SetActive(false);
         }
@@ -52,11 +53,6 @@ public class MenuController : MonoBehaviour
 
     }
 
-    public void PolaroidCamera(){
-        MenuDefault.SetActive(false);
-        Polaroid.SetActive(true);
-    }
-
     public void onClickHelper(){
         Helper.SetActive(true);
         MenuDefault.SetActive(false);
@@ -67,8 +63,4 @@ public class MenuController : MonoBehaviour
         MenuDefault.SetActive(false);
     }
 
-    public void onClickPolar(){
-        PolaroidUI.SetActive(true);
-        MenuDefault.SetActive(false);
-    }
 }
