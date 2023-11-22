@@ -8,13 +8,8 @@ public class GameSceneController : MonoBehaviour
     Transform DialogueUI;
 
     void Start(){
-        Transform parent=this.gameObject.transform.parent;
-
-        for(int i=0;i<parent.childCount;i++){
-            if(parent.GetChild(i).name.Contains("Dialogue")){
-                DialogueUI=parent.GetChild(i);
-            }
-        }
+        Transform parent=GameObject.Find("Dialogue").transform;
+        DialogueUI=GameObject.Find("Dialogue").transform.GetChild(0);
     }
     public void exit(){
         DialogueUI.gameObject.SetActive(true);

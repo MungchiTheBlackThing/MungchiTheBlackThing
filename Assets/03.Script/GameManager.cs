@@ -79,38 +79,18 @@ public class GameManager : MonoBehaviour
         Camera.main.aspect=Screen.width/Screen.height;
         Camera.main.ResetAspect();
     }
-    //플레이어가 초기에 들어올 때 현재 day에 따라 배경화면을 리셋한다.
 
-    void SetChapterUpdate()
+    public void SetChapter()
     {
-        int chapter=_player.GetChapter();
-
-        switch(chapter)
+        if(_player!=null)
         {
-            case (int)Chapter.C_2DAY:
-            case (int)Chapter.C_5DAY:
-            case (int)Chapter.C_8DAY:
-            case (int)Chapter.C_10DAY:
-                _objManager.SetBino();
-                Invoke("PassTime",60f); //실질적 60분 but, 아직은 60초
-                //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
-            break;
+            _player.SetChapter();
+            _objManager.transChapter(_player.GetChapter());
         }
     }
-
-    void PassTime()
-    {
-        _objManager.CloseBino();
-    }
+    //플레이어가 초기에 들어올 때 현재 day에 따라 배경화면을 리셋한다.
     void Update()
     {
         SetResolution();
-
-        if(isChapterUpdate)
-        {    
-            SetChapterUpdate();
-            isChapterUpdate=false; //1번만 업데이트 하기 위해서 필요함
-            //isChapterUpdate는 time을 누르고, chapter가 다음 챕터로 넘어갈때 true로 변경된다.
-        }
     }
 }
