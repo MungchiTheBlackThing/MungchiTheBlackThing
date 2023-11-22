@@ -14,6 +14,7 @@ namespace Assets.Script.TimeEnum
         T_DAWN=3, //새벽 시작
     };
 
+
     public enum Chapter{
         C_1DAY=1,
         C_2DAY,

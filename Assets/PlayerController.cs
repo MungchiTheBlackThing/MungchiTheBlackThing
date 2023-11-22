@@ -33,6 +33,10 @@ public class PlayerController : MonoBehaviour
         return _elapsedTime;
     }
 
+    public void SetChapter()
+    {
+        _player.CurrentChapter+=1;
+    }
     //시간 설정 : (현재 시간 - watching이 진행된 시간)+60분
     public void PassWathingTime() 
     {

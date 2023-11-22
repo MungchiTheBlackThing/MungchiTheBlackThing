@@ -5,7 +5,9 @@ using TMPro;
 public class SkipController : MonoBehaviour
 {
     // Start is called before the first frame update
-    
+    //SkipController가 시간을 보관한다.
+
+   // const float[] _timeStamp={};
     GameObject alter;
     [SerializeField]
     TMP_Text _timeText;
