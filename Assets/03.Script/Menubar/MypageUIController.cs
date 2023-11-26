@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-
+using UnityEngine.UI;
 public class MypageUIController : MonoBehaviour
 {
 
@@ -22,6 +22,11 @@ public class MypageUIController : MonoBehaviour
     GameObject pushPopup;
     [SerializeField]
     GameObject nameSettings;
+
+    [SerializeField]
+    Slider SESlider;
+    [SerializeField]
+    Slider MusicSlider;
     /*이 user id,name은 수정되어야한다... player가 생기면 수정하기 popup도*/
     string UserID="";
     string UserName="";
@@ -31,9 +36,21 @@ public class MypageUIController : MonoBehaviour
     GameObject inputPopup;
     GameObject[] op;
 
+    PlayerController player;
 
     void Start(){
         op=GameObject.FindGameObjectsWithTag("SelectedPush");
+        player=GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        /*이름과 bgm/음향 효과를 50 초기세팅*/
+        Init();
+    }
+
+    void Init()
+    {
+        UserName=player.GetNickName();
+        nameSettings.GetComponent<TMP_Text>().text=UserName;
+        SESlider.value=player.GetAcousticVolume();
+        MusicSlider.value=player.GetMusicVolume();
     }
     public void Exit(){
         this.gameObject.SetActive(false);

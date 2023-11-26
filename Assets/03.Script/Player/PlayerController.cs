@@ -67,4 +67,18 @@ public class PlayerController : MonoBehaviour
     {
         return _player.CurrentChapter;
     }
+
+    public string GetNickName()
+    {
+        return _player.Nickname;
+    }
+
+    public float GetAcousticVolume()
+    {
+        return _player.AcousticVolume;
+    }
+    public float GetMusicVolume()
+    {
+        return _player.AcousticVolume;
+    }
 }

@@ -32,7 +32,7 @@ public class DefaultController : MonoBehaviour
     {
         if (NoteClick.CanScroll == false)
         {
-            this.transform.transform.position = DefaultPos;
+            //this.transform.transform.position = DefaultPos;
             scrollRect.horizontal = false;
         }
         else

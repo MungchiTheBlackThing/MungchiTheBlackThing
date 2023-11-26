@@ -12,9 +12,9 @@ public class NoteClick : MonoBehaviour
     public GameObject NoteBackground;
     public void setNote()
     {
-        Instantiate(NoteBackground,GameObject.Find("Background").transform);
+        Transform background=GameObject.Find("Background").transform;
+        Instantiate(NoteBackground,GameObject.Find("Canvas").transform.position,transform.rotation,background);
         CanScroll = false;
-        Debug.Log(CanScroll.ToString());
     }
     void Start()
     {

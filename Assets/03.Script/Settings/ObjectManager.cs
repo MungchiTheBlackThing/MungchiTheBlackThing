@@ -54,7 +54,6 @@ public class ObjectManager : MonoBehaviour
             case (int)Chapter.C_8DAY:
             case (int)Chapter.C_10DAY:
                 SetBino();
-                Invoke("Close",5f); //실질적 60분 but, 아직은 60초
                 //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
             break;
             case (int)Chapter.C_3DAY:
@@ -62,7 +61,6 @@ public class ObjectManager : MonoBehaviour
             case (int)Chapter.C_11DAY:
             case (int)Chapter.C_12DAY:
                 SetLetter();
-                Invoke("Close",5f);
             break;
         }
         if(_chapter!=1)
