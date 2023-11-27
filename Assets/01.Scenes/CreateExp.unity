@@ -22274,6 +22274,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alter: {fileID: 138716863}
   _timeText: {fileID: 1392459056}
+  eventPlay: {fileID: 325755574700511951, guid: 5e639f22b33655e41900e8f588856401, type: 3}
 --- !u!4 &1776814404
 Transform:
   m_ObjectHideFlags: 0

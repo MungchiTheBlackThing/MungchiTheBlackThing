@@ -13,8 +13,7 @@ public class DefaultController : MonoBehaviour
     bool isClose;
 
     [SerializeField]
-    GameObject moon_diary;
-
+    GameObject Diary;
     GameObject canvas;
 
     PlayerController _player;
@@ -32,7 +31,6 @@ public class DefaultController : MonoBehaviour
     {
         if (NoteClick.CanScroll == false)
         {
-            //this.transform.transform.position = DefaultPos;
             scrollRect.horizontal = false;
         }
         else
@@ -41,22 +39,34 @@ public class DefaultController : MonoBehaviour
         }
     }
 
-    public void InstMoonSystem(){
-        //if(player.GetCurrTime()!="night")
-        //    return ;
+    public void SetDiary()
+    {
+        GameObject selected=EventSystem.current.currentSelectedGameObject;
+        
+        if(selected.transform.GetChild(0).gameObject.activeSelf == false)
+        {
+            GameObject alter = Resources.Load<GameObject>(this.gameObject.name+"/alert_diary");
+            StartCoroutine(CloseAlter(Instantiate(alter,selected.transform.parent)));
+            //alter생성
+            return;
+        }
+        
+        //만약에 있으면 diary를 만든다
+        Instantiate(Diary,this.transform.parent.transform.parent);
+    }
 
-        //현재 this.gameObject.name에 해당하는 resource 불러오기 -> 3초 뒤 자동으로 사라짐
+    public void InstMoonSystem(){
         GameObject alter = Resources.Load<GameObject>(this.gameObject.name+"/alert_moonradio");
 
         if(alter==null)
             Instantiate(moon_main,this.transform.parent.transform.parent);
         else
         {
-            StartCoroutine(CloseMoonRadioAlter(Instantiate(alter,this.transform.parent)));
+            StartCoroutine(CloseAlter(Instantiate(alter,this.transform.parent)));
         }
     }
 
-    IEnumerator CloseMoonRadioAlter(GameObject alter){
+    IEnumerator CloseAlter(GameObject alter){
         yield return new WaitForSeconds(2f);
         Destroy(alter);
     }
@@ -88,9 +98,4 @@ public class DefaultController : MonoBehaviour
         isClose=!isClose;
     }
 
-    public void OpenDiary(){
-        //if(_player.GetCurrTime()!="night")
-        //    return ;
-        Instantiate(moon_diary,this.transform.parent.transform.parent);
-    }
 }

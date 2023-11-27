@@ -784,7 +784,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moon_main: {fileID: 1187872430623157293, guid: e2b41581d74dd4888b030eb286ec9031, type: 3}
-  moon_diary: {fileID: 1992561133626494820, guid: 39b52a39c6446419baa0b5d714e990e0, type: 3}
+  Diary: {fileID: 1992561133626494820, guid: 39b52a39c6446419baa0b5d714e990e0, type: 3}
 --- !u!1 &4384198564135797215
 GameObject:
   m_ObjectHideFlags: 0
@@ -2372,6 +2372,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4384198565626719091}
+  - component: {fileID: 2141080866398982513}
+  - component: {fileID: 5493825423933209785}
   m_Layer: 0
   m_Name: phase_diary
   m_TagString: Untagged
@@ -2396,11 +2398,79 @@ RectTransform:
   m_Father: {fileID: 4384198564039662495}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 3173.848, y: -1087.7217}
-  m_SizeDelta: {x: 324.8468, y: 208.138}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 1373.8479, y: -442.72168}
+  m_SizeDelta: {x: 324.84668, y: 208.138}
   m_Pivot: {x: 0, y: 1}
+--- !u!114 &2141080866398982513
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4384198565626719090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 0}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4061745045906065962}
+        m_TargetAssemblyTypeName: DefaultController, Assembly-CSharp
+        m_MethodName: SetDiary
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &5493825423933209785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4384198565626719090}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2c45980f56a114348ad38611f49ec7f6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4384198565726394275
 GameObject:
   m_ObjectHideFlags: 0

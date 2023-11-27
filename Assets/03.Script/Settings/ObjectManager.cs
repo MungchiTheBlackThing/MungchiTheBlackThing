@@ -45,10 +45,11 @@ public class ObjectManager : MonoBehaviour
     
     void SetChapterUpdate()
     {
-        Debug.Log(_chapter);
         //현재 gameManager가 전달한 chapter을 받아서 background 설치 
         switch(_chapter)
         {
+            case (int)Chapter.C_1DAY:
+            break;
             case (int)Chapter.C_2DAY:
             case (int)Chapter.C_5DAY:
             case (int)Chapter.C_8DAY:
@@ -56,10 +57,7 @@ public class ObjectManager : MonoBehaviour
                 SetBino();
                 //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
             break;
-            case (int)Chapter.C_3DAY:
-            case (int)Chapter.C_7DAY:
-            case (int)Chapter.C_11DAY:
-            case (int)Chapter.C_12DAY:
+            default:
                 SetLetter();
             break;
         }
