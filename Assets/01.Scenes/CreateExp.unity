@@ -2580,12 +2580,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1850648421}
-  m_RootOrder: 0
+  m_Father: {fileID: 1202337735}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -93, y: -136.00002}
+  m_AnchoredPosition: {x: -104.72998, y: 289.80005}
   m_SizeDelta: {x: 195.06, y: 116}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &174805054
@@ -14460,6 +14460,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1850648421}
+  - {fileID: 174805053}
   m_Father: {fileID: 1375894156}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -23124,7 +23125,7 @@ GameObject:
   - component: {fileID: 1850648423}
   - component: {fileID: 1850648422}
   m_Layer: 0
-  m_Name: Spider
+  m_Name: SpiderWeb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23141,15 +23142,14 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 174805053}
+  m_Children: []
   m_Father: {fileID: 1202337735}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -132, y: 395}
-  m_SizeDelta: {x: 240.54, y: 451.78}
+  m_SizeDelta: {x: 240.54, y: 137}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1850648422
 MonoBehaviour:
