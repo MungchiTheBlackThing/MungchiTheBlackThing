@@ -15,6 +15,9 @@ TagManager:
   - MungchiSleep
   - Condition
   - ObjectManager
+  - evening
+  - Diary
+  - morning
   layers:
   - Default
   - TransparentFX
