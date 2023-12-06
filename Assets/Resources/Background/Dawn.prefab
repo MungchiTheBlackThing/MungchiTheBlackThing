@@ -1876,11 +1876,11 @@ GameObject:
   - component: {fileID: 4273163300940829192}
   m_Layer: 0
   m_Name: 'phase_diary_light '
-  m_TagString: Untagged
+  m_TagString: Diary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4273163300940829199
 RectTransform:
   m_ObjectHideFlags: 0

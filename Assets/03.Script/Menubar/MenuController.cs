@@ -19,6 +19,9 @@ public class MenuController : MonoBehaviour
     GameObject MyPageUI;
     [SerializeField]
     GameObject TimeUI;
+    [SerializeField]
+    GameObject checkList;
+
 
     public void onMenu(){
         if(!Icon.activeSelf){
@@ -61,6 +64,19 @@ public class MenuController : MonoBehaviour
     public void onClickMypage(){
         MyPageUI.SetActive(true);
         MenuDefault.SetActive(false);
+    }
+
+
+    public void onClickCheckListIcon()
+    {
+        if(checkList.activeSelf==false)
+        {
+
+            checkList.SetActive(true);
+        }
+        else
+            checkList.SetActive(false);
+
     }
 
 }

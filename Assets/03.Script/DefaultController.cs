@@ -29,20 +29,24 @@ public class DefaultController : MonoBehaviour
 
     public void Update()
     {
+        
         if (NoteClick.CanScroll == false)
         {
             scrollRect.horizontal = false;
         }
-        else
+    }
+    public void SetLightDiary()
+    {
+        GameObject parent=GameObject.Find("phase_diary");
+
+        for(int i=0;i<parent.transform.childCount;i++)
         {
-            scrollRect.horizontal = true;
+            parent.transform.GetChild(i).gameObject.SetActive(true);
         }
     }
-
     public void SetDiary()
     {
         GameObject selected=EventSystem.current.currentSelectedGameObject;
-        
         if(selected.transform.GetChild(0).gameObject.activeSelf == false)
         {
             GameObject alter = Resources.Load<GameObject>(this.gameObject.name+"/alert_diary");

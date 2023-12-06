@@ -2,15 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
-public class Noteclose : MonoBehaviour, IPointerClickHandler
+using UnityEngine.UI;
+public class Noteclose : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject NoteBackground;
-    public void OnPointerClick(PointerEventData eventData)
+    
+    public void Close()
     {
-        Destroy(NoteBackground);
-        NoteClick.CanScroll = true;
+         NoteClick.CanScroll = true;
+        this.transform.parent.gameObject.GetComponent<ScrollRect>().horizontal=true;
+        Destroy(this.gameObject);    
     }
     public void Start()
     {

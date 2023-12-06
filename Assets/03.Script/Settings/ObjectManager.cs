@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Assets.Script.TimeEnum;
 public class ObjectManager : MonoBehaviour
 {
@@ -17,6 +18,8 @@ public class ObjectManager : MonoBehaviour
     GameObject _letter;
     [SerializeField]
     GameObject _preClothes;
+    [SerializeField]
+    GameObject _diary;
     bool _isChapterUpdate=true;
     int _chapter=0;
 
@@ -36,6 +39,8 @@ public class ObjectManager : MonoBehaviour
                     _binocular=child;
                 if(child.name.Contains("clothes"))
                     _preClothes=child;
+                if(child.name.Contains("phase_diary"))
+                    _diary=child;
             }
             InitBackground();
         }
@@ -48,8 +53,6 @@ public class ObjectManager : MonoBehaviour
         //현재 gameManager가 전달한 chapter을 받아서 background 설치 
         switch(_chapter)
         {
-            case (int)Chapter.C_1DAY:
-            break;
             case (int)Chapter.C_2DAY:
             case (int)Chapter.C_5DAY:
             case (int)Chapter.C_8DAY:
@@ -89,6 +92,16 @@ public class ObjectManager : MonoBehaviour
         {
             Destroy(_bread);
             _bread=null;
+        }
+    }
+    public void NextChapter()
+    {
+        this.GetComponent<ScrollRect>().horizontal=true;
+        for(int i=0;i<_diary.transform.childCount;i++)
+        {
+            Transform child=_diary.transform.GetChild(i);
+            if(child.name.Contains("light"))
+                child.gameObject.SetActive(false);
         }
     }
     /* - chapter : Watching */
