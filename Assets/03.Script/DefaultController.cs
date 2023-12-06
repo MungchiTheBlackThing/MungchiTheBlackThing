@@ -43,6 +43,8 @@ public class DefaultController : MonoBehaviour
         {
             parent.transform.GetChild(i).gameObject.SetActive(true);
         }
+        scrollRect.horizontal = true;
+        GameObject.Find("TimeManager").GetComponent<SkipController>().SetSleepCheckList();
     }
     public void SetDiary()
     {
@@ -54,7 +56,6 @@ public class DefaultController : MonoBehaviour
             //alter생성
             return;
         }
-        
         //만약에 있으면 diary를 만든다
         Instantiate(Diary,this.transform.parent.transform.parent);
     }

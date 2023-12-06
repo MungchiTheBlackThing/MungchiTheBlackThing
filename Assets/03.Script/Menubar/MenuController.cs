@@ -26,10 +26,11 @@ public class MenuController : MonoBehaviour
     public void onMenu(){
         if(!Icon.activeSelf){
             TimeUI.SetActive(false);
+            //checklist의 부모
+            checkList.transform.parent.gameObject.SetActive(false);
             Icon.transform.parent.gameObject.SetActive(true);
             this.gameObject.GetComponent<Animator>().SetBool("isDowning",false);
         }else{
-            TimeUI.SetActive(true);
             Icon.SetActive(false);
             this.gameObject.GetComponent<Animator>().SetBool("isDowning",true);
         }
@@ -37,13 +38,14 @@ public class MenuController : MonoBehaviour
 
     public void offMenu(){
         if(Icon.activeSelf){
-            TimeUI.SetActive(true);
             this.gameObject.GetComponent<Animator>().SetBool("isDowning",true);
             Icon.SetActive(false);
         }
     }
 
     public void MenuoffExit(){
+        TimeUI.SetActive(true);
+        checkList.transform.parent.gameObject.SetActive(true);
         Icon.transform.parent.gameObject.SetActive(false);
     }
     public void MenuAniExit(){
@@ -67,12 +69,16 @@ public class MenuController : MonoBehaviour
     }
 
 
+    IEnumerator CloseAlter(GameObject checkList){
+        yield return new WaitForSeconds(2f);
+        checkList.SetActive(false);
+    }
     public void onClickCheckListIcon()
     {
         if(checkList.activeSelf==false)
         {
-
             checkList.SetActive(true);
+            StartCoroutine(CloseAlter(checkList));
         }
         else
             checkList.SetActive(false);

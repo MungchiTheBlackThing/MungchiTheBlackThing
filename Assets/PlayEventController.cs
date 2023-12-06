@@ -3,19 +3,18 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+
 public class PlayEventController : MonoBehaviour
 {
     [SerializeField]
     GameObject background;
-    [SerializeField]
-    float speed =10.0f;
+
     void Start()
     {
         //( width - canvas.width )/2 -> +왼쪽, -오른쪽 이동가능
         background=this.transform.parent.gameObject;
         StartCoroutine("MoveBackground");
         //시간에 따라 메시지 게임 오브젝트생성  -> 현재 밤 버전밖에 없음,...
-        Instantiate(Resources.Load<GameObject>("Night/SelectedOption"),this.transform.GetChild(0).transform.GetChild(0));
     }
 
     IEnumerator MoveBackground(){
@@ -32,10 +31,9 @@ public class PlayEventController : MonoBehaviour
 
     public void OnClick()
     {
-
-        
         GameObject selected=EventSystem.current.currentSelectedGameObject;
         selected.transform.GetChild(0).gameObject.SetActive(false);
         selected.transform.GetChild(1).gameObject.SetActive(true);
     }
+
 }

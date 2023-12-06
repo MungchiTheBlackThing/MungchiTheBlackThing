@@ -9,15 +9,18 @@ public class PlaySelectedOptionController : MonoBehaviour
     [SerializeField]
     TMP_Text DotsText;
     bool isSleep=false;
+
+    [SerializeField]
+    GameObject poems;
+
     public bool IsSleep { get=>isSleep;}
     public void PlayPoem()
     {
         isSleep=false;
-        for(int i=0;i<selected.Length;i++)
-            selected[i].SetActive(false);
+        Instantiate(poems,transform.parent.parent.parent.parent);
+        
         //Poem 장면 on
     }
-
     public void Sleep()
     {
         isSleep=true;

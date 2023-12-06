@@ -8,8 +8,9 @@ public class Noteclose : MonoBehaviour
     
     public void Close()
     {
-         NoteClick.CanScroll = true;
+        NoteClick.CanScroll = true;
         this.transform.parent.gameObject.GetComponent<ScrollRect>().horizontal=true;
+        //checklist play true된다.
         Destroy(this.gameObject);    
     }
     public void Start()
