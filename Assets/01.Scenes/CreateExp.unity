@@ -23679,10 +23679,10 @@ MonoBehaviour:
   checklist: {fileID: 662365646}
   checkList_note: {fileID: 308971763}
   fly_icon:
-  - {fileID: 21300000, guid: 764871193249040e5b37d82968d584df, type: 3}
+  - {fileID: 21300000, guid: 88e8c3550f6324c4e86954bf7b41c724, type: 3}
   - {fileID: 21300000, guid: c1dac02d06d8e4f6ead156bb3592f06a, type: 3}
   - {fileID: 21300000, guid: ec7338e8174ef47fa95c4ffdf502c856, type: 3}
-  - {fileID: 21300000, guid: 32b8add3b1b1a4df6b5c43278876c448, type: 3}
+  - {fileID: 21300000, guid: 592004e39afbd4f4eaa298310ae03efc, type: 3}
 --- !u!4 &1776814404
 Transform:
   m_ObjectHideFlags: 0
