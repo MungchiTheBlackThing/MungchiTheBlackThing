@@ -8,4 +8,10 @@ AnimatorOverrideController:
   m_PrefabAsset: {fileID: 0}
   m_Name: MorMerge
   m_Controller: {fileID: 9100000, guid: 86eda50cb7914374e98a13ed9a2b7dd4, type: 2}
-  m_Clips: []
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 456d75fea533394478b40fe114b25ecb, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 456d75fea533394478b40fe114b25ecb, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 6d7151d68fbd2fa4485215a677fefeab, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 6d7151d68fbd2fa4485215a677fefeab, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: aac2dee557dd88d4f988d2f0bc7c10df, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: aac2dee557dd88d4f988d2f0bc7c10df, type: 2}

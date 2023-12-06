@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
-public class Noteclose : MonoBehaviour
+
+public class Noteclose : MonoBehaviour, IPointerClickHandler
 {
-    
-    public void Close()
+    // Start is called before the first frame update
+    public GameObject NoteBackground;
+    public void OnPointerClick(PointerEventData eventData)
     {
+        Destroy(NoteBackground);
         NoteClick.CanScroll = true;
-        this.transform.parent.gameObject.GetComponent<ScrollRect>().horizontal=true;
-        //checklist play true된다.
-        Destroy(this.gameObject);    
     }
     public void Start()
     {

@@ -5,12 +5,13 @@ using UnityEngine.EventSystems;
 
 public class EventPlay2 : MonoBehaviour,IPointerDownHandler
 {
-        public GameObject Diary;
+    public GameObject Mungchi;
+    public GameObject Diary;
 
     // Start is called before the first frame update
     void IPointerDownHandler.OnPointerDown(PointerEventData eventData)
     {
-        Animator animator = this.transform.parent.GetComponent<Animator>();
+        Animator animator = Mungchi.GetComponent<Animator>();
         Diary.SetActive(true);
         animator.SetTrigger("read");
         Debug.Log("read");

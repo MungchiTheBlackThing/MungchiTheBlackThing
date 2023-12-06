@@ -13,7 +13,8 @@ public class DefaultController : MonoBehaviour
     bool isClose;
 
     [SerializeField]
-    GameObject Diary;
+    GameObject moon_diary;
+
     GameObject canvas;
 
     PlayerController _player;
@@ -29,49 +30,33 @@ public class DefaultController : MonoBehaviour
 
     public void Update()
     {
-        
         if (NoteClick.CanScroll == false)
         {
+            //this.transform.transform.position = DefaultPos;
             scrollRect.horizontal = false;
         }
-    }
-    public void SetLightDiary()
-    {
-        GameObject parent=GameObject.Find("phase_diary");
-
-        for(int i=0;i<parent.transform.childCount;i++)
+        else
         {
-            parent.transform.GetChild(i).gameObject.SetActive(true);
+            scrollRect.horizontal = true;
         }
-        scrollRect.horizontal = true;
-        GameObject.Find("TimeManager").GetComponent<SkipController>().SetSleepCheckList();
-    }
-    public void SetDiary()
-    {
-        GameObject selected=EventSystem.current.currentSelectedGameObject;
-        if(selected.transform.GetChild(0).gameObject.activeSelf == false)
-        {
-            GameObject alter = Resources.Load<GameObject>(this.gameObject.name+"/alert_diary");
-            StartCoroutine(CloseAlter(Instantiate(alter,selected.transform.parent)));
-            //alter생성
-            return;
-        }
-        //만약에 있으면 diary를 만든다
-        Instantiate(Diary,this.transform.parent.transform.parent);
     }
 
     public void InstMoonSystem(){
+        //if(player.GetCurrTime()!="night")
+        //    return ;
+
+        //현재 this.gameObject.name에 해당하는 resource 불러오기 -> 3초 뒤 자동으로 사라짐
         GameObject alter = Resources.Load<GameObject>(this.gameObject.name+"/alert_moonradio");
 
         if(alter==null)
             Instantiate(moon_main,this.transform.parent.transform.parent);
         else
         {
-            StartCoroutine(CloseAlter(Instantiate(alter,this.transform.parent)));
+            StartCoroutine(CloseMoonRadioAlter(Instantiate(alter,this.transform.parent)));
         }
     }
 
-    IEnumerator CloseAlter(GameObject alter){
+    IEnumerator CloseMoonRadioAlter(GameObject alter){
         yield return new WaitForSeconds(2f);
         Destroy(alter);
     }
@@ -103,4 +88,9 @@ public class DefaultController : MonoBehaviour
         isClose=!isClose;
     }
 
+    public void OpenDiary(){
+        //if(_player.GetCurrTime()!="night")
+        //    return ;
+        Instantiate(moon_diary,this.transform.parent.transform.parent);
+    }
 }

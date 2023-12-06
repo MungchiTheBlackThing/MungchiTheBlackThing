@@ -22,4 +22,14 @@ public class Tutorial : MonoBehaviour
     {
         close.SetActive(true);
     }
+    public void click()
+    {
+        Animator animator = this.GetComponentInChildren<Animator>();
+        animator.SetTrigger("Click");
+    }
+    public void twinkle()
+    {
+        Animator animator = this.GetComponentInChildren<Animator>();
+        animator.SetTrigger("Twinke");
+    }
 }

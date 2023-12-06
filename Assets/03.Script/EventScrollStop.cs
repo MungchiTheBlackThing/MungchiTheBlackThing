@@ -12,7 +12,7 @@ public class EventScrollStop : MonoBehaviour
     {
         scrollRect = this.gameObject.GetComponent<ScrollRect>();
         RectTransform rectTransform = this.gameObject.GetComponent<RectTransform>();
-        DefaultPos.x = this.transform.position.x-425;
+        DefaultPos.x = this.transform.position.x-320;
         DefaultPos.y = this.transform.position.y;
     }
 

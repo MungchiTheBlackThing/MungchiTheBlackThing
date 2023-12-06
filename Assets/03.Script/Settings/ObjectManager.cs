@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using Assets.Script.TimeEnum;
 public class ObjectManager : MonoBehaviour
 {
@@ -18,8 +17,6 @@ public class ObjectManager : MonoBehaviour
     GameObject _letter;
     [SerializeField]
     GameObject _preClothes;
-    [SerializeField]
-    GameObject _diary;
     bool _isChapterUpdate=true;
     int _chapter=0;
 
@@ -39,8 +36,6 @@ public class ObjectManager : MonoBehaviour
                     _binocular=child;
                 if(child.name.Contains("clothes"))
                     _preClothes=child;
-                if(child.name.Contains("phase_diary"))
-                    _diary=child;
             }
             InitBackground();
         }
@@ -50,6 +45,7 @@ public class ObjectManager : MonoBehaviour
     
     void SetChapterUpdate()
     {
+        Debug.Log(_chapter);
         //현재 gameManager가 전달한 chapter을 받아서 background 설치 
         switch(_chapter)
         {
@@ -60,7 +56,10 @@ public class ObjectManager : MonoBehaviour
                 SetBino();
                 //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
             break;
-            default:
+            case (int)Chapter.C_3DAY:
+            case (int)Chapter.C_7DAY:
+            case (int)Chapter.C_11DAY:
+            case (int)Chapter.C_12DAY:
                 SetLetter();
             break;
         }
@@ -92,16 +91,6 @@ public class ObjectManager : MonoBehaviour
         {
             Destroy(_bread);
             _bread=null;
-        }
-    }
-    public void NextChapter()
-    {
-        this.GetComponent<ScrollRect>().horizontal=true;
-        for(int i=0;i<_diary.transform.childCount;i++)
-        {
-            Transform child=_diary.transform.GetChild(i);
-            if(child.name.Contains("light"))
-                child.gameObject.SetActive(false);
         }
     }
     /* - chapter : Watching */
