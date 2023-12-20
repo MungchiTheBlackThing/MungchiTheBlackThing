@@ -20,11 +20,13 @@ public class ObjectManager : MonoBehaviour
     GameObject _preClothes;
     [SerializeField]
     GameObject _diary;
+
     bool _isChapterUpdate=true;
     int _chapter=0;
-
+    GameObject[] uiList;
     void Init()
     {
+        uiList=GameObject.FindGameObjectsWithTag("UI");
         //Null일때 초기화, 재사용성을 위해 함수로 빼놓음
         if(_timesBackground==null)
         {
@@ -107,6 +109,7 @@ public class ObjectManager : MonoBehaviour
     /* - chapter : Watching */
     public void SetBino()
     {
+        
         if(_binocular!=null){
             _binocular.transform.GetChild(0).gameObject.SetActive(true);
         }
@@ -114,6 +117,7 @@ public class ObjectManager : MonoBehaviour
 
     public void Close()
     {
+        
         if(_binocular!=null&&_binocular.transform.GetChild(0).gameObject.activeSelf==true){
             _binocular.transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -126,6 +130,7 @@ public class ObjectManager : MonoBehaviour
     public void SetLetter()
     {
         if(_letter==null){
+            
                 //2일-3일 간의 관계 해결해야함.. 안그러면 중복으로 데이터를 가져옴
             _letter=Instantiate(Resources.Load<GameObject>(_timesBackground.name+"/phase_letter"),_timesBackground.transform);
             _letter.name=_letter.name.Substring(0,_letter.name.IndexOf('('));
@@ -133,7 +138,10 @@ public class ObjectManager : MonoBehaviour
     }
     public void CloseLetter()
     {
+        
         if(_letter!=null){
+            for(int i=0;i<uiList.Length;i++)
+                uiList[i].SetActive(true);
             Destroy(_letter);
             _letter=null;
         }

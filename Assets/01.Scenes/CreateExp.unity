@@ -7965,7 +7965,7 @@ GameObject:
   - component: {fileID: 540397717}
   m_Layer: 5
   m_Name: Menu
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -21847,7 +21847,7 @@ GameObject:
   - component: {fileID: 1676796748}
   m_Layer: 0
   m_Name: TimeUI
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23679,11 +23679,14 @@ MonoBehaviour:
   checklist: {fileID: 662365646}
   checkList_note: {fileID: 308971763}
   menu: {fileID: 540397715}
+  curIdx: 0
   fly_icon:
   - {fileID: 21300000, guid: 88e8c3550f6324c4e86954bf7b41c724, type: 3}
   - {fileID: 21300000, guid: c1dac02d06d8e4f6ead156bb3592f06a, type: 3}
   - {fileID: 21300000, guid: ec7338e8174ef47fa95c4ffdf502c856, type: 3}
   - {fileID: 21300000, guid: 592004e39afbd4f4eaa298310ae03efc, type: 3}
+  isFirstTime: 1
+  curProgress: []
 --- !u!4 &1776814404
 Transform:
   m_ObjectHideFlags: 0

@@ -29,6 +29,7 @@ public class SkipController : MonoBehaviour
     GameObject menu;
 
     List<GameObject> checkList_childs;
+    [SerializeField]
     int curIdx=0;
 
     float time=0;
@@ -42,8 +43,12 @@ public class SkipController : MonoBehaviour
     string []alterTexts={"시간은 상대적인 것. 느리게 흐르는\n이 기다림의 시간을 빨리 감아 넘길까요?\n","뭉치는 달콤한 수면 후 다음 오후 한 시에 외출합니다.\n이 기다림의 시간을 빨리 감아 넘길까요?\n"};
 
     IEnumerator CloseCoroutine;
+  
     public int GetTimeCurIdx { get => curIdx; set => curIdx = value; }
+
+    [SerializeField]
     bool isFirstTime=true;
+    bool isInit=true;
     [SerializeField]
     List<GameObject> curProgress;
     
@@ -84,24 +89,31 @@ public class SkipController : MonoBehaviour
             if(GetTimeCurIdx==0)
                 _objManager.Close();
             GetTimeCurIdx++;
+            isFirstTime=true;
+
             //ObjectManager에게 전달.
         }
-        for(int i=0;i<checkList_childs.Count;i++)
-        {
-            if(checkList_childs[i].name.Contains("Background")) continue;
-            int idx=int.Parse(checkList_childs[i].name.Split(' ')[1]);
-            Debug.Log(idx.ToString()+" "+GetTimeCurIdx.ToString());
-            if(idx<=GetTimeCurIdx)
+
+        if(isFirstTime){
+            if(isInit&&curIdx==0) Init();
+
+            for(int i=0;i<checkList_childs.Count;i++)
             {
-                GameObject timeCheck=checkList_childs[i].transform.GetChild(0).gameObject;
-                if(timeCheck.activeSelf==false&&isFirstTime){
-                    curProgress.Add(timeCheck);
-                    StartCoroutine(CheckListOn());
-                    isFirstTime=false;
+                if(checkList_childs[i].name.Contains("Background")) continue;
+                int idx=int.Parse(checkList_childs[i].name.Split(' ')[1]);
+                if(idx<=GetTimeCurIdx)
+                {
+                    GameObject timeCheck=checkList_childs[i].transform.GetChild(0).gameObject;
+                    if(timeCheck.activeSelf==false&&isFirstTime){
+                        curProgress.Add(timeCheck);
+                        StartCoroutine(CheckListOn());
+                        isFirstTime=false;
+                    }
+                        
                 }
-                    
             }
         }
+
     }
 
     public void ClickSkipBut()
@@ -128,7 +140,8 @@ public class SkipController : MonoBehaviour
     { 
         //player 시간을 빠르게 만든다.
         alter.SetActive(false);
-
+        isFirstTime=true;
+    
         switch(GetTimeCurIdx)
         {
             case (int)TimeStamp.TS_WATCHING:
@@ -136,14 +149,14 @@ public class SkipController : MonoBehaviour
                 ++GetTimeCurIdx;
                 time=_timeStamp[GetTimeCurIdx];
                 if(SkipBackground==null)
-                    SkipBackground=Instantiate(Resources.Load<GameObject>("skip_animation"),_objManager.transform.parent);
+                    SkipBackground=Instantiate(Resources.Load<GameObject>("skip_animation"),_objManager.transform.parent.parent);
             break;
 
             case (int)TimeStamp.TS_THINKING:
                 ++GetTimeCurIdx;
                 time=_timeStamp[GetTimeCurIdx];
                 if(SkipBackground==null)
-                    SkipBackground=Instantiate(Resources.Load<GameObject>("skip_animation"),_objManager.transform.parent);
+                    SkipBackground=Instantiate(Resources.Load<GameObject>("skip_animation"),_objManager.transform.parent.parent);
             break;
 
             case (int)TimeStamp.TS_WRITING:
@@ -157,7 +170,7 @@ public class SkipController : MonoBehaviour
             time=(float)disTime.TotalSeconds; //초로 변환함
             ++GetTimeCurIdx;
             if(SkipBackground==null)
-                SkipBackground=Instantiate(Resources.Load<GameObject>("skip_animation"),_objManager.transform.parent);
+                SkipBackground=Instantiate(Resources.Load<GameObject>("skip_animation"),_objManager.transform.parent.parent);
             
             break;
             case (int)TimeStamp.TS_NEXTCHAPTER:
@@ -166,35 +179,39 @@ public class SkipController : MonoBehaviour
             _objManager.NextChapter();
             _player.SetChapter();
             _objManager.transChapter(_player.GetChapter());
+            isInit=true;
             //현재 시간을 가져와서, 다음날 한시까지 계산을 한다.
             GetTimeCurIdx=0;
             time=_timeStamp[GetTimeCurIdx];
-            Init();
             if(SkipBackground==null)
-                SkipBackground=Instantiate(Resources.Load<GameObject>("skip_sleeping"),_objManager.transform.parent);
+                SkipBackground=Instantiate(Resources.Load<GameObject>("skip_sleeping"),_objManager.transform.parent.parent);
+    
             break;
         }
+
+        CloseAllBackgroundMenu();
         //ObjectManager에게 전달.
     }
 
     void Init()
     {
-        StartCoroutine("OpenCheckListOn");
+        menu.SetActive(true);
+        checkList_note.transform.parent.gameObject.SetActive(true);
+        _timeText.transform.parent.gameObject.SetActive(true);
         checklist.sprite=fly_icon[GetTimeCurIdx];
         for(int i=0;i<curProgress.Count;i++)
         {
             curProgress[i].SetActive(false);
         }
+
         curProgress.Clear();
-        checkList_note.transform.parent.gameObject.SetActive(false);
+        isInit=false;
     }
     IEnumerator OpenCheckList()
     {
         yield return new WaitForSeconds(0.5f);
-        
-        if(GetTimeCurIdx==0)
-            checklist.sprite=fly_icon[GetTimeCurIdx-1];
-        if(GetTimeCurIdx-1<fly_icon.Length){
+
+        if(GetTimeCurIdx>=0&&GetTimeCurIdx-1<fly_icon.Length){
             checklist.sprite=fly_icon[GetTimeCurIdx-1];
         }
 
@@ -213,7 +230,6 @@ public class SkipController : MonoBehaviour
         
         yield return new WaitForSeconds(2f);
         checkList.SetActive(false);
-        isFirstTime=true;
     }
 
     public void SetSleepCheckList()
@@ -236,19 +252,6 @@ public class SkipController : MonoBehaviour
                     
             }
         }
-    }
-    IEnumerator OpenCheckListOn()
-    {
-        if(CloseCoroutine!=null)
-            StopCoroutine(CloseCoroutine);
-        CloseAllBackgroundMenu();
-        yield return new WaitForSeconds(3f);
-        if(SkipBackground!=null){
-            Destroy(SkipBackground);
-            SkipBackground=null;
-        }
-        OpenAllBackgroundMenu();
-        
     }
     IEnumerator CheckListOn()
     {

@@ -18,6 +18,7 @@ TagManager:
   - evening
   - Diary
   - morning
+  - UI
   layers:
   - Default
   - TransparentFX
