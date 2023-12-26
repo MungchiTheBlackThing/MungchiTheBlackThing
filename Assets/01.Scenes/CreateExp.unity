@@ -29350,3 +29350,6 @@ MonoBehaviour:
   _letter: {fileID: 0}
   _preClothes: {fileID: 0}
   _diary: {fileID: 0}
+  _dotOrder: {fileID: 0}
+  _bookPile: {fileID: 0}
+  _dots: {fileID: 0}

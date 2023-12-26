@@ -2,9 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using System.Text;
+using System.IO;
 public class PlayerController : MonoBehaviour
 {
+
+    const string playerInfoDataFileName="PlayerData.json";
     PlayerInfo _player;
     //player 접속 경과 시간
     float _elapsedTime; 
@@ -19,6 +22,7 @@ public class PlayerController : MonoBehaviour
     {
         //앞으로 player을 동적으로 생성해서 관리할 예정.. 아직은 미리 초기화해서 사용한다.
         _player = new PlayerInfo(0,nickname,1);
+        readStringFromPlayerFile();
     }
 
     // Update is called once per frame
@@ -80,5 +84,59 @@ public class PlayerController : MonoBehaviour
     public float GetMusicVolume()
     {
         return _player.AcousticVolume;
+    }
+
+    [ContextMenu("Write PlayerInfo File")] //컴포넌트 메뉴 아래 함수를 호출하는 명령어 생성
+    public void WritePlayerFile()
+    {
+        //PlayerInfo 클래스 내에 플레이어 정보를 Json 형태로 포멧팅 된 문자열 생성
+        string jsonData=JsonUtility.ToJson(_player);
+        string path = pathForDocumentsFile(playerInfoDataFileName);
+        File.WriteAllText(path,jsonData);
+    }
+
+    void readStringFromPlayerFile()
+    {
+        string path=pathForDocumentsFile(playerInfoDataFileName);
+
+        if(File.Exists(path))
+        {
+            FileStream fileStream = new FileStream(path,FileMode.Open);
+            byte[] data = new byte[fileStream.Length];
+            fileStream.Read(data,0,data.Length);
+            fileStream.Close();
+            string json = Encoding.UTF8.GetString(data);
+
+            if(_player!=null){
+                _player = JsonUtility.FromJson<PlayerInfo>(json);
+                Debug.Log(_player.CurrentChapter);
+            }
+        }
+    }
+    string pathForDocumentsFile(string filename)
+    {
+        if(Application.platform==RuntimePlatform.IPhonePlayer)
+        {
+             string path = Application.dataPath.Substring(0,Application.dataPath.Length-5);
+             path=path.Substring(0,path.LastIndexOf('/'));
+             return Path.Combine(Path.Combine(path,"Documents"),filename);
+
+        }
+        else if(Application.platform==RuntimePlatform.Android)
+        {
+             string path = Application.persistentDataPath;
+             path=path.Substring(0,path.LastIndexOf('/'));
+             return Path.Combine(path,filename);
+        }
+        else
+        {
+             string path = Application.dataPath;
+             path=path.Substring(0,path.LastIndexOf('/'));
+            return Path.Combine(Application.dataPath,filename);
+        }
+
+    }
+    void OnApplicationQuit() {
+        WritePlayerFile();
     }
 }

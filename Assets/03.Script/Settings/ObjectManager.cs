@@ -20,6 +20,13 @@ public class ObjectManager : MonoBehaviour
     GameObject _preClothes;
     [SerializeField]
     GameObject _diary;
+    [SerializeField]
+    GameObject _dotOrder;
+    [SerializeField]
+    GameObject _bookPile;
+
+    [SerializeField]
+    GameObject _dots;
 
     bool _isChapterUpdate=true;
     int _chapter=0;
@@ -43,6 +50,10 @@ public class ObjectManager : MonoBehaviour
                     _preClothes=child;
                 if(child.name.Contains("phase_diary"))
                     _diary=child;
+                if(child.name.Contains("bookpile"))
+                    _bookPile=child;
+                if(child.name.Contains("fix_dot_order"))
+                    _dotOrder=child;
             }
             InitBackground();
         }
@@ -59,10 +70,19 @@ public class ObjectManager : MonoBehaviour
             case (int)Chapter.C_5DAY:
             case (int)Chapter.C_8DAY:
             case (int)Chapter.C_10DAY:
+                GoToOther();
                 SetBino();
                 //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
             break;
+            case (int)Chapter.C_4DAY:
+            case (int)Chapter.C_6DAY:
+            case (int)Chapter.C_9DAY:
+            case (int)Chapter.C_14DAY:
+                isAtHome();
+                SetLetter();
+                break;
             default:
+                GoToOther();
                 SetLetter();
             break;
         }
@@ -76,6 +96,21 @@ public class ObjectManager : MonoBehaviour
     public void transChapter(int chapter){
         _chapter=chapter;
         _isChapterUpdate=true;
+    }
+
+    void GoToOther()
+    {
+        if(_dots!=null)
+            _dots.SetActive(false);
+        _bookPile.SetActive(true);
+    }
+    void isAtHome()
+    {
+        if(_dots==null)
+            _dots=Instantiate(Resources.Load<GameObject>("Dot"),_dotOrder.transform);
+        _dots.GetComponent<Animator>().SetBool("isAtHome",true);
+        _dots.GetComponent<Animator>().SetInteger("Day",_chapter);
+        _bookPile.SetActive(false);
     }
 
     void InitBackground()
