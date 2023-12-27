@@ -122,7 +122,7 @@ public class SkipController : MonoBehaviour
         {
             alter.SetActive(true);
 
-            if(GetTimeCurIdx==(int)TimeStamp.TS_SLEEPING)
+            if(GetTimeCurIdx==(int)TimeStamp.TS_NEXTCHAPTER)
             {
                 if(_alterText!=null)
                     _alterText.text=alterTexts[1];
@@ -146,6 +146,7 @@ public class SkipController : MonoBehaviour
         {
             case (int)TimeStamp.TS_WATCHING:
                 _objManager.Close();
+                _objManager.RemoveWatchingObject();
                 ++GetTimeCurIdx;
                 time=_timeStamp[GetTimeCurIdx];
                 if(SkipBackground==null)
@@ -174,6 +175,7 @@ public class SkipController : MonoBehaviour
             
             break;
             case (int)TimeStamp.TS_NEXTCHAPTER:
+            ClickSkipBut();
             Destroy(eventPlay);
             //해제해야함.
             _objManager.NextChapter();

@@ -76,7 +76,10 @@ public class PlayerController : MonoBehaviour
     {
         return _player.Nickname;
     }
-
+    public void SetNickName(string InName)
+    {
+        _player.Nickname=InName;
+    }
     public float GetAcousticVolume()
     {
         return _player.AcousticVolume;
@@ -86,12 +89,13 @@ public class PlayerController : MonoBehaviour
         return _player.AcousticVolume;
     }
 
-    [ContextMenu("Write PlayerInfo File")] //컴포넌트 메뉴 아래 함수를 호출하는 명령어 생성
     public void WritePlayerFile()
     {
         //PlayerInfo 클래스 내에 플레이어 정보를 Json 형태로 포멧팅 된 문자열 생성
         string jsonData=JsonUtility.ToJson(_player);
         string path = pathForDocumentsFile(playerInfoDataFileName);
+
+        Debug.Log(jsonData);
         File.WriteAllText(path,jsonData);
     }
 

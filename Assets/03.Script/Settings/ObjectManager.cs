@@ -14,6 +14,7 @@ public class ObjectManager : MonoBehaviour
     GameObject _binocular;
     [SerializeField]
     GameObject _bread;
+
     [SerializeField]
     GameObject _letter;
     [SerializeField]
@@ -97,7 +98,17 @@ public class ObjectManager : MonoBehaviour
         _chapter=chapter;
         _isChapterUpdate=true;
     }
-
+    public void RemoveWatchingObject()
+    {
+        if(_dots!=null)
+        {
+            _dots.SetActive(false);
+        }
+        if(_bookPile!=null)
+        {
+            _bookPile.SetActive(false);
+        }
+    }
     void GoToOther()
     {
         if(_dots!=null)

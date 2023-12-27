@@ -18,6 +18,7 @@ public class DefaultController : MonoBehaviour
 
     PlayerController _player;
     GameObject[] uiList;
+
     public void Start()
     {
         uiList=GameObject.FindGameObjectsWithTag("UI");
