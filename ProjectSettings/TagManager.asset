@@ -8,17 +8,18 @@ TagManager:
   - Mungchi
   - optic
   - Note
-  - night
   - Binocular
   - ReadDiary
   - Click
   - MungchiSleep
   - Condition
   - ObjectManager
-  - evening
   - Diary
-  - morning
   - UI
+  - Background
+  - Open
+  - Close
+  - Time
   layers:
   - Default
   - TransparentFX

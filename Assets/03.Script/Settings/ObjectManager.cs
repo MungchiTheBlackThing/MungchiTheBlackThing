@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using Assets.Script.TimeEnum;
 public class ObjectManager : MonoBehaviour
 {
@@ -28,44 +29,43 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     GameObject _dots;
 
-    bool _isChapterUpdate=true;
-    int _chapter=0;
+    bool _isChapterUpdate = true;
+    int _chapter = 0;
     GameObject[] uiList;
     void Init()
     {
-        uiList=GameObject.FindGameObjectsWithTag("UI");
+        uiList = GameObject.FindGameObjectsWithTag("UI");
         //Null일때 초기화, 재사용성을 위해 함수로 빼놓음
-        if(_timesBackground==null)
+        if (_timesBackground == null)
         {
-            _timesBackground=transform.GetChild(0).gameObject;
+            _timesBackground = transform.GetChild(0).gameObject;
 
-            for(int i=0;i<_timesBackground.transform.childCount;i++)
+            for (int i = 0; i < _timesBackground.transform.childCount; i++)
             {
                 GameObject child = _timesBackground.transform.GetChild(i).gameObject;
-                if(child.name.Contains("bread"))
-                    _bread=child;
-                if(child.name.Contains("bino"))
-                    _binocular=child;
-                if(child.name.Contains("clothes"))
-                    _preClothes=child;
-                if(child.name.Contains("phase_diary"))
-                    _diary=child;
-                if(child.name.Contains("bookpile"))
-                    _bookPile=child;
-                if(child.name.Contains("fix_dot_order"))
-                    _dotOrder=child;
+                if (child.name.Contains("bread"))
+                    _bread = child;
+                if (child.name.Contains("bino"))
+                    _binocular = child;
+                if (child.name.Contains("clothes"))
+                    _preClothes = child;
+                if (child.name.Contains("phase_diary"))
+                    _diary = child;
+                if (child.name.Contains("bookpile"))
+                    _bookPile = child;
+                if (child.name.Contains("fix_dot_order"))
+                    _dotOrder = child;
             }
             InitBackground();
         }
 
         //현재 배경 초기화
     }
-    
+
     void SetChapterUpdate()
     {
-        Debug.Log(_chapter);
         //현재 gameManager가 전달한 chapter을 받아서 background 설치 
-        switch(_chapter)
+        switch (_chapter)
         {
             case (int)Chapter.C_2DAY:
             case (int)Chapter.C_5DAY:
@@ -74,7 +74,7 @@ public class ObjectManager : MonoBehaviour
                 GoToOther();
                 SetBino();
                 //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
-            break;
+                break;
             case (int)Chapter.C_4DAY:
             case (int)Chapter.C_6DAY:
             case (int)Chapter.C_9DAY:
@@ -85,49 +85,50 @@ public class ObjectManager : MonoBehaviour
             default:
                 GoToOther();
                 SetLetter();
-            break;
+                break;
         }
-        if(_chapter!=1)
+        if (_chapter != 1)
         {
             SetBook(_chapter);
             ChangeClothes(_chapter);
         }
         //업데이트에 필요한 코드 추가예정.
     }
-    public void transChapter(int chapter){
-        _chapter=chapter;
-        _isChapterUpdate=true;
+    public void transChapter(int chapter)
+    {
+        _chapter = chapter;
+        _isChapterUpdate = true;
     }
     public void RemoveWatchingObject()
     {
-        if(_dots!=null)
+        if (_dots != null)
         {
             _dots.SetActive(false);
         }
-        if(_bookPile!=null)
+        if (_bookPile != null)
         {
             _bookPile.SetActive(false);
         }
     }
     void GoToOther()
     {
-        if(_dots!=null)
+        if (_dots != null)
             _dots.SetActive(false);
         _bookPile.SetActive(true);
     }
     void isAtHome()
     {
-        if(_dots==null)
-            _dots=Instantiate(Resources.Load<GameObject>("Dot"),_dotOrder.transform);
-        _dots.GetComponent<Animator>().SetBool("isAtHome",true);
-        _dots.GetComponent<Animator>().SetInteger("Day",_chapter);
+        if (_dots == null)
+            _dots = Instantiate(Resources.Load<GameObject>("Dot"), _dotOrder.transform);
+        _dots.GetComponent<Animator>().SetBool("isAtHome", true);
+        _dots.GetComponent<Animator>().SetInteger("Day", _chapter);
         _bookPile.SetActive(false);
     }
 
     void InitBackground()
     {
-        if(_chapter==1) return ;
-        for(int i=2;i<_chapter;i++)
+        if (_chapter == 1) return;
+        for (int i = 2; i < _chapter; i++)
         {
             SetBook(i);
         }
@@ -136,68 +137,85 @@ public class ObjectManager : MonoBehaviour
 
     public void DestroyBread()
     {
-        if(_bread!=null)
+        if (_bread != null)
         {
             Destroy(_bread);
-            _bread=null;
+            _bread = null;
+        }
+    }
+    public void NextChapter()
+    {
+        this.GetComponent<ScrollRect>().horizontal = true;
+        for (int i = 0; i < _diary.transform.childCount; i++)
+        {
+            Transform child = _diary.transform.GetChild(i);
+            if (child.name.Contains("light"))
+                child.gameObject.SetActive(false);
         }
     }
     /* - chapter : Watching */
     public void SetBino()
     {
-        
-        if(_binocular!=null){
+
+        if (_binocular != null)
+        {
             _binocular.transform.GetChild(0).gameObject.SetActive(true);
         }
     }
 
     public void Close()
     {
-        
-        if(_binocular!=null&&_binocular.transform.GetChild(0).gameObject.activeSelf==true){
+
+        if (_binocular != null && _binocular.transform.GetChild(0).gameObject.activeSelf == true)
+        {
             _binocular.transform.GetChild(0).gameObject.SetActive(false);
         }
-        
-        if(_letter!=null){
+
+        if (_letter != null)
+        {
             Destroy(_letter);
-            _letter=null;
+            _letter = null;
         }
     }
     public void SetLetter()
     {
-        if(_letter==null){
-            
-                //2일-3일 간의 관계 해결해야함.. 안그러면 중복으로 데이터를 가져옴
-            _letter=Instantiate(Resources.Load<GameObject>(_timesBackground.name+"/phase_letter"),_timesBackground.transform);
-            _letter.name=_letter.name.Substring(0,_letter.name.IndexOf('('));
+        if (_letter == null)
+        {
+
+            //2일-3일 간의 관계 해결해야함.. 안그러면 중복으로 데이터를 가져옴
+            _letter = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/phase_letter"), _timesBackground.transform);
+            _letter.name = _letter.name.Substring(0, _letter.name.IndexOf('('));
         }
     }
     public void CloseLetter()
     {
-        
-        if(_letter!=null){
-            for(int i=0;i<uiList.Length;i++)
+
+        if (_letter != null)
+        {
+            for (int i = 0; i < uiList.Length; i++)
                 uiList[i].SetActive(true);
             Destroy(_letter);
-            _letter=null;
+            _letter = null;
         }
     }
 
     public void SetBook(int currDay)
     {
         Debug.Log(_timesBackground.name);
-        GameObject book=Instantiate(Resources.Load<GameObject>(_timesBackground.name+"/ch_books_"+currDay),_timesBackground.transform);
-        book.name=book.name.Substring(0,book.name.IndexOf('('));
+        GameObject book = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/ch_books_" + currDay), _timesBackground.transform);
+        book.name = book.name.Substring(0, book.name.IndexOf('('));
     }
 
     public void ChangeClothes(int currDay)
     {
-        if(currDay%2!=0){
-            if(_preClothes!=null){
+        if (currDay % 2 != 0)
+        {
+            if (_preClothes != null)
+            {
                 Destroy(_preClothes);
             }
-            _preClothes=Instantiate(Resources.Load<GameObject>(_timesBackground.name+"/ch_clothes_"+currDay),_timesBackground.transform);
-            _preClothes.name=_preClothes.name.Substring(0,_preClothes.name.IndexOf('('));
+            _preClothes = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/ch_clothes_" + currDay), _timesBackground.transform);
+            _preClothes.name = _preClothes.name.Substring(0, _preClothes.name.IndexOf('('));
         }
     }
 
@@ -205,10 +223,10 @@ public class ObjectManager : MonoBehaviour
     {
         Init();
 
-        if(_isChapterUpdate)
-        {    
+        if (_isChapterUpdate)
+        {
             SetChapterUpdate();
-            _isChapterUpdate=false; //1번만 업데이트 하기 위해서 필요함
+            _isChapterUpdate = false; //1번만 업데이트 하기 위해서 필요함
             //isChapterUpdate는 time을 누르고, chapter가 다음 챕터로 넘어갈때 true로 변경된다.
         }
     }

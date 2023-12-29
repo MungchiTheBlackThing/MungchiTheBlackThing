@@ -11,7 +11,7 @@ public class ScrollButton : MonoBehaviour, IBeginDragHandler, IDragHandler, IEnd
 
     void Start()
     {
-        ParentSR=GameObject.FindGameObjectWithTag("Background").GetComponent<ScrollRect>();
+        ParentSR=GameObject.FindGameObjectWithTag("ObjectManager").GetComponent<ScrollRect>();
     }
     public void OnBeginDrag(PointerEventData e)
     {

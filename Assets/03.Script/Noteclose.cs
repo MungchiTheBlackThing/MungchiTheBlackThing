@@ -2,24 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
-public class Noteclose : MonoBehaviour, IPointerClickHandler
+using UnityEngine.UI;
+public class Noteclose : MonoBehaviour
 {
-    // Start is called before the first frame update
-    public GameObject NoteBackground;
-    public void OnPointerClick(PointerEventData eventData)
+    DefaultController defaultController;
+    public void Close()
     {
-        Destroy(NoteBackground);
         NoteClick.CanScroll = true;
-        GameObject.Find("Night").GetComponent<DefaultController>().OpenMenu();
-        this.transform.parent.gameObject.GetComponent<ScrollRect>().horizontal=true;
+        defaultController.OpenMenu();
+        this.transform.parent.gameObject.GetComponent<ScrollRect>().horizontal = true;
         //checklist play true된다.
-        Destroy(this.gameObject);    
+        Destroy(this.gameObject);
     }
     public void Start()
     {
-        
-        GameObject.Find("Night").GetComponent<DefaultController>().CloseMenu();
+        defaultController = GameObject.FindWithTag("Time").GetComponent<DefaultController>();
+        defaultController.CloseMenu();
         NoteClick.CanScroll = false;
     }
 }
