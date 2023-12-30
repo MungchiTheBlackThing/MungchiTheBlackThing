@@ -1,16 +1,17 @@
 using System;
 
+[System.Serializable]
 public class PlayerInfo
 {
-    int _id; //player 구분 키 값
-    string _nickname;
+    public int _id; //player 구분 키 값
+    public string _nickname;
     //player 입장 시간 - 입장한 날짜까지 전부 들고 있는다. 
-    DateTime _datetime;
+    public  DateTime _datetime;
     //현재 진행 중인 챕터
-    int _chapter;
+    public int _chapter;
     
-    float _bgmVolume=50f;
-    float _acousticVolume=50f;
+    public float _bgmVolume=50f;
+    public float _acousticVolume=50f;
     public PlayerInfo(int id,string nickname,int chapter){
         _id=id;
         _nickname=nickname;

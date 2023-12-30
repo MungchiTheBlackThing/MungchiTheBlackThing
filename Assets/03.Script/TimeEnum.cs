@@ -15,6 +15,15 @@ namespace Assets.Script.TimeEnum
         T_DAWN=3, //새벽 시작
     };
 
+    public enum TimeStamp : int
+    {
+        TS_WATCHING,
+        TS_THINKING,
+        TS_WRITING,
+        TS_SLEEPING,
+        TS_NEXTCHAPTER,
+    };
+
 
     public enum Chapter : int
     {

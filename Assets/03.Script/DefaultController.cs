@@ -18,8 +18,11 @@ public class DefaultController : MonoBehaviour
     GameObject canvas;
 
     PlayerController _player;
+    GameObject[] uiList;
+
     public void Start()
     {
+        uiList=GameObject.FindGameObjectsWithTag("UI");
         _player=GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         this.gameObject.name = this.gameObject.name.Substring(0,this.gameObject.name.IndexOf('('));
         isClose=false;
@@ -39,17 +42,45 @@ public class DefaultController : MonoBehaviour
         {
             scrollRect.horizontal = true;
         }
+        scrollRect.horizontal = true;
+        GameObject.Find("TimeManager").GetComponent<SkipController>().SetSleepCheckList();
     }
-
+    public void SetDiary()
+    {
+        
+        GameObject selected=EventSystem.current.currentSelectedGameObject;
+        if(selected.transform.GetChild(0).gameObject.activeSelf == false)
+        {
+            GameObject alter = Resources.Load<GameObject>(this.gameObject.name+"/alert_diary");
+            StartCoroutine(CloseAlter(Instantiate(alter,selected.transform.parent)));
+            //alter생성
+            return;
+        }
+        //만약에 있으면 diary를 만든다
+        
+        for(int i=0;i<uiList.Length;i++)
+            uiList[i].SetActive(false);
+        Instantiate(Diary,this.transform.parent.transform.parent);
+    }
+    public void CloseMenu()
+    {
+        for(int i=0;i<uiList.Length;i++)
+            uiList[i].SetActive(false);
+    }
+    public void OpenMenu()
+    {
+        for(int i=0;i<uiList.Length;i++)
+            uiList[i].SetActive(true);
+    }
     public void InstMoonSystem(){
-        //if(player.GetCurrTime()!="night")
-        //    return ;
-
-        //현재 this.gameObject.name에 해당하는 resource 불러오기 -> 3초 뒤 자동으로 사라짐
+        
         GameObject alter = Resources.Load<GameObject>(this.gameObject.name+"/alert_moonradio");
 
-        if(alter==null)
-            Instantiate(moon_main,this.transform.parent.transform.parent);
+        if(alter==null){
+            Instantiate(moon_main,this.transform.parent.transform.parent);   
+            for(int i=0;i<uiList.Length;i++)
+                uiList[i].SetActive(false);
+        }
         else
         {
             StartCoroutine(CloseMoonRadioAlter(Instantiate(alter,this.transform.parent)));

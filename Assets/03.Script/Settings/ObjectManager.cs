@@ -13,15 +13,27 @@ public class ObjectManager : MonoBehaviour
     GameObject _binocular;
     [SerializeField]
     GameObject _bread;
+
     [SerializeField]
     GameObject _letter;
     [SerializeField]
     GameObject _preClothes;
+    [SerializeField]
+    GameObject _diary;
+    [SerializeField]
+    GameObject _dotOrder;
+    [SerializeField]
+    GameObject _bookPile;
+
+    [SerializeField]
+    GameObject _dots;
+
     bool _isChapterUpdate=true;
     int _chapter=0;
-
+    GameObject[] uiList;
     void Init()
     {
+        uiList=GameObject.FindGameObjectsWithTag("UI");
         //Null일때 초기화, 재사용성을 위해 함수로 빼놓음
         if(_timesBackground==null)
         {
@@ -36,6 +48,12 @@ public class ObjectManager : MonoBehaviour
                     _binocular=child;
                 if(child.name.Contains("clothes"))
                     _preClothes=child;
+                if(child.name.Contains("phase_diary"))
+                    _diary=child;
+                if(child.name.Contains("bookpile"))
+                    _bookPile=child;
+                if(child.name.Contains("fix_dot_order"))
+                    _dotOrder=child;
             }
             InitBackground();
         }
@@ -53,13 +71,19 @@ public class ObjectManager : MonoBehaviour
             case (int)Chapter.C_5DAY:
             case (int)Chapter.C_8DAY:
             case (int)Chapter.C_10DAY:
+                GoToOther();
                 SetBino();
                 //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
             break;
-            case (int)Chapter.C_3DAY:
-            case (int)Chapter.C_7DAY:
-            case (int)Chapter.C_11DAY:
-            case (int)Chapter.C_12DAY:
+            case (int)Chapter.C_4DAY:
+            case (int)Chapter.C_6DAY:
+            case (int)Chapter.C_9DAY:
+            case (int)Chapter.C_14DAY:
+                isAtHome();
+                SetLetter();
+                break;
+            default:
+                GoToOther();
                 SetLetter();
             break;
         }
@@ -73,6 +97,31 @@ public class ObjectManager : MonoBehaviour
     public void transChapter(int chapter){
         _chapter=chapter;
         _isChapterUpdate=true;
+    }
+    public void RemoveWatchingObject()
+    {
+        if(_dots!=null)
+        {
+            _dots.SetActive(false);
+        }
+        if(_bookPile!=null)
+        {
+            _bookPile.SetActive(false);
+        }
+    }
+    void GoToOther()
+    {
+        if(_dots!=null)
+            _dots.SetActive(false);
+        _bookPile.SetActive(true);
+    }
+    void isAtHome()
+    {
+        if(_dots==null)
+            _dots=Instantiate(Resources.Load<GameObject>("Dot"),_dotOrder.transform);
+        _dots.GetComponent<Animator>().SetBool("isAtHome",true);
+        _dots.GetComponent<Animator>().SetInteger("Day",_chapter);
+        _bookPile.SetActive(false);
     }
 
     void InitBackground()
@@ -96,6 +145,7 @@ public class ObjectManager : MonoBehaviour
     /* - chapter : Watching */
     public void SetBino()
     {
+        
         if(_binocular!=null){
             _binocular.transform.GetChild(0).gameObject.SetActive(true);
         }
@@ -103,6 +153,7 @@ public class ObjectManager : MonoBehaviour
 
     public void Close()
     {
+        
         if(_binocular!=null&&_binocular.transform.GetChild(0).gameObject.activeSelf==true){
             _binocular.transform.GetChild(0).gameObject.SetActive(false);
         }
@@ -115,6 +166,7 @@ public class ObjectManager : MonoBehaviour
     public void SetLetter()
     {
         if(_letter==null){
+            
                 //2일-3일 간의 관계 해결해야함.. 안그러면 중복으로 데이터를 가져옴
             _letter=Instantiate(Resources.Load<GameObject>(_timesBackground.name+"/phase_letter"),_timesBackground.transform);
             _letter.name=_letter.name.Substring(0,_letter.name.IndexOf('('));
@@ -122,7 +174,10 @@ public class ObjectManager : MonoBehaviour
     }
     public void CloseLetter()
     {
+        
         if(_letter!=null){
+            for(int i=0;i<uiList.Length;i++)
+                uiList[i].SetActive(true);
             Destroy(_letter);
             _letter=null;
         }

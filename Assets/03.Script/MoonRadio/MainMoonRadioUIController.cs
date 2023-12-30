@@ -61,6 +61,8 @@ public class MainMoonRadioUIController : MonoBehaviour
                 this.transform.parent.GetChild(i).gameObject.SetActive(true);
             }
         }
+        //무슨 함수 호출해야할거같은데..    dd
+        GameObject.Find("Night").GetComponent<DefaultController>().OpenMenu();
         Destroy(this.gameObject);
     }
 

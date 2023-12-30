@@ -139,7 +139,7 @@ public class MypageUIController : MonoBehaviour
         string edit=alterText.text;
         edit=edit.Remove(1,2).Insert(1,UserName);
         alterText.text=edit;
-        
+        player.SetNickName(UserName);
         inputPopup.SetActive(false);
         nameSettings.GetComponent<TMP_Text>().text=UserName;
         Invoke("closeAlter",1.5f);
