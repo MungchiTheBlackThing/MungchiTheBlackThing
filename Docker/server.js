@@ -20,10 +20,10 @@ webSocket.on('connection',function(socket)
 
   //client가 server에게 playerid를 전송한다.
   //그 PlayerId를 받는다.
-  socket.on("pass_nickname",idData =>{
+  socket.on("PlayerID",(idData) =>{
     console.log(idData);
     //데이터를 전송한 해당 ip는 socket.id가 저장중이기 때문에,이를 이용해 데이터를 전송하고
-    var selectQry="select * from Player where nickname=?";
+    var selectQry="select * from Player where PlayerID=?";
     mysqlCnf.query(selectQry,idData,function(err,rows,field){
       if(err)
       { 
