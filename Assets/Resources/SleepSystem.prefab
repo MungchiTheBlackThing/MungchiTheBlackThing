@@ -520,7 +520,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 402c7c0e551b57445ab84baab5c8eac1, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f4d08c07268a1448085ac8d2b0bb8ba9, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -537,6 +537,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9173922870042045192}
     m_Modifications:
+    - target: {fileID: 1616975005657010133, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e34a6bbecc78f46479e1f1fc5efe9c70, type: 2}
+    - target: {fileID: 1616975005657010133, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7606342351735424732, guid: e34a6bbecc78f46479e1f1fc5efe9c70, type: 2}
+    - target: {fileID: 1746017106567642205, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e34a6bbecc78f46479e1f1fc5efe9c70, type: 2}
+    - target: {fileID: 1746017106567642205, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7606342351735424732, guid: e34a6bbecc78f46479e1f1fc5efe9c70, type: 2}
     - target: {fileID: 2374019590113717596, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -673,6 +689,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SelectedOption
       objectReference: {fileID: 0}
+    - target: {fileID: 7319494678494742116, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e34a6bbecc78f46479e1f1fc5efe9c70, type: 2}
+    - target: {fileID: 7319494678494742116, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -7606342351735424732, guid: e34a6bbecc78f46479e1f1fc5efe9c70, type: 2}
     - target: {fileID: 7319494678494742119, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
