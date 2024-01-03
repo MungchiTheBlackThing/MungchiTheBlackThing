@@ -164,6 +164,7 @@ public class SkipController : MonoBehaviour
 
             case (int)TimeStamp.TS_WRITING:
                 //시잃기 시작.
+            
                 eventPlay = Instantiate(Resources.Load<GameObject>("SleepSystem"), _objManager.gameObject.transform);
                 //애니메이션 생성
                 DateTime today = DateTime.Now; //현재 지금 시간

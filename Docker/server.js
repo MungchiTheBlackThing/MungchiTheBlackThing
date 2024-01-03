@@ -34,7 +34,7 @@ webSocket.on('connection',function(socket)
       console.log(rows);
       console.log('socket.id:', socket.id);
 
-      const jsonData = JSON.stringify(rows, null, 2); 
+      const jsonData = JSON.stringify(rows); 
       webSocket.to(socket.id).emit("pass_player_data",jsonData);
       
       //ㄴㄴ.. 걍 틀린 문법 사용했음 webSocket.to(socket.id).emit() 문법이 맞음

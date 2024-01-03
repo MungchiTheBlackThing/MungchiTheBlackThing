@@ -7,6 +7,7 @@ using Assets.Script.TimeEnum;
 public class GameManager : MonoBehaviour
 {
 
+    static MemoryPool _memory=new MemoryPool();
     bool isChapterUpdate=true;
     ObjectManager _objManager;
     PlayerController _player; //현재 플레이어의 컨트롤러 
