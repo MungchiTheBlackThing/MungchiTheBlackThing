@@ -53,8 +53,8 @@ public class MypageUIController : MonoBehaviour
         MusicSlider.value=player.GetMusicVolume();
     }
     public void Exit(){
-        this.gameObject.SetActive(false);
         menu.SetActive(true);
+        this.gameObject.SetActive(false);
     }
 
     public void goCommunity(){

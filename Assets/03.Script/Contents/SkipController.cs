@@ -214,6 +214,11 @@ public class SkipController : MonoBehaviour
     }
     IEnumerator OpenCheckList()
     {
+        
+        yield return new WaitForSeconds(0.5f);
+
+        checkList_note.SetActive(true);
+        
         yield return new WaitForSeconds(0.5f);
 
         if (GetTimeCurIdx >= 0 && GetTimeCurIdx - 1 < fly_icon.Length)
@@ -293,7 +298,6 @@ public class SkipController : MonoBehaviour
     void OpenAllBackgroundMenu()
     {
         menu.SetActive(true);
-        checkList_note.SetActive(true);
         checkList_note.transform.parent.gameObject.SetActive(true);
         _timeText.transform.parent.gameObject.SetActive(true);
         StartCoroutine("OpenCheckList");
