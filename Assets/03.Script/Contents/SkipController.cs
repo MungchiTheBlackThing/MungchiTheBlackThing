@@ -164,6 +164,7 @@ public class SkipController : MonoBehaviour
 
             case (int)TimeStamp.TS_WRITING:
                 //시잃기 시작.
+            
                 eventPlay = Instantiate(Resources.Load<GameObject>("SleepSystem"), _objManager.gameObject.transform);
                 //애니메이션 생성
                 DateTime today = DateTime.Now; //현재 지금 시간
@@ -213,6 +214,11 @@ public class SkipController : MonoBehaviour
     }
     IEnumerator OpenCheckList()
     {
+        
+        yield return new WaitForSeconds(0.5f);
+
+        checkList_note.SetActive(true);
+        
         yield return new WaitForSeconds(0.5f);
 
         if (GetTimeCurIdx >= 0 && GetTimeCurIdx - 1 < fly_icon.Length)
@@ -292,7 +298,6 @@ public class SkipController : MonoBehaviour
     void OpenAllBackgroundMenu()
     {
         menu.SetActive(true);
-        checkList_note.SetActive(true);
         checkList_note.transform.parent.gameObject.SetActive(true);
         _timeText.transform.parent.gameObject.SetActive(true);
         StartCoroutine("OpenCheckList");

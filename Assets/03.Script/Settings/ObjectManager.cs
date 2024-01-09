@@ -119,7 +119,9 @@ public class ObjectManager : MonoBehaviour
     void isAtHome()
     {
         if (_dots == null)
+        {      
             _dots = Instantiate(Resources.Load<GameObject>("Dot"), _dotOrder.transform);
+        }
         _dots.GetComponent<Animator>().SetBool("isAtHome", true);
         _dots.GetComponent<Animator>().SetInteger("Day", _chapter);
         _bookPile.SetActive(false);

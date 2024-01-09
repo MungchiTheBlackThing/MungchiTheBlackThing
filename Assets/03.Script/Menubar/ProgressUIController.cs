@@ -23,7 +23,7 @@ public class ProgressUIController : MonoBehaviour
     [SerializeField]
     GameObject menu_default;
 
-    //PlayerInfo playerScript;
+    PlayerController player;
     [SerializeField]//임시러 보기 위해서 
     Dictionary<int,GameObject> prograssUI; //prograss UI를 전체 관리할 예정 
     float width=0;
@@ -34,8 +34,8 @@ public class ProgressUIController : MonoBehaviour
     {
         
         width=dragScroller.GetComponent<RectTransform>().rect.width; //보여주는 위치 
-        //playerScript=GameObject.FindWithTag("Player").GetComponent<PlayerInfo>();
-        //day=playerScript.GetComponent<PlayerInfo>().GetCurrDay(); //현재 날짜를 가져온다.
+        player=GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        day=player.GetChapter();
         prograssUI=new Dictionary<int,GameObject>(); 
         //Sprite[] img=Resources.LoadAll<Sprite>("Sprite/PrograssUI/"); //모든 img, 지역변수로 load
         //필수로 실행되어야 하는 것. (default 기준)
@@ -100,7 +100,7 @@ public class ProgressUIController : MonoBehaviour
     //현재 플레이어의 day를 가져온다. -> 플레이어 Info 부분 수정 예정
     void Update()
     {
-        
+        day=player.GetChapter();
         if(isInstant){ //update에서 day위치로 이동예정 
             //이름 부여해야함.
             Instantiate(dragIcon,dragScroller.transform.GetChild(0));

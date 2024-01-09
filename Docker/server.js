@@ -16,21 +16,31 @@ mysqlCnf.connect((err)=>{
 //socket번호 전달.. 
 webSocket.on('connection',function(socket)
 {
+  const clientIP = socket.handshake.address;
   console.log('Player Connected');
 
   //client가 server에게 playerid를 전송한다.
   //그 PlayerId를 받는다.
   socket.on("PlayerID",(idData) =>{
-    console.log(idData);
-    //데이터를 전송한 해당 ip는 socket.id가 저장중이기 때문에,이를 이용해 데이터를 전송하고
-    var selectQry="select * from Player where PlayerID=?";
-    mysqlCnf.query(selectQry,idData,function(err,rows,field){
+      console.log(idData);
+      //데이터를 전송한 해당 ip는 socket.id가 저장중이기 때문에,이를 이용해 데이터를 전송하고
+      var selectQry="select * from Player where PlayerID=?";
+      mysqlCnf.query(selectQry,idData,function(err,rows,field){
       if(err)
       { 
         console.log(err);
       }
+      
       console.log(rows);
-      webSocket.socket.to(socket.id).emit("pass_player_data",rows);
+      console.log('socket.id:', socket.id);
+
+      const jsonData = JSON.stringify(rows); 
+      webSocket.to(socket.id).emit("pass_player_data",jsonData);
+      
+      //ㄴㄴ.. 걍 틀린 문법 사용했음 webSocket.to(socket.id).emit() 문법이 맞음
+      webSocket.to(socket.id).emit("Success",true);
+      
     });
   });
 });
+
