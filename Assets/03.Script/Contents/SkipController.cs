@@ -52,8 +52,13 @@ public class SkipController : MonoBehaviour
     [SerializeField]
     List<GameObject> curProgress;
 
+    //delegate 액션 함수 보관 -> 챕터 증가시 연관된 함수 호출
+    public Action nextChangeChapter;
     void Start()
     {
+        
+        //nextChangeChapter+= FindObjectOfType<ProgressUIController>().nextChapter;
+        //nextChange nextChanger = FindObjectOfType<ProgressUIController>().nextChapter();
         curProgress = new List<GameObject>();
         checkList_childs = new List<GameObject>();
         _objManager = GameObject.FindWithTag("ObjectManager").GetComponent<ObjectManager>();
@@ -189,7 +194,8 @@ public class SkipController : MonoBehaviour
                 GetTimeCurIdx = 0;
                 time = _timeStamp[GetTimeCurIdx];
                 alter.SetActive(false);
-        
+                nextChangeChapter(); //모든 액션 정의 
+                
                 if (SkipBackground == null)
                     SkipBackground = Instantiate(Resources.Load<GameObject>("skip_sleeping"), _objManager.transform.parent.parent);
 

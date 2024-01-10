@@ -576,6 +576,7 @@ GameObject:
   - component: {fileID: 4986148054760185221}
   - component: {fileID: 4986148054760185220}
   - component: {fileID: 2410099131688748065}
+  - component: {fileID: 3109256109137246911}
   m_Layer: 0
   m_Name: Drag_Icon
   m_TagString: Untagged
@@ -696,6 +697,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &3109256109137246911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4986148054760185222}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53bcd3cbcedf14bc699ca1ccc57bf43b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4986148054805925304
 GameObject:
   m_ObjectHideFlags: 0
