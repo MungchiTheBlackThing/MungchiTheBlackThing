@@ -188,6 +188,8 @@ public class SkipController : MonoBehaviour
                 //현재 시간을 가져와서, 다음날 한시까지 계산을 한다.
                 GetTimeCurIdx = 0;
                 time = _timeStamp[GetTimeCurIdx];
+                alter.SetActive(false);
+        
                 if (SkipBackground == null)
                     SkipBackground = Instantiate(Resources.Load<GameObject>("skip_sleeping"), _objManager.transform.parent.parent);
 
