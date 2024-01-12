@@ -95,7 +95,6 @@ public class PlayerController : MonoBehaviour
         string jsonData=JsonUtility.ToJson(_player);
         string path = pathForDocumentsFile(playerInfoDataFileName);
 
-        Debug.Log(jsonData);
         File.WriteAllText(path,jsonData);
     }
 
