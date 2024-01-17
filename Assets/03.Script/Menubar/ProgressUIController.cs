@@ -28,6 +28,7 @@ public class ProgressUIController : MonoBehaviour
     Dictionary<int,GameObject> prograssUI; //prograss UI를 전체 관리할 예정 
     float width=0;
 
+    int ClickCnt=0;
 
     //현재 생성된 개수를 알아야함 
     SkipController timeManager;
@@ -44,22 +45,18 @@ public class ProgressUIController : MonoBehaviour
 
     void OnEnable()
     {
-        if(timeManager==null)
-        {
-            timeManager=GameObject.Find("TimeManager").GetComponent<SkipController>();
-            timeManager.nextChangeChapter+=nextChapter;
-        }
-    }
-    void Start()
-    {
-        timeManager=GameObject.Find("TimeManager").GetComponent<SkipController>();
-        timeManager.nextChangeChapter+=nextChapter;
-        
-        int cnt=0;
-        width=dragScroller.GetComponent<RectTransform>().rect.width; //보여주는 위치 
         player=GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         day=player.GetChapter();
-        prograssUI=new Dictionary<int,GameObject>(); 
+        if(prograssUI==null)
+            prograssUI=new Dictionary<int,GameObject>(); 
+        if(ClickCnt!=0)
+            Init(day);
+        ClickCnt++;
+    }
+    void Start()
+    {    
+        int cnt=0;
+        width=dragScroller.GetComponent<RectTransform>().rect.width; //보여주는 위치 
         //Sprite[] img=Resources.LoadAll<Sprite>("Sprite/PrograssUI/"); //모든 img, 지역변수로 load
         //필수로 실행되어야 하는 것. (default 기준)
         for(int i=1;i<=4;i++)
@@ -94,8 +91,6 @@ public class ProgressUIController : MonoBehaviour
     }
     void openChapter(int chapter)
     {
-            //3부터는 day+2만큼 생성된다.
-        Debug.Log(prograssUI.Count);
         if(prograssUI.Count>=15){
             dragScroller.GetComponent<RectTransform>().sizeDelta = new Vector2(dragScroller.GetComponent<RectTransform>().rect.width+dragIcon.GetComponent<RectTransform>().rect.width,dragScroller.GetComponent<RectTransform>().rect.height);
             return;
@@ -107,7 +102,6 @@ public class ProgressUIController : MonoBehaviour
     }
     void Init(int dayIdx)
     {
-        
         GameObject icon=Instantiate(dragIcon,dragScroller.transform.GetChild(0));
         //Title - title
         //Src - Scr-> Background(Mask) -> Background(Img)의 Script 수정
@@ -135,11 +129,6 @@ public class ProgressUIController : MonoBehaviour
         prograssUI[dayIdx]=icon;
         icon.GetComponent<Button>().onClick.AddListener(this.gameObject.GetComponent<ProgressUIController>().onClickdragIcon);
         //이미지 변경 
-    }
-
-    public void nextChapter()
-    {
-        openChapter(player.GetChapter());
     }
     public void Scroll()
     {
