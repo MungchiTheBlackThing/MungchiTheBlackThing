@@ -66,7 +66,15 @@ public class PlayerController : MonoBehaviour
             _player.Datetime=dateTime;
         }
     }
-
+    public int GetAlreadyEndedPhase()
+    {
+        return _player.AlreadyEndedPhase;
+    }
+    public void SetAlreadyEndedPhase(int curPhase)
+    {   
+        Debug.Log(curPhase);
+        _player.AlreadyEndedPhase=curPhase;
+    }
     public int GetChapter()
     {
         return _player.CurrentChapter;

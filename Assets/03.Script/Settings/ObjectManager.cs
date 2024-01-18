@@ -7,6 +7,7 @@ public class ObjectManager : MonoBehaviour
 {
     // Start is called before the first frame update
 
+    public MemoryPool memoryPool;
     //현재 아래 생성된 object를 가지고 온다.
     GameObject _timesBackground;
     //objects를 여러번 반복하지 않기 위해서 특정 오브젝트 (즉, 변화하는 오브젝트는 들고있는다.)
@@ -32,6 +33,10 @@ public class ObjectManager : MonoBehaviour
     bool _isChapterUpdate = true;
     int _chapter = 0;
     GameObject[] uiList;
+    void Start()
+    {
+        memoryPool=new MemoryPool();
+    }
     void Init()
     {
         uiList = GameObject.FindGameObjectsWithTag("UI");

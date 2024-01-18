@@ -53,12 +53,9 @@ public class SkipController : MonoBehaviour
     List<GameObject> curProgress;
 
     //delegate 액션 함수 보관 -> 챕터 증가시 연관된 함수 호출
-    public Action nextChangeChapter;
     void Start()
     {
         
-        //nextChangeChapter+= FindObjectOfType<ProgressUIController>().nextChapter;
-        //nextChange nextChanger = FindObjectOfType<ProgressUIController>().nextChapter();
         curProgress = new List<GameObject>();
         checkList_childs = new List<GameObject>();
         _objManager = GameObject.FindWithTag("ObjectManager").GetComponent<ObjectManager>();
@@ -156,21 +153,36 @@ public class SkipController : MonoBehaviour
                 _objManager.RemoveWatchingObject();
                 ++GetTimeCurIdx;
                 time = _timeStamp[GetTimeCurIdx];
-                if (SkipBackground == null)
+                SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
+                if (SkipBackground == null){
                     SkipBackground = Instantiate(Resources.Load<GameObject>("skip_animation"), _objManager.transform.parent.parent);
+                    SkipBackground.name="skip_animation";
+                    _objManager.memoryPool.InsertMemory(SkipBackground);
+                }
+                _objManager.memoryPool.SetActiveObject(SkipBackground.name);
                 break;
 
             case (int)TimeStamp.TS_THINKING:
                 ++GetTimeCurIdx;
                 time = _timeStamp[GetTimeCurIdx];
-                if (SkipBackground == null)
+                SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
+                if (SkipBackground == null){
                     SkipBackground = Instantiate(Resources.Load<GameObject>("skip_animation"), _objManager.transform.parent.parent);
+                    SkipBackground.name="skip_animation";
+                    _objManager.memoryPool.InsertMemory(SkipBackground);
+                }
+                _objManager.memoryPool.SetActiveObject(SkipBackground.name);
+
                 break;
 
             case (int)TimeStamp.TS_WRITING:
                 //시잃기 시작.
-            
-                eventPlay = Instantiate(Resources.Load<GameObject>("SleepSystem"), _objManager.gameObject.transform);
+                eventPlay =_objManager.memoryPool.SearchMemory("SleepSystem");
+                if(eventPlay==null)
+                {
+                    eventPlay = Instantiate(Resources.Load<GameObject>("SleepSystem"), _objManager.gameObject.transform);
+                    _objManager.memoryPool.InsertMemory(eventPlay);
+                }
                 //애니메이션 생성
                 DateTime today = DateTime.Now; //현재 지금 시간
                 string format = string.Format("{0} 13:00:00", DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")); //다음날 1시 까지 남은 시간
@@ -178,8 +190,13 @@ public class SkipController : MonoBehaviour
                 TimeSpan disTime = tomorrow - today; //두 차이를
                 time = (float)disTime.TotalSeconds; //초로 변환함
                 ++GetTimeCurIdx;
-                if (SkipBackground == null)
+                SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
+                if (SkipBackground == null){
                     SkipBackground = Instantiate(Resources.Load<GameObject>("skip_animation"), _objManager.transform.parent.parent);
+                    SkipBackground.name="skip_animation";
+                    _objManager.memoryPool.InsertMemory(SkipBackground);
+                }
+                _objManager.memoryPool.SetActiveObject(SkipBackground.name);
 
                 break;
             case (int)TimeStamp.TS_NEXTCHAPTER:
@@ -194,14 +211,19 @@ public class SkipController : MonoBehaviour
                 GetTimeCurIdx = 0;
                 time = _timeStamp[GetTimeCurIdx];
                 alter.SetActive(false);
-                nextChangeChapter(); //모든 액션 정의 
-                
-                if (SkipBackground == null)
+
+                SkipBackground = _objManager.memoryPool.SearchMemory("skip_sleeping");
+
+                if (SkipBackground == null){
                     SkipBackground = Instantiate(Resources.Load<GameObject>("skip_sleeping"), _objManager.transform.parent.parent);
+                    SkipBackground.name="skip_sleeping";
+                    _objManager.memoryPool.InsertMemory(SkipBackground);
+                }
+                _objManager.memoryPool.SetActiveObject(SkipBackground.name);
 
                 break;
         }
-
+        _player.SetAlreadyEndedPhase(GetTimeCurIdx);
         CloseAllBackgroundMenu();
         //ObjectManager에게 전달.
     }
@@ -284,7 +306,8 @@ public class SkipController : MonoBehaviour
         yield return new WaitForSeconds(3f);
         if (SkipBackground != null)
         {
-            Destroy(SkipBackground);
+            _objManager.memoryPool.DeactivateObject(SkipBackground.name);
+            //Destroy(SkipBackground);
             SkipBackground = null;
         }
         OpenAllBackgroundMenu();
