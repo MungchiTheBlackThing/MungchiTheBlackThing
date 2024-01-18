@@ -223,7 +223,7 @@ public class SkipController : MonoBehaviour
 
                 break;
         }
-
+        _player.SetAlreadyEndedPhase(GetTimeCurIdx);
         CloseAllBackgroundMenu();
         //ObjectManager에게 전달.
     }

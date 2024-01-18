@@ -12,11 +12,15 @@ public class PlayerInfo
     
     public float _bgmVolume=50f;
     public float _acousticVolume=50f;
+
+    int _alreadyEndedPhase=0; //0일때는 아직 진행 안함
     public PlayerInfo(int id,string nickname,int chapter){
         _id=id;
         _nickname=nickname;
         _chapter=chapter;
     }
+
+    public int AlreadyEndedPhase { get=>_alreadyEndedPhase; set=>_alreadyEndedPhase = value;}
 
     public float BgmVolume{ get=>_bgmVolume; set=>_bgmVolume = value; }
     public float AcousticVolume { get=>_acousticVolume; set=>_acousticVolume=value; }

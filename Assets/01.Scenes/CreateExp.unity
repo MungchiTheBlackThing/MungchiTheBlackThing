@@ -12582,7 +12582,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b6cd45bf75444bf9c173e5ff3d21ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  day: 0
+  chapter: 0
   isInstant: 0
   dragIcon: {fileID: 4986148054760185222, guid: c611c0afa3f0849e6ab24d4dfc0e7ce5, type: 3}
   dragScroller: {fileID: 450643642}
@@ -24946,6 +24946,7 @@ GameObject:
   - component: {fileID: 1884108247}
   - component: {fileID: 1884108250}
   - component: {fileID: 1884108249}
+  - component: {fileID: 1884108251}
   m_Layer: 0
   m_Name: DayProgressUI_detailedPopup
   m_TagString: Untagged
@@ -24998,6 +24999,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!114 &1884108251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1884108246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e7cf60962a8b5492b9ec1576ad1f8bbe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  phaseIngUI:
+  - {fileID: 1221519139}
+  - {fileID: 978286961}
+  - {fileID: 1815900356}
+  - {fileID: 1858289189}
+  phaseEdUI:
+  - {fileID: 952455544}
+  - {fileID: 2030347853}
+  - {fileID: 1816581276}
+  - {fileID: 1417731225}
+  title: {fileID: 124580364}
+  sentence: {fileID: 164874182}
 --- !u!1 &1884872211
 GameObject:
   m_ObjectHideFlags: 0

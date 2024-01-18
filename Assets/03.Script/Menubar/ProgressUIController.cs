@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 public class ProgressUIController : MonoBehaviour
 {
     [SerializeField]
-    int day = 0; //현재 day가 무엇인지 확인하기 위해서 serializeField로 변경...
+    int chapter = 0; //현재 day가 무엇인지 확인하기 위해서 serializeField로 변경...
     //1Day로 바꿀 예정
     [SerializeField]
     bool isInstant;
@@ -46,15 +47,18 @@ public class ProgressUIController : MonoBehaviour
     void OnEnable()
     {
         player=GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        day=player.GetChapter();
         if(prograssUI==null)
             prograssUI=new Dictionary<int,GameObject>(); 
-        if(ClickCnt!=0)
-            Init(day);
+        if(ClickCnt!=0&&chapter!=player.GetChapter())
+        {
+            openChapter(player.GetChapter());
+        }
         ClickCnt++;
     }
     void Start()
-    {    
+    {
+        
+        chapter=player.GetChapter();    
         int cnt=0;
         width=dragScroller.GetComponent<RectTransform>().rect.width; //보여주는 위치 
         //Sprite[] img=Resources.LoadAll<Sprite>("Sprite/PrograssUI/"); //모든 img, 지역변수로 load
@@ -67,10 +71,10 @@ public class ProgressUIController : MonoBehaviour
             cnt++;
         }
 
-        if(day>2)
+        if(chapter>2)
         {
             //3부터는 day+2만큼 생성된다.
-            for(int i=5;i<=day+2;i++)
+            for(int i=5;i<=chapter+2;i++)
             {
                 if(i>=15){
                     dragScroller.GetComponent<RectTransform>().sizeDelta = new Vector2(dragScroller.GetComponent<RectTransform>().rect.width+dragIcon.GetComponent<RectTransform>().rect.width,dragScroller.GetComponent<RectTransform>().rect.height);
@@ -83,7 +87,7 @@ public class ProgressUIController : MonoBehaviour
         }
         //scrollRect 원하는 위치로 이동하는 방법
         //현재 (idx * 아이템의 크기) / (전체영역 - 보여주는 영역)
-        float val=(day*dragIcon.GetComponent<RectTransform>().rect.width)/(dragScroller.GetComponent<ScrollRect>().content.rect.width-width);
+        float val=(chapter*dragIcon.GetComponent<RectTransform>().rect.width)/(dragScroller.GetComponent<ScrollRect>().content.rect.width-width);
         //중앙 위치 계산
         
         dragScroller.GetComponent<ScrollRect>().horizontalNormalizedPosition=val/cnt; //(현재 위치/개수)
@@ -98,7 +102,6 @@ public class ProgressUIController : MonoBehaviour
         Init(prograssUI.Count);
         dragScroller.GetComponent<RectTransform>().sizeDelta = new Vector2(dragScroller.GetComponent<RectTransform>().rect.width+dragIcon.GetComponent<RectTransform>().rect.width,dragScroller.GetComponent<RectTransform>().rect.height);
 
-        day=player.GetChapter();
     }
     void Init(int dayIdx)
     {
@@ -121,7 +124,7 @@ public class ProgressUIController : MonoBehaviour
 
         src.sprite=curIconScript.source;
         //만약 dayIdx <=day 일경우, lock false
-        if(dayIdx<=day)
+        if(dayIdx<=chapter)
         {
             //lock을 해제함 (day 전)
             Destroy(src.gameObject.transform.GetChild(0).gameObject);
@@ -149,6 +152,16 @@ public class ProgressUIController : MonoBehaviour
             //텍스트 수정 부분 
             day_progress.GetComponent<TMP_Text>().text=day.GetComponent<DragIcon>().title;
             detailed_popup.SetActive(true);
+
+            int findChapter=1;
+            foreach(KeyValuePair<int, GameObject> item in prograssUI) {
+                if(item.Value.name==day.name){
+                    findChapter=item.Key;
+                    break;
+                }
+            }
+            detailed_popup.GetComponent<ChapterProgressManager>().PassData(day.GetComponent<DragIcon>().title,findChapter,chapter,player.GetAlreadyEndedPhase());
+            
         }
     }
 
