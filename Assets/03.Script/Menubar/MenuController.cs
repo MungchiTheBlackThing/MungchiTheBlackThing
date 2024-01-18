@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class MenuController : MonoBehaviour
 {
+
+    /*Menu 변수*/
+    #region Chapter 정보를 가진 변수,오직 한개만 존재해야하고, 수정해선 안된다.
+    public static Chapters chapterList;
+    #endregion
+
     [SerializeField]
     GameObject MenuBut;
     [SerializeField]
@@ -22,7 +28,16 @@ public class MenuController : MonoBehaviour
     [SerializeField]
     GameObject checkList;
 
+    void Start()
+    {
+        //데이터 로드 
+        var loadedJson = Resources.Load<TextAsset>("Json/Chapters");
 
+        if(loadedJson)
+        {
+            chapterList = JsonUtility.FromJson<Chapters>(loadedJson.ToString());
+        }
+    }
     public void onMenu()
     {
         if (!Icon.activeSelf)

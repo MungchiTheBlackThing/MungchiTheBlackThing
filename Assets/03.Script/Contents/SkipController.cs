@@ -52,10 +52,11 @@ public class SkipController : MonoBehaviour
     [SerializeField]
     List<GameObject> curProgress;
 
+    static ProgressUIController progressUIController;
     //delegate 액션 함수 보관 -> 챕터 증가시 연관된 함수 호출
     void Start()
     {
-        
+
         curProgress = new List<GameObject>();
         checkList_childs = new List<GameObject>();
         _objManager = GameObject.FindWithTag("ObjectManager").GetComponent<ObjectManager>();
@@ -220,7 +221,6 @@ public class SkipController : MonoBehaviour
                     _objManager.memoryPool.InsertMemory(SkipBackground);
                 }
                 _objManager.memoryPool.SetActiveObject(SkipBackground.name);
-
                 break;
         }
         _player.SetAlreadyEndedPhase(GetTimeCurIdx);
