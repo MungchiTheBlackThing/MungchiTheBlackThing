@@ -189,6 +189,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moon_main: {fileID: 1187872430623157293, guid: e2b41581d74dd4888b030eb286ec9031, type: 3}
+  light: {fileID: 2496335161476820619}
   Diary: {fileID: 1992561133626494820, guid: 39b52a39c6446419baa0b5d714e990e0, type: 3}
 --- !u!1 &2496335159665937208
 GameObject:
@@ -2342,13 +2343,14 @@ GameObject:
   - component: {fileID: 2496335161476820616}
   - component: {fileID: 2496335161476820630}
   - component: {fileID: 2496335161476820617}
+  - component: {fileID: 4453010153156916098}
   m_Layer: 0
   m_Name: phase_diary_light
   m_TagString: Diary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 18
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2496335161476820616
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2407,6 +2409,26 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &4453010153156916098
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2496335161476820619}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6fb2eee275294bbfa32687cc6aeb996, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2496335161588325497
 GameObject:
   m_ObjectHideFlags: 0

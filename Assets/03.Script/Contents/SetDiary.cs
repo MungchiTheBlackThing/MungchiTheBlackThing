@@ -15,7 +15,7 @@ public class SetDiary : MonoBehaviour
     public void SetDiaryLight()
     {
         sleep.SetActive(true);
-        curTime.GetComponent<DefaultController>().SetLightDiary();
+        //curTime.GetComponent<DefaultController>().SetLightDiary();
         GameObject.Find("TimeManager").GetComponent<SkipController>().SetSleepCheckList();
     }
 }
