@@ -312,10 +312,10 @@ RectTransform:
   m_Father: {fileID: 2321889570890144513}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 161.5205, y: 0}
-  m_SizeDelta: {x: 323.041, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 161.5205, y: -88.7393}
+  m_SizeDelta: {x: 323.041, y: 177.4786}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3526858452425936860
 CanvasRenderer:
@@ -1278,10 +1278,10 @@ RectTransform:
   m_Father: {fileID: 263946319682952079}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 161.5205, y: 0}
-  m_SizeDelta: {x: 323.041, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 161.5205, y: -88.78325}
+  m_SizeDelta: {x: 323.041, y: 177.5665}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &418651466301932711
 CanvasRenderer:
@@ -1736,6 +1736,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 0}
+  selectedOptionObj: {fileID: 8946725686813231177}
+  Sleep: {fileID: 8897574009709915219}
+  Play: {fileID: 2092007963388539854}
 --- !u!1 &8390524437340026326
 GameObject:
   m_ObjectHideFlags: 0

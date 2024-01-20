@@ -6,7 +6,6 @@ using TMPro;
 using Assets.Script.TimeEnum;
 public class GameManager : MonoBehaviour
 {
-
     bool isChapterUpdate=true;
     ObjectManager _objManager;
     PlayerController _player; //현재 플레이어의 컨트롤러 
@@ -41,17 +40,17 @@ public class GameManager : MonoBehaviour
 
         for(int i=0;i<backgrounds.Length;i++)
         {
-            if(hh>=(int)STime.T_DAWN&&hh<(int)STime.T_MORNING)
+            if(hh>=(int)STime.T_DAWN&&hh<(int)STime.T_MORNING) //현재시간 >= 3 && 현재시간 <7
             {
                 _currTimeBackground=Instantiate(backgrounds[(int)STimeIdx.SI_DAWN],_background.transform);
                 break;
-            }
-            if(hh<(int)STime.T_EVENING)
+            } //현재시간 >= 7&& 현재시간 <4
+            else if(hh>=(int)STime.T_MORNING&&hh<(int)STime.T_EVENING)
             {
                 _currTimeBackground=Instantiate(backgrounds[(int)STimeIdx.SI_MORNING],_background.transform);
                 break;
             }
-            else if(hh<(int)STime.T_NIGHT) 
+            else if(hh>=(int)STime.T_EVENING&&hh<(int)STime.T_NIGHT) 
             {
                 _currTimeBackground=Instantiate(backgrounds[(int)STimeIdx.SI_EVENING],_background.transform);
                 break;

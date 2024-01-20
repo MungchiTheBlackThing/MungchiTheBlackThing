@@ -8,6 +8,8 @@ public class DefaultController : MonoBehaviour
 
     [SerializeField]
     GameObject moon_main;
+    [SerializeField]
+    GameObject light;
     ScrollRect scrollRect;
     Vector2 DefaultPos;
     bool isClose;
@@ -28,6 +30,18 @@ public class DefaultController : MonoBehaviour
         scrollRect = this.transform.parent.gameObject.GetComponent<ScrollRect>();
         DefaultPos = this.transform.position;
         canvas = GameObject.Find("Canvas");
+
+        if(this.transform.name=="Night")
+        {
+            if(_player.isDiaryCheck==false)
+            {
+                light.SetActive(true);
+                ClientController.diaryStatus=DiaryStatus.FIRST_READ;
+                _player.isDiaryCheck=true;
+            }
+            Debug.Log(ClientController.diaryStatus);
+            
+        }
     }
 
     public void Update()
@@ -37,23 +51,24 @@ public class DefaultController : MonoBehaviour
         {
             scrollRect.horizontal = false;
         }
-    }
-    public void SetLightDiary()
-    {
-        GameObject parent = GameObject.Find("phase_diary");
-
-        for (int i = 0; i < parent.transform.childCount; i++)
+        //Action으로 바꿀 수 있지 않을까?
+        if(ClientController.diaryStatus == DiaryStatus.FIRST_READ)
         {
-            parent.transform.GetChild(i).gameObject.SetActive(true);
+            Animator lightAnim = light.GetComponent<Animator>();
+            lightAnim.SetBool("read",true);
         }
-        scrollRect.horizontal = true;
-        GameObject.Find("TimeManager").GetComponent<SkipController>().SetSleepCheckList();
+        else if(ClientController.diaryStatus == DiaryStatus.READ)
+        {
+            Animator lightAnim = light.GetComponent<Animator>();
+            lightAnim.SetBool("read",false);
+            light.SetActive(false);
+        }
     }
     public void SetDiary()
     {
-
         GameObject selected = EventSystem.current.currentSelectedGameObject;
-        if (selected.transform.GetChild(0).gameObject.activeSelf == false)
+
+        if (ClientController.diaryStatus==DiaryStatus.FISRT_NONE||ClientController.diaryStatus==DiaryStatus.NOT_READ)
         {
             GameObject alter = Resources.Load<GameObject>(this.gameObject.name + "/alert_diary");
             StartCoroutine(CloseAlter(Instantiate(alter, selected.transform.parent)));
@@ -61,7 +76,8 @@ public class DefaultController : MonoBehaviour
             return;
         }
         //만약에 있으면 diary를 만든다
-
+        ClientController.diaryStatus=DiaryStatus.READ;
+        
         for (int i = 0; i < uiList.Length; i++)
             uiList[i].SetActive(false);
         Instantiate(Diary, this.transform.parent.transform.parent);
@@ -84,6 +100,7 @@ public class DefaultController : MonoBehaviour
         if (alter == null)
         {
             Instantiate(moon_main, this.transform.parent.transform.parent);
+            ClientController.diaryStatus = DiaryStatus.FIRST_READ;
             for (int i = 0; i < uiList.Length; i++)
                 uiList[i].SetActive(false);
         }

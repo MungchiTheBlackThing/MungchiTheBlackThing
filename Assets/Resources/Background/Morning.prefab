@@ -1674,6 +1674,7 @@ GameObject:
   - component: {fileID: 7991984468291500670}
   - component: {fileID: 7991984468291500671}
   - component: {fileID: 4530070509629191606}
+  - component: {fileID: 7299243485150486206}
   m_Layer: 0
   m_Name: Morning
   m_TagString: Time
@@ -1775,7 +1776,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moon_main: {fileID: 1187872430623157293, guid: e2b41581d74dd4888b030eb286ec9031, type: 3}
+  light: {fileID: 9130261539785882403}
   Diary: {fileID: 1992561133626494820, guid: 39b52a39c6446419baa0b5d714e990e0, type: 3}
+--- !u!95 &7299243485150486206
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7991984468291500669}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6fb2eee275294bbfa32687cc6aeb996, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &7991984468317251320
 GameObject:
   m_ObjectHideFlags: 0
@@ -2913,13 +2935,14 @@ GameObject:
   - component: {fileID: 2838112812145282248}
   - component: {fileID: 551212081738084227}
   - component: {fileID: 8700409599394824828}
+  - component: {fileID: 1926795737491600685}
   m_Layer: 0
   m_Name: phase_diary_light
   m_TagString: Diary
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2838112812145282248
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2978,3 +3001,23 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &1926795737491600685
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9130261539785882403}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6fb2eee275294bbfa32687cc6aeb996, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

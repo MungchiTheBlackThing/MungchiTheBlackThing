@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "648968443611",
+    "project_id": "test-bf304",
+    "storage_bucket": "test-bf304.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:648968443611:android:ef0ce28ddfde5bafa81efe",
+        "android_client_info": {
+          "package_name": "com.TheBlackThing.Mungchi"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDIOzc4hSiENgfX_rdk05ehVBuik2vEpX8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

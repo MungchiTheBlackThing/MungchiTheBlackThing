@@ -9,6 +9,23 @@ public class PlayEventController : MonoBehaviour
     [SerializeField]
     GameObject background;
 
+    [SerializeField]
+    GameObject selectedOptionObj;
+
+    [SerializeField]
+    GameObject Sleep;
+    [SerializeField]
+    GameObject Play;
+    [SerializeField]
+    GameObject sleepDots;
+    
+    private void OnEnable() {
+        Sleep.SetActive(true);
+        selectedOptionObj.SetActive(true);
+        Play.GetComponent<Animator>().SetBool("isSleeping",true);
+        Play.SetActive(false);
+        sleepDots.SetActive(false);
+    }
     void Start()
     {
         //( width - canvas.width )/2 -> +왼쪽, -오른쪽 이동가능

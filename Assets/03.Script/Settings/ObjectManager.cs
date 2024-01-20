@@ -208,7 +208,6 @@ public class ObjectManager : MonoBehaviour
 
     public void SetBook(int currDay)
     {
-        Debug.Log(_timesBackground.name);
         GameObject book = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/ch_books_" + currDay), _timesBackground.transform);
         book.name = book.name.Substring(0, book.name.IndexOf('('));
     }
@@ -222,7 +221,8 @@ public class ObjectManager : MonoBehaviour
                 Destroy(_preClothes);
             }
             _preClothes = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/ch_clothes_" + currDay), _timesBackground.transform);
-            _preClothes.name = _preClothes.name.Substring(0, _preClothes.name.IndexOf('('));
+            if(_preClothes)
+                _preClothes.name = _preClothes.name.Substring(0, _preClothes.name.IndexOf('('));
         }
     }
 

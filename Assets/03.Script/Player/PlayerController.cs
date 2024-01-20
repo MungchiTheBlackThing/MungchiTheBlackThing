@@ -16,6 +16,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     string nickname;
 
+    public bool isDiaryCheck=false;
     const float _passTime=1800f; //30분을 기준으로 한다.
     // Start is called before the first frame update
     private void Awake()

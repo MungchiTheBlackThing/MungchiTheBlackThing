@@ -13,12 +13,20 @@ public class PlaySelectedOptionController : MonoBehaviour
     [SerializeField]
     GameObject poems;
 
+    [SerializeField]
+    GameObject afterPlay;
+
     public bool IsSleep { get=>isSleep;}
+
+    void OnEnable()
+    {
+        for(int i=0;i<selected.Length;i++)
+            selected[i].SetActive(true);
+    }
     public void PlayPoem()
     {
         isSleep=false;
         Instantiate(poems,transform.parent.parent.parent.parent);
-        
         //Poem 장면 on
     }
     public void Sleep()
@@ -33,7 +41,7 @@ public class PlaySelectedOptionController : MonoBehaviour
 
     IEnumerator CloseAlter(GameObject obj){
         yield return new WaitForSeconds(2f);
-        obj.transform.parent.GetChild(1).gameObject.SetActive(true);
-        Destroy(obj);
+        afterPlay.SetActive(true);
+        obj.SetActive(false);
     }
 }

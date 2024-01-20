@@ -12,10 +12,13 @@ public class DiarySystem : MonoBehaviour
     public void OpenDiary(){
         openDiary.gameObject.SetActive(true);
         closeDiary.gameObject.SetActive(false);
+
     }
     public void Exit(){
         //실제론 Destroy할 예정..
         //애니메이션후 애니메이션 끝나면 Destory하도록 설정할예정
+
+        FindObjectOfType<DefaultController>().OpenMenu();
         Destroy(this.gameObject);
     }
     public void Next(){

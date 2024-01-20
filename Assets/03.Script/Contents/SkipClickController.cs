@@ -12,6 +12,7 @@ public class SkipClickController : MonoBehaviour,IPointerClickHandler
     List<GameObject> clickObject;
     int idx=0;
     float fadeSpeed=2.0f;
+    bool isAlreadyClick=false;
     // Start is called before the first frame update
     void Start()
     {
@@ -37,7 +38,7 @@ public class SkipClickController : MonoBehaviour,IPointerClickHandler
     }
     public void OnPointerClick(PointerEventData eventData)
     {
-        if(idx<0||idx>=clickObject.Count) return;
+        if(idx<0||idx>=clickObject.Count||isAlreadyClick) return;
         
         if(clickObject[idx].gameObject.name=="Exit")
                 clickObject[idx].GetComponent<Button>().interactable=true;
@@ -50,11 +51,13 @@ public class SkipClickController : MonoBehaviour,IPointerClickHandler
 
     IEnumerator FadeIn(TMP_Text text)
     {
+        isAlreadyClick=true;
         while (text.alpha < 1)
         {
             text.alpha += Time.deltaTime * fadeSpeed;
             yield return null;
         }
+        isAlreadyClick=false;
     }
     IEnumerator FadeOut(TMP_Text text)
     {
