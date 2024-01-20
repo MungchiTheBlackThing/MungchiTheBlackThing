@@ -5,6 +5,9 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using Assets.Script.TimeEnum;
+using System.Diagnostics;
+
+
 public class SkipController : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -52,7 +55,6 @@ public class SkipController : MonoBehaviour
     [SerializeField]
     List<GameObject> curProgress;
 
-    static ProgressUIController progressUIController;
     //delegate 액션 함수 보관 -> 챕터 증가시 연관된 함수 호출
     void Start()
     {
@@ -177,13 +179,17 @@ public class SkipController : MonoBehaviour
                 break;
 
             case (int)TimeStamp.TS_WRITING:
+                
+                //Tick생성
                 //시잃기 시작.
                 eventPlay =_objManager.memoryPool.SearchMemory("SleepSystem");
                 if(eventPlay==null)
                 {
                     eventPlay = Instantiate(Resources.Load<GameObject>("SleepSystem"), _objManager.gameObject.transform);
+                    eventPlay.name="SleepSystem";
                     _objManager.memoryPool.InsertMemory(eventPlay);
                 }
+                _objManager.memoryPool.SetActiveObject(eventPlay.name);
                 //애니메이션 생성
                 DateTime today = DateTime.Now; //현재 지금 시간
                 string format = string.Format("{0} 13:00:00", DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")); //다음날 1시 까지 남은 시간
@@ -202,7 +208,11 @@ public class SkipController : MonoBehaviour
                 break;
             case (int)TimeStamp.TS_NEXTCHAPTER:
                 ClickSkipBut();
-                Destroy(eventPlay);
+                if(eventPlay!=null)
+                {
+                    _objManager.memoryPool.DeactivateObject(eventPlay.name);
+                }
+                //Destroy(eventPlay);
                 //해제해야함.
                 _objManager.NextChapter();
                 _player.SetChapter();

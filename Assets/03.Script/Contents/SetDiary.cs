@@ -7,6 +7,9 @@ public class SetDiary : MonoBehaviour
     [SerializeField]
     GameObject sleep;
     GameObject curTime;
+    private void OnEnable() {
+        this.gameObject.GetComponent<Animator>().SetBool("isSleep",true);
+    }
     void Start()
     {
         curTime=GameObject.Find("Background").transform.GetChild(0).gameObject;
@@ -15,7 +18,10 @@ public class SetDiary : MonoBehaviour
     public void SetDiaryLight()
     {
         sleep.SetActive(true);
-        //curTime.GetComponent<DefaultController>().SetLightDiary();
         GameObject.Find("TimeManager").GetComponent<SkipController>().SetSleepCheckList();
+    }
+
+    private void OnDisable() {
+        this.gameObject.GetComponent<Animator>().SetBool("isSleep",false);
     }
 }

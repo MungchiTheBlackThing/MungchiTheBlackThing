@@ -149,6 +149,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   background: {fileID: 7319494678428273515, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
+  selectedOptionObj: {fileID: 8213844771399061379}
+  Sleep: {fileID: 9173922870042045193}
+  Play: {fileID: 9173922870755329816}
+  sleepDots: {fileID: 3336371220733540746}
 --- !u!1 &9173922869703826462
 GameObject:
   m_ObjectHideFlags: 0
@@ -362,7 +366,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &9173922870755329815
 RectTransform:
   m_ObjectHideFlags: 0
@@ -585,6 +589,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2454806914045745626, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
+      propertyPath: m_Name
+      value: SubPlayer_Sleep
+      objectReference: {fileID: 0}
+    - target: {fileID: 3196014891248495186, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
+      propertyPath: m_Name
+      value: SubPlayer_Play
+      objectReference: {fileID: 0}
     - target: {fileID: 5134804637721242928, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -649,6 +661,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5451919494672643236, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
+      propertyPath: afterPlay
+      value: 
+      objectReference: {fileID: 9173922870755329816}
     - target: {fileID: 5451919494672643237, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -770,5 +786,10 @@ PrefabInstance:
 --- !u!224 &8213844771399061376 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 5451919494672643237, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
+  m_PrefabInstance: {fileID: 4203102729738763045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8213844771399061379 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5451919494672643238, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
   m_PrefabInstance: {fileID: 4203102729738763045}
   m_PrefabAsset: {fileID: 0}

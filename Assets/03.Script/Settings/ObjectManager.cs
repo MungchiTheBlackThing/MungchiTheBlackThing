@@ -221,7 +221,8 @@ public class ObjectManager : MonoBehaviour
                 Destroy(_preClothes);
             }
             _preClothes = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/ch_clothes_" + currDay), _timesBackground.transform);
-            _preClothes.name = _preClothes.name.Substring(0, _preClothes.name.IndexOf('('));
+            if(_preClothes)
+                _preClothes.name = _preClothes.name.Substring(0, _preClothes.name.IndexOf('('));
         }
     }
 
