@@ -312,10 +312,10 @@ RectTransform:
   m_Father: {fileID: 2321889570890144513}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 161.5205, y: -88.7393}
-  m_SizeDelta: {x: 323.041, y: 177.4786}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 161.5205, y: 0}
+  m_SizeDelta: {x: 323.041, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3526858452425936860
 CanvasRenderer:
@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 4272495616328850304}
   - component: {fileID: 7078563483545465623}
   m_Layer: 0
-  m_Name: SubPlayer_Play
+  m_Name: SubPlayer_Sleep
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1278,10 +1278,10 @@ RectTransform:
   m_Father: {fileID: 263946319682952079}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 161.5205, y: -88.78325}
-  m_SizeDelta: {x: 323.041, y: 177.5665}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 161.5205, y: 0}
+  m_SizeDelta: {x: 323.041, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &418651466301932711
 CanvasRenderer:
@@ -1739,6 +1739,7 @@ MonoBehaviour:
   selectedOptionObj: {fileID: 8946725686813231177}
   Sleep: {fileID: 8897574009709915219}
   Play: {fileID: 2092007963388539854}
+  sleepDots: {fileID: 0}
 --- !u!1 &8390524437340026326
 GameObject:
   m_ObjectHideFlags: 0
@@ -1788,7 +1789,7 @@ GameObject:
   - component: {fileID: 2881552269667890339}
   - component: {fileID: 7096323209515293141}
   m_Layer: 0
-  m_Name: SubPlayer_Sleep
+  m_Name: SubPlayer_Play
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1928,3 +1929,5 @@ MonoBehaviour:
   - {fileID: 2092007963388539854}
   DotsText: {fileID: 314369268465922497}
   poems: {fileID: 6960957339033095538, guid: 5a8562d01217d44eb822cb5094e91309, type: 3}
+  afterPlay: {fileID: 0}
+  poem: {fileID: 0}

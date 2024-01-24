@@ -18,9 +18,11 @@ public class PlaySelectedOptionController : MonoBehaviour
 
     public bool IsSleep { get=>isSleep;}
 
+    public GameObject poem;
     void OnEnable()
     {
-        for(int i=0;i<selected.Length;i++)
+        //선택지 다 끄기
+        for (int i=0;i<selected.Length;i++)
             selected[i].SetActive(true);
     }
     public void PlayPoem()
@@ -31,6 +33,7 @@ public class PlaySelectedOptionController : MonoBehaviour
     }
     public void Sleep()
     {
+        //선택지 다 끄기
         isSleep=true;
         for(int i=0;i<selected.Length;i++)
             selected[i].SetActive(false);
@@ -43,5 +46,16 @@ public class PlaySelectedOptionController : MonoBehaviour
         yield return new WaitForSeconds(2f);
         afterPlay.SetActive(true);
         obj.SetActive(false);
+    }
+    //시를 보고 자러 갈때
+    public void Sleep2()
+    {
+        //선택지 다 끄기
+        isSleep = true;
+        for (int i = 0; i < selected.Length; i++)
+            selected[i].SetActive(false);
+
+        DotsText.text = "나... 눈이 무거워지고 있어.<br>이제 거미줄에 안겨들 시간이야.";
+        StartCoroutine(CloseAlter(this.transform.parent.gameObject));
     }
 }

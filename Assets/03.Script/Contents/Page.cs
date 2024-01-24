@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using TMPro;
+
 
 public class Page : MonoBehaviour
 {
-    public List<GameObject> pages = new List<GameObject>();
+    public string[] poemtexts;
+    public TMP_Text textMesh;
     public GameObject Diary;
     public int currentpage = 0;
     public int totalpage;
@@ -19,16 +22,10 @@ public class Page : MonoBehaviour
     void Start()
     {
         currentpage = 0;
-        Transform transform = this.transform;
-        totalpage = transform.childCount-1;
-        for (int i = 0; i < transform.childCount; i++)
-        {
-            pages.Add(transform.GetChild(i).gameObject);
-        }
-        transform.GetChild(0).gameObject.SetActive(true);
+        totalpage = poemtexts.Length-1;
+        textMesh.text = poemtexts[currentpage];
         this.nextButton.onClick.AddListener(() => { this.NextPage(); });
         this.preButton.onClick.AddListener(() => { this.PrePage(); });
-        this.cancelButton.onClick.AddListener(() => { this.EndPage(); });
         cancelButton.gameObject.SetActive(false);
     }
 
@@ -47,32 +44,22 @@ public class Page : MonoBehaviour
     }
     public void NextPage()
     {
-        Transform transform = this.transform;
         preButton.gameObject.SetActive(true);
         if (currentpage == totalpage)
         {
             return;
         }
-        transform.GetChild(currentpage).gameObject.SetActive(false);
         currentpage++;
-        transform.GetChild(currentpage).gameObject.SetActive(true);
+        textMesh.text=poemtexts[currentpage];
     }
     public void PrePage()
     {
-        Transform transform = this.transform;
         nextButton.gameObject.SetActive(true);
         if (currentpage <= 0)
         {
             return;
         }
-        transform.GetChild(currentpage).gameObject.SetActive(false);
         currentpage--;
-        transform.GetChild(currentpage).gameObject.SetActive(true);
-    }
-    public void EndPage()
-    {
-        Debug.Log("sfsf");
-        Animator animator = Mungchi.GetComponent<Animator>();
-        animator.SetTrigger("exit");
+        textMesh.text = poemtexts[currentpage];
     }
 }
