@@ -23441,13 +23441,14 @@ MonoBehaviour:
   checklist: {fileID: 662365646}
   checkList_note: {fileID: 308971763}
   menu: {fileID: 540397715}
+  checkList_childs: []
   curIdx: 0
   fly_icon:
   - {fileID: 21300000, guid: 88e8c3550f6324c4e86954bf7b41c724, type: 3}
   - {fileID: 21300000, guid: c1dac02d06d8e4f6ead156bb3592f06a, type: 3}
   - {fileID: 21300000, guid: ec7338e8174ef47fa95c4ffdf502c856, type: 3}
   - {fileID: 21300000, guid: 592004e39afbd4f4eaa298310ae03efc, type: 3}
-  isFirstTime: 1
+  ifFirstUpdate: 1
   curProgress: []
 --- !u!4 &1776814404
 Transform:

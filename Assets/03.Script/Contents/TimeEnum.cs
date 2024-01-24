@@ -22,6 +22,7 @@ namespace Assets.Script.TimeEnum
         TS_WRITING,
         TS_SLEEPING,
         TS_NEXTCHAPTER,
+        TS_SIZE,
     };
 
 

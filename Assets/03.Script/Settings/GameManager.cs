@@ -4,6 +4,9 @@ using System;
 using UnityEngine;
 using TMPro;
 using Assets.Script.TimeEnum;
+using System.Threading.Tasks;
+using System.Threading;
+using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     bool isChapterUpdate=true;
@@ -92,4 +95,5 @@ public class GameManager : MonoBehaviour
     {
         SetResolution();
     }
+
 }
