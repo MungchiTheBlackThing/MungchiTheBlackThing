@@ -5,7 +5,6 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using Assets.Script.TimeEnum;
-using System.Diagnostics;
 
 
 public class SkipController : MonoBehaviour
@@ -31,7 +30,8 @@ public class SkipController : MonoBehaviour
     [SerializeField]
     GameObject menu;
 
-    List<GameObject> checkList_childs;
+    
+    public List<GameObject> checkList_childs;
     [SerializeField]
     int curIdx = 0;
 
@@ -50,11 +50,12 @@ public class SkipController : MonoBehaviour
     public int GetTimeCurIdx { get => curIdx; set => curIdx = value; }
 
     [SerializeField]
-    bool isFirstTime = true;
+    bool ifFirstUpdate = true;
     bool isInit = true;
     [SerializeField]
     List<GameObject> curProgress;
 
+    static bool isFirstTime=true;
     //delegate 액션 함수 보관 -> 챕터 증가시 연관된 함수 호출
     void Start()
     {
@@ -63,9 +64,9 @@ public class SkipController : MonoBehaviour
         checkList_childs = new List<GameObject>();
         _objManager = GameObject.FindWithTag("ObjectManager").GetComponent<ObjectManager>();
         _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        time = _timeStamp[(GetTimeCurIdx) % 3];
 
         Transform child = alter.transform.GetChild(0).transform;
+        
         for (int i = 0; i < child.childCount; i++)
         {
             if (child.GetChild(i).name.Contains("title"))
@@ -80,29 +81,10 @@ public class SkipController : MonoBehaviour
 
     void Update()
     {
-        //초 단위 3600을 나누면 h나옴 
-        //1분 60
-        //1시간 3600초 
-        //((현재 시간)%3600)/60
-        int hour = (int)time / HOUR; //3600초 나눔
-        int min = ((int)time % HOUR) / MIN;
-        _timeText.text = (hour).ToString() + "h " + (min).ToString() + "m";
-        time -= Time.deltaTime;
 
-        if (time <= 0)
+        if(isFirstTime)
         {
-            if (GetTimeCurIdx == 0)
-                _objManager.Close();
-            GetTimeCurIdx++;
-            isFirstTime = true;
-
-            //ObjectManager에게 전달.
-        }
-
-        if (isFirstTime)
-        {
-            if (isInit && curIdx == 0) Init();
-
+            load();
             for (int i = 0; i < checkList_childs.Count; i++)
             {
                 if (checkList_childs[i].name.Contains("Background")) continue;
@@ -110,13 +92,55 @@ public class SkipController : MonoBehaviour
                 if (idx <= GetTimeCurIdx)
                 {
                     GameObject timeCheck = checkList_childs[i].transform.GetChild(0).gameObject;
-                    if (timeCheck.activeSelf == false && isFirstTime)
+                    if (timeCheck.activeSelf == false)
                     {
                         curProgress.Add(timeCheck);
-                        StartCoroutine(CheckListOn());
-                        isFirstTime = false;
+                        timeCheck.SetActive(true);
                     }
+                }
+            }
+            isFirstTime=false;
+            ifFirstUpdate=false;
+        }
+        else
+        {
+            //초 단위 3600을 나누면 h나옴 
+            //1분 60
+            //1시간 3600초 
+            //((현재 시간)%3600)/60
+            int hour = (int)time / HOUR; //3600초 나눔
+            int min = ((int)time % HOUR) / MIN;
+            _timeText.text = (hour).ToString() + "h " + (min).ToString() + "m";
+            time -= Time.deltaTime;
 
+            if (time <= 0)
+            {
+                if (GetTimeCurIdx == 0)
+                    _objManager.Close();
+                GetTimeCurIdx++;
+                ifFirstUpdate = true;
+                //ObjectManager에게 전달.
+            }
+
+            if (ifFirstUpdate)
+            {
+                if (isInit && curIdx == 0) Init();
+
+                for (int i = 0; i < checkList_childs.Count; i++)
+                {
+                    if (checkList_childs[i].name.Contains("Background")) continue;
+                    int idx = int.Parse(checkList_childs[i].name.Split(' ')[1]);
+                    if (idx <= GetTimeCurIdx)
+                    {
+                        GameObject timeCheck = checkList_childs[i].transform.GetChild(0).gameObject;
+                        if (curProgress.Contains(timeCheck)==false&&timeCheck.activeSelf == false && ifFirstUpdate)
+                        {
+                            curProgress.Add(timeCheck);
+                            StartCoroutine(CheckListOn());
+                            ifFirstUpdate = false;
+                        }
+
+                    }
                 }
             }
         }
@@ -147,13 +171,12 @@ public class SkipController : MonoBehaviour
     {
         //player 시간을 빠르게 만든다.
         alter.SetActive(false);
-        isFirstTime = true;
+        ifFirstUpdate = true;
 
         switch (GetTimeCurIdx)
         {
             case (int)TimeStamp.TS_WATCHING:
-                _objManager.Close();
-                _objManager.RemoveWatchingObject();
+                watcingPhase();
                 ++GetTimeCurIdx;
                 time = _timeStamp[GetTimeCurIdx];
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
@@ -179,23 +202,7 @@ public class SkipController : MonoBehaviour
                 break;
 
             case (int)TimeStamp.TS_WRITING:
-                
-                //Tick생성
-                //시잃기 시작.
-                eventPlay =_objManager.memoryPool.SearchMemory("SleepSystem");
-                if(eventPlay==null)
-                {
-                    eventPlay = Instantiate(Resources.Load<GameObject>("SleepSystem"), _objManager.gameObject.transform);
-                    eventPlay.name="SleepSystem";
-                    _objManager.memoryPool.InsertMemory(eventPlay);
-                }
-                _objManager.memoryPool.SetActiveObject(eventPlay.name);
-                //애니메이션 생성
-                DateTime today = DateTime.Now; //현재 지금 시간
-                string format = string.Format("{0} 13:00:00", DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")); //다음날 1시 까지 남은 시간
-                DateTime tomorrow = Convert.ToDateTime(format); //format 변환
-                TimeSpan disTime = tomorrow - today; //두 차이를
-                time = (float)disTime.TotalSeconds; //초로 변환함
+                writingPhase();
                 ++GetTimeCurIdx;
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
                 if (SkipBackground == null){
@@ -204,7 +211,6 @@ public class SkipController : MonoBehaviour
                     _objManager.memoryPool.InsertMemory(SkipBackground);
                 }
                 _objManager.memoryPool.SetActiveObject(SkipBackground.name);
-
                 break;
             case (int)TimeStamp.TS_NEXTCHAPTER:
                 ClickSkipBut();
@@ -286,9 +292,9 @@ public class SkipController : MonoBehaviour
 
     public void SetSleepCheckList()
     {
-        isFirstTime = false;
+        ifFirstUpdate = false;
         GetTimeCurIdx = 4;
-
+        _player.SetAlreadyEndedPhase(GetTimeCurIdx);
         for (int i = 0; i < checkList_childs.Count; i++)
         {
             if (checkList_childs[i].name.Contains("Background")) continue;
@@ -343,5 +349,72 @@ public class SkipController : MonoBehaviour
         _timeText.transform.parent.gameObject.SetActive(true);
         StartCoroutine("OpenCheckList");
 
+    }
+
+    void watcingPhase()
+    {
+        _objManager.Close();
+        _objManager.RemoveWatchingObject();
+    }
+    void writingPhase()
+    {
+        eventPlay = _objManager.memoryPool.SearchMemory("SleepSystem");
+        if(eventPlay==null)
+        {
+            eventPlay = Instantiate(Resources.Load<GameObject>("SleepSystem"), _objManager.gameObject.transform);
+            eventPlay.name="SleepSystem";
+            _objManager.memoryPool.InsertMemory(eventPlay);
+        }
+        _objManager.memoryPool.SetActiveObject(eventPlay.name);
+                //애니메이션 생성
+        DateTime today = DateTime.Now; //현재 지금 시간
+        string format = string.Format("{0} 13:00:00", DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")); //다음날 1시 까지 남은 시간
+        DateTime tomorrow = Convert.ToDateTime(format); //format 변환
+        TimeSpan disTime = tomorrow - today; //두 차이를
+        time = (float)disTime.TotalSeconds; //초로 변환함
+        
+    }
+    void sleepPhase()
+    {
+        //자는 모션을 setActive 
+         eventPlay = _objManager.memoryPool.SearchMemory("SleepSystem");
+        if(eventPlay==null)
+        {
+            eventPlay = Instantiate(Resources.Load<GameObject>("SleepSystem"), _objManager.gameObject.transform);
+            eventPlay.name="SleepSystem";
+            _objManager.memoryPool.InsertMemory(eventPlay);
+        }
+        _objManager.memoryPool.SetActiveObject(eventPlay.name);
+        eventPlay.transform.GetChild(0).gameObject.SetActive(false);
+        eventPlay.transform.GetChild(1).gameObject.SetActive(true);
+                //애니메이션 생성
+        DateTime today = DateTime.Now; //현재 지금 시간
+        string format = string.Format("{0} 13:00:00", DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")); //다음날 1시 까지 남은 시간
+        DateTime tomorrow = Convert.ToDateTime(format); //format 변환
+        TimeSpan disTime = tomorrow - today; //두 차이를
+        time = (float)disTime.TotalSeconds; //초로 변환함
+    }
+    public void load()
+    {
+        GetTimeCurIdx = _player.GetAlreadyEndedPhase();
+        if(GetTimeCurIdx<_timeStamp.Length)
+            time = _timeStamp[GetTimeCurIdx];
+        
+        switch(GetTimeCurIdx)
+        {
+            case (int)TimeStamp.TS_WATCHING: //object에서 생성
+            break;
+            case (int)TimeStamp.TS_THINKING:
+            //Dialogu 시작
+            break;
+            case (int)TimeStamp.TS_WRITING:
+            break;
+            case (int)TimeStamp.TS_SLEEPING:
+            writingPhase();
+            break;
+            case (int)TimeStamp.TS_NEXTCHAPTER:
+            sleepPhase();
+            break;
+        }
     }
 }

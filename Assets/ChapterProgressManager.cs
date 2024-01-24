@@ -40,10 +40,12 @@ public class ChapterProgressManager : MonoBehaviour
             //Player Phase 단계에 따라서 진행.
             for(int i=0;i<=this.player.GetAlreadyEndedPhase();i++)
             {
+                if(phaseIngUI.Count<=i) continue;
                 phaseIngUI[i].SetActive(true);
             }
             for(int i=0;i<this.player.GetAlreadyEndedPhase();i++)
             {
+                if(phaseEdUI.Count<=i) continue;
                 phaseEdUI[i].SetActive(true);
             }
         }

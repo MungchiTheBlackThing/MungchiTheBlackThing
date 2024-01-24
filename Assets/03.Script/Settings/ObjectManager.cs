@@ -33,8 +33,12 @@ public class ObjectManager : MonoBehaviour
     bool _isChapterUpdate = true;
     int _chapter = 0;
     GameObject[] uiList;
+
+    PlayerController _player;
     void Start()
     {
+        _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        
         memoryPool=new MemoryPool();
     }
     void Init()
@@ -70,27 +74,31 @@ public class ObjectManager : MonoBehaviour
     void SetChapterUpdate()
     {
         //현재 gameManager가 전달한 chapter을 받아서 background 설치 
-        switch (_chapter)
+        if(_player.GetAlreadyEndedPhase()==0)
         {
-            case (int)Chapter.C_2DAY:
-            case (int)Chapter.C_5DAY:
-            case (int)Chapter.C_8DAY:
-            case (int)Chapter.C_10DAY:
-                GoToOther();
-                SetBino();
-                //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
-                break;
-            case (int)Chapter.C_4DAY:
-            case (int)Chapter.C_6DAY:
-            case (int)Chapter.C_9DAY:
-            case (int)Chapter.C_14DAY:
-                isAtHome();
-                SetLetter();
-                break;
-            default:
-                GoToOther();
-                SetLetter();
-                break;
+            switch (_chapter)
+            {
+                case (int)Chapter.C_2DAY:
+                case (int)Chapter.C_5DAY:
+                case (int)Chapter.C_8DAY:
+                case (int)Chapter.C_10DAY:
+                //현재 phase가 watch일 때
+                    GoToOther();
+                    SetBino();
+                    //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
+                    break;
+                case (int)Chapter.C_4DAY:
+                case (int)Chapter.C_6DAY:
+                case (int)Chapter.C_9DAY:
+                case (int)Chapter.C_14DAY:
+                    isAtHome();
+                    SetLetter();
+                    break;
+                default:
+                    GoToOther();
+                    SetLetter();
+                    break;
+            }
         }
         if (_chapter != 1)
         {
@@ -237,4 +245,5 @@ public class ObjectManager : MonoBehaviour
             //isChapterUpdate는 time을 누르고, chapter가 다음 챕터로 넘어갈때 true로 변경된다.
         }
     }
+
 }
