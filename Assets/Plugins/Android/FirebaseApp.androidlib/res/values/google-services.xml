@@ -1,9 +1,9 @@
 <?xml version='1.0' encoding='utf-8'?>
 <resources xmlns:tools="http://schemas.android.com/tools" tools:keep="@string/gcm_defaultSenderId,@string/google_storage_bucket,@string/project_id,@string/google_api_key,@string/google_crash_reporting_api_key,@string/google_app_id">
-  <string name="gcm_defaultSenderId" translatable="false">648968443611</string>
-  <string name="google_storage_bucket" translatable="false">test-bf304.appspot.com</string>
-  <string name="project_id" translatable="false">test-bf304</string>
-  <string name="google_api_key" translatable="false">AIzaSyDIOzc4hSiENgfX_rdk05ehVBuik2vEpX8</string>
-  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDIOzc4hSiENgfX_rdk05ehVBuik2vEpX8</string>
-  <string name="google_app_id" translatable="false">1:648968443611:android:ef0ce28ddfde5bafa81efe</string>
+  <string name="gcm_defaultSenderId" translatable="false">743565096206</string>
+  <string name="google_storage_bucket" translatable="false">theblackthing-72b5c.appspot.com</string>
+  <string name="project_id" translatable="false">theblackthing-72b5c</string>
+  <string name="google_api_key" translatable="false">AIzaSyCVv2lI5qBlR0sRyQfCaf6B5CMgsDFQ2hw</string>
+  <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCVv2lI5qBlR0sRyQfCaf6B5CMgsDFQ2hw</string>
+  <string name="google_app_id" translatable="false">1:743565096206:android:bb927909a77365f33b535f</string>
 </resources>
