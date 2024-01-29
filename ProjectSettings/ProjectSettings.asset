@@ -245,13 +245,13 @@ PlayerSettings:
   useCustomMainGradleTemplate: 0
   useCustomLauncherGradleManifest: 0
   useCustomBaseGradleTemplate: 0
-  useCustomGradlePropertiesTemplate: 1
+  useCustomGradlePropertiesTemplate: 0
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 3
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: /Users/songsuyeong/user.keystore
+  AndroidKeystoreName: '{inproject}: user.keystore'
   AndroidKeyaliasName: theblackthing
   AndroidBuildApkPerCpuArchitecture: 1
   AndroidTVCompatibility: 0
@@ -914,11 +914,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: 6832e05f-bea5-462b-a8ed-015f5fb4c1a4
+  cloudProjectId: b30717ce-4ed9-4b26-a190-49f41a0b886d
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: Mungchi
-  organizationId: songsuyoung
+  projectName: TheBlackThing
+  organizationId: simpson7257
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 

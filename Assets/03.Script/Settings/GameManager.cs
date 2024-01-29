@@ -7,6 +7,8 @@ using Assets.Script.TimeEnum;
 using System.Threading.Tasks;
 using System.Threading;
 using UnityEngine.UI;
+using UnityEngine.Android;
+using System.IO;
 public class GameManager : MonoBehaviour
 {
     bool isChapterUpdate=true;
@@ -95,5 +97,15 @@ public class GameManager : MonoBehaviour
     {
         SetResolution();
     }
-
+    void Awake()
+    {
+        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageRead))
+        {
+            Permission.RequestUserPermission(Permission.ExternalStorageRead);
+        }
+        if (!Permission.HasUserAuthorizedPermission(Permission.ExternalStorageWrite))
+        {
+            Permission.RequestUserPermission(Permission.ExternalStorageWrite);
+        }
+    }
 }
