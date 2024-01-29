@@ -394,6 +394,7 @@ public class SkipController : MonoBehaviour
         TimeSpan disTime = tomorrow - today; //두 차이를
         time = (float)disTime.TotalSeconds; //초로 변환함
     }
+
     public void load()
     {
         GetTimeCurIdx = _player.GetAlreadyEndedPhase();
