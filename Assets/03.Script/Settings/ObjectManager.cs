@@ -30,6 +30,7 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     GameObject _dots;
 
+    
     bool _isChapterUpdate = true;
     int _chapter = 0;
     GameObject[] uiList;

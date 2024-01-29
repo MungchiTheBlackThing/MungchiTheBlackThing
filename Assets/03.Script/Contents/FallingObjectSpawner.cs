@@ -11,6 +11,7 @@ public class FallingObjectSpawner : MonoBehaviour
     public int targetHeight = 100;
 
     public List<GameObject> fallingObjects = new List<GameObject>();
+    ObjectManager _objectManager;
 
     void Start()
     {
