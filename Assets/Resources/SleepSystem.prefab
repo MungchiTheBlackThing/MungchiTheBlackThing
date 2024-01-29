@@ -30,7 +30,8 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 3368592758614956575}
   m_Father: {fileID: 9173922869701282797}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -97,6 +98,65 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!1 &5697812755268070404
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3368592758614956575}
+  - component: {fileID: 7561174823130292261}
+  m_Layer: 5
+  m_Name: Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3368592758614956575
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697812755268070404}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8899692374162551981}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 165, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &7561174823130292261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5697812755268070404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de1471ae1debc91489ffbbf3c17bedbc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fallingObjectPrefabs:
+  - {fileID: 6093359405928888363, guid: efcddb4850410d3499da3bf32d525c60, type: 3}
+  - {fileID: 3795504312433857948, guid: 3849335a608e05b4a98976a3e6ae6a46, type: 3}
+  - {fileID: 3075947671463354488, guid: c65e00b094c58d84bb191b4fe96e7989, type: 3}
+  - {fileID: 2197411986794120240, guid: 436a352070178ea4f823cd461b9a2453, type: 3}
+  spawnInterval: 0.5
+  spawnRangeX: 300
+  maxObjects: 15
+  targetHeight: 100
+  fallingObjects: []
 --- !u!1 &9173922869701282798
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +667,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5134804637721242928, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 323.041
       objectReference: {fileID: 0}
     - target: {fileID: 5134804637721242928, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
       propertyPath: m_SizeDelta.y
@@ -615,7 +675,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5134804637721242928, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 161.5205
       objectReference: {fileID: 0}
     - target: {fileID: 5134804637721242928, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -631,7 +691,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5262951912256315064, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 323.041
       objectReference: {fileID: 0}
     - target: {fileID: 5262951912256315064, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
       propertyPath: m_SizeDelta.y
@@ -639,7 +699,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5262951912256315064, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: 161.5205
       objectReference: {fileID: 0}
     - target: {fileID: 5262951912256315064, guid: a53132e5bd4b940c6a008c7ba68e8d84, type: 3}
       propertyPath: m_AnchoredPosition.y

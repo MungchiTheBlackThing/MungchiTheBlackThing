@@ -14,7 +14,8 @@ public class FallingObjectSpawner : MonoBehaviour
 
     void Start()
     {
-        InvokeRepeating("SpawnObject", 0f, spawnInterval);
+        if (this.gameObject==isActiveAndEnabled)
+            InvokeRepeating("SpawnObject", 0f, spawnInterval);
     }
 
     void SpawnObject()
@@ -35,7 +36,8 @@ public class FallingObjectSpawner : MonoBehaviour
 
         // 물체가 쌓이면 확인하여 제거
         CheckAndRemoveObjects();
-        StartCoroutine(MoveObject(newObject.transform, targetHeight, 1.0f));
+        if (this.gameObject == isActiveAndEnabled)
+            StartCoroutine(MoveObject(newObject.transform, targetHeight, 1.0f));
     }
 
     void CheckAndRemoveObjects()
