@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028305, g: 0.22571313, b: 0.3069213, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -7579,6 +7579,8 @@ MonoBehaviour:
   MyPageUI: {fileID: 1825811694}
   TimeUI: {fileID: 1676796745}
   checkList: {fileID: 308971763}
+  dragIcon: {fileID: 4986148054760185222, guid: c611c0afa3f0849e6ab24d4dfc0e7ce5, type: 3}
+  dragScroller: {fileID: 450643642}
 --- !u!95 &540397718
 Animator:
   serializedVersion: 4
@@ -12584,7 +12586,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapter: 0
   isInstant: 0
-  dragIcon: {fileID: 4986148054760185222, guid: c611c0afa3f0849e6ab24d4dfc0e7ce5, type: 3}
   dragScroller: {fileID: 450643642}
   alter: {fileID: 180254149}
   detailed_popup: {fileID: 1884108246}

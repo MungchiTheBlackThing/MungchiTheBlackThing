@@ -30,7 +30,6 @@ public class SkipController : MonoBehaviour
     [SerializeField]
     GameObject menu;
 
-    
     public List<GameObject> checkList_childs;
     [SerializeField]
     int curIdx = 0;
@@ -57,9 +56,12 @@ public class SkipController : MonoBehaviour
 
     static bool isFirstTime=true;
     //delegate 액션 함수 보관 -> 챕터 증가시 연관된 함수 호출
+    delegate void OnUpdatedProgressDelegate(int chapter);
+    OnUpdatedProgressDelegate onUpdatedProgress;
     void Start()
     {
 
+        onUpdatedProgress=new OnUpdatedProgressDelegate(GameObject.Find("Menu").GetComponent<MenuController>().OnUpdatedProgress);
         curProgress = new List<GameObject>();
         checkList_childs = new List<GameObject>();
         _objManager = GameObject.FindWithTag("ObjectManager").GetComponent<ObjectManager>();
@@ -77,6 +79,7 @@ public class SkipController : MonoBehaviour
         {
             checkList_childs.Add(checkList_note.transform.GetChild(i).gameObject);
         }
+        onUpdatedProgress(_player.GetChapter());
     }
 
     void Update()
@@ -237,6 +240,7 @@ public class SkipController : MonoBehaviour
                     _objManager.memoryPool.InsertMemory(SkipBackground);
                 }
                 _objManager.memoryPool.SetActiveObject(SkipBackground.name);
+                onUpdatedProgress(_player.GetChapter());
                 break;
         }
         _player.SetAlreadyEndedPhase(GetTimeCurIdx);
@@ -406,14 +410,18 @@ public class SkipController : MonoBehaviour
             case (int)TimeStamp.TS_WATCHING: //object에서 생성
             break;
             case (int)TimeStamp.TS_THINKING:
+            watcingPhase();
             //Dialogu 시작
             break;
             case (int)TimeStamp.TS_WRITING:
+            watcingPhase();
             break;
             case (int)TimeStamp.TS_SLEEPING:
+            watcingPhase();
             writingPhase();
             break;
             case (int)TimeStamp.TS_NEXTCHAPTER:
+            watcingPhase();
             sleepPhase();
             break;
         }
