@@ -5,11 +5,11 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using Assets.Script.TimeEnum;
-
+using UnityEngine.SceneManagement;
 
 public class SkipController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    //Start is called before the first frame update
     //SkipController가 시간을 보관한다.
 
     float[] _timeStamp = { 3600f, 7200f, 1800f };
@@ -333,7 +333,14 @@ public class SkipController : MonoBehaviour
         OpenAllBackgroundMenu();
     }
 
+    public void VideoMainDialogue()
+    {
+        PlayerPrefs.SetInt("CurrentChapter",_player.GetChapter());
+        PlayerPrefs.Save();
 
+        //SceneLoad한다.
+        SceneManager.LoadScene("Binoculars");
+    }
     public void NoBut()
     {
         alter.SetActive(false);
