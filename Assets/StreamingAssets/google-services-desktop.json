@@ -7,22 +7,20 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:743565096206:ios:9cb095efb86d2d8d3b535f",
+        "mobilesdk_app_id": "1:743565096206:android:bb927909a77365f33b535f",
         "android_client_info": {
           "package_name": "com.moonstew.theblackthing"
         }
       },
+      "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyBiiYlWrRUejUKNtVbiPisj-dk2vE0-nAs"
+          "current_key": "AIzaSyCVv2lI5qBlR0sRyQfCaf6B5CMgsDFQ2hw"
         }
       ],
       "services": {
-        "analytics_service": {
-          "status": 0
-        },
         "appinvite_service": {
-          "status": 1
+          "other_platform_oauth_client": []
         }
       }
     }

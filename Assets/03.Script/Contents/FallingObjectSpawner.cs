@@ -28,7 +28,7 @@ public class FallingObjectSpawner : MonoBehaviour
         }
 
         float randomX = Random.Range(this.transform.position.x - 60, this.transform.position.x + 60);
-        Vector3 spawnPosition = new Vector3(randomX, this.transform.position.y+150, 0f);
+        Vector3 spawnPosition = new Vector3(randomX, this.transform.position.y+100, 0f);
 
         int randomPrefabIndex = Random.Range(0, fallingObjectPrefabs.Count);
         GameObject newObject = Instantiate(fallingObjectPrefabs[randomPrefabIndex], spawnPosition, Quaternion.identity) as GameObject;
