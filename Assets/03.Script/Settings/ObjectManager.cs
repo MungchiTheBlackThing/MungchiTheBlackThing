@@ -39,7 +39,6 @@ public class ObjectManager : MonoBehaviour
     void Start()
     {
         _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
-        
         memoryPool=new MemoryPool();
     }
     void Init()

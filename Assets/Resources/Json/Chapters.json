@@ -9,6 +9,14 @@
             "subFilePath": ["", "", "", ""]
         },
         {
+            "id": 1,
+            "chapter": "ch1",
+            "title": "제1장 언어",
+            "loadText": "1장에 대한 정보를 가져옵니다.",
+            "mainFilePath": "Sprites/PrograssUI/1",
+            "subFilePath": ["", "", "", ""]
+        },
+        {
             "id": 2,
             "chapter": "ch2",
             "title": "제2장 결핍",

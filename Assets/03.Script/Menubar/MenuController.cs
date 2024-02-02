@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UI;
 public class MenuController : MonoBehaviour
 {
 
@@ -25,11 +25,21 @@ public class MenuController : MonoBehaviour
     GameObject MyPageUI;
     [SerializeField]
     GameObject TimeUI;
+    #region 챕터 변수
     [SerializeField]
     GameObject checkList;
 
+    [SerializeField]
+    GameObject dragIcon;
+    public static Dictionary<int,GameObject> prograssUI; //prograss UI를 전체 관리할 예정 
+    
+    [SerializeField]
+    GameObject dragScroller;
+    float dragScrollWidth=0.0f;
+    #endregion
     void Start()
-    {
+    {   
+        prograssUI=new Dictionary<int, GameObject>();
         //데이터 로드 
         var loadedJson = Resources.Load<TextAsset>("Json/Chapters");
 
@@ -109,7 +119,57 @@ public class MenuController : MonoBehaviour
         }
         else
             checkList.SetActive(false);
-
     }
 
+    public void OnUpdatedProgress(int chapter)
+    {
+        dragScrollWidth=dragScroller.GetComponent<RectTransform>().rect.width; //원래위치?
+        //chapter에 맞는 Dictionary 생성을 여기서 하고, ProgressUIController는 그걸 SetActive하는 용도로 사용하자.
+        //1~4일차 =>필수 
+        for(int i=1;i<=3;i++)
+        {
+             if(prograssUI.ContainsKey(i) == false)
+            {
+                GameObject icon=Instantiate(dragIcon,dragScroller.transform.GetChild(0));
+                icon.name=chapterList.chapters[i].chapter;
+                DragIcon curIconScript=icon.GetComponent<DragIcon>();
+                curIconScript.Settings(chapterList.chapters[i].id,chapterList.chapters[i].title,chapterList.chapters[i].mainFilePath,"서브 타이틀 주세요");
+                prograssUI[i]=icon;
+                icon.GetComponent<Button>().onClick.AddListener(DayProgressUI.GetComponent<ProgressUIController>().onClickdragIcon);
+
+                //ProgressBar의 길이 조절을 위함.
+                dragScroller.GetComponent<RectTransform>().sizeDelta = new Vector2(dragScroller.GetComponent<RectTransform>().rect.width,dragScroller.GetComponent<RectTransform>().rect.height);
+            }   
+        }
+
+        //5일차~14일까지
+        for(int i=4;i<=chapter+1;i++)
+        {
+            if(chapter > 15) continue;
+            if(prograssUI.ContainsKey(i) == false)
+            {
+                GameObject icon=Instantiate(dragIcon,dragScroller.transform.GetChild(0));
+                icon.name=chapterList.chapters[i].chapter;
+                DragIcon curIconScript=icon.GetComponent<DragIcon>();
+                curIconScript.Settings(chapterList.chapters[i].id,chapterList.chapters[i].title,chapterList.chapters[i].mainFilePath,"서브 타이틀 주세요");
+                prograssUI[i]=icon;
+                icon.GetComponent<Button>().onClick.AddListener(DayProgressUI.GetComponent<ProgressUIController>().onClickdragIcon);
+
+                //ProgressBar의 길이 조절을 위함.
+                
+                dragScroller.GetComponent<RectTransform>().sizeDelta = new Vector2(dragScroller.GetComponent<RectTransform>().rect.width+dragIcon.GetComponent<RectTransform>().rect.width,dragScroller.GetComponent<RectTransform>().rect.height);
+            }   
+        }
+
+        foreach(var progress in prograssUI)
+        {
+            if(progress.Key <= chapter)
+            {
+                progress.Value.GetComponent<DragIcon>().DestoryLock();
+            }
+        }
+        float val=(chapter*dragIcon.GetComponent<RectTransform>().rect.width)/(dragScroller.GetComponent<ScrollRect>().content.rect.width-dragScrollWidth);
+        //중앙 위치 계산
+        dragScroller.GetComponent<ScrollRect>().horizontalNormalizedPosition=(val/val)-0.2f; //민감도 1로 만든다음, 0.2f를 해서 알림뜨는 문제를 해결
+    }
 }
