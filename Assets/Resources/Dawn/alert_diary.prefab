@@ -106,8 +106,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uBB49\uCE58\uC5D0\uAC8C \uB4E4\uCF1C\uC694!\n\uC704\uD5D8\uD569\uB2C8\uB2E4."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2fe2b39dc9e404bc49954ba51950b22d, type: 2}
-  m_sharedMaterial: {fileID: 7011725699582850384, guid: 2fe2b39dc9e404bc49954ba51950b22d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c30576bde9f6a400b92b557475b4f6a2, type: 2}
+  m_sharedMaterial: {fileID: 6088839214702860437, guid: c30576bde9f6a400b92b557475b4f6a2, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
