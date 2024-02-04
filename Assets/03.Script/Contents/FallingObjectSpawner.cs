@@ -4,52 +4,102 @@ using System.Collections;
 
 public class FallingObjectSpawner : MonoBehaviour
 {
-    public List<GameObject> fallingObjectPrefabs = new List<GameObject>();
-    public float spawnInterval = 1.0f;
-    public int spawnRangeX = 5; // X축 랜덤 범위
-    public int maxObjects = 15; // 최대 쌓일 물체 개수
+    public List<GameObject> objectPrefabs = new List<GameObject>(); // 다양한 프리팹들
+    public float spawnInterval = 3.0f;
+    public int maxActiveObjects = 10; // 최대 활성화 물체 개수
     public int targetHeight = 100;
 
-    public List<GameObject> fallingObjects = new List<GameObject>();
-    ObjectManager _objectManager;
+    private List<GameObject> fallingObjects = new List<GameObject>();
+    private Dictionary<GameObject, Vector3> initialPositions = new Dictionary<GameObject, Vector3>();
+    private Queue<GameObject> activeObjectQueue = new Queue<GameObject>();
 
-    void Start()
+    private void Start()
     {
-        if (this.gameObject==isActiveAndEnabled)
-            InvokeRepeating("SpawnObject", 0f, spawnInterval);
+        // 초기에 물체들을 미리 생성
+        InitializeObjects();
+
+        // 주기적으로 물체 떨어뜨리기 시작
+        InvokeRepeating("DropRandomObject", 0f, spawnInterval);
     }
 
-    void SpawnObject()
+    void InitializeObjects()
     {
-        if (fallingObjectPrefabs.Count == 0)
+        foreach (var prefab in objectPrefabs)
         {
-            Debug.LogError("No fallingObjectPrefab is assigned!");
-            return;
-        }
-
-        float randomX = Random.Range(this.transform.position.x - 60, this.transform.position.x + 60);
-        Vector3 spawnPosition = new Vector3(randomX, this.transform.position.y+100, 0f);
-
-        int randomPrefabIndex = Random.Range(0, fallingObjectPrefabs.Count);
-        GameObject newObject = Instantiate(fallingObjectPrefabs[randomPrefabIndex], spawnPosition, Quaternion.identity) as GameObject;
-        newObject.transform.SetParent(transform);
-        fallingObjects.Add(newObject);
-
-        // 물체가 쌓이면 확인하여 제거
-        CheckAndRemoveObjects();
-        if (this.gameObject == isActiveAndEnabled)
-            StartCoroutine(MoveObject(newObject.transform, targetHeight, 1.0f));
-    }
-
-    void CheckAndRemoveObjects()
-    {
-        if (fallingObjects.Count > maxObjects)
-        {
-            GameObject objectToRemove = fallingObjects[0]; // 가장 처음에 생성된 물체를 가져옴
-            fallingObjects.RemoveAt(0); // 리스트에서 제거
-            Destroy(objectToRemove); // 물체 제거
+            // 랜덤한 위치에 물체 생성
+            float randomX = Random.Range(this.transform.position.x - 60, this.transform.position.x + 60);
+            Vector3 spawnPosition = new Vector3(randomX, this.transform.position.y + 100, 0f);
+            GameObject newObject = Instantiate(prefab, spawnPosition, Quaternion.identity) as GameObject;
+            newObject.transform.SetParent(transform);
+            newObject.SetActive(false);
+            fallingObjects.Add(newObject);
+            initialPositions.Add(newObject, spawnPosition);
         }
     }
+
+    void DropRandomObject()
+    {
+        // 현재 활성화된 물체 개수 세기
+        int activeObjectCount = CountActiveObjects();
+
+        // 현재 활성화된 물체가 최대 활성화 물체 개수보다 많으면 가장 먼저 활성화된 물체부터 비활성화
+        if (activeObjectCount >= maxActiveObjects)
+        {
+            DeactivateOldestActiveObject();
+        }
+
+        // 비활성화된 물체 중에서 랜덤으로 선택하여 활성화
+        ActivateRandomObject();
+    }
+
+    int CountActiveObjects()
+    {
+        int count = 0;
+        foreach (var obj in fallingObjects)
+        {
+            if (obj.activeSelf)
+            {
+                count++;
+            }
+        }
+        return count;
+    }
+
+    void DeactivateOldestActiveObject()
+    {
+        // 가장 먼저 활성화된 물체를 찾아서 비활성화 및 초기 위치로 이동
+        if (activeObjectQueue.Count > 0)
+        {
+            GameObject oldestObject = activeObjectQueue.Dequeue();
+            MoveAndDeactivate(oldestObject);
+        }
+    }
+
+    public void MoveAndDeactivate(GameObject obj)
+    {
+        // 초기 위치로 이동
+        obj.transform.position = initialPositions[obj];
+
+        // 물체 비활성화
+        obj.SetActive(false);
+    }
+
+    void ActivateRandomObject()
+    {
+        // 비활성화된 물체 중에서 랜덤으로 선택하여 활성화
+        List<GameObject> inactiveObjects = fallingObjects.FindAll(obj => !obj.activeSelf);
+
+        if (inactiveObjects.Count > 0)
+        {
+            int randomIndex = Random.Range(0, inactiveObjects.Count);
+            GameObject randomObject = inactiveObjects[randomIndex];
+
+            randomObject.SetActive(true);
+            activeObjectQueue.Enqueue(randomObject);
+            StartCoroutine(MoveObject(randomObject.transform, targetHeight, 1.0f));
+        }
+    }
+
     IEnumerator MoveObject(Transform objTransform, float targetY, float duration)
     {
         float elapsedTime = 0f;
@@ -61,7 +111,5 @@ public class FallingObjectSpawner : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
-
-        objTransform.position = new Vector3(initialPosition.x, targetY, initialPosition.z);
     }
 }

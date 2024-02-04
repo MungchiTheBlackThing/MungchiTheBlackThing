@@ -4,8 +4,17 @@ using UnityEngine;
 
 public class ClickToRemove : MonoBehaviour
 {
+    private FallingObjectSpawner fallingObjectSpawner;
+
+    void Start()
+    {
+        // FallingObjectSpawner를 찾아서 참조
+        fallingObjectSpawner = FindObjectOfType<FallingObjectSpawner>();
+    }
+
     public void OnMouseDown()
     {
-        Destroy(this.gameObject);
+        // 클릭된 오브젝트를 삭제
+        fallingObjectSpawner.MoveAndDeactivate(gameObject);
     }
 }

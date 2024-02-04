@@ -7,7 +7,7 @@ public class MemoryPool
 
     //메모리 활성화 비활성화를 의미하는 의미하는 클래스 생성
 
-    private class PoolItem
+    public class PoolItem
     {
         public PoolItem(){}
         public PoolItem(bool isActive,GameObject gameObject) {
@@ -28,6 +28,11 @@ public class MemoryPool
         }
 
         return null; //없음 
+    }
+
+    public Dictionary<string, PoolItem> GetMemory()
+    {
+        return _memory;
     }
 
     public bool InsertMemory(GameObject gameObject)
