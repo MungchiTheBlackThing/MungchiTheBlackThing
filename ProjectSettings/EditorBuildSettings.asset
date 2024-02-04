@@ -6,7 +6,10 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/01.Scenes/CreateExp.unity
+    path: Assets/01.Scenes/Loading.unity
+    guid: a3329105bf7144e89bae56a9a10e82d1
+  - enabled: 1
+    path: Assets/01.Scenes/Dialogue.unity
     guid: cc3c92ca709294333a286212a9ac0d47
   - enabled: 0
     path: Assets/01.Scenes/SimJunHyun.unity
@@ -14,7 +17,7 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/01.Scenes/Tutorial.unity
     guid: 77eea7a2d9985e647b0eadd974385e8d
-  - enabled: 1
-    path: Assets/01.Scenes/Binoculars.unity
-    guid: f21bb23c31d73ea45b1944c2352bd9b3
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   m_configObjects: {}

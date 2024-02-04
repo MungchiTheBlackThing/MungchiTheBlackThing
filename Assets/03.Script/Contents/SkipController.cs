@@ -58,6 +58,8 @@ public class SkipController : MonoBehaviour
     //delegate 액션 함수 보관 -> 챕터 증가시 연관된 함수 호출
     delegate void OnUpdatedProgressDelegate(int chapter);
     OnUpdatedProgressDelegate onUpdatedProgress;
+    //다이얼로그 실행
+    GameObject story;
     void Start()
     {
 
@@ -189,6 +191,8 @@ public class SkipController : MonoBehaviour
                     _objManager.memoryPool.InsertMemory(SkipBackground);
                 }
                 _objManager.memoryPool.SetActiveObject(SkipBackground.name);
+
+                VideoMainDialogue();
                 break;
 
             case (int)TimeStamp.TS_THINKING:
@@ -202,6 +206,8 @@ public class SkipController : MonoBehaviour
                 }
                 _objManager.memoryPool.SetActiveObject(SkipBackground.name);
 
+                
+            
                 break;
 
             case (int)TimeStamp.TS_WRITING:
@@ -292,6 +298,11 @@ public class SkipController : MonoBehaviour
 
         yield return new WaitForSeconds(2f);
         checkList.SetActive(false);
+
+        if(curIdx == (int)TimeStamp.TS_THINKING )
+        {
+            story.SetActive(true);
+        }
     }
 
     public void SetSleepCheckList()
@@ -335,11 +346,7 @@ public class SkipController : MonoBehaviour
 
     public void VideoMainDialogue()
     {
-        PlayerPrefs.SetInt("CurrentChapter",_player.GetChapter());
-        PlayerPrefs.Save();
-
-        //SceneLoad한다.
-        SceneManager.LoadScene("Binoculars");
+        story = Instantiate(Resources.Load<GameObject>("Story/"+_player.GetChapter().ToString()), _objManager.transform.parent.parent);
     }
     public void NoBut()
     {
