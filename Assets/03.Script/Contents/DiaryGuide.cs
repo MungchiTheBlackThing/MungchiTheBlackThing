@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class DiaryGuide : MonoBehaviour
 {
-    public GameObject sc;
+    PlayerController sc;
     private int chapter;
     void Start()
     {
-        chapter = sc.GetComponent<PlayerController>().GetChapter();
+        chapter = sc.GetChapter();
 
         Debug.Log("Chapter: " + chapter);
 

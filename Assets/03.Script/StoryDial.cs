@@ -69,6 +69,7 @@ public class StoryDial : MonoBehaviour
         {
             Debug.Log("모든 비디오 클립 재생 완료");
             this.gameObject.SetActive(false);
+            Destroy(this.gameObject);
             // 모든 비디오 클립 재생이 완료된 경우에 대한 처리를 추가할 수 있습니다.
         }
     }
@@ -76,16 +77,18 @@ public class StoryDial : MonoBehaviour
     void OnVideoClipFinished(VideoPlayer vp)
     {
         // 비디오 클립 재생이 끝나면 다음 비디오 클립 재생
-        if(SeeScript)
-        {
-            currentClipIndex++;
-            PlayNextVideoClip();
-        }
-        else
-        {
-            videoPlayer.Pause();
-            isstop = true;
-        }
+        //if(SeeScript)
+        //{
+        //    currentClipIndex++;
+        //    PlayNextVideoClip();
+        //}
+        //else
+        //{
+        //    videoPlayer.Pause();
+        //    isstop = true;
+        //}
+        videoPlayer.Pause();
+        isstop = true;  
     }
 
     void Update()
