@@ -13,7 +13,7 @@ public class FallingObjectSpawner : MonoBehaviour
     private Dictionary<GameObject, Vector3> initialPositions = new Dictionary<GameObject, Vector3>();
     private Queue<GameObject> activeObjectQueue = new Queue<GameObject>();
 
-    private void Start()
+    private void OnEnable()
     {
         // 초기에 물체들을 미리 생성
         InitializeObjects();
@@ -111,5 +111,10 @@ public class FallingObjectSpawner : MonoBehaviour
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+    }
+
+    private void OnDisable() {
+        CancelInvoke("DropRandomObject");
+        fallingObjects.Clear();
     }
 }

@@ -299,6 +299,7 @@ public class SkipController : MonoBehaviour
         yield return new WaitForSeconds(2f);
         checkList.SetActive(false);
 
+        yield return new WaitForSeconds(1f);
         if(curIdx == (int)TimeStamp.TS_THINKING )
         {
             story.SetActive(true);
