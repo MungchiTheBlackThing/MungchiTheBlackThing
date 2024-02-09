@@ -430,6 +430,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exit: {fileID: 3381943385127006650, guid: c9bc6a73942d54648a8cae6be6975fa2, type: 3}
+  optic:
+  - {fileID: 8451787075197945147}
+  - {fileID: 8451787074502435309}
 --- !u!58 &6022950947311074219
 CircleCollider2D:
   m_ObjectHideFlags: 0
