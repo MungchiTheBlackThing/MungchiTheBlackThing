@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2736609761322590130}
   - component: {fileID: 2736609761322590128}
   - component: {fileID: 2736609761322590131}
+  - component: {fileID: 6003034106176901695}
   m_Layer: 5
   m_Name: 6
   m_TagString: Untagged
@@ -180,6 +181,21 @@ MonoBehaviour:
   endSubtitleIndex: 0
   SeeScript: 0
   isstop: 0
+  Guide: 1
+--- !u!114 &6003034106176901695
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2736609761322590141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b428700ddd4e4cf59fb749699c7c399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nickname: 
+  isDiaryCheck: 0
 --- !u!1 &2736609762039033701
 GameObject:
   m_ObjectHideFlags: 0

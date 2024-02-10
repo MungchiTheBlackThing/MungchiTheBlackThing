@@ -11,7 +11,7 @@ public class morbackground : MonoBehaviour
     RectTransform mask;
     void Start()
     {
-        Debug.Log($"{background.sizeDelta.x},{background.sizeDelta.y}");
+        //Debug.Log($"{background.sizeDelta.x},{background.sizeDelta.y}");
         mask.sizeDelta=new Vector2(background.sizeDelta.x,background.sizeDelta.y);
         mask.localScale=Vector3.one;
     }

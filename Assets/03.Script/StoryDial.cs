@@ -15,7 +15,9 @@ public class StoryDial : MonoBehaviour
         public VideoClip videoClip;
         public string[] subtitles;
     }
-
+    PlayerController playerController;
+    Day2StoryGuide Day2StoryGuide;
+    public GameObject StoryGuide;
     public VideoPlayer videoPlayer;
     public Maparray[] videoMaps; // 비디오 클립들과 자막들을 저장할 배열
     public TMP_Text TextMesh;
@@ -26,11 +28,16 @@ public class StoryDial : MonoBehaviour
     public int endSubtitleIndex;
     public bool SeeScript = false;
     public bool isstop = false;
+    public bool Guide = true;
+    public int chapter;
 
     void Start()
     {
         SeeScript = false;
         isstop = false;
+        playerController = GetComponent<PlayerController>();
+        Day2StoryGuide = StoryGuide.GetComponent<Day2StoryGuide>();
+        chapter=playerController.GetChapter();
         // 비디오 플레이어 컴포넌트 설정
         videoPlayer.loopPointReached += OnVideoClipFinished; // 비디오 클립 재생 완료 시 호출될 메소드 등록
         // 초기 비디오 클립 재생
@@ -44,10 +51,12 @@ public class StoryDial : MonoBehaviour
         {
             Maparray map = videoMaps[currentClipIndex];
             endSubtitleIndex = videoMaps[currentClipIndex].subtitles.Length - 1;
+            Guide = true;
             if (map.videoClip != null)
             {
                 videoPlayer.clip = map.videoClip;
                 videoPlayer.Play();
+                // 조건이 걸려서 기믹을 수행해야할때
 
                 if (map.subtitles != null && map.subtitles.Length > 0)
                 {
@@ -87,6 +96,14 @@ public class StoryDial : MonoBehaviour
         //    videoPlayer.Pause();
         //    isstop = true;
         //}
+
+
+        //기믹 수행을 위해 클릭해도 안넘어감
+        if (chapter == 2 && (currentClipIndex == 7 || currentClipIndex == 9 || currentClipIndex == 11))
+        {
+            Guide=false;
+            Day2StoryGuide.GuideStart();
+        }
         videoPlayer.Pause();
         isstop = true;  
     }
@@ -95,7 +112,7 @@ public class StoryDial : MonoBehaviour
     {
         // 마우스 클릭 등의 이벤트를 받아서 호출할 메소드를 추가할 수 있습니다.
         // 예를 들면, 아래와 같이 작성할 수 있습니다.
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonUp(0))
         {
             OnMouseClick();
         }
@@ -107,7 +124,7 @@ public class StoryDial : MonoBehaviour
             SeeScript = false;
     }
 
-    void OnMouseClick()
+    public void OnMouseClick()
     {
         // 마우스 클릭이 발생하면 텍스트 업데이트
         Maparray map = videoMaps[currentClipIndex];
@@ -123,7 +140,7 @@ public class StoryDial : MonoBehaviour
                 SeeScript = true;
             }
         }
-        if (isstop && SeeScript)
+        if (isstop && SeeScript && Guide)
         {
             currentClipIndex++;
             PlayNextVideoClip();

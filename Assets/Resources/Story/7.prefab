@@ -76,6 +76,7 @@ GameObject:
   - component: {fileID: 894314719047236954}
   - component: {fileID: 894314719047236951}
   - component: {fileID: 894314719047236950}
+  - component: {fileID: 7813752440290542970}
   m_Layer: 5
   m_Name: 7
   m_TagString: Untagged
@@ -244,6 +245,21 @@ MonoBehaviour:
   endSubtitleIndex: 0
   SeeScript: 0
   isstop: 0
+  Guide: 1
+--- !u!114 &7813752440290542970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 894314719047236955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b428700ddd4e4cf59fb749699c7c399, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nickname: 
+  isDiaryCheck: 0
 --- !u!1 &894314719182317224
 GameObject:
   m_ObjectHideFlags: 0
