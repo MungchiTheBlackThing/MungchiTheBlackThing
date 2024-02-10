@@ -1050,7 +1050,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA9 2023 TEAM 100\xB0 All rights reserved."
+  m_text: ' 2024 moonstew games All rights reserved.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
   m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
@@ -19547,6 +19547,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1553124585}
   m_CullTransparentMesh: 1
+--- !u!1 &1558086492
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1558086494}
+  - component: {fileID: 1558086493}
+  m_Layer: 0
+  m_Name: Mungchi
+  m_TagString: Mungchi
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1558086493
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558086492}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 511e108e3a2084ed58b4c97a0f46a337, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1558086494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1558086492}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1561921007
 GameObject:
   m_ObjectHideFlags: 0
@@ -19636,7 +19680,7 @@ MonoBehaviour:
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 2796, y: 1290}
-  m_ScreenMatchMode: 1
+  m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -20097,6 +20141,7 @@ GameObject:
   - component: {fileID: 1591312753}
   - component: {fileID: 1591312752}
   - component: {fileID: 1591312751}
+  - component: {fileID: 1591312754}
   m_Layer: 0
   m_Name: Content
   m_TagString: Untagged
@@ -20121,8 +20166,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -545.72485}
-  m_SizeDelta: {x: 0, y: 1259.62}
+  m_AnchoredPosition: {x: 0, y: 0.00012207031}
+  m_SizeDelta: {x: -252.96838, y: 1259.62}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &1591312751
 MonoBehaviour:
@@ -20136,8 +20181,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_HorizontalFit: 0
-  m_VerticalFit: 2
+  m_HorizontalFit: 2
+  m_VerticalFit: 0
 --- !u!114 &1591312752
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20160,8 +20205,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "Director / Producer: \uC774\uC8FC\uD76C\nArt Director / Animator: \uC774\uC724\uC120\nNarrative
     Designer & Writer: \uC774\uC8FC\uD76C, \uACE0\uC740\uC11C, \uC774\uC2DC\uC740\nAssistant
-    Game Writer: \uAE30\uD61C\uC2B9\nLead Programmer: \uC1A1\uC218\uC601\nAssistant
-    Programmer: \uC2EC\uC900\uD604\nEnglish Translation: \uC7A5\uD55C\uC194, \uAE30\uD61C\uC2B9\nSystem
+    Game Writer: \uAE30\uD61C\uC2B9\nProgrammer: \uC1A1\uC218\uC601\nProgrammer:
+    \uC2EC\uC900\uD604\nEnglish Translation: \uC7A5\uD55C\uC194, \uAE30\uD61C\uC2B9\nSystem
     & Interface Designer: \uC774\uC8FC\uD76C, \uCD5C\uC720\uB9AC, \uC774\uC724\uC120\n\n\newqeqwe\\e\new\neqwe\nwe\n\nerqwrqwrqwr\n\neqweqwe\n\n\n\n\nytrryrty"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
@@ -20239,6 +20284,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1591312749}
   m_CullTransparentMesh: 1
+--- !u!114 &1591312754
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1591312749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 25c04c1e518b14b0791ac73c1f670ed5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  viewport: {fileID: 1695961011}
 --- !u!1 &1595820938
 GameObject:
   m_ObjectHideFlags: 0
@@ -22027,7 +22085,7 @@ MonoBehaviour:
   m_MovementType: 2
   m_Elasticity: 0.1
   m_Inertia: 1
-  m_DecelerationRate: 0.135
+  m_DecelerationRate: 0
   m_ScrollSensitivity: 1
   m_Viewport: {fileID: 1169696438}
   m_HorizontalScrollbar: {fileID: 0}
@@ -24264,10 +24322,10 @@ RectTransform:
   m_Father: {fileID: 540397716}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -1348, y: 598}
-  m_SizeDelta: {x: 2696, y: 1193}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -1398, y: 648}
+  m_SizeDelta: {x: 2796, y: 1293}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1825811696
 MonoBehaviour:
@@ -26634,7 +26692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 2147483647
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1971052397
 RectTransform:
   m_ObjectHideFlags: 0

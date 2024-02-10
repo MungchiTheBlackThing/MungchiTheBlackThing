@@ -11,7 +11,16 @@ public class MungchiClick : MonoBehaviour
     Vector3 vel = Vector3.zero;
     [SerializeField]
     GameObject exit;
+    [SerializeField]
+    Transform []optic;
+    float speed=5f;
+    float time=1f;
 
+    Vector2 originScale;
+    void Awake()
+    {
+        originScale = transform.localScale;
+    }
     public void OnMouseDown()
     {
         Animator[] animator = this.GetComponentsInChildren<Animator>();
@@ -21,11 +30,22 @@ public class MungchiClick : MonoBehaviour
             animator[i].SetTrigger("Trigger");
             animator[i].SetBool("BoolAni", true);
         }
-        Invoke("CloseBino",2f);
+        StartCoroutine("CloseBino");
     }
 
-    void CloseBino(){
+    IEnumerator CloseBino(){
         //X UI를 뜨도록 canvas를 킨다.
+
+        while(optic[0].transform.localScale.x<35f)
+        {
+            optic[0].transform.localScale = originScale * (1f + time * speed);
+            optic[1].transform.localScale = originScale * (1f + time * speed);
+            
+            time +=Time.deltaTime;
+            yield return null; //다음 프레임에서 실행
+        }
+
+        yield return new WaitForSeconds(1f);
         Instantiate(exit,GameObject.Find("Canvas").transform);
     }
     //Animator[] animator = this.GetComponentsInChildren<Animator>();

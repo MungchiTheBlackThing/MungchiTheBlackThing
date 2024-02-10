@@ -5,8 +5,13 @@ using UnityEngine;
 public class GameSceneController : MonoBehaviour
 {
 
+    GameObject binocular;
     Transform DialogueUI;
 
+    void Awake()
+    {
+        binocular=GameObject.FindWithTag("Binocular").gameObject;
+    }
     void Start(){
         DialogueUI=GameObject.Find("Canvas").transform;
     }
@@ -15,8 +20,7 @@ public class GameSceneController : MonoBehaviour
         {
             DialogueUI.GetChild(i).gameObject.SetActive(true);
         }
+        Destroy(binocular);//삭제하는데, Click_Alarm을 꺼줘야함.
         Destroy(this.gameObject);
-        //현재 뭉치 GameObject를 삭제해야함.
-        Destroy(GameObject.FindWithTag("Binocular").gameObject);//삭제하는데, Click_Alarm을 꺼줘야함.
     }
 }
