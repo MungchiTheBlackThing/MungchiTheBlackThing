@@ -23,7 +23,7 @@ public class DragIcon : MonoBehaviour
     {
         this.chapter=chapter;
         this.title=title;
-        this.sprite =Resources.Load<Sprite>(source);
+        this.sprite = Resources.Load<Sprite>(source);
         this.subTitle=subTitle;
 
         titleText.text=this.title;
