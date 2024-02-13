@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
 public class ChapterProgressManager : MonoBehaviour
@@ -16,6 +17,12 @@ public class ChapterProgressManager : MonoBehaviour
     
     ChapterInfo chapterInfo;
     PlayerController player;
+    
+    [SerializeField]
+    List<Image> subPhaseUI; 
+    [SerializeField]
+    List<GameObject> subPhaseUIObject;
+
     
     public void PassData(ChapterInfo chapterInfo, PlayerController player)
     {
@@ -50,7 +57,17 @@ public class ChapterProgressManager : MonoBehaviour
             }
         }
 
-        Debug.Log($"현재 클릭된 챕터 {chapterInfo.id}와 플레이어의 챕터 {this.player.GetChapter()} 그리고 현재 Phase{this.player.GetAlreadyEndedPhase()}");
+        for(int i=0;i<subPhaseUI.Count;i++)
+        {
+            if(subPhaseUIObject[i].activeSelf == false)
+            {
+                subPhaseUI[i].sprite=Resources.Load<Sprite>(chapterInfo.subFilePath[i]);
+            }
+            else
+            {
+                subPhaseUI[i].sprite=Resources.Load<Sprite>(chapterInfo.subLockFilePath[i]);
+            }
+        }
     }
 
     private void OnDisable() {

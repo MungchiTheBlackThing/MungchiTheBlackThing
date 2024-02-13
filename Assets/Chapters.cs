@@ -10,6 +10,7 @@ public class ChapterInfo
     public string title;
     public string loadText;
     public string mainFilePath;
+    public string[] subLockFilePath;
     public string[] subFilePath;
 }
 

@@ -145,7 +145,7 @@ public class MenuController : MonoBehaviour
         //5일차~14일까지
         for(int i=4;i<=chapter+1;i++)
         {
-            if(chapter > 15) continue;
+            if(i >= 15) continue;
             if(prograssUI.ContainsKey(i) == false)
             {
                 GameObject icon=Instantiate(dragIcon,dragScroller.transform.GetChild(0));

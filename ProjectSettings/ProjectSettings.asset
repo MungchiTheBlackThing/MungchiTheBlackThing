@@ -245,7 +245,7 @@ PlayerSettings:
   useCustomMainGradleTemplate: 0
   useCustomLauncherGradleManifest: 0
   useCustomBaseGradleTemplate: 0
-  useCustomGradlePropertiesTemplate: 0
+  useCustomGradlePropertiesTemplate: 1
   useCustomProguardFile: 0
   AndroidTargetArchitectures: 3
   AndroidTargetDevices: 0
@@ -914,11 +914,11 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   activeInputHandler: 0
   windowsGamepadBackendHint: 0
-  cloudProjectId: b30717ce-4ed9-4b26-a190-49f41a0b886d
+  cloudProjectId: ce071dcf-7cb6-4064-b6c2-14ae90279ef1
   framebufferDepthMemorylessMode: 0
   qualitySettingsNames: []
-  projectName: TheBlackThing
-  organizationId: simpson7257
+  projectName: TheBlackThing (2)
+  organizationId: songsuyoung
   cloudEnabled: 0
   legacyClampBlendShapeWeights: 0
   playerDataPath: 
