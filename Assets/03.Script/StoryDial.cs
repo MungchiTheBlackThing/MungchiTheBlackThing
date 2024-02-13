@@ -17,7 +17,7 @@ public class StoryDial : MonoBehaviour
     }
     PlayerController playerController;
     Day2StoryGuide Day2StoryGuide;
-    public GameObject StoryGuide;
+    //public GameObject StoryGuide;
     public VideoPlayer videoPlayer;
     public Maparray[] videoMaps; // 비디오 클립들과 자막들을 저장할 배열
     public TMP_Text TextMesh;
@@ -29,14 +29,13 @@ public class StoryDial : MonoBehaviour
     public bool SeeScript = false;
     public bool isstop = false;
     public bool Guide = true;
-    public int chapter;
+    int chapter;
 
     void Start()
     {
         SeeScript = false;
         isstop = false;
         playerController = GetComponent<PlayerController>();
-        Day2StoryGuide = StoryGuide.GetComponent<Day2StoryGuide>();
         chapter=playerController.GetChapter();
         // 비디오 플레이어 컴포넌트 설정
         videoPlayer.loopPointReached += OnVideoClipFinished; // 비디오 클립 재생 완료 시 호출될 메소드 등록
@@ -101,7 +100,8 @@ public class StoryDial : MonoBehaviour
         //기믹 수행을 위해 클릭해도 안넘어감
         if (chapter == 2 && (currentClipIndex == 7 || currentClipIndex == 9 || currentClipIndex == 11))
         {
-            Guide=false;
+            Day2StoryGuide = this.GetComponent<Day2StoryGuide>();
+            Guide =false;
             Day2StoryGuide.GuideStart();
         }
         videoPlayer.Pause();

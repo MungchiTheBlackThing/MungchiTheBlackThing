@@ -251,7 +251,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: /Users/songsuyeong/user.keystore
+  AndroidKeystoreName: '{inproject}: user.keystore'
   AndroidKeyaliasName: theblackthing
   AndroidBuildApkPerCpuArchitecture: 1
   AndroidTVCompatibility: 0

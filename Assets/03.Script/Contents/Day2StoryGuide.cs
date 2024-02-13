@@ -4,24 +4,16 @@ using UnityEngine;
 
 public class Day2StoryGuide : MonoBehaviour
 {
-    public GameObject storyDial;
     public GameObject GuideBackground;
-    PlayerController playerController;
     Animator animator;
     StoryDial dial;
-    public int chapter;
     public int currentClipIndex;
     public bool isGimic = false;
     // Start is called before the first frame update
     void Start()
     {
-        playerController = GetComponent<PlayerController>();
-        animator = GuideBackground.GetComponent<Animator>();
-        dial = storyDial.GetComponent<StoryDial>();
-        animator.SetTrigger("Drag");
-        chapter = playerController.GetChapter();
+        dial = this.GetComponent<StoryDial>();
         GuideBackground.SetActive(false);
-        Debug.Log(chapter);
     }
     private void Update()
     {
@@ -32,6 +24,7 @@ public class Day2StoryGuide : MonoBehaviour
     }
     public void GuideStart()
     {
+        animator = GuideBackground.GetComponent<Animator>();
         Debug.Log("왜 안켜져");
         isGimic = true;
         GuideBackground.SetActive(true);
