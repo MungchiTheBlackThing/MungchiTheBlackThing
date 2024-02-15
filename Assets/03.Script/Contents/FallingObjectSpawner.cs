@@ -105,10 +105,29 @@ public class FallingObjectSpawner : MonoBehaviour
         float elapsedTime = 0f;
         Vector3 initialPosition = objTransform.position;
 
+        // 등속도 운동을 위한 초기 x 속도 계산
+        float initialVelocityX = 100f;
+
+        // 등가속도 운동을 위한 초기 y 속도 및 중력 계산
+        float accelerationY = -600f;
+        int random = Random.Range(0, 2) * 2 - 1;
+
         while (elapsedTime < duration)
         {
-            objTransform.position = Vector3.Lerp(initialPosition, new Vector3(initialPosition.x, targetY, initialPosition.z), elapsedTime / duration);
+            // x 및 y의 변화 계산
+            float displacementX = initialVelocityX * elapsedTime * random;
+            float displacementY = 0.5f * accelerationY * elapsedTime * elapsedTime;
+
+            // z 변화 (필요에 따라 추가 가능)
+            float displacementZ = 0f;
+
+            // 현재 위치 업데이트
+            objTransform.position = initialPosition + new Vector3(displacementX, displacementY, displacementZ);
+
+            // 경과 시간 업데이트
             elapsedTime += Time.deltaTime;
+
+            // 다음 프레임까지 대기
             yield return null;
         }
     }
