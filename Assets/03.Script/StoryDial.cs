@@ -36,6 +36,10 @@ public class StoryDial : MonoBehaviour
         SeeScript = false;
         isstop = false;
         playerController = GetComponent<PlayerController>();
+<<<<<<< Updated upstream
+=======
+        //Day2StoryGuide = StoryGuide.GetComponent<Day2StoryGuide>();
+>>>>>>> Stashed changes
         chapter=playerController.GetChapter();
         // 비디오 플레이어 컴포넌트 설정
         videoPlayer.loopPointReached += OnVideoClipFinished; // 비디오 클립 재생 완료 시 호출될 메소드 등록
