@@ -25,16 +25,8 @@ public class MoonRadioButController : MonoBehaviour
                 main=this.transform.parent.GetChild(i).gameObject;
         }
         cnt=main.GetComponent<MainMoonRadioUIController>().getMoonCnt();
-
-        //실행시 5초 뒤에 깜빡 깜빡 등장.
-        Invoke("AppearOnScreen",1.5f);
     }
 
-    void AppearOnScreen(){
-        //2개를 교체해서 보여줄 예정. 스토리 1 스토리 2
-        chat[(cnt-1)%2].SetActive(true); //스토리 1 
-        chat[(cnt)%2].SetActive(false); //스토리 2
-    }
     public void ExitMoonChannel(){
         //exitPopup setActive on
         //exit but interactable off
@@ -53,9 +45,7 @@ public class MoonRadioButController : MonoBehaviour
         popup.SetActive(false);
         if(exitPopup.Length!=0)
             exitPopup[(cnt-1)%2].SetActive(false);
-
-        cnt=main.GetComponent<MainMoonRadioUIController>().setMoonCnt();
-        AppearOnScreen();
+        main.GetComponent<MainMoonRadioUIController>().resetRadioMoon();
         //대화도 새로 바뀔 예정 -> 원래버전으로 바꾼다 
     }
 
@@ -66,6 +56,7 @@ public class MoonRadioButController : MonoBehaviour
         if(exitPopup.Length!=0)
             exitPopup[(cnt-1)%2].SetActive(false);
         main.SetActive(true);
-        Destroy(this.gameObject);
+        Debug.Log(1);
+
     }
 }

@@ -11,6 +11,8 @@ public class MainMoonRadioUIController : MonoBehaviour
 
     [SerializeField]
     GameObject radio_main;
+
+    GameObject firstRadioMoon;
     [SerializeField]
     GameObject alter_Moon;
     [SerializeField]
@@ -39,7 +41,7 @@ public class MainMoonRadioUIController : MonoBehaviour
     public void goMoonChannel(){
         moon_Cnt+=1;
         if(moon_Cnt<=2){
-            Instantiate(moon_radio,this.transform.parent);
+            firstRadioMoon=Instantiate(moon_radio,this.transform.parent);
         }else{
             alter_Moon.SetActive(true);
         }
@@ -69,6 +71,21 @@ public class MainMoonRadioUIController : MonoBehaviour
     public void noExit(){
         radio_main.SetActive(true);
         radio_off.SetActive(false);
+    }
+
+    public void resetRadioMoon()
+    {
+        Debug.Log(2);
+        if(firstRadioMoon)
+        {
+            Debug.Log("이거 되는거 맞아?");
+            Destroy(firstRadioMoon);
+            firstRadioMoon=null;
+        }
+        if(moon_Cnt<=2){
+            moon_Cnt+=1;
+            firstRadioMoon=Instantiate(moon_radio,this.transform.parent);
+        }
     }
 
 }
