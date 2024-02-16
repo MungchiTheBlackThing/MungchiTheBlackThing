@@ -21,7 +21,6 @@ public class PlayEventController : MonoBehaviour
     
     private void OnEnable() {
         Sleep.SetActive(true);
-        selectedOptionObj.SetActive(true);
         Play.GetComponent<Animator>().SetBool("isSleeping",true);
         Play.SetActive(false);
         sleepDots.SetActive(false);
@@ -46,11 +45,15 @@ public class PlayEventController : MonoBehaviour
         return null;
     }
 
-    public void OnClick()
+    public void SetSelectedOption()
     {
-        GameObject selected=EventSystem.current.currentSelectedGameObject;
-        selected.transform.GetChild(0).gameObject.SetActive(false);
-        selected.transform.GetChild(1).gameObject.SetActive(true);
+        selectedOptionObj.SetActive(true);
     }
+    // public void OnClick()
+    // {
+    //     GameObject selected=EventSystem.current.currentSelectedGameObject;
+    //     selected.transform.GetChild(0).gameObject.SetActive(false);
+    //     selected.transform.GetChild(1).gameObject.SetActive(true);
+    // }
 
 }
