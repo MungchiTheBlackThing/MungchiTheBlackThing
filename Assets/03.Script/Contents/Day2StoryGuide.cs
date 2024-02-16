@@ -9,18 +9,13 @@ public class Day2StoryGuide : MonoBehaviour
     StoryDial dial;
     public int currentClipIndex;
     public bool isGimic = false;
+    Dragable dragable;
+    Drop drop;
     // Start is called before the first frame update
     void Start()
     {
         dial = this.GetComponent<StoryDial>();
         GuideBackground.SetActive(false);
-    }
-    private void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.Space)&&isGimic)
-        {
-            GuideEnd();
-        }
     }
     public void GuideStart()
     {
@@ -28,7 +23,11 @@ public class Day2StoryGuide : MonoBehaviour
         Debug.Log("왜 안켜져");
         isGimic = true;
         GuideBackground.SetActive(true);
-        animator.SetTrigger("Drag");
+        animator.SetTrigger("Drag"); 
+        dragable = GameObject.FindWithTag("Dragable").gameObject.GetComponent<Dragable>();
+        drop = GameObject.FindWithTag("Drop").gameObject.GetComponent<Drop>();
+
+        drop.destroyObject += dragable.SelfDestroy;
     }
     public void GuideEnd()
     {
