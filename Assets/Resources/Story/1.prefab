@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2419568065614555300
 RectTransform:
   m_ObjectHideFlags: 0
@@ -400,7 +400,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2091c9b881c63f34ab4c62f32cd83a08, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StoryGuide: {fileID: 0}
   videoPlayer: {fileID: 3293854438933685366}
   videoMaps:
   - videoClip: {fileID: 32900000, guid: 21dc4c448e3ac40498f4f403edc04ab9, type: 3}
@@ -510,7 +509,6 @@ MonoBehaviour:
   SeeScript: 0
   isstop: 0
   Guide: 1
-  chapter: 0
 --- !u!114 &1286375061793095984
 MonoBehaviour:
   m_ObjectHideFlags: 0
