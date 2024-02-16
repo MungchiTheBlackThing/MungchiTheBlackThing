@@ -215,7 +215,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 657269529511923012, guid: 23a8e8c849c6a446c8a99c4e80ae9969, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 267.615
+      value: 267.62
       objectReference: {fileID: 0}
     - target: {fileID: 657269529511923012, guid: 23a8e8c849c6a446c8a99c4e80ae9969, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -265,6 +265,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Script
       objectReference: {fileID: 0}
+    - target: {fileID: 657269529643005940, guid: 23a8e8c849c6a446c8a99c4e80ae9969, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+    - target: {fileID: 657269529643005940, guid: 23a8e8c849c6a446c8a99c4e80ae9969, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
     - target: {fileID: 657269529643005941, guid: 23a8e8c849c6a446c8a99c4e80ae9969, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0

@@ -39,12 +39,16 @@ public class ChatClickManager : MonoBehaviour
             return;
         }
         Transform parentObject=this.gameObject.transform;
-        if(parentObject.childCount>=3){
-            Destroy(parentObject.GetChild(0).gameObject);
+
+        if(parentObject)
+        {
+            if(parentObject.childCount>=3){
+                Destroy(parentObject.GetChild(0).gameObject);
+            }
+            GameObject newObject=Instantiate(dreamNPC[idx[currIdx]]) as GameObject; //gameObject 생성
+            newObject.name=newObject.name.Substring(0,newObject.name.IndexOf('('));
+            newObject.transform.GetComponent<AreaScript>().CharacterText.text=txt[currIdx-1];
+            newObject.transform.SetParent(parentObject,false); //현재 클릭된 오브젝트의 부모 위로 설정해주기.
         }
-        GameObject newObject=Instantiate(dreamNPC[idx[currIdx]]) as GameObject; //gameObject 생성
-        newObject.name=newObject.name.Substring(0,newObject.name.IndexOf('('));
-        newObject.transform.GetComponent<AreaScript>().CharacterText.text=txt[currIdx-1];
-        newObject.transform.SetParent(parentObject,false); //현재 클릭된 오브젝트의 부모 위로 설정해주기.
     }
 }
