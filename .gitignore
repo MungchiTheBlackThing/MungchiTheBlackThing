@@ -29,6 +29,7 @@
 /[Aa]ssets/Editor Default Resources/
 /[Aa]ssets/ExternalDependencyManager/
 /[Aa]ssets/Plugins/
+/[Aa]ssets/PlayerData.json
 # Visual Studio cache directory
 .vs/
 

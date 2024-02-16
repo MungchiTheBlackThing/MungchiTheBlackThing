@@ -5,7 +5,7 @@ using System.Collections;
 public class FallingObjectSpawner : MonoBehaviour
 {
     public List<GameObject> objectPrefabs = new List<GameObject>(); // 다양한 프리팹들
-    public float spawnInterval = 3.0f;
+    public float spawnInterval = 2.0f;
     public int maxActiveObjects = 10; // 최대 활성화 물체 개수
     public int targetHeight = 100;
 
@@ -116,7 +116,7 @@ public class FallingObjectSpawner : MonoBehaviour
         {
             // x 및 y의 변화 계산
             float displacementX = initialVelocityX * elapsedTime * random;
-            float displacementY = 0.5f * accelerationY * elapsedTime * elapsedTime;
+            float displacementY = 0.4f * accelerationY * elapsedTime * elapsedTime;
 
             // z 변화 (필요에 따라 추가 가능)
             float displacementZ = 0f;

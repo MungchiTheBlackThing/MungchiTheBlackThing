@@ -594,9 +594,9 @@ MonoBehaviour:
   - {fileID: 2197411986794120240, guid: 436a352070178ea4f823cd461b9a2453, type: 3}
   - {fileID: 2197411986794120240, guid: 436a352070178ea4f823cd461b9a2453, type: 3}
   - {fileID: 2197411986794120240, guid: 436a352070178ea4f823cd461b9a2453, type: 3}
-  spawnInterval: 3
-  maxActiveObjects: 5
-  targetHeight: 100
+  spawnInterval: 2
+  maxActiveObjects: 10
+  targetHeight: 150
 --- !u!1 &7131261092679412916
 GameObject:
   m_ObjectHideFlags: 0
