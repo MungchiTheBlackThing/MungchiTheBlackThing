@@ -18,7 +18,6 @@ public class PlaySelectedOptionController : MonoBehaviour
 
     public bool IsSleep { get=>isSleep;}
 
-    public GameObject poem;
     void OnEnable()
     {
         //선택지 다 끄기
