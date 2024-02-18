@@ -204,6 +204,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isrelease: 0
+  isSuccess: 0
   target: {fileID: 7107071153190112158}
 --- !u!1 &7107071153098182024
 GameObject:
@@ -394,6 +395,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exit: {fileID: 3381943385127006650, guid: c9bc6a73942d54648a8cae6be6975fa2, type: 3}
+  opticBackground: {fileID: 7107071154335621539}
+  speed: 1
 --- !u!58 &7107071153190112152
 CircleCollider2D:
   m_ObjectHideFlags: 0
