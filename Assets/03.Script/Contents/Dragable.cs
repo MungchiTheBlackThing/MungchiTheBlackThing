@@ -7,11 +7,13 @@ using UnityEngine.UI;
 public class Dragable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler, IPointerDownHandler
 {
     public static Vector2 DefaultPos;
-    public Image image;
+    DragsObject dragObjects;
+    private Image image;
     public Color color;
     // Start is called before the first frame update
     void Start()
     {
+        dragObjects = this.GetComponentInParent<DragsObject>();
         image = this.GetComponent<Image>();
         color = image.color;
         color.a = 0;
@@ -48,6 +50,6 @@ public class Dragable : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     }
     public void SelfDestroy()
     {
-        Destroy(gameObject);
+        dragObjects. DestroyChilde();
     }
 }

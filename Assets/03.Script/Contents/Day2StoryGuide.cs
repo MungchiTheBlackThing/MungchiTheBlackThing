@@ -20,13 +20,12 @@ public class Day2StoryGuide : MonoBehaviour
     public void GuideStart()
     {
         animator = GuideBackground.GetComponent<Animator>();
-        Debug.Log("왜 안켜져");
         isGimic = true;
         GuideBackground.SetActive(true);
         animator.SetTrigger("Drag"); 
         dragable = GameObject.FindWithTag("Dragable").gameObject.GetComponent<Dragable>();
         drop = GameObject.FindWithTag("Drop").gameObject.GetComponent<Drop>();
-
+        Debug.Log(dragable.name);
         drop.destroyObject += dragable.SelfDestroy;
     }
     public void GuideEnd()
