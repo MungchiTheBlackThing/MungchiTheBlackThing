@@ -14,6 +14,7 @@ public class SkipClickController : MonoBehaviour,IPointerClickHandler
     float fadeSpeed=2.0f;
     bool isAlreadyClick=false;
     // Start is called before the first frame update
+
     void Start()
     {
         clickObject=new List<GameObject>();
@@ -28,6 +29,8 @@ public class SkipClickController : MonoBehaviour,IPointerClickHandler
         for(int i=0;i<moonText.childCount;i++)
         {
             clickObject.Add(moonText.GetChild(i).gameObject);
+            if(i<DialogueDataAsset.skipDialogue.Count)
+                moonText.GetChild(i).gameObject.GetComponent<TMP_Text>().text = DialogueDataAsset.skipDialogue[i];
         }
 
     }

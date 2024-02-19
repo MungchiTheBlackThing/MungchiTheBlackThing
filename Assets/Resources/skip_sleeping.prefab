@@ -12,9 +12,7 @@ GameObject:
   - component: {fileID: 5271344292000275048}
   - component: {fileID: 9061608743591125138}
   m_Layer: 0
-  m_Name: "\uC778\uAC04\uC740 \uC131\uC7A5\uC758 \uB3D9\uBB3C. \uADF8\uB4E4\uC740
-    \uB77C\uB514\uC624\uC5D0\uC11C mp3\uB85C, \uB2E4\uC2DC \uD578\uB4DC\uD3F0\uC774\uB77C\uB294
-    \uAE30\uACC4\uB85C \uC131\uC7A5\uD588\uC74C. [2656:1731]"
+  m_Name: sircello
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -68,9 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC778\uAC04\uC740 \uC131\uC7A5\uC758 \uB3D9\uBB3C. \uADF8\uB4E4\uC740
-    \uB77C\uB514\uC624\uC5D0\uC11C mp3\uB85C, \uB2E4\uC2DC \uD578\uB4DC\uD3F0\uC774\uB77C\uB294
-    \uAE30\uACC4\uB85C \uC131\uC7A5\uD588\uC74C."
+  m_text: 2
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
   m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
@@ -300,7 +296,7 @@ GameObject:
   - component: {fileID: 387519558240122853}
   - component: {fileID: 929816858237292821}
   m_Layer: 0
-  m_Name: "~\u266B\u266E\u266D\u2669\u266B&? [2656:1732]"
+  m_Name: edison
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -354,7 +350,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "~\u266B\u266E\u266D\u2669\u266B&?"
+  m_text: 3
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
   m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
@@ -435,9 +431,7 @@ GameObject:
   - component: {fileID: 4009864114392349058}
   - component: {fileID: 3852333146520236968}
   m_Layer: 0
-  m_Name: "\uC694\uC998 \uC0AC\uB78C\uB4E4\uC740 \uB354 \uC774\uC0C1 \u201C\uB77C\uB514\uC624\"\uB77C\uB294
-    \uAC78 \uC0AC\uC6A9\uD558\uC9C0 \uC54A\uB294\uB2E4\uB294\uB370, \uC5B4\uB5BB\uAC8C
-    \uADF8\uB798? [2656:1730]"
+  m_Name: red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -491,8 +485,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC694\uC998 \uC0AC\uB78C\uB4E4\uC740 \uB354 \uC774\uC0C1 \u201C\uB77C\uB514\uC624\"\uB77C\uB294\n\uAC78
-    \uC0AC\uC6A9\uD558\uC9C0 \uC54A\uB294\uB2E4\uB294\uB370, \uC5B4\uB5BB\uAC8C \uADF8\uB798?"
+  m_text: 1
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
   m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
