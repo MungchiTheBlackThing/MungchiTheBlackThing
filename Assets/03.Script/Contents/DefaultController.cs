@@ -16,6 +16,7 @@ public class DefaultController : MonoBehaviour
 
     [SerializeField]
     GameObject Diary;
+    GameObject diaryRealObject;
     GameObject canvas;
 
     PlayerController _player;
@@ -31,17 +32,13 @@ public class DefaultController : MonoBehaviour
         DefaultPos = this.transform.position;
         canvas = GameObject.Find("Canvas");
 
-        if(this.transform.name=="Night")
+        if(_player.isDiaryCheck==false && (ClientController.diaryStatus != DiaryStatus.FISRT_NONE||ClientController.diaryStatus != DiaryStatus.NOT_READ))
         {
-            if(_player.isDiaryCheck==false)
-            {
-                light.SetActive(true);
-                ClientController.diaryStatus=DiaryStatus.FIRST_READ;
-                _player.isDiaryCheck=true;
-            }
-            Debug.Log(ClientController.diaryStatus);
-            
+            light.SetActive(true);
+            ClientController.diaryStatus=DiaryStatus.FIRST_READ;
+            _player.isDiaryCheck=true;
         }
+        Debug.Log(ClientController.diaryStatus);
     }
 
     public void Update()
@@ -80,7 +77,11 @@ public class DefaultController : MonoBehaviour
         
         for (int i = 0; i < uiList.Length; i++)
             uiList[i].SetActive(false);
-        Instantiate(Diary, this.transform.parent.transform.parent);
+        
+        if(diaryRealObject!=null)
+            diaryRealObject.SetActive(true);
+        else
+            diaryRealObject =Instantiate(Diary, this.transform.parent.transform.parent);
     }
     public void CloseMenu()
     {

@@ -8,18 +8,22 @@ public class DiarySystem : MonoBehaviour
     GameObject openDiary;
     [SerializeField]
     GameObject closeDiary;
-
+    [SerializeField]
+    GameObject alert;
+    public void AppearsWarning()
+    {
+        alert.SetActive(true);
+    }
     public void OpenDiary(){
         openDiary.gameObject.SetActive(true);
         closeDiary.gameObject.SetActive(false);
-
     }
     public void Exit(){
         //실제론 Destroy할 예정..
         //애니메이션후 애니메이션 끝나면 Destory하도록 설정할예정
 
         FindObjectOfType<DefaultController>().OpenMenu();
-        Destroy(this.gameObject);
+        this.gameObject.SetActive(false);
     }
     public void Next(){
         Instantiate(openDiary,openDiary.transform.parent);
