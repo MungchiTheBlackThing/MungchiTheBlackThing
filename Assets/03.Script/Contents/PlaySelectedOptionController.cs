@@ -23,6 +23,7 @@ public class PlaySelectedOptionController : MonoBehaviour
         //선택지 다 끄기
         for (int i=0;i<selected.Length;i++)
             selected[i].SetActive(true);
+        DotsText.text="일기 다 썼어.\n자기 전에 같이 시 읽을래?\n";
     }
     public void PlayPoem()
     {
