@@ -4,17 +4,25 @@ using UnityEngine;
 
 public class DiaryGuide : MonoBehaviour
 {
-    PlayerController sc;
     private int chapter;
+
     void Start()
     {
-        chapter = sc.GetChapter();
+        chapter = GameObject.FindWithTag("Player").GetComponent<PlayerController>().GetChapter();
 
         Debug.Log("Chapter: " + chapter);
 
         if (chapter != 2 )
         {
-            this.gameObject.SetActive(false);
+            Destroy(this.gameObject); 
         }
     }
+
+    public void OnClick()
+    {
+        this.gameObject.SetActive(false);
+        Destroy(this.gameObject); 
+    }
+
+    
 }
