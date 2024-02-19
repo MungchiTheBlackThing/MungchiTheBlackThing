@@ -335,7 +335,7 @@ public class SkipController : MonoBehaviour
         //3초간 애니메이션 송출 
 
         CloseAllBackgroundMenu();
-        yield return new WaitForSeconds(3f);
+        yield return new WaitForSeconds(6f);
         if (SkipBackground != null)
         {
             _objManager.memoryPool.DeactivateObject(SkipBackground.name);

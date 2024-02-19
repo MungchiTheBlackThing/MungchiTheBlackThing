@@ -11,16 +11,12 @@ public class MungchiClick : MonoBehaviour
     Vector3 vel = Vector3.zero;
     [SerializeField]
     GameObject exit;
-    [SerializeField]
-    Transform []optic;
-    float speed=5f;
-    float time=1f;
 
-    Vector2 originScale;
-    void Awake()
-    {
-        originScale = transform.localScale;
-    }
+    [SerializeField]
+    SpriteRenderer opticBackground;
+    [SerializeField]
+    float speed=1f;
+
     public void OnMouseDown()
     {
         Animator[] animator = this.GetComponentsInChildren<Animator>();
@@ -30,29 +26,22 @@ public class MungchiClick : MonoBehaviour
             animator[i].SetTrigger("Trigger");
             animator[i].SetBool("BoolAni", true);
         }
-        StartCoroutine("CloseBino");
+        StartCoroutine("FadeOutBino");
     }
 
-    IEnumerator CloseBino(){
-        //X UI를 뜨도록 canvas를 킨다.
+    IEnumerator FadeOutBino(){
+        
+        Color initColor = opticBackground.color;
 
-        while(optic[0].transform.localScale.x<35f)
+        while(initColor.a > 0.1f)
         {
-            optic[0].transform.localScale = originScale * (1f + time * speed);
-            optic[1].transform.localScale = originScale * (1f + time * speed);
-            
-            time +=Time.deltaTime;
+            initColor.a -= Time.deltaTime * speed ;
+            opticBackground.color = initColor;
             yield return null; //다음 프레임에서 실행
         }
-
         yield return new WaitForSeconds(1f);
         Instantiate(exit,GameObject.Find("Canvas").transform);
     }
-    //Animator[] animator = this.GetComponentsInChildren<Animator>();
-
-    //    for (int i = 0; i<animator.Length; i++)
-    //    {
-    //        animator[i].SetTrigger("Trigger");
 
     void Start()
     {

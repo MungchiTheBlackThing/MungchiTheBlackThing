@@ -18,8 +18,15 @@ public class PlayEventController : MonoBehaviour
     GameObject Play;
     [SerializeField]
     GameObject sleepDots;
-    
+    [SerializeField]
+    GameObject playBallumn;
+
+    GameObject defaultUI;
+    [SerializeField]
+    GameObject iconBut;
     private void OnEnable() {
+
+        defaultUI= GameObject.Find("DefaultUI");
         Sleep.SetActive(true);
         Play.GetComponent<Animator>().SetBool("isSleeping",true);
         Play.SetActive(false);
@@ -44,10 +51,21 @@ public class PlayEventController : MonoBehaviour
 
         return null;
     }
-
+    public void SetUI()
+    {
+        defaultUI.SetActive(true);
+    }
     public void SetSelectedOption()
     {
+        iconBut.SetActive(false);
+        defaultUI.SetActive(false);
         selectedOptionObj.SetActive(true);
+        playBallumn.SetActive(true);
+    }
+
+    private void OnDisable() {
+        selectedOptionObj.SetActive(false);
+        playBallumn.SetActive(false);
     }
     // public void OnClick()
     // {

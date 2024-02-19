@@ -514,7 +514,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   exit: {fileID: 3381943385127006650, guid: c9bc6a73942d54648a8cae6be6975fa2, type: 3}
-  optic: []
+  opticBackground: {fileID: 3845241551989194670}
+  speed: 1
 --- !u!61 &3845241552697999818
 BoxCollider2D:
   m_ObjectHideFlags: 0

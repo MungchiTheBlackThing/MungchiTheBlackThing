@@ -853,7 +853,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8213844770840075297
 RectTransform:
   m_ObjectHideFlags: 0
@@ -974,10 +974,10 @@ RectTransform:
   m_Father: {fileID: 8213844770840075297}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 210.0893, y: -81.1087}
+  m_SizeDelta: {x: 420.1786, y: 162.2174}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8213844771179746961
 CanvasRenderer:
@@ -1076,9 +1076,9 @@ RectTransform:
   m_Father: {fileID: 8213844771179746962}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 210.0893, y: -66.1087}
   m_SizeDelta: {x: 200, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8213844771331768973
@@ -1234,9 +1234,8 @@ MonoBehaviour:
   - {fileID: 1589468533236175223}
   - {fileID: 1748894500556841727}
   DotsText: {fileID: 8213844771331768972}
-  poems: {fileID: 6960957339033095538, guid: 5a8562d01217d44eb822cb5094e91309, type: 3}
+  poems: {fileID: 6960957339033095538, guid: 3b23ed2f6e4da714994f9d5f8576de2c, type: 3}
   afterPlay: {fileID: 9173922870755329816}
-  poem: {fileID: 0}
 --- !u!1 &8524407199720287255
 GameObject:
   m_ObjectHideFlags: 0
@@ -1563,6 +1562,8 @@ MonoBehaviour:
   Sleep: {fileID: 9173922870042045193}
   Play: {fileID: 9173922870755329816}
   sleepDots: {fileID: 3336371220733540746}
+  playBallumn: {fileID: 8213844770840075296}
+  iconBut: {fileID: 9173922870828945004}
 --- !u!1 &9173922869703826462
 GameObject:
   m_ObjectHideFlags: 0
@@ -1748,7 +1749,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 9173922869701282796}
         m_TargetAssemblyTypeName: PlayEventController, Assembly-CSharp
-        m_MethodName: OnClick
+        m_MethodName: SetSelectedOption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1869,6 +1870,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sleep: {fileID: 3336371220733540746}
+  sleepSystem: {fileID: 9173922869701282796}
 --- !u!1 &9173922870828945004
 GameObject:
   m_ObjectHideFlags: 0

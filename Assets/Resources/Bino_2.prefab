@@ -433,6 +433,7 @@ MonoBehaviour:
   optic:
   - {fileID: 8451787075197945147}
   - {fileID: 8451787074502435309}
+  opticBackground: {fileID: 8451787074630022148}
 --- !u!58 &6022950947311074219
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -786,6 +787,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isrelease: 0
+  isSuccess: 0
   target: {fileID: 6022950947311074224}
 --- !u!1 &8451787074502435310
 GameObject:

@@ -7,6 +7,12 @@ public class PoemReadController : MonoBehaviour
     GameObject background;
     public GameObject event_sleep;
     // Start is called before the first frame update
+
+    [SerializeField]
+    Image next;
+    
+    [SerializeField]
+    Image previous;
     void Start()
     {
         background=GameObject.Find("Background").gameObject;
@@ -17,6 +23,8 @@ public class PoemReadController : MonoBehaviour
         if(background!=null)
         {
             this.gameObject.GetComponent<Image>().sprite=Resources.Load<Sprite>("Background/PoemBackground/"+background.transform.GetChild(0).name);
+            next.sprite = Resources.Load<Sprite>("Background/PoemBackground/NextPage/"+background.transform.GetChild(0).name);
+            previous.sprite = Resources.Load<Sprite>("Background/PoemBackground/PreviousPage/"+background.transform.GetChild(0).name);
         }
     }
 
