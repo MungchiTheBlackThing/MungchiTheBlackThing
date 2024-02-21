@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"_id":0,"_nickname":"송수영","_chapter":1,"_bgmVolume":50.0,"_acousticVolume":50.0,"_alreadyEndedPhase":0}
-=======
-{"_id":0,"_nickname":"송수영","_chapter":2,"_bgmVolume":50.0,"_acousticVolume":50.0,"_alreadyEndedPhase":0}
->>>>>>> e4f3f333b4e3047b1abbd712c170edea7a560c1f
+{"_id":0,"_nickname":"송수영","_chapter":1,"_bgmVolume":50.0,"_acousticVolume":50.0,"_alreadyEndedPhase":4}

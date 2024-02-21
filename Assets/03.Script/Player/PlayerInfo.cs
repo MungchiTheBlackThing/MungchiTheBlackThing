@@ -14,6 +14,7 @@ public class PlayerInfo
     public float _acousticVolume=50f;
 
     public int _alreadyEndedPhase=0; //0일때는 아직 진행 안함
+    public bool isDiaryCheck = false;
     public PlayerInfo(int id,string nickname,int chapter){
         _id=id;
         _nickname=nickname;

@@ -7,8 +7,9 @@ using System.IO;
 public class PlayerController : MonoBehaviour
 {
 
+    public static DiaryStatus diaryStatus=DiaryStatus.FISRT_NONE;
     const string playerInfoDataFileName = "PlayerData.json";
-    PlayerInfo _player;
+    public static PlayerInfo _player;
     //player 접속 경과 시간
     float _elapsedTime;
 

@@ -32,13 +32,13 @@ public class DefaultController : MonoBehaviour
         DefaultPos = this.transform.position;
         canvas = GameObject.Find("Canvas");
 
-        if(_player.isDiaryCheck==false && (ClientController.diaryStatus != DiaryStatus.FISRT_NONE||ClientController.diaryStatus != DiaryStatus.NOT_READ))
+        if(_player.isDiaryCheck==false && (PlayerController.diaryStatus != DiaryStatus.FISRT_NONE||PlayerController.diaryStatus != DiaryStatus.NOT_READ))
         {
             light.SetActive(true);
-            ClientController.diaryStatus=DiaryStatus.FIRST_READ;
+            PlayerController.diaryStatus=DiaryStatus.FIRST_READ;
             _player.isDiaryCheck=true;
         }
-        Debug.Log(ClientController.diaryStatus);
+        Debug.Log(PlayerController.diaryStatus);
     }
 
     public void Update()
@@ -49,12 +49,12 @@ public class DefaultController : MonoBehaviour
             scrollRect.horizontal = false;
         }
         //Action으로 바꿀 수 있지 않을까?
-        if(ClientController.diaryStatus == DiaryStatus.FIRST_READ)
+        if(PlayerController.diaryStatus == DiaryStatus.FIRST_READ)
         {
             Animator lightAnim = light.GetComponent<Animator>();
             lightAnim.SetBool("read",true);
         }
-        else if(ClientController.diaryStatus == DiaryStatus.READ)
+        else if(PlayerController.diaryStatus == DiaryStatus.READ)
         {
             Animator lightAnim = light.GetComponent<Animator>();
             lightAnim.SetBool("read",false);
@@ -65,7 +65,7 @@ public class DefaultController : MonoBehaviour
     {
         GameObject selected = EventSystem.current.currentSelectedGameObject;
 
-        if (ClientController.diaryStatus==DiaryStatus.FISRT_NONE||ClientController.diaryStatus==DiaryStatus.NOT_READ)
+        if (PlayerController.diaryStatus==DiaryStatus.FISRT_NONE||PlayerController.diaryStatus==DiaryStatus.NOT_READ)
         {
             GameObject alter = Resources.Load<GameObject>(this.gameObject.name + "/alert_diary");
             StartCoroutine(CloseAlter(Instantiate(alter, selected.transform.parent)));
@@ -73,7 +73,7 @@ public class DefaultController : MonoBehaviour
             return;
         }
         //만약에 있으면 diary를 만든다
-        ClientController.diaryStatus=DiaryStatus.READ;
+        PlayerController.diaryStatus=DiaryStatus.READ;
         
         for (int i = 0; i < uiList.Length; i++)
             uiList[i].SetActive(false);
@@ -101,7 +101,7 @@ public class DefaultController : MonoBehaviour
         if (alter == null)
         {
             Instantiate(moon_main, this.transform.parent.transform.parent);
-            ClientController.diaryStatus = DiaryStatus.FIRST_READ;
+            PlayerController.diaryStatus = DiaryStatus.FIRST_READ;
             for (int i = 0; i < uiList.Length; i++)
                 uiList[i].SetActive(false);
         }

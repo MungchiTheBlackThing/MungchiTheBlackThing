@@ -26,7 +26,18 @@ public class MungchiController : MonoBehaviour
 
         if(this.isGoOut)
         {
-            //true면, 외출했다는 소리. 즉, 다이어리를 볼 수 있음. 
+            //true면, 외출했다는 소리. 즉, 다이어리를 볼 수 있음.
+            if(PlayerController.diaryStatus != DiaryStatus.FISRT_NONE) 
+            {
+                PlayerController.diaryStatus = DiaryStatus.FIRST_READ;
+            }else
+            {
+                PlayerController.diaryStatus = DiaryStatus.READ;
+            }
+        }
+        else
+        {
+            
         }
     }
 }
