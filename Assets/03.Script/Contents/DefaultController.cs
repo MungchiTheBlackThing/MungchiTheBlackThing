@@ -21,7 +21,7 @@ public class DefaultController : MonoBehaviour
 
     PlayerController _player;
     GameObject[] uiList;
-
+    bool isFirstUpdate=false;
     public void Start()
     {
         uiList = GameObject.FindGameObjectsWithTag("UI");
@@ -32,11 +32,14 @@ public class DefaultController : MonoBehaviour
         DefaultPos = this.transform.position;
         canvas = GameObject.Find("Canvas");
 
-        if(_player.isDiaryCheck==false && (PlayerController.diaryStatus != DiaryStatus.FISRT_NONE||PlayerController.diaryStatus != DiaryStatus.NOT_READ))
+        if(_player.isDiaryCheck==false && (PlayerController.diaryStatus != DiaryStatus.FISRT_NONE && PlayerController.diaryStatus != DiaryStatus.NOT_READ))
         {
             light.SetActive(true);
-            PlayerController.diaryStatus=DiaryStatus.FIRST_READ;
             _player.isDiaryCheck=true;
+        }
+        else
+        {
+            light.SetActive(false);
         }
         Debug.Log(PlayerController.diaryStatus);
     }
@@ -51,6 +54,8 @@ public class DefaultController : MonoBehaviour
         //Action으로 바꿀 수 있지 않을까?
         if(PlayerController.diaryStatus == DiaryStatus.FIRST_READ)
         {
+            if(light.activeSelf == false)
+                light.SetActive(true);
             Animator lightAnim = light.GetComponent<Animator>();
             lightAnim.SetBool("read",true);
         }
@@ -58,6 +63,9 @@ public class DefaultController : MonoBehaviour
         {
             Animator lightAnim = light.GetComponent<Animator>();
             lightAnim.SetBool("read",false);
+            light.SetActive(false);
+        }else
+        {
             light.SetActive(false);
         }
     }

@@ -2,101 +2,59 @@
   "chapters": [
     {
       "id": 1,
-      "watching": true,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [true,false,false,false,true]
     },
     {
       "id": 2,
-      "watching": true,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [true,false,false,false,true]
     },
     {
       "id": 3,
-      "watching": true,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [true,false,false,false,true]
     },
     {
       "id": 4,
-      "watching": false,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [false,false,false,false,true]
     },
     {
       "id": 5,
-      "watching": true,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [true,false,false,false,true]
     },
     {
       "id": 6,
-      "watching": false,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [false,false,false,false,true]
     },
     {
       "id": 7,
-      "watching": true,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [true,false,false,false,true]
     },
     {
       "id": 8,
-      "watching": true,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [true,false,false,false,true]
     },
     {
       "id": 9,
-      "watching": false,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [false,false,false,false,true]
     },
     {
       "id": 10,
-      "watching": true,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [true,false,false,false,true]
     },
     {
       "id": 11,
-      "watching": true,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [true,false,false,false,true]
     },
     {
       "id": 12,
-      "watching": true,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [true,false,false,false,true]
     },
     {
       "id": 13,
-      "watching": true,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [true,false,false,false,true]
     },
     {
       "id": 14,
-      "watching": false,
-      "thinking": false,
-      "writing": false,
-      "sleeping": true
+      "diaryStatus" : [false,false,false,false,true]
     }
   ]
 }

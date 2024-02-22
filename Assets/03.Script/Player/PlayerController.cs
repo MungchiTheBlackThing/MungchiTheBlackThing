@@ -27,6 +27,11 @@ public class PlayerController : MonoBehaviour
         readStringFromPlayerFile();
     }
 
+    void Start()
+    {
+        UpdateDiary();
+    }
+
     // Update is called once per frame
     //1시간이 되었는지 체크하기 위해서 저정용도
     void Update()
@@ -75,8 +80,40 @@ public class PlayerController : MonoBehaviour
     }
     public void SetAlreadyEndedPhase(int curPhase)
     {
-        Debug.Log(curPhase);
         _player.AlreadyEndedPhase = curPhase;
+        UpdateDiary();
+    }
+
+    public void UpdateDiary()
+    {
+            
+        if(DialogueDataAsset.outingInfos.chapters[_player.CurrentChapter].diaryStatus.Length>_player.AlreadyEndedPhase)
+        {
+            
+            if(DialogueDataAsset.outingInfos.chapters[_player.CurrentChapter].diaryStatus[_player.AlreadyEndedPhase] == true) //외출 했다면?
+            {
+                if(_player.isDiaryCheck==false)
+                {
+                    diaryStatus=DiaryStatus.FIRST_READ;
+                }
+                else
+                {
+                    diaryStatus=DiaryStatus.READ;
+                }
+            }
+            else
+            {
+                //외출 안했으면 볼 수 없음.
+                if(_player.isDiaryCheck==false)
+                {
+                    diaryStatus=DiaryStatus.FISRT_NONE;
+                }
+                else
+                {
+                    diaryStatus=DiaryStatus.NOT_READ;
+                }
+            }
+        }
     }
     public int GetChapter()
     {

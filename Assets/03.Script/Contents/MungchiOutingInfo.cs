@@ -5,12 +5,7 @@ using System.Collections.Generic;
 public class MungchiOutingInfo 
 {
     public int id;
-    public bool watching;
-    public bool thinking;
-
-    public bool writing;
-    public bool sleeping;
-
+    public bool[] diaryStatus;
 }
 
 [System.Serializable]

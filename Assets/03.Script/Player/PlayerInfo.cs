@@ -14,13 +14,14 @@ public class PlayerInfo
     public float _acousticVolume=50f;
 
     public int _alreadyEndedPhase=0; //0일때는 아직 진행 안함
-    public bool isDiaryCheck = false;
+    public bool _isDiaryCheck = false;
     public PlayerInfo(int id,string nickname,int chapter){
         _id=id;
         _nickname=nickname;
         _chapter=chapter;
     }
 
+    public bool isDiaryCheck { get => _isDiaryCheck; set=>_isDiaryCheck = value;}
     public int AlreadyEndedPhase { get=>_alreadyEndedPhase; set=>_alreadyEndedPhase = value;}
 
     public float BgmVolume{ get=>_bgmVolume; set=>_bgmVolume = value; }
