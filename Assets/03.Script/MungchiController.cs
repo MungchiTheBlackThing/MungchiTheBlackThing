@@ -12,11 +12,27 @@ public class MungchiController : MonoBehaviour
 {
     public bool isGoOut;
 
+    [Header("11번이 기본입니다. 번호 작성 후 원래대로 돌아갈 때 11번 체크 후 넘어가주세요.")]
+    [Range(0,11)]
+    [SerializeField]
+    int activityId=11;
+
+    Animator animator;
+
     public MungchiController()
     {
         isGoOut = false;
     }
 
+    void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
+
+    public void Update()
+    {
+        animator.SetInteger("ActivityID",activityId);
+    }
     public void OnNextPhase(bool isGoOut)
     {
         if(this.isGoOut != isGoOut)
