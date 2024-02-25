@@ -1,0 +1,23 @@
+{
+  "poems": [
+    {
+      "id": 1,
+      "page": 1,
+      "textKor": "꿈<br>랭스턴 휴스<p></p>꿈을 꼭 붙잡아라<br>꿈이 죽는다면<br>삶은 곧 날지 못하는<br>날개 다친 새<br>꿈을 꼭 붙잡아라<br>꿈이 떠나는 그 때<br>삶은 곧 눈으로 얼어붙은<br>황량한 들판",
+      "textEng": "Dream<br>Langston Hughes<p></p>Hold fast to dreams<br>For if dreams die<br>Life is a broken-winged bird<br>That cannot fly<br>Hold fast to dreams<br>For when dreams go<br>Life is a barren field\nFrozen with snow."
+    },
+    {
+      "id": 2,
+      "page": 1,
+      "textKor": "길, 윤동주<p></p>잃어 버렸습니다<br>무얼 어디다 잃었는지 몰라<br>두 손이 주머니를 더듬어<br>길에 나아갑니다<p></p>돌과 돌과 돌이 끝없이 연달아<br>길은 돌담을 끼고 갑니다<p></p>담은 쇠문을 굳게 닫아<br>길 위에 긴 그림자를 드리우고<p></p>길은 아침에서 저녁으로<br>저녁에서 아침으로 통했습니다<p></p>돌담을 더듬어 눈물짓다<br>쳐다보면 하늘은 부끄럽게 푸릅니다",
+      "textEng": "Road, Yun Dong-Ju<p></p>I lost my way.\nI don't know what or where I lost.\nFeeling the pockets with both hands,\nI move along the road.\n\nEndless rocks upon rocks,\nThe road hugging the stone wall.\n\nShutting the iron gate at the wall,\nCasting long shadows over the road,\n\nFrom morning to evening,\nFrom evening to morning, it went.\n\nFeeling the stone wall and shedding tears,\nIf you look around, the sky blushes."
+    },
+    {
+      "id": 2,
+      "page": 1,
+      "textKor": "담은 쇠문을 굳게 닫아<br>길 위에 긴 그림자를 드리우고<p></p>길은 아침에서 저녁으로<br>저녁에서 아침으로 통했습니다<p></p>돌담을 더듬어 눈물짓다<br>쳐다보면 하늘은 부끄럽게 푸릅니다",
+      "textEng": "Road, Yun Dong-Ju<p></p>I lost my way.\nI don't know what or where I lost.\nFeeling the pockets with both hands,\nI move along the road.\n\nEndless rocks upon rocks,\nThe road hugging the stone wall.\n\nShutting the iron gate at the wall,\nCasting long shadows over the road,\n\nFrom morning to evening,\nFrom evening to morning, it went.\n\nFeeling the stone wall and shedding tears,\nIf you look around, the sky blushes."
+    }
+  ]
+}
+

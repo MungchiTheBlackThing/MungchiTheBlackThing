@@ -8,7 +8,6 @@ using TMPro;
 
 public class Page : MonoBehaviour
 {
-    public string[] poemtexts;
     public TMP_Text textMesh;
     public GameObject Diary;
     public int currentpage = 0;
@@ -19,11 +18,17 @@ public class Page : MonoBehaviour
     public GameObject Mungchi;
 
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
         currentpage = 0;
-        totalpage = poemtexts.Length-1;
-        textMesh.text = poemtexts[currentpage];
+        //시 내용을 업데이트 한다.
+        if(currentpage<DialogueDataAsset.poemsData.poems.Length)
+            textMesh.text = DialogueDataAsset.poemsData.poems[currentpage].textKor;
+    }
+
+    void Start()
+    {
+        totalpage = DialogueDataAsset.poemsData.poems.Length-1;
         this.nextButton.onClick.AddListener(() => { this.NextPage(); });
         this.preButton.onClick.AddListener(() => { this.PrePage(); });
         cancelButton.gameObject.SetActive(false);
@@ -42,24 +47,24 @@ public class Page : MonoBehaviour
             preButton.gameObject.SetActive(false);
         }
     }
+    
     public void NextPage()
     {
         preButton.gameObject.SetActive(true);
-        if (currentpage == totalpage)
-        {
-            return;
-        }
         currentpage++;
-        textMesh.text=poemtexts[currentpage];
+        if(currentpage>=DialogueDataAsset.poemsData.poems.Length)
+            currentpage= DialogueDataAsset.poemsData.poems.Length - 1;
+
+        textMesh.text = DialogueDataAsset.poemsData.poems[currentpage].textKor;
     }
+
     public void PrePage()
     {
         nextButton.gameObject.SetActive(true);
-        if (currentpage <= 0)
-        {
-            return;
-        }
         currentpage--;
-        textMesh.text = poemtexts[currentpage];
+        if(currentpage<0)
+            currentpage=0;
+
+        textMesh.text = DialogueDataAsset.poemsData.poems[currentpage].textKor;
     }
 }
