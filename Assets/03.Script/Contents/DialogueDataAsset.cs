@@ -26,7 +26,6 @@ public class DialogueDataAsset : MonoBehaviour
         if(poemDataloadedJson)
         {
             poemsData = JsonUtility.FromJson<Poems>(poemDataloadedJson.ToString());
-        
         }
     }
 }

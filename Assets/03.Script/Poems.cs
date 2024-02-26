@@ -1,18 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 
+
 [System.Serializable]
-public class PoemInfo
+public class Text
 {
-    public int id;
-    public int page;
     public string textKor;
     public string textEng;
 }
 
+[System.Serializable]
+public class PoemData
+{
+    public int id;
+    public List<Text> text;
+}
 
 [System.Serializable]
 public class Poems
 {
-        public PoemInfo[] poems;
+        public List<PoemData> poems;
 }
