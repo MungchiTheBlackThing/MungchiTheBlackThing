@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 public class PoemReadController : MonoBehaviour
 {
     GameObject background;
     public GameObject event_sleep;
     // Start is called before the first frame update
 
+    int curPage=0;
     [SerializeField]
     Image next;
     
     [SerializeField]
     Image previous;
+
     void Start()
     {
         background=GameObject.Find("Background").gameObject;

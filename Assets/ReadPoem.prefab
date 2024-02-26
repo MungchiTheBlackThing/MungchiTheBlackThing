@@ -428,6 +428,7 @@ MonoBehaviour:
   event_sleep: {fileID: 8345375328737930967, guid: 6c1fc4577911b024d9ed5fea0c9a48ea, type: 3}
   next: {fileID: 6251534443580929810}
   previous: {fileID: 1182781111095012221}
+  poem: {fileID: 6960957339443328736}
 --- !u!114 &9045937703644471347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -728,7 +729,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1182781111095012221}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2019944045305189643}
+        m_TargetAssemblyTypeName: PoemReadController, Assembly-CSharp
+        m_MethodName: PrePage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &206251117129602895
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -849,7 +862,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6251534443580929810}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2019944045305189643}
+        m_TargetAssemblyTypeName: PoemReadController, Assembly-CSharp
+        m_MethodName: NextPage
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!222 &100866078967727526
 CanvasRenderer:
   m_ObjectHideFlags: 0
