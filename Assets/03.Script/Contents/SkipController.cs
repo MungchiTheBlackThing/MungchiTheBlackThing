@@ -363,9 +363,10 @@ public class SkipController : MonoBehaviour
 
     void OpenAllBackgroundMenu()
     {
+        Debug.Log("여기냐?");
         menu.SetActive(true);
         checkList_note.transform.parent.gameObject.SetActive(true);
-        _timeText.transform.parent.gameObject.SetActive(true);
+        //_timeText.transform.parent.gameObject.SetActive(true);
         StartCoroutine("OpenCheckList");
 
     }

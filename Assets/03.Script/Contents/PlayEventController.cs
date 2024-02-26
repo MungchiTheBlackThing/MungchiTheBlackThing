@@ -24,13 +24,17 @@ public class PlayEventController : MonoBehaviour
     GameObject defaultUI;
     [SerializeField]
     GameObject iconBut;
+    [SerializeField]
+    MenuController menuControll;
     private void OnEnable() {
 
         defaultUI= GameObject.Find("DefaultUI");
+        menuControll = GameObject.Find("Menu").GetComponent<MenuController>();
         Sleep.SetActive(true);
         Play.GetComponent<Animator>().SetBool("isSleeping",true);
         Play.SetActive(false);
         sleepDots.SetActive(false);
+        menuControll.skipoff();
     }
     void Start()
     {
@@ -64,8 +68,13 @@ public class PlayEventController : MonoBehaviour
     }
 
     private void OnDisable() {
+        menuControll.skipon();
         selectedOptionObj.SetActive(false);
         playBallumn.SetActive(false);
+    }
+    public void MenuOn()
+    {
+        menuControll.skipon();
     }
     // public void OnClick()
     // {

@@ -25,6 +25,8 @@ public class MenuController : MonoBehaviour
     GameObject MyPageUI;
     [SerializeField]
     GameObject TimeUI;
+    [SerializeField]
+    GameObject Default;
     #region 챕터 변수
     [SerializeField]
     GameObject checkList;
@@ -119,6 +121,20 @@ public class MenuController : MonoBehaviour
         }
         else
             checkList.SetActive(false);
+    }
+
+    public void skipoff()
+    {
+        Debug.Log("꺼");
+        Default.SetActive(false);
+        TimeUI.SetActive(false);
+    }
+
+    public void skipon()
+    {
+        Debug.Log("켜");
+        Default.SetActive(true);
+        TimeUI.SetActive(true);
     }
 
     public void OnUpdatedProgress(int chapter)

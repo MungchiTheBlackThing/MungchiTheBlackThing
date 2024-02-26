@@ -21,6 +21,7 @@ public class SetDiary : MonoBehaviour
     {
         sleep.SetActive(true);
         sleepSystem.SetUI();
+        sleepSystem.MenuOn();
         GameObject.Find("TimeManager").GetComponent<SkipController>().SetSleepCheckList();
     }
 
