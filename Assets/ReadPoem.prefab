@@ -428,7 +428,6 @@ MonoBehaviour:
   event_sleep: {fileID: 8345375328737930967, guid: 6c1fc4577911b024d9ed5fea0c9a48ea, type: 3}
   next: {fileID: 6251534443580929810}
   previous: {fileID: 1182781111095012221}
-  poem: {fileID: 6960957339443328736}
 --- !u!114 &9045937703644471347
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -572,7 +571,7 @@ MonoBehaviour:
   m_textAlignment: 65535
   m_characterSpacing: -5
   m_wordSpacing: 0
-  m_lineSpacing: 5
+  m_lineSpacing: 10
   m_lineSpacingMax: 0
   m_paragraphSpacing: -20
   m_charWidthMaxAdj: 0
