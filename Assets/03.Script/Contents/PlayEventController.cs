@@ -26,8 +26,10 @@ public class PlayEventController : MonoBehaviour
     GameObject iconBut;
     [SerializeField]
     MenuController menuControll;
-    private void OnEnable() {
-
+    public static bool EventOn; //스킵을 꺼야하는 상황(이벤트가 켜저있음)
+    private void OnEnable() 
+    {
+        EventOn = true;
         defaultUI= GameObject.Find("DefaultUI");
         menuControll = GameObject.Find("Menu").GetComponent<MenuController>();
         Sleep.SetActive(true);
@@ -68,6 +70,7 @@ public class PlayEventController : MonoBehaviour
     }
 
     private void OnDisable() {
+        EventOn = false;
         menuControll.skipon();
         selectedOptionObj.SetActive(false);
         playBallumn.SetActive(false);

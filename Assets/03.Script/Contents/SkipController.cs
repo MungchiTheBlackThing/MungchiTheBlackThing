@@ -62,7 +62,6 @@ public class SkipController : MonoBehaviour
     GameObject story;
     void Start()
     {
-
         onUpdatedProgress=new OnUpdatedProgressDelegate(GameObject.Find("Menu").GetComponent<MenuController>().OnUpdatedProgress);
         curProgress = new List<GameObject>();
         checkList_childs = new List<GameObject>();
@@ -366,7 +365,8 @@ public class SkipController : MonoBehaviour
         Debug.Log("여기냐?");
         menu.SetActive(true);
         checkList_note.transform.parent.gameObject.SetActive(true);
-        //_timeText.transform.parent.gameObject.SetActive(true);
+        if(!PlayEventController.EventOn) //false 일때만 스킵이 켜지게 수정
+            _timeText.transform.parent.gameObject.SetActive(true); //여기서 타임 스킵이 켜지는데 -> 문제는 스크립트 PlayEventController의 OnEnable 보다 얘가 더 나중에 실행되서 문제
         StartCoroutine("OpenCheckList");
 
     }
