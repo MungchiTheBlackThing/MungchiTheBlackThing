@@ -86,31 +86,40 @@ public class PlayerController : MonoBehaviour
 
     public void UpdateDiary()
     {
-            
-        if(DialogueDataAsset.outingInfos.chapters[_player.CurrentChapter].diaryStatus.Length>_player.AlreadyEndedPhase)
+        
+        if(_player.AlreadyEndedPhase==3)
         {
-            
-            if(DialogueDataAsset.outingInfos.chapters[_player.CurrentChapter].diaryStatus[_player.AlreadyEndedPhase] == true) //외출 했다면?
+            diaryStatus=DiaryStatus.FISRT_NONE;
+            isDiaryCheck=false;
+            return;
+        }else if(_player.AlreadyEndedPhase==4)
+        {
+            diaryStatus=DiaryStatus.FIRST_READ;
+            isDiaryCheck=false;
+            return;
+        }
+        else
+        {
+            if(DialogueDataAsset.outingInfos.chapters[_player.CurrentChapter].diaryStatus.Length>_player.AlreadyEndedPhase)
             {
-                if(_player.isDiaryCheck==false)
+                
+                if(DialogueDataAsset.outingInfos.chapters[_player.CurrentChapter].diaryStatus[_player.AlreadyEndedPhase] == true) //외출 했다면?
                 {
-                    diaryStatus=DiaryStatus.FIRST_READ;
+                    diaryStatus=DiaryStatus.READ; //전부 READ.. 업데이트 안된 상태 
                 }
                 else
                 {
-                    diaryStatus=DiaryStatus.READ;
-                }
-            }
-            else
-            {
-                //외출 안했으면 볼 수 없음.
-                if(_player.isDiaryCheck==false)
-                {
-                    diaryStatus=DiaryStatus.FISRT_NONE;
-                }
-                else
-                {
-                    diaryStatus=DiaryStatus.NOT_READ;
+                    //외출 안했으면 볼 수 없음.
+                    if(_player.isDiaryCheck==false)
+                    {
+                        diaryStatus=DiaryStatus.FISRT_NONE;
+                    }
+                    else
+                    {
+                        diaryStatus=DiaryStatus.NOT_READ;
+                    }
+
+                    Debug.Log(diaryStatus);
                 }
             }
         }
