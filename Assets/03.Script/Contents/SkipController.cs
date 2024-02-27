@@ -176,7 +176,7 @@ public class SkipController : MonoBehaviour
         //player 시간을 빠르게 만든다.
         alter.SetActive(false);
         ifFirstUpdate = true;
-
+        _player.SetAlreadyEndedPhase();
         switch (GetTimeCurIdx)
         {
             case (int)TimeStamp.TS_WATCHING:
@@ -248,7 +248,7 @@ public class SkipController : MonoBehaviour
                 onUpdatedProgress(_player.GetChapter());
                 break;
         }
-        _player.SetAlreadyEndedPhase(GetTimeCurIdx);
+       
         CloseAllBackgroundMenu();
         //ObjectManager에게 전달.
     }
@@ -301,7 +301,7 @@ public class SkipController : MonoBehaviour
         yield return new WaitForSeconds(1f);
         if(curIdx == (int)TimeStamp.TS_THINKING )
         {
-            story.SetActive(true);
+            //story.SetActive(true);
         }
     }
 
@@ -309,7 +309,7 @@ public class SkipController : MonoBehaviour
     {
         ifFirstUpdate = false;
         GetTimeCurIdx = 4;
-        _player.SetAlreadyEndedPhase(GetTimeCurIdx);
+        _player.SetAlreadyEndedPhase();
         for (int i = 0; i < checkList_childs.Count; i++)
         {
             if (checkList_childs[i].name.Contains("Background")) continue;
@@ -346,7 +346,7 @@ public class SkipController : MonoBehaviour
 
     public void VideoMainDialogue()
     {
-        story = Instantiate(Resources.Load<GameObject>("Story/"+_player.GetChapter().ToString()), _objManager.transform.parent.parent);
+        //story = Instantiate(Resources.Load<GameObject>("Story/"+_player.GetChapter().ToString()), _objManager.transform.parent.parent);
     }
     public void NoBut()
     {
