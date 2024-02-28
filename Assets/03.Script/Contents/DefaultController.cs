@@ -17,13 +17,18 @@ public class DefaultController : MonoBehaviour
     [SerializeField]
     GameObject Diary;
     GameObject diaryRealObject;
+    Animator lightAnim ;
     GameObject canvas;
 
     PlayerController _player;
     GameObject[] uiList;
     bool isFirstUpdate=false;
+
+    DiaryStatus currentStatus;
+
     public void Start()
     {
+        lightAnim = light.GetComponent<Animator>();
         uiList = GameObject.FindGameObjectsWithTag("UI");
         _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         this.gameObject.name = this.gameObject.name.Substring(0, this.gameObject.name.IndexOf('('));
@@ -32,16 +37,17 @@ public class DefaultController : MonoBehaviour
         DefaultPos = this.transform.position;
         canvas = GameObject.Find("Canvas");
 
-        if(_player.isDiaryCheck==false && (PlayerController.diaryStatus != DiaryStatus.FISRT_NONE && PlayerController.diaryStatus != DiaryStatus.NOT_READ))
+        currentStatus=PlayerController.diaryStatus;
+        if(PlayerController.diaryStatus==DiaryStatus.FIRST_READ||PlayerController.diaryStatus==DiaryStatus.FISRT_NONE)
         {
-            light.SetActive(true);
-            _player.isDiaryCheck=true;
+            light.GetComponent<Image>().enabled=true;
+            lightAnim.SetBool("read",true);
         }
         else
         {
-            light.SetActive(false);
+            light.GetComponent<Image>().enabled=false;
+            lightAnim.SetBool("read",false);
         }
-        Debug.Log(PlayerController.diaryStatus);
     }
 
     public void Update()
@@ -52,22 +58,25 @@ public class DefaultController : MonoBehaviour
             scrollRect.horizontal = false;
         }
         //Action으로 바꿀 수 있지 않을까?
-        if(PlayerController.diaryStatus == DiaryStatus.FIRST_READ)
+        
+        //현재 phase를 관리하는 player로부터 writing 이후인지 아닌지를 확인한다.
+
+        if(currentStatus != PlayerController.diaryStatus)
         {
-            if(light.activeSelf == false)
-                light.SetActive(true);
-            Animator lightAnim = light.GetComponent<Animator>();
-            lightAnim.SetBool("read",true);
+            if(PlayerController.diaryStatus==DiaryStatus.FIRST_READ||PlayerController.diaryStatus==DiaryStatus.FISRT_NONE)
+            {
+                light.GetComponent<Image>().enabled=true;
+                lightAnim.SetBool("read",true);
+            }
+            else
+            {
+                light.GetComponent<Image>().enabled=false;
+                lightAnim.SetBool("read",false);
+            }
+            currentStatus = PlayerController.diaryStatus;
+            Debug.Log(currentStatus);
         }
-        else if(PlayerController.diaryStatus == DiaryStatus.READ)
-        {
-            Animator lightAnim = light.GetComponent<Animator>();
-            lightAnim.SetBool("read",false);
-            light.SetActive(false);
-        }else
-        {
-            light.SetActive(false);
-        }
+        
     }
     public void SetDiary()
     {
@@ -81,8 +90,9 @@ public class DefaultController : MonoBehaviour
             return;
         }
         //만약에 있으면 diary를 만든다
-        PlayerController.diaryStatus=DiaryStatus.READ;
-        
+        _player.SetIsDiaryCheck(true);
+        PlayerController.diaryStatus = DiaryStatus.READ;
+
         for (int i = 0; i < uiList.Length; i++)
             uiList[i].SetActive(false);
         

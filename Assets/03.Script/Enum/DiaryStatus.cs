@@ -8,6 +8,5 @@ public enum DiaryStatus
     FIRST_READ, //처음 읽은 상태
     READ,//처음은 아님, 그런데 읽을 수 있는 상태
     NOT_READ,//처음은 아니고, 읽을 수 없는 상태
-
     END,
 }
