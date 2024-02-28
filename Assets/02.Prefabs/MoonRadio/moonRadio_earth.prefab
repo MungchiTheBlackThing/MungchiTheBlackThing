@@ -2767,8 +2767,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\uCC44\uB110 \uB098\uAC00\uAE30 >>"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2fe2b39dc9e404bc49954ba51950b22d, type: 2}
-  m_sharedMaterial: {fileID: 7011725699582850384, guid: 2fe2b39dc9e404bc49954ba51950b22d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+  m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2798,7 +2798,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 1
+  m_fontStyle: 0
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -3012,6 +3012,30 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8963485430247768341}
     m_Modifications:
+    - target: {fileID: 3778277426176603661, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+    - target: {fileID: 3778277426176603661, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778277426176603661, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778277426176603661, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778277426176603661, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+    - target: {fileID: 3778277426176603661, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 2164260863
+      objectReference: {fileID: 0}
     - target: {fileID: 3778277426291851984, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -3020,10 +3044,34 @@ PrefabInstance:
       propertyPath: earthController
       value: 
       objectReference: {fileID: 8963485430247768340}
+    - target: {fileID: 3778277426626487585, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+    - target: {fileID: 3778277426626487585, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
     - target: {fileID: 3778277427151446634, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: fd9076dddac9946cc94cc91376ff6413, type: 3}
+    - target: {fileID: 3778277427151446634, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_Color.a
+      value: 0.67058825
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778277427151446634, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778277427151446634, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3778277427151446634, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3778277427366478739, guid: bb815aa6bfaf74a80b3f436a69cfe1d6, type: 3}
       propertyPath: m_OnValueChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
