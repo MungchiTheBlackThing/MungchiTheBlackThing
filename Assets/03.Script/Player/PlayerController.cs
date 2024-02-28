@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     string nickname;
 
     public bool isDiaryCheck = false;
+    bool isNextChapter=false;
     const float _passTime = 1800f; //30분을 기준으로 한다.
     // Start is called before the first frame update
     private void Awake()
@@ -25,6 +26,7 @@ public class PlayerController : MonoBehaviour
         //앞으로 player을 동적으로 생성해서 관리할 예정.. 아직은 미리 초기화해서 사용한다.
         _player = new PlayerInfo(0, nickname, 1);
         readStringFromPlayerFile();
+        
     }
 
     void Start()
@@ -78,42 +80,72 @@ public class PlayerController : MonoBehaviour
     {
         return _player.AlreadyEndedPhase;
     }
-    public void SetAlreadyEndedPhase(int curPhase)
+    public void SetAlreadyEndedPhase()
     {
-        _player.AlreadyEndedPhase = curPhase;
+        _player.AlreadyEndedPhase = Mathf.Clamp(_player.AlreadyEndedPhase+1,0,DialogueDataAsset.outingInfos.chapters[_player.CurrentChapter].diaryStatus.Length-1);
         UpdateDiary();
     }
 
+    public void SetIsDiaryCheck(bool isCheck)
+    {
+        _player.isDiaryCheck=isCheck;
+    }
     public void UpdateDiary()
     {
-            
-        if(DialogueDataAsset.outingInfos.chapters[_player.CurrentChapter].diaryStatus.Length>_player.AlreadyEndedPhase)
+
+        if(_player.AlreadyEndedPhase==3)
         {
-            
-            if(DialogueDataAsset.outingInfos.chapters[_player.CurrentChapter].diaryStatus[_player.AlreadyEndedPhase] == true) //외출 했다면?
+            diaryStatus=DiaryStatus.FISRT_NONE;
+            _player.isDiaryCheck=false;
+            return;
+        }
+        else if(_player.AlreadyEndedPhase==4)
+        {
+            diaryStatus=DiaryStatus.FIRST_READ;
+            _player.isDiaryCheck=false;
+            isNextChapter=true;
+            return;
+        }
+        else
+        {
+            if(DialogueDataAsset.outingInfos.chapters[_player.CurrentChapter].diaryStatus.Length>_player.AlreadyEndedPhase)
             {
-                if(_player.isDiaryCheck==false)
-                {
-                    diaryStatus=DiaryStatus.FIRST_READ;
-                }
+                
+                if(DialogueDataAsset.outingInfos.chapters[_player.CurrentChapter].diaryStatus[_player.AlreadyEndedPhase] == true) //외출 했다면?
+                { 
+                    if(isNextChapter && _player.isDiaryCheck == false)
+                    {
+                        diaryStatus=DiaryStatus.FIRST_READ;
+                    }
+                    else
+                    {    
+                        if(isDiaryCheck)
+                        {
+                            isNextChapter=false;
+                        }
+                        diaryStatus=DiaryStatus.READ;
+                    }
+                }   
                 else
                 {
-                    diaryStatus=DiaryStatus.READ;
+                    if(isNextChapter && _player.isDiaryCheck == false)
+                    {
+                        diaryStatus=DiaryStatus.FISRT_NONE;
+                    }
+                    else
+                    {    
+                        if(isDiaryCheck)
+                        {
+                            isNextChapter=false;
+                        }
+                        diaryStatus=DiaryStatus.NOT_READ;
+                    }
+                    //외출 안했으면 볼 수 없음.
                 }
-            }
-            else
-            {
-                //외출 안했으면 볼 수 없음.
-                if(_player.isDiaryCheck==false)
-                {
-                    diaryStatus=DiaryStatus.FISRT_NONE;
-                }
-                else
-                {
-                    diaryStatus=DiaryStatus.NOT_READ;
-                }
+                
             }
         }
+        //Debug.Log(diaryStatus);
     }
     public int GetChapter()
     {
