@@ -20,7 +20,10 @@ public class SkipController : MonoBehaviour
     [SerializeField]
     TMP_Text _timeText;
     [SerializeField]
+    GameObject phaseWriting;
+    [SerializeField]
     GameObject eventPlay;
+    
     [SerializeField]
     Image checklist; //Time에 따라서 이미지가 변경된다.
 
@@ -378,6 +381,32 @@ public class SkipController : MonoBehaviour
     }
     void writingPhase()
     {
+        phaseWriting = _objManager.memoryPool.SearchMemory("PhaseWriting");
+        if (phaseWriting == null)
+        {
+            phaseWriting = Instantiate(Resources.Load<GameObject>("PhaseWriting"), _objManager.gameObject.transform);
+            phaseWriting.name = "PhaseWriting";
+            _objManager.memoryPool.InsertMemory(phaseWriting);
+        }
+        _objManager.memoryPool.SetActiveObject(phaseWriting.name);
+        DateTime today = DateTime.Now; //현재 지금 시간
+        string format = string.Format("{0} 13:00:00", DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")); //다음날 1시 까지 남은 시간
+        DateTime tomorrow = Convert.ToDateTime(format); //format 변환
+        TimeSpan disTime = tomorrow - today; //두 차이를
+        time = (float)disTime.TotalSeconds; //초로 변환함
+        StartCoroutine(WritingWait(5.0f));
+    }
+    IEnumerator WritingWait(float writingtime) //뭉치가 일기쓰는 시간 10초
+    {
+        yield return new WaitForSeconds(writingtime);
+        if (phaseWriting != null)
+        {
+            _objManager.memoryPool.DeactivateObject(phaseWriting.name);
+        }
+        writingPhase2();
+    }
+    void writingPhase2()
+    {
         eventPlay = _objManager.memoryPool.SearchMemory("SleepSystem");
         if(eventPlay==null)
         {
@@ -386,13 +415,12 @@ public class SkipController : MonoBehaviour
             _objManager.memoryPool.InsertMemory(eventPlay);
         }
         _objManager.memoryPool.SetActiveObject(eventPlay.name);
-                //애니메이션 생성
+        //애니메이션 생성
         DateTime today = DateTime.Now; //현재 지금 시간
         string format = string.Format("{0} 13:00:00", DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")); //다음날 1시 까지 남은 시간
         DateTime tomorrow = Convert.ToDateTime(format); //format 변환
         TimeSpan disTime = tomorrow - today; //두 차이를
         time = (float)disTime.TotalSeconds; //초로 변환함
-        
     }
     void sleepPhase()
     {
