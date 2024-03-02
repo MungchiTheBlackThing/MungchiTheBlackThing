@@ -394,7 +394,7 @@ public class SkipController : MonoBehaviour
         DateTime tomorrow = Convert.ToDateTime(format); //format 변환
         TimeSpan disTime = tomorrow - today; //두 차이를
         time = (float)disTime.TotalSeconds; //초로 변환함
-        StartCoroutine(WritingWait(5.0f));
+        StartCoroutine(WritingWait(3600f));
     }
     IEnumerator WritingWait(float writingtime) //뭉치가 일기쓰는 시간 10초
     {
