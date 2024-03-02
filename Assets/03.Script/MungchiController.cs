@@ -12,10 +12,10 @@ public class MungchiController : MonoBehaviour
 {
     public bool isGoOut;
 
-    [Header("11번이 기본입니다. 번호 작성 후 원래대로 돌아갈 때 11번 체크 후 넘어가주세요.")]
-    [Range(0,11)]
+    [Header("0번이 기본입니다. 번호 작성 후 원래대로 돌아갈 때 11번 체크 후 넘어가주세요.")]
+    [Range(0,14)]
     [SerializeField]
-    int activityId=11;
+    int activityId=0;
 
     Animator animator;
 
