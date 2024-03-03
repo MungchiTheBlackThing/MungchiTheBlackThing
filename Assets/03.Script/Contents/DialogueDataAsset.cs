@@ -23,9 +23,10 @@ public class DialogueDataAsset : MonoBehaviour
         }
         var poemDataloadedJson = Resources.Load<TextAsset>("Json/PoemsData");
     
+        Debug.Log(poemDataloadedJson);
         if(poemDataloadedJson)
         {
-            poemsData = JsonUtility.FromJson<Poems>(poemDataloadedJson.ToString());
+             poemsData = JsonUtility.FromJson<Poems>(poemDataloadedJson.ToString());
         }
     }
 }

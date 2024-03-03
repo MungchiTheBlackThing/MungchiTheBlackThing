@@ -53,7 +53,7 @@ public class Page : MonoBehaviour
     {
         preButton.gameObject.SetActive(true);
         currentpage++;
-        if(currentpage<DialogueDataAsset.poemsData.poems[chapter].text.Count)
+        if(currentpage>=DialogueDataAsset.poemsData.poems[chapter].text.Count)
             currentpage = DialogueDataAsset.poemsData.poems[chapter].text.Count - 1;
         
         textMesh.text = DialogueDataAsset.poemsData.poems[chapter].text[currentpage].textKor;
