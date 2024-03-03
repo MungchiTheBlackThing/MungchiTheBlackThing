@@ -966,12 +966,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 4273163300377680495}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4638ae836633d489cba6a88184f69c26, type: 3}
+  m_Script: {fileID: 11500000, guid: a1adb1c9a72fa46fda60e42b9fcc11de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moon_main: {fileID: 1187872430623157293, guid: e2b41581d74dd4888b030eb286ec9031, type: 3}
   light: {fileID: 4273163300940829198}
-  Diary: {fileID: 1992561133626494820, guid: 39b52a39c6446419baa0b5d714e990e0, type: 3}
+  Diary: {fileID: 1992561133626494820, guid: 5d48d36962951d049b958fc199191fce, type: 3}
 --- !u!1 &4273163300478024057
 GameObject:
   m_ObjectHideFlags: 0
@@ -2823,7 +2823,7 @@ Animator:
   m_GameObject: {fileID: 6959290330189496417}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6ce6fe45e092f497d867532ff21dd863, type: 2}
+  m_Controller: {fileID: 9100000, guid: 7427967fa94f84087bf6a0986fa3545c, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
