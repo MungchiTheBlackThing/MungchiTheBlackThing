@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.EventSystems;
 
 public class EventPlayStart : MonoBehaviour
@@ -10,7 +11,7 @@ public class EventPlayStart : MonoBehaviour
     public void Onclick()
     {
         Animator animator = Mungchi.GetComponent<Animator>();
-        NoteClick.CanScroll = false;
+        GameObject.Find("Background").GetComponent<ScrollRect>().horizontal=true;
         animator.SetTrigger("start");
         Debug.Log("start");
     }

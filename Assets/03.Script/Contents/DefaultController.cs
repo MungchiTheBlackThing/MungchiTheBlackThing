@@ -52,11 +52,6 @@ public class DefaultController : MonoBehaviour
 
     public void Update()
     {
-
-        if (NoteClick.CanScroll == false)
-        {
-            scrollRect.horizontal = false;
-        }
         //Action으로 바꿀 수 있지 않을까?
         
         //현재 phase를 관리하는 player로부터 writing 이후인지 아닌지를 확인한다.
@@ -74,7 +69,6 @@ public class DefaultController : MonoBehaviour
                 lightAnim.SetBool("read",false);
             }
             currentStatus = PlayerController.diaryStatus;
-            Debug.Log(currentStatus);
         }
         
     }

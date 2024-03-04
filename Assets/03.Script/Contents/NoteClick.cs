@@ -8,7 +8,7 @@ public class NoteClick : MonoBehaviour
 {
     // Start is called before the first frame update
     public bool isnote = true;
-    public static bool CanScroll = true;
+    //public static bool CanScroll = true;
     
     //letter관련 변수
     bool isLetterFirstTime=false;
@@ -18,7 +18,6 @@ public class NoteClick : MonoBehaviour
     {
         Transform background=GameObject.Find("Background").transform;
         Instantiate(NoteBackground,GameObject.Find("Canvas").transform.position,transform.rotation,background);
-        CanScroll = false;
         isLetterFirstTime=false;
         this.transform.GetChild(0).gameObject.SetActive(isLetterFirstTime);
     }

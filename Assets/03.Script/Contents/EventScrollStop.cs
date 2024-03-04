@@ -7,6 +7,7 @@ public class EventScrollStop : MonoBehaviour
 {
     public ScrollRect scrollRect;
     public Vector2 DefaultPos;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -19,14 +20,10 @@ public class EventScrollStop : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
-        if (NoteClick.CanScroll == false)
-        {
-            this.transform.transform.position = DefaultPos;
-            scrollRect.enabled = false;
-        }
-        else
-        {
-            scrollRect.enabled = true;
-        }
+
+        // if(this.transform.transform.position!=DefaultPos)
+        // {
+        //     this.transform.transform.position = DefaultPos;
+        // }
     }
 }

@@ -8,7 +8,6 @@ public class Noteclose : MonoBehaviour
     DefaultController defaultController;
     public void Close()
     {
-        NoteClick.CanScroll = true;
         defaultController.OpenMenu();
         this.transform.parent.gameObject.GetComponent<ScrollRect>().horizontal = true;
         //checklist play true된다.
@@ -18,6 +17,6 @@ public class Noteclose : MonoBehaviour
     {
         defaultController = GameObject.FindWithTag("Time").GetComponent<DefaultController>();
         defaultController.CloseMenu();
-        NoteClick.CanScroll = false;
+        this.transform.parent.gameObject.GetComponent<ScrollRect>().horizontal = false;
     }
 }
