@@ -207,9 +207,6 @@ public class SkipController : MonoBehaviour
                     _objManager.memoryPool.InsertMemory(SkipBackground);
                 }
                 _objManager.memoryPool.SetActiveObject(SkipBackground.name);
-
-                
-            
                 break;
 
             case (int)TimeStamp.TS_WRITING:
@@ -222,6 +219,10 @@ public class SkipController : MonoBehaviour
                     _objManager.memoryPool.InsertMemory(SkipBackground);
                 }
                 _objManager.memoryPool.SetActiveObject(SkipBackground.name);
+                break;
+
+            case (int)TimeStamp.TS_PLAY:
+                phasePlay();
                 break;
             case (int)TimeStamp.TS_NEXTCHAPTER:
                 ClickSkipBut();
@@ -379,6 +380,7 @@ public class SkipController : MonoBehaviour
         _objManager.Close();
         _objManager.RemoveWatchingObject();
     }
+
     void writingPhase()
     {
         phaseWriting = _objManager.memoryPool.SearchMemory("PhaseWriting");
@@ -403,10 +405,16 @@ public class SkipController : MonoBehaviour
         {
             _objManager.memoryPool.DeactivateObject(phaseWriting.name);
         }
-        writingPhase2();
+        sleepPhase();
     }
-    void writingPhase2()
+    void phasePlay()
     {
+
+        if (phaseWriting != null)
+        {
+            _objManager.memoryPool.DeactivateObject(phaseWriting.name);
+        }
+
         eventPlay = _objManager.memoryPool.SearchMemory("SleepSystem");
         if(eventPlay==null)
         {
@@ -415,7 +423,8 @@ public class SkipController : MonoBehaviour
             _objManager.memoryPool.InsertMemory(eventPlay);
         }
         _objManager.memoryPool.SetActiveObject(eventPlay.name);
-        //애니메이션 생성
+        eventPlay.transform.GetChild(0).gameObject.SetActive(true);
+        eventPlay.transform.GetChild(1).gameObject.SetActive(false);
         DateTime today = DateTime.Now; //현재 지금 시간
         string format = string.Format("{0} 13:00:00", DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")); //다음날 1시 까지 남은 시간
         DateTime tomorrow = Convert.ToDateTime(format); //format 변환
@@ -459,12 +468,12 @@ public class SkipController : MonoBehaviour
             break;
             case (int)TimeStamp.TS_WRITING:
             watcingPhase();
-            break;
-            case (int)TimeStamp.TS_SLEEPING:
-            watcingPhase();
             writingPhase();
             break;
-            case (int)TimeStamp.TS_NEXTCHAPTER:
+            case (int)TimeStamp.TS_PLAY:
+            phasePlay();
+            break;
+            case (int)TimeStamp.TS_SLEEPING:
             watcingPhase();
             sleepPhase();
             break;
