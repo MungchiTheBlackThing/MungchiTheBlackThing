@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -15,6 +16,8 @@ public class FallingObjectSpawner : MonoBehaviour
 
     private void OnEnable()
     {
+        GameObject.Find("Background").GetComponent<ScrollRect>().horizontal = true;
+        
         // 초기에 물체들을 미리 생성
         InitializeObjects();
 
