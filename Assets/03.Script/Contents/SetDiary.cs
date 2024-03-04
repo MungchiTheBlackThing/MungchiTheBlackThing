@@ -19,6 +19,7 @@ public class SetDiary : MonoBehaviour
     // Start is called before the first frame update
     public void SetDiaryLight()
     {
+        GameObject.Find("Background").GetComponent<ScrollRect>().horizontal = true;
         sleep.SetActive(true);
         sleepSystem.SetUI();
         sleepSystem.MenuOn();

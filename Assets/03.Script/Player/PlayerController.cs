@@ -82,7 +82,6 @@ public class PlayerController : MonoBehaviour
     }
     public void SetAlreadyEndedPhase()
     {
-        _player.AlreadyEndedPhase = Mathf.Clamp(_player.AlreadyEndedPhase+1,0,DialogueDataAsset.outingInfos.chapters[_player.CurrentChapter].diaryStatus.Length-1);
         UpdateDiary();
     }
 
