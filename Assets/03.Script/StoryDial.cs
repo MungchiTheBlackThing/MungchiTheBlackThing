@@ -98,7 +98,7 @@ public class StoryDial : MonoBehaviour
 
 
         //기믹 수행을 위해 클릭해도 안넘어감
-        if (chapter == 2 && (currentClipIndex == 7 || currentClipIndex == 9 || currentClipIndex == 11))
+        if (chapter == 2 && this.gameObject.name == "2" && (currentClipIndex == 7 || currentClipIndex == 9 || currentClipIndex == 11))
         {
             Day2StoryGuide = this.GetComponent<Day2StoryGuide>();
             Guide =false;
