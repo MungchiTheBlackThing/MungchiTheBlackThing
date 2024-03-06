@@ -405,7 +405,7 @@ public class SkipController : MonoBehaviour
         {
             _objManager.memoryPool.DeactivateObject(phaseWriting.name);
         }
-        sleepPhase();
+        phasePlay();
     }
     void phasePlay()
     {

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 using System.Collections;
 
@@ -8,14 +9,14 @@ public class FallingObjectSpawner : MonoBehaviour
     public float spawnInterval = 2.0f;
     public int maxActiveObjects = 10; // 최대 활성화 물체 개수
     public int targetHeight = 100;
-
+    public RectTransform DefPos;
     private List<GameObject> fallingObjects = new List<GameObject>();
-    private Dictionary<GameObject, Vector3> initialPositions = new Dictionary<GameObject, Vector3>();
+    public Dictionary<GameObject, Vector3> initialPositions = new Dictionary<GameObject, Vector3>();
     private Queue<GameObject> activeObjectQueue = new Queue<GameObject>();
 
     private void OnEnable()
     {
-        // 초기에 물체들을 미리 생성
+        DefPos = this.GetComponent<RectTransform>();
         InitializeObjects();
 
         // 주기적으로 물체 떨어뜨리기 시작
@@ -26,10 +27,19 @@ public class FallingObjectSpawner : MonoBehaviour
     {
         foreach (var prefab in objectPrefabs)
         {
-            // 랜덤한 위치에 물체 생성
-            float randomX = Random.Range(this.transform.position.x - 60, this.transform.position.x + 60);
+            float randomX = Random.Range(DefPos.position.x - 60, DefPos.position.x + 60);
             Vector3 spawnPosition = new Vector3(randomX, this.transform.position.y + 100, 0f);
             GameObject newObject = Instantiate(prefab, spawnPosition, Quaternion.identity) as GameObject;
+            RectTransform rt = newObject.GetComponent<RectTransform>();
+            if (rt != null)
+            {
+                Debug.Log(rt.anchoredPosition);
+                rt.anchoredPosition = spawnPosition;
+            }
+            else
+            {
+                newObject.transform.position = spawnPosition;
+            }
             newObject.transform.SetParent(transform);
             newObject.SetActive(false);
             fallingObjects.Add(newObject);
@@ -96,11 +106,11 @@ public class FallingObjectSpawner : MonoBehaviour
 
             randomObject.SetActive(true);
             activeObjectQueue.Enqueue(randomObject);
-            StartCoroutine(MoveObject(randomObject.transform, targetHeight, 1.0f));
+            StartCoroutine(MoveObject(randomObject.transform, 1.0f));
         }
     }
 
-    IEnumerator MoveObject(Transform objTransform, float targetY, float duration)
+    IEnumerator MoveObject(Transform objTransform, float duration)
     {
         float elapsedTime = 0f;
         Vector3 initialPosition = objTransform.position;
@@ -110,7 +120,7 @@ public class FallingObjectSpawner : MonoBehaviour
 
         // 등가속도 운동을 위한 초기 y 속도 및 중력 계산
         float accelerationY = -600f;
-        int random = Random.Range(0, 2) * 2 - 1;
+        int random = Random.Range(0, 2) * 2 - 1; //방향 (1 or -1)
 
         while (elapsedTime < duration)
         {

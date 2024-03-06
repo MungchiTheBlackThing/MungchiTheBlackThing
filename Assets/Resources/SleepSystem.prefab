@@ -597,6 +597,7 @@ MonoBehaviour:
   spawnInterval: 2
   maxActiveObjects: 10
   targetHeight: 150
+  DefPos: {x: 0, y: 0, z: 0}
 --- !u!1 &7131261092679412916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,6 +1565,7 @@ MonoBehaviour:
   sleepDots: {fileID: 3336371220733540746}
   playBallumn: {fileID: 8213844770840075296}
   iconBut: {fileID: 9173922870828945004}
+  menuControll: {fileID: 0}
 --- !u!1 &9173922869703826462
 GameObject:
   m_ObjectHideFlags: 0
