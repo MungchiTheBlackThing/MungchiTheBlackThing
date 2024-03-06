@@ -22,6 +22,7 @@ public class SetDiary : MonoBehaviour
         sleep.SetActive(true);
         sleepSystem.SetUI();
         sleepSystem.MenuOn();
+        this.transform.parent.parent.parent.GetComponent<ScrollRect>().horizontal=true;
         GameObject.Find("TimeManager").GetComponent<SkipController>().SetSleepCheckList();
     }
 

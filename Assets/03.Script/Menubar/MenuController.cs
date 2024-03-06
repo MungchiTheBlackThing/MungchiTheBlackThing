@@ -132,7 +132,6 @@ public class MenuController : MonoBehaviour
 
     public void skipon()
     {
-        Debug.Log("켜");
         Default.SetActive(true);
         TimeUI.SetActive(true);
     }

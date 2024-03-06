@@ -28,12 +28,11 @@ public class FallingObjectSpawner : MonoBehaviour
         foreach (var prefab in objectPrefabs)
         {
             float randomX = Random.Range(DefPos.position.x - 60, DefPos.position.x + 60);
-            Vector3 spawnPosition = new Vector3(randomX, this.transform.position.y + 100, 0f);
+            Vector3 spawnPosition = new Vector3(randomX, DefPos.position.y + 100, 0f);
             GameObject newObject = Instantiate(prefab, spawnPosition, Quaternion.identity) as GameObject;
             RectTransform rt = newObject.GetComponent<RectTransform>();
             if (rt != null)
             {
-                Debug.Log(rt.anchoredPosition);
                 rt.anchoredPosition = spawnPosition;
             }
             else

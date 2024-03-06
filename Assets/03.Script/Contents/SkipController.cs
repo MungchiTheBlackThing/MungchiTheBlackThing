@@ -12,6 +12,7 @@ public class SkipController : MonoBehaviour
     //Start is called before the first frame update
     //SkipController가 시간을 보관한다.
 
+    public static bool isFirstEntry=false;
     float[] _timeStamp = { 3600f, 7200f, 1800f };
 
     [SerializeField]
@@ -56,7 +57,8 @@ public class SkipController : MonoBehaviour
     bool isInit = true;
     [SerializeField]
     List<GameObject> curProgress;
-
+    [SerializeField]
+    GameObject TimeUI;
     static bool isFirstTime=true;
     //delegate 액션 함수 보관 -> 챕터 증가시 연관된 함수 호출
     delegate void OnUpdatedProgressDelegate(int chapter);
@@ -366,7 +368,6 @@ public class SkipController : MonoBehaviour
 
     void OpenAllBackgroundMenu()
     {
-        Debug.Log("여기냐?");
         menu.SetActive(true);
         checkList_note.transform.parent.gameObject.SetActive(true);
         if(!PlayEventController.EventOn) //false 일때만 스킵이 켜지게 수정
@@ -471,9 +472,11 @@ public class SkipController : MonoBehaviour
             writingPhase();
             break;
             case (int)TimeStamp.TS_PLAY:
+            watcingPhase();
             phasePlay();
             break;
-            case (int)TimeStamp.TS_SLEEPING:
+            case (int)TimeStamp.TS_NEXTCHAPTER:
+            isFirstEntry=true;
             watcingPhase();
             sleepPhase();
             break;

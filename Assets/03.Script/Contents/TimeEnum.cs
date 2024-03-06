@@ -21,7 +21,6 @@ namespace Assets.Script.TimeEnum
         TS_THINKING,
         TS_WRITING,
         TS_PLAY,
-        TS_SLEEPING,
         TS_NEXTCHAPTER,
         TS_SIZE,
     };
