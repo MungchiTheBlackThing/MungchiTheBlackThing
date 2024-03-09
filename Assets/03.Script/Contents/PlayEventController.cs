@@ -36,7 +36,8 @@ public class PlayEventController : MonoBehaviour
         Play.GetComponent<Animator>().SetBool("isSleeping",true);
         Play.SetActive(false);
         sleepDots.SetActive(false);
-        menuControll.skipoff();
+        if(menuControll!=null)
+            menuControll.skipoff();
     }
     void Start()
     {

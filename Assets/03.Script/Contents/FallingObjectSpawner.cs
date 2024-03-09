@@ -5,24 +5,27 @@ using System.Collections;
 
 public class FallingObjectSpawner : MonoBehaviour
 {
+    [SerializeField]
+    GameObject SleepDotparent;
     public List<GameObject> objectPrefabs = new List<GameObject>(); // 다양한 프리팹들
     public float spawnInterval = 2.0f;
     public int maxActiveObjects = 10; // 최대 활성화 물체 개수
     public int targetHeight = 100;
     public RectTransform DefPos;
-    private List<GameObject> fallingObjects = new List<GameObject>();
+    public List<GameObject> fallingObjects = new List<GameObject>();
     public Dictionary<GameObject, Vector3> initialPositions = new Dictionary<GameObject, Vector3>();
-    private Queue<GameObject> activeObjectQueue = new Queue<GameObject>();
+    public Queue<GameObject> activeObjectQueue = new Queue<GameObject>();
 
-    private void OnEnable()
+    void Awake()
     {
-        DefPos = this.GetComponent<RectTransform>();
-        InitializeObjects();
-
-        // 주기적으로 물체 떨어뜨리기 시작
-        InvokeRepeating("DropRandomObject", 0f, spawnInterval);
+        DefPos = SleepDotparent.GetComponent<RectTransform>();
     }
 
+    void Start()
+    {
+        InitializeObjects();
+        InvokeRepeating("DropRandomObject", 0.5f, spawnInterval);
+    }
     void InitializeObjects()
     {
         foreach (var prefab in objectPrefabs)
@@ -30,15 +33,6 @@ public class FallingObjectSpawner : MonoBehaviour
             float randomX = Random.Range(DefPos.position.x - 60, DefPos.position.x + 60);
             Vector3 spawnPosition = new Vector3(randomX, DefPos.position.y + 100, 0f);
             GameObject newObject = Instantiate(prefab, spawnPosition, Quaternion.identity) as GameObject;
-            RectTransform rt = newObject.GetComponent<RectTransform>();
-            if (rt != null)
-            {
-                rt.anchoredPosition = spawnPosition;
-            }
-            else
-            {
-                newObject.transform.position = spawnPosition;
-            }
             newObject.transform.SetParent(transform);
             newObject.SetActive(false);
             fallingObjects.Add(newObject);
@@ -102,7 +96,7 @@ public class FallingObjectSpawner : MonoBehaviour
         {
             int randomIndex = Random.Range(0, inactiveObjects.Count);
             GameObject randomObject = inactiveObjects[randomIndex];
-
+            randomObject.transform.position = initialPositions[randomObject];
             randomObject.SetActive(true);
             activeObjectQueue.Enqueue(randomObject);
             StartCoroutine(MoveObject(randomObject.transform, 1.0f));
