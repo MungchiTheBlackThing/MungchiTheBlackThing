@@ -9,6 +9,7 @@ public class FallingObjectSpawner : MonoBehaviour
     public float spawnInterval = 2.0f;
     public int maxActiveObjects = 10; // 최대 활성화 물체 개수
     public int targetHeight = 100;
+    public int activeObjectCount;
     public RectTransform DefPos;
     private List<GameObject> fallingObjects = new List<GameObject>();
     public Dictionary<GameObject, Vector3> initialPositions = new Dictionary<GameObject, Vector3>();
@@ -49,7 +50,7 @@ public class FallingObjectSpawner : MonoBehaviour
     void DropRandomObject()
     {
         // 현재 활성화된 물체 개수 세기
-        int activeObjectCount = CountActiveObjects();
+        activeObjectCount = CountActiveObjects();
 
         // 현재 활성화된 물체가 최대 활성화 물체 개수보다 많으면 가장 먼저 활성화된 물체부터 비활성화
         if (activeObjectCount >= maxActiveObjects)

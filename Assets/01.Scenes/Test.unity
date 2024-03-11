@@ -23844,6 +23844,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 592004e39afbd4f4eaa298310ae03efc, type: 3}
   ifFirstUpdate: 1
   curProgress: []
+  TimeUI: {fileID: 0}
 --- !u!4 &1776814404
 Transform:
   m_ObjectHideFlags: 0
@@ -26240,8 +26241,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   parentObj: {fileID: 8776045308968906640}
   childCameras:
-  - childTransform: {fileID: 32559082}
-    cameraPos: {x: 0, y: 0}
+  - childTransform: {fileID: 32559081}
+    cameraPos: {x: 1500, y: 0}
+  background: {fileID: 8776045310070094100}
+  scroll: {fileID: 0}
+  backrect: {fileID: 0}
 --- !u!1 &1947552728
 GameObject:
   m_ObjectHideFlags: 0
