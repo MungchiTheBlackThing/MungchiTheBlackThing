@@ -27306,6 +27306,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1993817705}
   - component: {fileID: 1993817706}
+  - component: {fileID: 1993817707}
   m_Layer: 0
   m_Name: SocketManager
   m_TagString: Untagged
@@ -27338,6 +27339,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0a11db73e96564536b2e0c86e16b3392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1993817707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993817704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fb489f22dae94bdca89d817dbf56640, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &2005021054
