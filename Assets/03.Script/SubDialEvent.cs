@@ -17,6 +17,7 @@ public class SubDialEvent : MonoBehaviour
     public ScrollRect scroll;
     public RectTransform backrect;
     private RectTransform rect;
+    private int randomIndex;
     private float smoothTime = 0.5f;
     private void Start()
     { 
@@ -28,49 +29,27 @@ public class SubDialEvent : MonoBehaviour
             childCameraData.childTransform.SetActive(false);
         }
     }
-    //public void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.Space))
-    //    {
-    //        this.gameObject.SetActive(true);
-    //    }
-    //}
     
     public void OnEnable()
     {
+        foreach (var childCameraData in childCameras)
+        {
+            childCameraData.childTransform.SetActive(false);
+        }
         scroll = background.GetComponent<ScrollRect>();
         backrect = background.GetComponent<RectTransform>();
         backrect.anchoredPosition = Vector2.zero; //이거 위치를 고정해야지만 뭉치 위치가 변하지 않음 --> 근데 문제는 순간적으로 싹 움직이는게 맘에 안듬
         if (parentObj != null)
         {
             this.transform.parent = parentObj;
-            scroll.enabled = false;
-            trigger();
+            Invoke("trigger", 0.5f); //시간 지연이 없으면 뭉치가 뜨지 않음
         }
         else
         {
             Debug.LogError("Parent Object not assigned!");
         }
     }
-    //IEnumerator MoveRect()
-    //{
-    //    float elapsedTime = 0f; // 경과 시간 변수 초기화
 
-    //    Vector2 initialPosition = backrect.anchoredPosition;
-    //    while (elapsedTime < smoothTime)
-    //    {
-    //        // Lerp 함수를 사용하여 부드럽게 이동
-    //        backrect.transform.position = Vector2.Lerp(initialPosition, Vector2.zero, elapsedTime / smoothTime);
-
-    //        // 경과 시간 갱신
-    //        elapsedTime += Time.deltaTime;
-
-    //        yield return null; // 다음 프레임까지 대기
-    //    }
-
-    //    // 부드러운 이동 완료 후 정확한 목표 위치로 설정
-    //    backrect.anchoredPosition = Vector2.zero;
-    //}
     public void OnDisable()
     {
         scroll.enabled = true;
@@ -91,14 +70,18 @@ public class SubDialEvent : MonoBehaviour
         }
         Debug.Log(childCameras.Length);
         // 무작위로 하나의 자식 오브젝트를 활성화
-        int randomIndex = Random.Range(0, childCameras.Length);
+        randomIndex = Random.Range(0, childCameras.Length);
         Debug.Log(randomIndex);
-        var selectedChildCamera = childCameras[randomIndex];
+        var selectedChildCamera = childCameras[randomIndex]; 
         Debug.Log(selectedChildCamera.childTransform.name);
-        // 카메라를 선택된 자식 오브젝트의 카메라 위치로 이동
-        StartCoroutine(MoveCamera(new Vector2(selectedChildCamera.cameraPos.x, backrect.transform.position.y),randomIndex));
+        active();
     }
-    IEnumerator MoveCamera(Vector2 targetPosition, int randomindex)
+    public void Moverect()
+    {
+        var selectedChildCamera = childCameras[randomIndex];
+        StartCoroutine(MoveCamera(new Vector2(selectedChildCamera.cameraPos.x, backrect.transform.position.y)));
+    }
+    IEnumerator MoveCamera(Vector2 targetPosition)
     {
         float elapsedTime = 0f; // 경과 시간 변수 초기화
 
@@ -116,10 +99,10 @@ public class SubDialEvent : MonoBehaviour
 
         // 부드러운 이동 완료 후 정확한 목표 위치로 설정
         backrect.transform.position = targetPosition;
-        active(randomindex);
     }
-    public void active(int randomindex)
+    public void active()
     {
-        childCameras[randomindex].childTransform.SetActive(true);
+        Debug.Log("아니 왜 안켜짐?");
+        childCameras[randomIndex].childTransform.SetActive(true);
     }
 }
