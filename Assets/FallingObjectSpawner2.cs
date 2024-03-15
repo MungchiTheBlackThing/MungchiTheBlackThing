@@ -10,10 +10,12 @@ public class FallingObjectSpawner2 : MonoBehaviour
     [SerializeField]
     List<GameObject> spawnPrefab;
     Vector3 initPos;
-
+    Vector3 prePos;
     float spawnInterval = 2.0f;
     public List<GameObject> spawn;
     public List<Vector3> spawnPos;
+
+    
     void Awake()
     {
         initPos = spawnParent.GetComponent<RectTransform>().transform.position; //상대 위치 가져옴.
@@ -25,6 +27,15 @@ public class FallingObjectSpawner2 : MonoBehaviour
         if(spawn.Count != 0)
             StartCoroutine("DropRandomObject",0.5f);
     }
+
+    void Update()
+    {
+        if(prePos!=initPos)
+        {
+            UpdatePosObjects(); //
+            prePos=initPos;
+        }
+    }
     void Start()
     {
         InitializeObjects();
@@ -32,6 +43,17 @@ public class FallingObjectSpawner2 : MonoBehaviour
         StartCoroutine("DropRandomObject",0.5f);
     }
 
+    void UpdatePosObjects()
+    {
+        for(int i=0;i<spawnPos.Count;i++)
+        {
+            float randomX = Random.Range(initPos.x - 60, initPos.x + 60);
+            Vector3 spawnPosition = new Vector3(randomX, initPos.y + 100, 0f);
+            spawnPos[i]=spawnPosition;
+        }
+
+        Debug.Log("Pos 변경 여부 : "+initPos);
+    }
     void InitializeObjects()
     {   
         foreach(var prefab in spawnPrefab)
@@ -79,14 +101,14 @@ public class FallingObjectSpawner2 : MonoBehaviour
             randomObject.transform.position = spawnPos[indexs[randomIndex]];
             Debug.Log(spawnPos[indexs[randomIndex]]);
             randomObject.SetActive(true);
-            StartCoroutine(MoveObject(randomObject.transform, 1.0f));
+            StartCoroutine(MoveObject(randomObject.transform,spawnPos[indexs[randomIndex]], 1.0f));
         }
     }
 
-    IEnumerator MoveObject(Transform objTransform, float duration)
+    IEnumerator MoveObject(Transform objTransform,Vector3 position, float duration)
     {
         float elapsedTime = 0f;
-        Vector3 initialPosition = objTransform.position;
+        Vector3 initialPosition = position; 
 
         // 등속도 운동을 위한 초기 x 속도 계산
         float initialVelocityX = 100f;
@@ -101,11 +123,8 @@ public class FallingObjectSpawner2 : MonoBehaviour
             float displacementX = initialVelocityX * elapsedTime * random;
             float displacementY = 0.4f * accelerationY * elapsedTime * elapsedTime;
 
-            // z 변화 (필요에 따라 추가 가능)
-            float displacementZ = 0f;
-
             // 현재 위치 업데이트
-            objTransform.position = initialPosition + new Vector3(displacementX, displacementY, displacementZ);
+            objTransform.position = initialPosition + new Vector3(displacementX, displacementY, 0f);
 
             // 경과 시간 업데이트
             elapsedTime += Time.deltaTime;
@@ -113,6 +132,12 @@ public class FallingObjectSpawner2 : MonoBehaviour
             // 다음 프레임까지 대기
             yield return null;
         }
+    }
+
+    public void SetPosition(Vector3 movePos)
+    {
+        initPos = movePos;
+        //호출 ?
     }
 
     void OnDisable()

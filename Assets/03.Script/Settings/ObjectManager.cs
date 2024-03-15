@@ -30,11 +30,11 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     GameObject _dots;
 
-    
     bool _isChapterUpdate = true;
     int _chapter = 0;
     GameObject[] uiList;
 
+    
     PlayerController _player;
     void Start()
     {
@@ -246,4 +246,15 @@ public class ObjectManager : MonoBehaviour
         }
     }
 
+
+    public void OnChangedScroll()
+    {
+        GameObject sleepDot = GameObject.Find("Sleep_Dots");
+
+        if(sleepDot == null)   return ;
+        Vector3 movePos = sleepDot.GetComponent<RectTransform>().position;
+        sleepDot.GetComponent<FallingObjectSpawner2>().SetPosition(movePos);
+        
+        Debug.Log("스크롤 된 위치 " + movePos);
+    }
 }
