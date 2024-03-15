@@ -1,9 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SubMungchi : MonoBehaviour
 {
+    public GameObject triggericon;
+    public SubDialEvent subdial;
     // Start is called before the first frame update
     void Start()
     {
@@ -14,5 +17,10 @@ public class SubMungchi : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void OnMouseUp()
+    {
+        triggericon.SetActive(false);  
     }
 }

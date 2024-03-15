@@ -196,7 +196,6 @@ public class ObjectManager : MonoBehaviour
     {
         if (_letter == null)
         {
-
             //2일-3일 간의 관계 해결해야함.. 안그러면 중복으로 데이터를 가져옴
             _letter = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/phase_letter"), _timesBackground.transform);
             _letter.name = _letter.name.Substring(0, _letter.name.IndexOf('('));
@@ -216,6 +215,10 @@ public class ObjectManager : MonoBehaviour
 
     public void SetBook(int currDay)
     {
+        if (!_bookPile)
+        {
+            Destroy(_bookPile);
+        }
         GameObject book = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/ch_books_" + currDay), _timesBackground.transform);
         book.name = book.name.Substring(0, book.name.IndexOf('('));
     }
