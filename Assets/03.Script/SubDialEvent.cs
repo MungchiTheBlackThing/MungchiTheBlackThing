@@ -20,7 +20,7 @@ public class SubDialEvent : MonoBehaviour
     private int randomIndex;
     private float smoothTime = 0.5f;
     private void Start()
-    { 
+    {
         scroll= background.GetComponent<ScrollRect>();
         backrect= background.GetComponent<RectTransform>();
         // 처음에 모든 자식 오브젝트를 비활성화
@@ -78,6 +78,7 @@ public class SubDialEvent : MonoBehaviour
     }
     public void Moverect()
     {
+        scroll.enabled = false;
         var selectedChildCamera = childCameras[randomIndex];
         StartCoroutine(MoveCamera(new Vector2(selectedChildCamera.cameraPos.x, backrect.transform.position.y)));
     }
