@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class SubMungchi : MonoBehaviour
 {
     public GameObject triggericon;
-    public SubDialEvent subdial;
+    private SubDialEvent subdial;
     // Start is called before the first frame update
     void Start()
     {
