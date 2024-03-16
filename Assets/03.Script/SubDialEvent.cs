@@ -21,6 +21,7 @@ public class SubDialEvent : MonoBehaviour
     private float smoothTime = 0.5f;
     private void Start()
     {
+        this.transform.parent.transform.SetAsLastSibling();
         scroll= background.GetComponent<ScrollRect>();
         backrect= background.GetComponent<RectTransform>();
         // 처음에 모든 자식 오브젝트를 비활성화
@@ -36,18 +37,18 @@ public class SubDialEvent : MonoBehaviour
         {
             childCameraData.childTransform.SetActive(false);
         }
-        scroll = background.GetComponent<ScrollRect>();
-        backrect = background.GetComponent<RectTransform>();
-        backrect.anchoredPosition = Vector2.zero; //이거 위치를 고정해야지만 뭉치 위치가 변하지 않음 --> 근데 문제는 순간적으로 싹 움직이는게 맘에 안듬
-        if (parentObj != null)
-        {
-            this.transform.parent = parentObj;
-            Invoke("trigger", 0.5f); //시간 지연이 없으면 뭉치가 뜨지 않음
-        }
-        else
-        {
-            Debug.LogError("Parent Object not assigned!");
-        }
+        scroll = this.transform.parent.GetComponent<ScrollRect>();
+        backrect = this.transform.parent.GetComponent<RectTransform>();
+        /* backrect.anchoredPosition = Vector2.zero;*/ //이거 위치를 고정해야지만 뭉치 위치가 변하지 않음 --> 근데 문제는 순간적으로 싹 움직이는게 맘에 안듬
+        //if (parentObj != null)
+        //{
+        //    this.transform.parent = parentObj;
+        //}
+        //else
+        //{
+        //    Debug.LogError("Parent Object not assigned!");
+        //}
+        Invoke("trigger", 0.5f); //시간 지연이 없으면 뭉치가 뜨지 않음
     }
 
     public void OnDisable()

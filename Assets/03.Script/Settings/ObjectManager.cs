@@ -30,6 +30,9 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     GameObject _dots;
 
+    [SerializeField]
+    GameObject _sub;
+
     bool _isChapterUpdate = true;
     int _chapter = 0;
     GameObject[] uiList;
@@ -40,6 +43,7 @@ public class ObjectManager : MonoBehaviour
     {
         _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         memoryPool=new MemoryPool();
+        GameObject sub = Instantiate(_sub, this.transform);
     }
     void Init()
     {
