@@ -33,6 +33,10 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     GameObject _sub;
 
+    [SerializeField]
+    GameObject _cup; //보이기 위한 용도
+
+
     bool _isChapterUpdate = true;
     int _chapter = 0;
     GameObject[] uiList;
@@ -94,11 +98,15 @@ public class ObjectManager : MonoBehaviour
                 case (int)Chapter.C_4DAY:
                 case (int)Chapter.C_6DAY:
                 case (int)Chapter.C_9DAY:
+                    ChangeFromBreadToCup();
+                    break;
                 case (int)Chapter.C_14DAY:
+                    ChangeFromBreadToCup();
                     isAtHome();
                     SetLetter();
                     break;
                 default:
+                    ChangeFromBreadToCup();
                     GoToOther();
                     SetLetter();
                     break;
@@ -110,6 +118,17 @@ public class ObjectManager : MonoBehaviour
             ChangeClothes(_chapter);
         }
         //업데이트에 필요한 코드 추가예정.
+    }
+
+    public void ChangeFromBreadToCup()
+    {
+        _bread.SetActive(false);
+        if(_cup!=null)
+            _cup.SetActive(true);
+        else
+        {
+            _cup=Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/ch_cup"),_bread.transform.parent);
+        }
     }
     public void transChapter(int chapter)
     {
