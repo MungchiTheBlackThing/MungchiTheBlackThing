@@ -43,6 +43,8 @@ public class ObjectManager : MonoBehaviour
 
     
     PlayerController _player;
+    
+    bool isFirstUpdate=true;
     void Start()
     {
         _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
@@ -82,7 +84,7 @@ public class ObjectManager : MonoBehaviour
     void SetChapterUpdate()
     {
         //현재 gameManager가 전달한 chapter을 받아서 background 설치 
-        if(_player.GetAlreadyEndedPhase()==0)
+        if(isFirstUpdate)
         {
             switch (_chapter)
             {
@@ -111,6 +113,12 @@ public class ObjectManager : MonoBehaviour
                     SetLetter();
                     break;
             }
+
+            if(_player.GetAlreadyEndedPhase()>=2)
+            {
+                RemoveWatchingObject();
+            }
+            isFirstUpdate=false;
         }
         if (_chapter != 1)
         {
