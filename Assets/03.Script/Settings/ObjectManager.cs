@@ -88,21 +88,21 @@ public class ObjectManager : MonoBehaviour
         {
             switch (_chapter)
             {
-                case (int)Chapter.C_2DAY:
-                case (int)Chapter.C_5DAY:
-                case (int)Chapter.C_8DAY:
-                case (int)Chapter.C_10DAY:
+                case (int)ChapterDay.C_2DAY:
+                case (int)ChapterDay.C_5DAY:
+                case (int)ChapterDay.C_8DAY:
+                case (int)ChapterDay.C_10DAY:
                 //현재 phase가 watch일 때
                     GoToOther();
                     SetBino();
                     //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
                     break;
-                case (int)Chapter.C_4DAY:
-                case (int)Chapter.C_6DAY:
-                case (int)Chapter.C_9DAY:
+                case (int)ChapterDay.C_4DAY:
+                case (int)ChapterDay.C_6DAY:
+                case (int)ChapterDay.C_9DAY:
                     ChangeFromBreadToCup();
                     break;
-                case (int)Chapter.C_14DAY:
+                case (int)ChapterDay.C_14DAY:
                     ChangeFromBreadToCup();
                     isAtHome();
                     SetLetter();

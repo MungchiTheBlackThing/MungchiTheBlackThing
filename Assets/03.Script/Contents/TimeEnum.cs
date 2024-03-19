@@ -26,7 +26,7 @@ namespace Assets.Script.TimeEnum
     };
 
 
-    public enum Chapter : int
+    public enum ChapterDay : int
     {
         C_1DAY=1,
         C_2DAY,

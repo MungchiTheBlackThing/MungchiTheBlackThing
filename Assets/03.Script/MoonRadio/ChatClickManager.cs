@@ -23,32 +23,37 @@ public class ChatClickManager : MonoBehaviour
     GameObject exit;
     public int currIdx=0;
     //임시 대사 저장
-    protected List<string> txt= new List<string>(){
-        "~♫♮♭♩♫&?","숨겨 놓고 아껴 먹던 건데… 잃어버렸을 리가.","그것, 첼로 경이 뭉치에 꽂아 보냄.\n뭉치도 간식 필요하다 했음.",
-        "!!♫♮♭#)&!!","비밀이라고 말한 적은 없지 않았음?\n 기억 안 남.","아, 그걸 왜 걔를 줘! 걔는 먹지도 못해!"
-    };
+    // protected List<string> txt= new List<string>(){
+    //     "~♫♮♭♩♫&?","숨겨 놓고 아껴 먹던 건데… 잃어버렸을 리가.","그것, 첼로 경이 뭉치에 꽂아 보냄.\n뭉치도 간식 필요하다 했음.",
+    //     "!!♫♮♭#)&!!","비밀이라고 말한 적은 없지 않았음?\n 기억 안 남.","아, 그걸 왜 걔를 줘! 걔는 먹지도 못해!"
+    // };
     protected int [] idx=new int[6]{1,2,0,1,0,2};
+
+    public List<GameObject> childs=new List<GameObject>();
     void Start(){
         currIdx=0;
+        //Debug.Log(MoonRadioCallJson.radioScript.chapters[0].script_1[0].character);
+        //currIdx번호로 새로 Instantiate 한다.
+        //childs.Add(Instantiate(Resources.Load<GameObject>("MoonRadio/"+MoonRadioCallJson.radioScript.chapters[0].script_1[0].character),this.transform));
     }
     public void RunScript(){
-        if(currIdx>=idx.Length){
-            if(!exit.activeSelf){
-                exit.SetActive(true);
-            }
-            return;
-        }
-        Transform parentObject=this.gameObject.transform;
+        // if(currIdx>=idx.Length){
+        //     if(!exit.activeSelf){
+        //         exit.SetActive(true);
+        //     }
+        //     return;
+        // }
+        // Transform parentObject=this.gameObject.transform;
 
-        if(parentObject)
-        {
-            if(parentObject.childCount>=3){
-                Destroy(parentObject.GetChild(0).gameObject);
-            }
-            GameObject newObject=Instantiate(dreamNPC[idx[currIdx]]) as GameObject; //gameObject 생성
-            newObject.name=newObject.name.Substring(0,newObject.name.IndexOf('('));
-            newObject.transform.GetComponent<AreaScript>().CharacterText.text=txt[currIdx-1];
-            newObject.transform.SetParent(parentObject,false); //현재 클릭된 오브젝트의 부모 위로 설정해주기.
-        }
+        // if(parentObject)
+        // {
+        //     if(parentObject.childCount>=3){
+        //         Destroy(parentObject.GetChild(0).gameObject);
+        //     }
+        //     GameObject newObject=Instantiate(dreamNPC[idx[currIdx]]) as GameObject; //gameObject 생성
+        //     newObject.name=newObject.name.Substring(0,newObject.name.IndexOf('('));
+        //     newObject.transform.GetComponent<AreaScript>().CharacterText.text=txt[currIdx-1];
+        //     newObject.transform.SetParent(parentObject,false); //현재 클릭된 오브젝트의 부모 위로 설정해주기.
+        // }
     }
 }
