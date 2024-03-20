@@ -24,26 +24,23 @@ public class MoonRadioScript
     public MoonChapter[] chapters;
 }
 
+[Serializable]
+public class MoonRadio
+{
+    public MoonRadioScript moon_radio_script;
+}
 
 public class MoonRadioCallJson : MonoBehaviour
 {
     // Start is called before the first frame update
-    static public MoonRadioScript radioScript;
+    static public MoonRadio radioScript;
     void Start()
     {
         var moonRadioJson = Resources.Load<TextAsset>("Json/moon_radio_dummy");
-    
+        Debug.Log(moonRadioJson);
         if(moonRadioJson)
         {
-            radioScript = JsonUtility.FromJson<MoonRadioScript>(moonRadioJson.ToString());
-
-            Debug.Log(radioScript.chapters.Length);
+            radioScript = JsonUtility.FromJson<MoonRadio>(moonRadioJson.ToString());
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

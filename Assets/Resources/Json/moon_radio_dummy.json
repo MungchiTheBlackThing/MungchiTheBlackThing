@@ -45,7 +45,7 @@
             "speech": "진정. 인간 놀람. 그리고 시끄러워. 귀 먹먹함."
           },
           {
-            "character": "bubble_sirello",
+            "character": "bubble_sircello",
             "speech": "~♫♮♭♩♫&?"
           },
           {
@@ -57,7 +57,7 @@
             "speech": "빨리 인사, 첼로. 내가 통역한다."
           },
           {
-            "character": "bubble_sirello",
+            "character": "bubble_sircello",
             "speech": "~♫♮ (치지직-) ♩♫!!"
           },
           {
@@ -65,21 +65,21 @@
             "speech": "잠시만. (치직) 끊기…. (치익)"
           },
           {
-            "character": "bubble_sirello",
+            "character": "bubble_sircello",
             "speech": "♩♫####…?!"
           }
         ],
         "script_2": [
           {
-            "character": "bubble_sirello",
+            "character": "bubble_sircello",
             "speech": "(구슬픈 음악이 들린다)"
           },
           {
-            "character": "bubble_sirello",
+            "character": "bubble_sircello",
             "speech": "♩♩……"
           },
           {
-            "character": "bubble_sirello",
+            "character": "bubble_sircello",
             "speech": "♩♩♩♫♮……!"
           },
           {
@@ -95,7 +95,7 @@
             "speech": "지금 슬픔은 견디고, 다음에\n켜지면 제일 먼저 인사해."
           },
           {
-            "character": "bubble_sirello",
+            "character": "bubble_sircello",
             "speech": "♩♫♮ !!"
           },
           {
@@ -115,7 +115,7 @@
             "speech": "뭘 생각해. 그냥 하는 거지."
           },
           {
-            "character": "bubble_sirello",
+            "character": "bubble_sircello",
             "speech": "~♫♮♭♩"
           },
           {
@@ -155,11 +155,11 @@
             "speech": "첼로 경! 인사해!!"
           },
           {
-            "character": "bubble_sirello",
+            "character": "bubble_sircello",
             "speech": "~♫♮♭"
           },
           {
-            "character": "bubble_sirello",
+            "character": "bubble_sircello",
             "speech": "♩♫!! (치지직-)"
           },
           {
@@ -167,7 +167,7 @@
             "speech": "(치직) 아, 또 (치이익)"
           },
           {
-            "character": "bubble_sirello",
+            "character": "bubble_sircello",
             "speech": "♬ ######!!!"
           }
         ]

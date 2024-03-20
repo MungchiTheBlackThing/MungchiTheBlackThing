@@ -16,33 +16,44 @@ public class ChatClickManager : MonoBehaviour
     클릭할 때 AreaScript에게 다음 GameObject 전달
     AreaScript는 누를시 전달받은 GameObject 생성, 자기자신 비활성화 
     */
-
-    [SerializeField]
-    protected GameObject[] dreamNPC;
     [SerializeField]
     GameObject exit;
+    [SerializeField]
+    ScrollRect scrollRect;
     public int currIdx=0;
-    //임시 대사 저장
-    // protected List<string> txt= new List<string>(){
-    //     "~♫♮♭♩♫&?","숨겨 놓고 아껴 먹던 건데… 잃어버렸을 리가.","그것, 첼로 경이 뭉치에 꽂아 보냄.\n뭉치도 간식 필요하다 했음.",
-    //     "!!♫♮♭#)&!!","비밀이라고 말한 적은 없지 않았음?\n 기억 안 남.","아, 그걸 왜 걔를 줘! 걔는 먹지도 못해!"
-    // };
-    protected int [] idx=new int[6]{1,2,0,1,0,2};
 
-    public List<GameObject> childs=new List<GameObject>();
+    public List<GameObject> radioScript=new List<GameObject>();
+    int len = 0;
     void Start(){
-        currIdx=0;
         //Debug.Log(MoonRadioCallJson.radioScript.chapters[0].script_1[0].character);
         //currIdx번호로 새로 Instantiate 한다.
-        //childs.Add(Instantiate(Resources.Load<GameObject>("MoonRadio/"+MoonRadioCallJson.radioScript.chapters[0].script_1[0].character),this.transform));
+        
+        len = MoonRadioCallJson.radioScript.moon_radio_script.chapters[0].script_1.Length;
+        for(int i=0;i<len;i++)
+        {
+            GameObject moonRadioObj = Instantiate(Resources.Load<GameObject>("MoonRadio/"+MoonRadioCallJson.radioScript.moon_radio_script.chapters[0].script_1[i].character),this.transform);
+            
+            moonRadioObj.GetComponent<AreaScript>().SettingText(MoonRadioCallJson.radioScript.moon_radio_script.chapters[0].script_1[i].speech);
+            moonRadioObj.SetActive(false);
+
+            if(i==0)
+                moonRadioObj.SetActive(true);
+            else
+                moonRadioObj.SetActive(false);
+            radioScript.Add(moonRadioObj);
+        }
+
     }
     public void RunScript(){
-        // if(currIdx>=idx.Length){
-        //     if(!exit.activeSelf){
-        //         exit.SetActive(true);
-        //     }
-        //     return;
-        // }
+        currIdx+=1;
+        if(currIdx>=len){
+            if(!exit.activeSelf){
+                exit.SetActive(true);
+            }
+            return;
+        }
+        radioScript[currIdx].gameObject.SetActive(true);
+
         // Transform parentObject=this.gameObject.transform;
 
         // if(parentObject)
