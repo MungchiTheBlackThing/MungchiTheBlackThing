@@ -14,15 +14,23 @@ public class AreaScript : MonoBehaviour,IPointerDownHandler
     public TMP_Text CharacterText;
     ChatClickManager manager;
     bool isFirst=false;
-    private void OnEnable() {
+
+    void Start()
+    {
         manager=GameObject.Find("Content").GetComponent<ChatClickManager>();
-        if(manager)
-            manager.currIdx+=1;    
     }
-    /*눌렀어. 누르면 ChatClickManager을 호출해서 다음 스크립트 호출*/
+    
+    public void SettingText(string text)
+    {
+        CharacterText.text=text;
+    }
+
     public void OnPointerDown(PointerEventData eventData){
         if(!isFirst){
-            manager.RunScript();
+            if(manager)
+            {
+                manager.RunScript();
+            }
             isFirst=true;
         }
     }

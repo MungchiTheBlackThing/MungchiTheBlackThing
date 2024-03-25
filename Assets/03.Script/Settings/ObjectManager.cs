@@ -33,12 +33,18 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     GameObject _sub;
 
+    [SerializeField]
+    GameObject _cup; //보이기 위한 용도
+
+
     bool _isChapterUpdate = true;
     int _chapter = 0;
     GameObject[] uiList;
 
     
     PlayerController _player;
+    
+    bool isFirstUpdate=true;
     void Start()
     {
         _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
@@ -78,31 +84,41 @@ public class ObjectManager : MonoBehaviour
     void SetChapterUpdate()
     {
         //현재 gameManager가 전달한 chapter을 받아서 background 설치 
-        if(_player.GetAlreadyEndedPhase()==0)
+        if(isFirstUpdate)
         {
             switch (_chapter)
             {
-                case (int)Chapter.C_2DAY:
-                case (int)Chapter.C_5DAY:
-                case (int)Chapter.C_8DAY:
-                case (int)Chapter.C_10DAY:
+                case (int)ChapterDay.C_2DAY:
+                case (int)ChapterDay.C_5DAY:
+                case (int)ChapterDay.C_8DAY:
+                case (int)ChapterDay.C_10DAY:
                 //현재 phase가 watch일 때
                     GoToOther();
                     SetBino();
                     //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
                     break;
-                case (int)Chapter.C_4DAY:
-                case (int)Chapter.C_6DAY:
-                case (int)Chapter.C_9DAY:
-                case (int)Chapter.C_14DAY:
+                case (int)ChapterDay.C_4DAY:
+                case (int)ChapterDay.C_6DAY:
+                case (int)ChapterDay.C_9DAY:
+                    ChangeFromBreadToCup();
+                    break;
+                case (int)ChapterDay.C_14DAY:
+                    ChangeFromBreadToCup();
                     isAtHome();
                     SetLetter();
                     break;
                 default:
+                    ChangeFromBreadToCup();
                     GoToOther();
                     SetLetter();
                     break;
             }
+
+            if(_player.GetAlreadyEndedPhase()>=2)
+            {
+                RemoveWatchingObject();
+            }
+            isFirstUpdate=false;
         }
         if (_chapter != 1)
         {
@@ -110,6 +126,17 @@ public class ObjectManager : MonoBehaviour
             ChangeClothes(_chapter);
         }
         //업데이트에 필요한 코드 추가예정.
+    }
+
+    public void ChangeFromBreadToCup()
+    {
+        _bread.SetActive(false);
+        if(_cup!=null)
+            _cup.SetActive(true);
+        else
+        {
+            _cup=Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/ch_cup"),_bread.transform.parent);
+        }
     }
     public void transChapter(int chapter)
     {

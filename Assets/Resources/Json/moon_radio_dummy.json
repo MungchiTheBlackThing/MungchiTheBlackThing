@@ -1,0 +1,177 @@
+{
+  "moon_radio_script": {
+    "chapters": [
+      {
+        "chapter_number": 1,
+        "script_1": [
+          {
+            "character": "bubble_edison",
+            "speech": "이렇게 하면…."
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "아, 성공이군. 다들 와 봐."
+          },
+          {
+            "character": "radio_red",
+            "speech": "우와아아아아!"
+          },
+          {
+            "character": "radio_red",
+            "speech": "우와아아아아아아아아아아아!"
+          },
+          {
+            "character": "radio_red",
+            "speech": "큼큼, 안녕, 인간. 나는 레드야."
+          },
+          {
+            "character": "radio_red",
+            "speech": "달에 있는 모두가 인간을 사랑하지!"
+          },
+          {
+            "character": "radio_red",
+            "speech": "그리고 나도! 인간을! 사랑한다!"
+          },
+          {
+            "character": "radio_red",
+            "speech": "(우당탕 하는 소리가 들린다)"
+          },
+          {
+            "character": "radio_red",
+            "speech": "아야!"
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "진정. 인간 놀람. 그리고 시끄러워. 귀 먹먹함."
+          },
+          {
+            "character": "bubble_sircello",
+            "speech": "~♫♮♭♩♫&?"
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "응, 아직 오류가 많아서 언제 신호가 끊어질지 모름."
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "빨리 인사, 첼로. 내가 통역한다."
+          },
+          {
+            "character": "bubble_sircello",
+            "speech": "~♫♮ (치지직-) ♩♫!!"
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "잠시만. (치직) 끊기…. (치익)"
+          },
+          {
+            "character": "bubble_sircello",
+            "speech": "♩♫####…?!"
+          }
+        ],
+        "script_2": [
+          {
+            "character": "bubble_sircello",
+            "speech": "(구슬픈 음악이 들린다)"
+          },
+          {
+            "character": "bubble_sircello",
+            "speech": "♩♩……"
+          },
+          {
+            "character": "bubble_sircello",
+            "speech": "♩♩♩♫♮……!"
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "첫 번째 프로토타입이라\n오류가 많음.!"
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "켜지고 꺼지는 타이밍도 설정이\n안 되고. 어쩔 수 없음."
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "지금 슬픔은 견디고, 다음에\n켜지면 제일 먼저 인사해."
+          },
+          {
+            "character": "bubble_sircello",
+            "speech": "♩♫♮ !!"
+          },
+          {
+            "character": "radio_red",
+            "speech": "첼로 경의 인삿말 궁금한걸."
+          },
+          {
+            "character": "radio_red",
+            "speech": "하아아아아아음. 으, 시간이\n언제 이렇게. 일하기 싫어."
+          },
+          {
+            "character": "radio_red",
+            "speech": "너희는 일할 때 무슨\n생각 하면서 청소해?"
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "뭘 생각해. 그냥 하는 거지."
+          },
+          {
+            "character": "bubble_sircello",
+            "speech": "~♫♮♭♩"
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "노래를 부른다고?"
+          },
+          {
+            "character": "radio_red",
+            "speech": "맞아, 첼로 경이 노래하면 내가\n자막을 만들어서 같이 불러. "
+          },
+          {
+            "character": "radio_red",
+            "speech": "이렇게! "
+          },
+          {
+            "character": "radio_red",
+            "speech": "(달 노동요 가사 1)"
+          },
+          {
+            "character": "radio_red",
+            "speech": "(달 노동요 가사 2)"
+          },
+          {
+            "character": "radio_red",
+            "speech": "(달 노동요 가사 3)"
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "아. 잠시만. 저거 켜진 것\n같음. 불 들어오네."
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "첼로 경, 인사해."
+          },
+          {
+            "character": "radio_red",
+            "speech": "첼로 경! 인사해!!"
+          },
+          {
+            "character": "bubble_sircello",
+            "speech": "~♫♮♭"
+          },
+          {
+            "character": "bubble_sircello",
+            "speech": "♩♫!! (치지직-)"
+          },
+          {
+            "character": "bubble_edison",
+            "speech": "(치직) 아, 또 (치이익)"
+          },
+          {
+            "character": "bubble_sircello",
+            "speech": "♬ ######!!!"
+          }
+        ]
+      }
+    ]
+  }
+}
