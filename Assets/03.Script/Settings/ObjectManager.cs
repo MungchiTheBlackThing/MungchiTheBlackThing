@@ -122,7 +122,10 @@ public class ObjectManager : MonoBehaviour
         }
         if (_chapter != 1)
         {
-            SetBook(_chapter);
+            for (int i = 2; i <= _chapter; i++)
+            {
+                SetBook(i);
+            }
             ChangeClothes(_chapter);
         }
         //업데이트에 필요한 코드 추가예정.
@@ -130,12 +133,17 @@ public class ObjectManager : MonoBehaviour
 
     public void ChangeFromBreadToCup()
     {
-        _bread.SetActive(false);
-        if(_cup!=null)
-            _cup.SetActive(true);
-        else
+        if (_bread != null)
         {
-            _cup=Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/ch_cup"),_bread.transform.parent);
+            _bread.SetActive(false);
+            if (_cup != null)
+            {
+                _cup.SetActive(true);
+            }
+            else
+            {
+                _cup = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/ch_cup"), _bread.transform.parent);
+            }
         }
     }
     public void transChapter(int chapter)
@@ -174,10 +182,6 @@ public class ObjectManager : MonoBehaviour
     void InitBackground()
     {
         if (_chapter == 1) return;
-        for (int i = 2; i < _chapter; i++)
-        {
-            SetBook(i);
-        }
         ChangeClothes(_chapter);
     }
 
@@ -246,11 +250,8 @@ public class ObjectManager : MonoBehaviour
 
     public void SetBook(int currDay)
     {
-        if (!_bookPile)
-        {
-            Destroy(_bookPile);
-        }
         GameObject book = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/ch_books_" + currDay), _timesBackground.transform);
+        Debug.Log(book);
         book.name = book.name.Substring(0, book.name.IndexOf('('));
     }
 
