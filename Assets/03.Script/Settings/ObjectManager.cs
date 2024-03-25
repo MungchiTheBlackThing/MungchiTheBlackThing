@@ -250,9 +250,16 @@ public class ObjectManager : MonoBehaviour
 
     public void SetBook(int currDay)
     {
-        GameObject book = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/ch_books_" + currDay), _timesBackground.transform);
-        Debug.Log(book);
-        book.name = book.name.Substring(0, book.name.IndexOf('('));
+        string bookName = _timesBackground.name + "/ch_books_" + currDay;
+        GameObject existingBook = GameObject.Find(bookName);
+
+        if (!existingBook)
+        {
+            GameObject bookPrefab = Resources.Load<GameObject>(bookName);
+            GameObject book = Instantiate(bookPrefab, _timesBackground.transform);
+            book.name = bookName;
+            Debug.Log(bookName);
+        }
     }
 
     public void ChangeClothes(int currDay)

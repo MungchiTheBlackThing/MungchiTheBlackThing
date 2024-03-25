@@ -29,6 +29,7 @@ public class PlayEventController : MonoBehaviour
     public static bool EventOn; //스킵을 꺼야하는 상황(이벤트가 켜저있음)
     private void OnEnable() 
     {
+        iconBut.SetActive(true);
         EventOn = true;
         defaultUI= GameObject.Find("DefaultUI");
         menuControll = GameObject.Find("Menu").GetComponent<MenuController>();
