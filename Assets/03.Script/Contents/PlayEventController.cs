@@ -38,7 +38,7 @@ public class PlayEventController : MonoBehaviour
         Play.SetActive(false);
         sleepDots.SetActive(false);
         if(menuControll!=null)
-            menuControll.skipoff();
+            menuControll.onlyskipoff();
     }
     void Start()
     {
@@ -50,8 +50,6 @@ public class PlayEventController : MonoBehaviour
             background.GetComponent<ScrollRect>().horizontal=true;
             SkipController.isFirstEntry=false;
         }
-        
-        StartCoroutine("MoveBackground");
         //시간에 따라 메시지 게임 오브젝트생성  -> 현재 밤 버전밖에 없음,...
     }
 
@@ -66,14 +64,16 @@ public class PlayEventController : MonoBehaviour
 
         return null;
     }
-    public void SetUI()
-    {
-        defaultUI.SetActive(true);
-    }
+    //public void SetUI()
+    //{
+    //    defaultUI.SetActive(true);
+    //}
     public void SetSelectedOption()
     {
+        StartCoroutine("MoveBackground");
+        menuControll.skipoff();
         iconBut.SetActive(false);
-        defaultUI.SetActive(false);
+        //defaultUI.SetActive(false);
         selectedOptionObj.SetActive(true);
         playBallumn.SetActive(true);
     }

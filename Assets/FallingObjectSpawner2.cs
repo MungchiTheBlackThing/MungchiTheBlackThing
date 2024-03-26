@@ -32,7 +32,7 @@ public class FallingObjectSpawner2 : MonoBehaviour
     {
         if(prePos!=initPos)
         {
-            UpdatePosObjects(); //
+            UpdatePosObjects();
             prePos=initPos;
         }
     }

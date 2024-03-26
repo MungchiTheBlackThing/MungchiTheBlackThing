@@ -122,7 +122,11 @@ public class MenuController : MonoBehaviour
         else
             checkList.SetActive(false);
     }
-
+    public void onlyskipoff()
+    {
+        Default.SetActive(true);
+        TimeUI.SetActive(false);
+    }
     public void skipoff()
     {
         Debug.Log("꺼");
@@ -132,6 +136,7 @@ public class MenuController : MonoBehaviour
 
     public void skipon()
     {
+        Debug.Log("켜");
         Default.SetActive(true);
         TimeUI.SetActive(true);
     }

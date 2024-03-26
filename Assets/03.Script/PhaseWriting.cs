@@ -9,7 +9,7 @@ public class PhaseWriting : MonoBehaviour
     private void OnEnable()
     {
         Diary = GameObject.Find("phase_diary");
-        Debug.Log("어뵤어져");
+        Debug.Log("일기장 끄기");
         Diary.SetActive(false);
     }
     // Start is called before the first frame update

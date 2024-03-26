@@ -182,6 +182,7 @@ public class SkipController : MonoBehaviour
         alter.SetActive(false);
         ifFirstUpdate = true;
         _player.SetAlreadyEndedPhase();
+        Debug.Log("Curidx: " + GetTimeCurIdx);
         switch (GetTimeCurIdx)
         {
             case (int)TimeStamp.TS_WATCHING:
@@ -225,6 +226,15 @@ public class SkipController : MonoBehaviour
 
             case (int)TimeStamp.TS_PLAY:
                 phasePlay();
+                ++GetTimeCurIdx;
+                SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
+                if (SkipBackground == null)
+                {
+                    SkipBackground = Instantiate(Resources.Load<GameObject>("skip_animation"), _objManager.transform.parent.parent);
+                    SkipBackground.name = "skip_animation";
+                    _objManager.memoryPool.InsertMemory(SkipBackground);
+                }
+                _objManager.memoryPool.SetActiveObject(SkipBackground.name);
                 break;
             case (int)TimeStamp.TS_NEXTCHAPTER:
                 ClickSkipBut();
@@ -399,7 +409,7 @@ public class SkipController : MonoBehaviour
         time = (float)disTime.TotalSeconds; //초로 변환함
         StartCoroutine(WritingWait(15.0f));
     }
-    IEnumerator WritingWait(float writingtime) //뭉치가 일기쓰는 시간 10초
+    IEnumerator WritingWait(float writingtime) //뭉치가 일기쓰는 시간
     {
         yield return new WaitForSeconds(writingtime);
         if (phaseWriting != null)
@@ -410,7 +420,6 @@ public class SkipController : MonoBehaviour
     }
     void phasePlay()
     {
-
         if (phaseWriting != null)
         {
             _objManager.memoryPool.DeactivateObject(phaseWriting.name);
@@ -432,40 +441,41 @@ public class SkipController : MonoBehaviour
         TimeSpan disTime = tomorrow - today; //두 차이를
         time = (float)disTime.TotalSeconds; //초로 변환함
     }
-    void sleepPhase()
-    {
-        //자는 모션을 setActive 
-         eventPlay = _objManager.memoryPool.SearchMemory("SleepSystem");
-        if(eventPlay==null)
-        {
-            eventPlay = Instantiate(Resources.Load<GameObject>("SleepSystem"), _objManager.gameObject.transform);
-            eventPlay.name="SleepSystem";
-            _objManager.memoryPool.InsertMemory(eventPlay);
-        }
-        _objManager.memoryPool.SetActiveObject(eventPlay.name);
-        eventPlay.transform.GetChild(0).gameObject.SetActive(false);
-        eventPlay.transform.GetChild(1).gameObject.SetActive(true);
-                //애니메이션 생성
-        DateTime today = DateTime.Now; //현재 지금 시간
-        string format = string.Format("{0} 13:00:00", DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")); //다음날 1시 까지 남은 시간
-        DateTime tomorrow = Convert.ToDateTime(format); //format 변환
-        TimeSpan disTime = tomorrow - today; //두 차이를
-        time = (float)disTime.TotalSeconds; //초로 변환함
-    }
+    //void sleepPhase()
+    //{
+    //    //자는 모션을 setActive 
+    //     eventPlay = _objManager.memoryPool.SearchMemory("SleepSystem");
+    //    if(eventPlay==null)
+    //    {
+    //        eventPlay = Instantiate(Resources.Load<GameObject>("SleepSystem"), _objManager.gameObject.transform);
+    //        eventPlay.name="SleepSystem";
+    //        _objManager.memoryPool.InsertMemory(eventPlay);
+    //    }
+    //    _objManager.memoryPool.SetActiveObject(eventPlay.name);
+    //    eventPlay.transform.GetChild(0).gameObject.SetActive(false);
+    //    eventPlay.transform.GetChild(1).gameObject.SetActive(true);
+    //            //애니메이션 생성
+    //    DateTime today = DateTime.Now; //현재 지금 시간
+    //    string format = string.Format("{0} 13:00:00", DateTime.Today.AddDays(1).ToString("yyyy-MM-dd")); //다음날 1시 까지 남은 시간
+    //    DateTime tomorrow = Convert.ToDateTime(format); //format 변환
+    //    TimeSpan disTime = tomorrow - today; //두 차이를
+    //    time = (float)disTime.TotalSeconds; //초로 변환함
+    //}
 
     public void load()
     {
         GetTimeCurIdx = _player.GetAlreadyEndedPhase();
         if(GetTimeCurIdx<_timeStamp.Length)
             time = _timeStamp[GetTimeCurIdx];
-        
+        Debug.Log(GetTimeCurIdx);
         switch(GetTimeCurIdx)
         {
-            case (int)TimeStamp.TS_WATCHING: //object에서 생성
+            case (int)TimeStamp.TS_WATCHING:
+            watcingPhase();//object에서 생성    //3.26 변경 페이즈 관련 부분 공부중
             break;
             case (int)TimeStamp.TS_THINKING:
             watcingPhase();
-            //Dialogu 시작
+            //Dialogue 시작
             break;
             case (int)TimeStamp.TS_WRITING:
             watcingPhase();
@@ -478,7 +488,7 @@ public class SkipController : MonoBehaviour
             case (int)TimeStamp.TS_NEXTCHAPTER:
             isFirstEntry=true;
             watcingPhase();
-            sleepPhase();
+            phasePlay();
             break;
         }
     }

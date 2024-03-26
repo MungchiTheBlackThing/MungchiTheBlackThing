@@ -20,8 +20,8 @@ public class SetDiary : MonoBehaviour
     public void SetDiaryLight()
     {
         sleep.SetActive(true);
-        sleepSystem.SetUI();
         sleepSystem.MenuOn();
+        Debug.Log("메뉴가 다 켜져야하는데");
         this.transform.parent.parent.parent.GetComponent<ScrollRect>().horizontal=true;
         GameObject.Find("TimeManager").GetComponent<SkipController>().SetSleepCheckList();
     }
