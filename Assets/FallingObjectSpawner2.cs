@@ -13,9 +13,11 @@ public class FallingObjectSpawner2 : MonoBehaviour
     Vector3 prePos;
     float spawnInterval = 2.0f;
     public List<GameObject> spawn;
+    public int maxActiveObjects = 10; // 최대 활성화 물체 개수
     public List<Vector3> spawnPos;
+    public Queue<GameObject> activeObjectQueue = new Queue<GameObject>();
+    public int activeObjectCount;
 
-    
     void Awake()
     {
         initPos = spawnParent.GetComponent<RectTransform>().transform.position; //상대 위치 가져옴.
@@ -23,9 +25,9 @@ public class FallingObjectSpawner2 : MonoBehaviour
     }
 
     private void OnEnable() {
-
-        if(spawn.Count != 0)
-            StartCoroutine("DropRandomObject",0.5f);
+        InitializeObjects();
+        if (spawn.Count != 0)
+            InvokeRepeating("DropRandomObject", 0.5f, spawnInterval);
     }
 
     void Update()
@@ -36,12 +38,12 @@ public class FallingObjectSpawner2 : MonoBehaviour
             prePos=initPos;
         }
     }
-    void Start()
-    {
-        InitializeObjects();
+    //void Start()
+    //{
+    //    InitializeObjects();
 
-        StartCoroutine("DropRandomObject",0.5f);
-    }
+    //    StartCoroutine("DropRandomObject",0.5f);
+    //}
 
     void UpdatePosObjects()
     {
@@ -67,14 +69,47 @@ public class FallingObjectSpawner2 : MonoBehaviour
         }
     }
 
-    IEnumerator DropRandomObject()
+    void DropRandomObject()
     {
-        while(true)
+        activeObjectCount = CountActiveObjects();
+        Debug.Log(activeObjectCount);
+        if (activeObjectCount >= maxActiveObjects)
         {
-            selectedObjectSetActive();
-            yield return new WaitForSeconds(spawnInterval);
-            //비활성화된 오브젝트 중 랜덤으로 선택하여 활성화
+            Debug.Log("왜 안되;;");
+            DeactivateOldestActiveObject();
         }
+        selectedObjectSetActive();
+            //비활성화된 오브젝트 중 랜덤으로 선택하여 활성화
+    }
+    public void DeactivateOldestActiveObject()
+    {
+        // 가장 먼저 활성화된 물체를 찾아서 비활성화 및 초기 위치로 이동
+        if (activeObjectQueue.Count > 0)
+        {
+            Debug.Log("삭제");
+            GameObject oldestObject = activeObjectQueue.Dequeue();
+            Debug.Log(oldestObject);
+            Deactive(oldestObject);
+        }
+    }
+    public void Deactive(GameObject obj)
+    {
+        obj.SetActive(false);
+    }
+
+    int CountActiveObjects()
+    {
+        int count = 0;
+        foreach (Transform childTransform in this.transform)
+        {
+            GameObject obj = childTransform.gameObject;
+            if (obj.activeSelf)
+            {
+                count++;
+            }
+            // 여기에 원하는 작업 수행
+        }
+        return count;
     }
 
     List<int> GetIdxDisableObject()
@@ -99,8 +134,9 @@ public class FallingObjectSpawner2 : MonoBehaviour
             int randomIndex = Random.Range(0, indexs.Count);
             GameObject randomObject = spawn[indexs[randomIndex]];
             randomObject.transform.position = spawnPos[indexs[randomIndex]];
-            Debug.Log(spawnPos[indexs[randomIndex]]);
+            //Debug.Log(spawnPos[indexs[randomIndex]]);
             randomObject.SetActive(true);
+            activeObjectQueue.Enqueue(randomObject);
             StartCoroutine(MoveObject(randomObject.transform,spawnPos[indexs[randomIndex]], 1.0f));
         }
     }
@@ -142,6 +178,7 @@ public class FallingObjectSpawner2 : MonoBehaviour
 
     void OnDisable()
     {
+        spawn.Clear();
         StopCoroutine("DropRandomObject"); //이 오브젝트가 꺼질 때, 해당 코루틴을 종료한다.
     }
 }

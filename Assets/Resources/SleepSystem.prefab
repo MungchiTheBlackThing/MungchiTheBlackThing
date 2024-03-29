@@ -600,8 +600,10 @@ MonoBehaviour:
   - {fileID: 2197411986794120240, guid: 436a352070178ea4f823cd461b9a2453, type: 3}
   - {fileID: 2197411986794120240, guid: 436a352070178ea4f823cd461b9a2453, type: 3}
   spawn: []
+  maxActiveObjects: 10
   spawnPos:
   - {x: -3.1603701e-28, y: 3e-45, z: 0}
+  activeObjectCount: 0
 --- !u!1 &7131261092679412916
 GameObject:
   m_ObjectHideFlags: 0

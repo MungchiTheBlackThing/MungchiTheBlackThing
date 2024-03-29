@@ -22,10 +22,10 @@ public class FallingObjectSpawner : MonoBehaviour
         DefPos = SleepDotparent.GetComponent<RectTransform>();
     }
 
-    void Start()
+    void OnEnable()
     {
         InitializeObjects();
-        InvokeRepeating("DropRandomObject", 0.5f, spawnInterval);
+        InvokeRepeating("DropRandomObject", 1f, spawnInterval);
     }
     void InitializeObjects()
     {
@@ -45,7 +45,7 @@ public class FallingObjectSpawner : MonoBehaviour
     {
         // 현재 활성화된 물체 개수 세기
         activeObjectCount = CountActiveObjects();
-
+        Debug.Log(activeObjectCount);
         // 현재 활성화된 물체가 최대 활성화 물체 개수보다 많으면 가장 먼저 활성화된 물체부터 비활성화
         if (activeObjectCount >= maxActiveObjects)
         {
@@ -75,6 +75,7 @@ public class FallingObjectSpawner : MonoBehaviour
         if (activeObjectQueue.Count > 0)
         {
             GameObject oldestObject = activeObjectQueue.Dequeue();
+            Debug.Log(oldestObject);
             MoveAndDeactivate(oldestObject);
         }
     }

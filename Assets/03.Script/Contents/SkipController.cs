@@ -470,8 +470,7 @@ public class SkipController : MonoBehaviour
         Debug.Log(GetTimeCurIdx);
         switch(GetTimeCurIdx)
         {
-            case (int)TimeStamp.TS_WATCHING:
-            watcingPhase();//object에서 생성    //3.26 변경 페이즈 관련 부분 공부중
+            case (int)TimeStamp.TS_WATCHING://object에서 생성    //3.26 변경 페이즈 관련 부분 공부중
             break;
             case (int)TimeStamp.TS_THINKING:
             watcingPhase();

@@ -124,6 +124,7 @@ public class ObjectManager : MonoBehaviour
         {
             for (int i = 2; i <= _chapter; i++)
             {
+                Debug.Log(i);
                 SetBook(i);
             }
             ChangeClothes(_chapter);
@@ -252,7 +253,7 @@ public class ObjectManager : MonoBehaviour
     {
         string bookName = _timesBackground.name + "/ch_books_" + currDay;
         GameObject existingBook = GameObject.Find(bookName);
-
+        Debug.Log(bookName);
         if (!existingBook)
         {
             GameObject bookPrefab = Resources.Load<GameObject>(bookName);
