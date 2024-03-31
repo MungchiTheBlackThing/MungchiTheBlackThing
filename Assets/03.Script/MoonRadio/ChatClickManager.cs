@@ -44,6 +44,33 @@ public class ChatClickManager : MonoBehaviour
         }
 
     }
+
+    public void Exit()
+    {
+        //현재 자식들 모두 Destroy 
+
+        for(int i=0;i<this.transform.childCount;i++)
+        {
+            Destroy(transform.GetChild(i).gameObject);
+        }
+        radioScript.Clear(); //가비지 컬렉션에 의해서 놓아준 자원을 없애줌.
+        currIdx=0;
+        len = MoonRadioCallJson.radioScript.moon_radio_script.chapters[0].script_2.Length;
+
+        for(int i=0;i<len;i++)
+        {
+            GameObject moonRadioObj = Instantiate(Resources.Load<GameObject>("MoonRadio/"+MoonRadioCallJson.radioScript.moon_radio_script.chapters[0].script_2[i].character),this.transform);
+            
+            moonRadioObj.GetComponent<AreaScript>().SettingText(MoonRadioCallJson.radioScript.moon_radio_script.chapters[0].script_2[i].speech);
+            moonRadioObj.SetActive(false);
+
+            if(i==0)
+                moonRadioObj.SetActive(true);
+            else
+                moonRadioObj.SetActive(false);
+            radioScript.Add(moonRadioObj);
+        }
+    }
     public void RunScript(){
         currIdx+=1;
         if(currIdx>=len){

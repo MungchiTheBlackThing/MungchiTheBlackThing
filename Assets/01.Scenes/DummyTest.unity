@@ -2325,9 +2325,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: MoonRadioButController, Assembly-CSharp
-        m_MethodName: ExitMoonChannel
+      - m_Target: {fileID: 4347380346126329232}
+        m_TargetAssemblyTypeName: ChatClickManager, Assembly-CSharp
+        m_MethodName: Exit
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
