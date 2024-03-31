@@ -28,12 +28,12 @@ public class ChatClickManager : MonoBehaviour
         //Debug.Log(MoonRadioCallJson.radioScript.chapters[0].script_1[0].character);
         //currIdx번호로 새로 Instantiate 한다.
         
-        len = MoonRadioCallJson.radioScript.moon_radio_script.chapters[0].script_1.Length;
+        len = MoonRadioCallJson.radioScript.chapter1.Count;
         for(int i=0;i<len;i++)
         {
-            GameObject moonRadioObj = Instantiate(Resources.Load<GameObject>("MoonRadio/"+MoonRadioCallJson.radioScript.moon_radio_script.chapters[0].script_1[i].character),this.transform);
+            GameObject moonRadioObj = Instantiate(Resources.Load<GameObject>("MoonRadio/"+MoonRadioCallJson.radioScript.chapter1[i].character),this.transform);
             
-            moonRadioObj.GetComponent<AreaScript>().SettingText(MoonRadioCallJson.radioScript.moon_radio_script.chapters[0].script_1[i].speech);
+            moonRadioObj.GetComponent<AreaScript>().SettingText(MoonRadioCallJson.radioScript.chapter1[i].speech);
             moonRadioObj.SetActive(false);
 
             if(i==0)
@@ -55,13 +55,13 @@ public class ChatClickManager : MonoBehaviour
         }
         radioScript.Clear(); //가비지 컬렉션에 의해서 놓아준 자원을 없애줌.
         currIdx=0;
-        len = MoonRadioCallJson.radioScript.moon_radio_script.chapters[0].script_2.Length;
+        len = MoonRadioCallJson.radioScript.chapter2.Count;
 
         for(int i=0;i<len;i++)
         {
-            GameObject moonRadioObj = Instantiate(Resources.Load<GameObject>("MoonRadio/"+MoonRadioCallJson.radioScript.moon_radio_script.chapters[0].script_2[i].character),this.transform);
+            GameObject moonRadioObj = Instantiate(Resources.Load<GameObject>("MoonRadio/"+MoonRadioCallJson.radioScript.chapter2[i].character),this.transform);
             
-            moonRadioObj.GetComponent<AreaScript>().SettingText(MoonRadioCallJson.radioScript.moon_radio_script.chapters[0].script_2[i].speech);
+            moonRadioObj.GetComponent<AreaScript>().SettingText(MoonRadioCallJson.radioScript.chapter2[i].speech);
             moonRadioObj.SetActive(false);
 
             if(i==0)
@@ -80,18 +80,5 @@ public class ChatClickManager : MonoBehaviour
             return;
         }
         radioScript[currIdx].gameObject.SetActive(true);
-
-        // Transform parentObject=this.gameObject.transform;
-
-        // if(parentObject)
-        // {
-        //     if(parentObject.childCount>=3){
-        //         Destroy(parentObject.GetChild(0).gameObject);
-        //     }
-        //     GameObject newObject=Instantiate(dreamNPC[idx[currIdx]]) as GameObject; //gameObject 생성
-        //     newObject.name=newObject.name.Substring(0,newObject.name.IndexOf('('));
-        //     newObject.transform.GetComponent<AreaScript>().CharacterText.text=txt[currIdx-1];
-        //     newObject.transform.SetParent(parentObject,false); //현재 클릭된 오브젝트의 부모 위로 설정해주기.
-        // }
     }
 }
