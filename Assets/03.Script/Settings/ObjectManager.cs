@@ -38,7 +38,7 @@ public class ObjectManager : MonoBehaviour
 
 
     bool _isChapterUpdate = true;
-    int _chapter = 0;
+    public int _chapter = 0;
     GameObject[] uiList;
 
     
@@ -107,6 +107,8 @@ public class ObjectManager : MonoBehaviour
                     isAtHome();
                     SetLetter();
                     break;
+                case (int)ChapterDay.END:
+                    break;
                 default:
                     ChangeFromBreadToCup();
                     GoToOther();
@@ -120,7 +122,7 @@ public class ObjectManager : MonoBehaviour
             }
             isFirstUpdate=false;
         }
-        if (_chapter != 1)
+        if (_chapter != 1 && _chapter < 15)
         {
             for (int i = 2; i <= _chapter; i++)
             {
@@ -275,6 +277,10 @@ public class ObjectManager : MonoBehaviour
             if(_preClothes)
                 _preClothes.name = _preClothes.name.Substring(0, _preClothes.name.IndexOf('('));
         }
+    }
+    public void EndPhase()
+    {
+
     }
 
     void Update()

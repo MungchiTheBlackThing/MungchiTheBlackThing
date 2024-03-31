@@ -255,13 +255,23 @@ public class SkipController : MonoBehaviour
 
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_sleeping");
 
-                if (SkipBackground == null){
+                if (SkipBackground == null && _objManager._chapter<15){
                     SkipBackground = Instantiate(Resources.Load<GameObject>("skip_sleeping"), _objManager.transform.parent.parent);
                     SkipBackground.name="skip_sleeping";
                     _objManager.memoryPool.InsertMemory(SkipBackground);
                 }
-                _objManager.memoryPool.SetActiveObject(SkipBackground.name);
-                onUpdatedProgress(_player.GetChapter());
+                if (_objManager._chapter < 15)
+                {
+                    _objManager.memoryPool.SetActiveObject(SkipBackground.name);
+                    onUpdatedProgress(_player.GetChapter());
+                }
+                if (SkipBackground == null && _objManager._chapter >= 15)  
+                {
+                    SkipBackground = Instantiate(Resources.Load<GameObject>("end_animation"), _objManager.transform.parent.parent);
+                    SkipBackground.name = "end_animation";
+                    _objManager.memoryPool.InsertMemory(SkipBackground);
+                    _objManager.memoryPool.SetActiveObject(SkipBackground.name);
+                }  
                 break;
         }
        
