@@ -2,45 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using System.Collections.Generic;
 
-[Serializable]
-public class CharacterSpeech
+[System.Serializable]
+public class Chapter
 {
     public string character;
     public string speech;
 }
 
-[Serializable]
-public class MoonChapter
-{
-    public int chapter_number;
-    public CharacterSpeech[] script_1;
-    public CharacterSpeech[] script_2;
-}
-
-[Serializable]
+[System.Serializable]
 public class MoonRadioScript
 {
-    public MoonChapter[] chapters;
+    public List<Chapter> chapter1;
+    public List<Chapter> chapter2;
 }
 
-[Serializable]
-public class MoonRadio
-{
-    public MoonRadioScript moon_radio_script;
-}
 
 public class MoonRadioCallJson : MonoBehaviour
 {
     // Start is called before the first frame update
-    static public MoonRadio radioScript;
+    static public MoonRadioScript radioScript;
     void Start()
     {
         var moonRadioJson = Resources.Load<TextAsset>("Json/moon_radio_dummy");
         Debug.Log(moonRadioJson);
         if(moonRadioJson)
         {
-            radioScript = JsonUtility.FromJson<MoonRadio>(moonRadioJson.ToString());
+            radioScript = JsonUtility.FromJson<MoonRadioScript>(moonRadioJson.ToString());
         }
     }
 }
