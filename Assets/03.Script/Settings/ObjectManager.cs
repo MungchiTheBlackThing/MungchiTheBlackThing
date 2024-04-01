@@ -108,6 +108,7 @@ public class ObjectManager : MonoBehaviour
                     SetLetter();
                     break;
                 case (int)ChapterDay.END:
+                    EndPhase();
                     break;
                 default:
                     ChangeFromBreadToCup();
