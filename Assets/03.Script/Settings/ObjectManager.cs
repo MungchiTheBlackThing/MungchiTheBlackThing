@@ -36,6 +36,12 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     GameObject _cup; //보이기 위한 용도
 
+    [SerializeField]
+    GameObject _deathnote;
+
+    [SerializeField]
+    GameObject _time;
+
 
     bool _isChapterUpdate = true;
     public int _chapter = 0;
@@ -50,6 +56,7 @@ public class ObjectManager : MonoBehaviour
         _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         memoryPool=new MemoryPool();
         GameObject sub = Instantiate(_sub, this.transform);
+        _time = GameObject.Find("TimeUI");
     }
     void Init()
     {
@@ -86,6 +93,7 @@ public class ObjectManager : MonoBehaviour
         //현재 gameManager가 전달한 chapter을 받아서 background 설치 
         if(isFirstUpdate)
         {
+            Debug.Log("챕터: "+_chapter);
             switch (_chapter)
             {
                 case (int)ChapterDay.C_2DAY:
@@ -108,6 +116,7 @@ public class ObjectManager : MonoBehaviour
                     SetLetter();
                     break;
                 case (int)ChapterDay.END:
+                    Debug.Log("end");
                     EndPhase();
                     break;
                 default:
@@ -127,10 +136,18 @@ public class ObjectManager : MonoBehaviour
         {
             for (int i = 2; i <= _chapter; i++)
             {
-                Debug.Log(i);
                 SetBook(i);
             }
             ChangeClothes(_chapter);
+        }
+        if (_chapter >= 15)
+        {
+            Debug.Log("end2");
+            for (int i = 2; i <= 14; i++)
+            {
+                SetBook(i);
+            }
+            EndPhase();
         }
         //업데이트에 필요한 코드 추가예정.
     }
@@ -242,7 +259,6 @@ public class ObjectManager : MonoBehaviour
     }
     public void CloseLetter()
     {
-
         if (_letter != null)
         {
             for (int i = 0; i < uiList.Length; i++)
@@ -256,13 +272,11 @@ public class ObjectManager : MonoBehaviour
     {
         string bookName = _timesBackground.name + "/ch_books_" + currDay;
         GameObject existingBook = GameObject.Find(bookName);
-        Debug.Log(bookName);
         if (!existingBook)
         {
             GameObject bookPrefab = Resources.Load<GameObject>(bookName);
             GameObject book = Instantiate(bookPrefab, _timesBackground.transform);
             book.name = bookName;
-            Debug.Log(bookName);
         }
     }
 
@@ -281,7 +295,22 @@ public class ObjectManager : MonoBehaviour
     }
     public void EndPhase()
     {
-
+        Debug.Log("EndPhase");
+        _time.SetActive(false);
+        if (_deathnote != null)
+        {
+            Destroy(_deathnote);
+        }
+        _deathnote = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/deathnote"), _timesBackground.transform);
+        _bookPile.SetActive(false);
+        if (_cup != null)
+        {
+            _cup.SetActive(false);
+            if (_bread != null)
+            {
+                _bread.SetActive(true);
+            }
+        }
     }
 
     void Update()
