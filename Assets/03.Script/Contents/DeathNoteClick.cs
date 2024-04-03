@@ -10,11 +10,11 @@ public class DeathNoteClick : MonoBehaviour
     GameObject _deathnote;
 
     [SerializeField]
-    Canvas canvas;
+    GameObject canvas;
     // Start is called before the first frame update
     void Start()
     {
-        canvas = GameObject.Find("Canvas").GetComponent<Canvas>();
+        canvas = GameObject.Find("Canvas");
         //이건 지금 예시임
         SUN = false;
     }
@@ -23,8 +23,9 @@ public class DeathNoteClick : MonoBehaviour
     public void Onclick()
     {
         checkdeath = true;
+        Destroy(this.transform.GetChild(0).gameObject);
         if (SUN)
-        {
+        { 
             _deathnote = Instantiate(Resources.Load<GameObject>("Sun_deathnote"), canvas.transform);
         }
         else
