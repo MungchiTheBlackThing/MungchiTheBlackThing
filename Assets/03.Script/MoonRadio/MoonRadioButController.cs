@@ -18,6 +18,9 @@ public class MoonRadioButController : MonoBehaviour
     GameObject []exitPopup;
 
     Button ExitBtn;
+
+    [SerializeField]
+    ChatClickManager chatClickManager;
     int cnt=0;
     void Start(){
         for(int i=0;i<this.transform.parent.childCount;i++){
@@ -43,10 +46,10 @@ public class MoonRadioButController : MonoBehaviour
         ExitBtn.interactable=true;
         ExitBtn.gameObject.SetActive(false);
         popup.SetActive(false);
-        if(exitPopup.Length!=0)
-            exitPopup[(cnt-1)%2].SetActive(false);
-        main.GetComponent<MainMoonRadioUIController>().resetRadioMoon();
+        cnt=main.GetComponent<MainMoonRadioUIController>().setMoonCnt();
         //대화도 새로 바뀔 예정 -> 원래버전으로 바꾼다 
+        //chatClickManager.Eixt();
+        chatClickManager.Exit();
     }
 
     public void ExitPopup(){
@@ -55,6 +58,7 @@ public class MoonRadioButController : MonoBehaviour
         popup.SetActive(false);
         if(exitPopup.Length!=0)
             exitPopup[(cnt-1)%2].SetActive(false);
+        this.gameObject.SetActive(false);
         main.SetActive(true);
         Debug.Log(1);
 

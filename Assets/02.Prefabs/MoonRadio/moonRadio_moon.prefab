@@ -932,7 +932,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4347380345441164134
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2095,7 +2095,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4347380345779944796}
   m_HandleRect: {fileID: 4347380345779944799}
   m_Direction: 2
-  m_Value: 1
+  m_Value: 0
   m_Size: 1
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -2478,7 +2478,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035, y: -939.3666}
+  m_AnchoredPosition: {x: 0.000061035, y: -939.3665}
   m_SizeDelta: {x: -0.00012207, y: 0}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &4347380346747752104
@@ -2535,7 +2535,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   exit: {fileID: 4347380345441164129}
   scrollRect: {fileID: 0}
-  currIdx: 7
+  currIdx: 0
   radioScript: []
 --- !u!1 &4347380346951361137
 GameObject:
@@ -2767,6 +2767,7 @@ MonoBehaviour:
   exitPopup:
   - {fileID: 2397005859074632331}
   - {fileID: 4347380345532371712}
+  chatClickManager: {fileID: 4347380346747752105}
 --- !u!1 &5579935406682537161
 GameObject:
   m_ObjectHideFlags: 0

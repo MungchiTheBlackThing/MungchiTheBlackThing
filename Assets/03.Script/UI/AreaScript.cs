@@ -30,8 +30,10 @@ public class AreaScript : MonoBehaviour,IPointerDownHandler
             if(manager)
             {
                 manager.RunScript();
+                isFirst=true;
+                return;
             }
-            isFirst=true;
+           
         }
     }
 }

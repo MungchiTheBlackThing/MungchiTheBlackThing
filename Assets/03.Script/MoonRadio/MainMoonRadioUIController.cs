@@ -20,8 +20,15 @@ public class MainMoonRadioUIController : MonoBehaviour
     [SerializeField]
     int moon_Cnt;
 
-    void Start(){
-        moon_Cnt=0;
+    /*
+    오브젝트 풀링 예정 - MoonRadio는 밤일 때 존재해야하기 때문에 없어지지 않는다.
+    하지만, 2번째 이야기 까지 보면 Destory한다.
+    */
+    GameObject realMoonRadio;
+    GameObject realRadio;
+    
+    private void OnEnable() {
+        moon_Cnt=0;   
     }
 
     public int setMoonCnt()
@@ -35,13 +42,28 @@ public class MainMoonRadioUIController : MonoBehaviour
     public void goEarthChannel(){
 
         this.gameObject.SetActive(false);
-        Instantiate(earth_radio,this.transform.parent);
+    
+        if(realMoonRadio == null)
+        {
+            realMoonRadio = Instantiate(earth_radio,this.transform.parent);
+        }else
+        {
+            realMoonRadio.SetActive(true);
+        }
     }
     //moon_Cnt는 시스템으로 이동해야함.. 왜냐하면, 하루가 지나면 reset될 수 있도록 설정하도록. 구현
     public void goMoonChannel(){
         moon_Cnt+=1;
-        if(moon_Cnt<=2){
-            firstRadioMoon=Instantiate(moon_radio,this.transform.parent);
+        if(moon_Cnt<=2){   
+            if(realRadio == null)
+            {
+                realRadio=Instantiate(moon_radio,this.transform.parent);
+            }
+            else
+            {
+                realRadio.SetActive(true);
+                realRadio.GetComponent<MoonRadioButController>().ResetTalk();
+            }
         }else{
             alter_Moon.SetActive(true);
         }
@@ -71,21 +93,6 @@ public class MainMoonRadioUIController : MonoBehaviour
     public void noExit(){
         radio_main.SetActive(true);
         radio_off.SetActive(false);
-    }
-
-    public void resetRadioMoon()
-    {
-        Debug.Log(2);
-        if(firstRadioMoon)
-        {
-            Debug.Log("이거 되는거 맞아?");
-            Destroy(firstRadioMoon);
-            firstRadioMoon=null;
-        }
-        if(moon_Cnt<=2){
-            moon_Cnt+=1;
-            firstRadioMoon=Instantiate(moon_radio,this.transform.parent);
-        }
     }
 
 }

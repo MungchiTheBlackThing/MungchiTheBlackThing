@@ -48,7 +48,7 @@ public class ChatClickManager : MonoBehaviour
     public void Exit()
     {
         //현재 자식들 모두 Destroy 
-
+        Debug.Log("여기까지 와?");
         for(int i=0;i<this.transform.childCount;i++)
         {
             Destroy(transform.GetChild(i).gameObject);
