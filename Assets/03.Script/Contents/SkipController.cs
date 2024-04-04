@@ -245,7 +245,8 @@ public class SkipController : MonoBehaviour
                 //Destroy(eventPlay);
                 //해제해야함.
                 _objManager.NextChapter();
-                _player.SetChapter();
+                if(_player.GetChapter()<=14)
+                    _player.SetChapter();
                 _objManager.transChapter(_player.GetChapter());
                 isInit = true;
                 //현재 시간을 가져와서, 다음날 한시까지 계산을 한다.

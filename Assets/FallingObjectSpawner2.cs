@@ -180,5 +180,10 @@ public class FallingObjectSpawner2 : MonoBehaviour
     {
         spawn.Clear();
         StopCoroutine("DropRandomObject"); //이 오브젝트가 꺼질 때, 해당 코루틴을 종료한다.
+        CancelInvoke("DropRandomObject");
+        foreach (Transform child in this.transform)
+        {
+            Destroy(child.gameObject);
+        }
     }
 }
