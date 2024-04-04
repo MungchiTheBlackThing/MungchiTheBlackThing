@@ -282,7 +282,7 @@ public class ObjectManager : MonoBehaviour
 
     public void ChangeClothes(int currDay)
     {
-        if (currDay % 2 != 0)
+        if (currDay % 2 != 0 && currDay < 15)
         {
             if (_preClothes != null)
             {
