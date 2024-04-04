@@ -65,6 +65,7 @@ public class MainMoonRadioUIController : MonoBehaviour
                 realRadio.GetComponent<MoonRadioButController>().ResetTalk();
             }
         }else{
+            Destroy(realRadio);
             alter_Moon.SetActive(true);
         }
     }

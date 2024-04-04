@@ -22,12 +22,15 @@ public class MoonRadioButController : MonoBehaviour
     [SerializeField]
     ChatClickManager chatClickManager;
     int cnt=0;
+    void OnEnable()
+    {
+        cnt=main.GetComponent<MainMoonRadioUIController>().getMoonCnt();
+    }
     void Start(){
         for(int i=0;i<this.transform.parent.childCount;i++){
             if(this.transform.parent.GetChild(i).name.Contains("moonRadio_main"))
                 main=this.transform.parent.GetChild(i).gameObject;
         }
-        cnt=main.GetComponent<MainMoonRadioUIController>().getMoonCnt();
     }
 
     public void ExitMoonChannel(){
