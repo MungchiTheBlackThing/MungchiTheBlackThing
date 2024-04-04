@@ -96,6 +96,8 @@ public class ObjectManager : MonoBehaviour
             Debug.Log("챕터: "+_chapter);
             switch (_chapter)
             {
+                case (int)ChapterDay.C_1DAY:
+                break;
                 case (int)ChapterDay.C_2DAY:
                 case (int)ChapterDay.C_5DAY:
                 case (int)ChapterDay.C_8DAY:
@@ -107,6 +109,7 @@ public class ObjectManager : MonoBehaviour
                     break;
                 case (int)ChapterDay.C_4DAY:
                 case (int)ChapterDay.C_6DAY:
+                    break;
                 case (int)ChapterDay.C_9DAY:
                     ChangeFromBreadToCup();
                     break;
