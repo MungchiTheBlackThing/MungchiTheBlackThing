@@ -10,7 +10,7 @@ public class Deathnote : MonoBehaviour, IDragHandler, IEndDragHandler
     public int currentPageIndex = 0; // 현재 페이지의 인덱스
     private Vector2 dragStartPosition; // 드래그 시작 위치
 
-    void Start()
+    void OnEnable()
     {
         pageCount = pagesContainer.childCount - 1; // 페이지의 총 갯수 (-1은 닫기 버튼을 제외하기 위함)
 
@@ -47,9 +47,9 @@ public class Deathnote : MonoBehaviour, IDragHandler, IEndDragHandler
             currentPageIndex--; // 이전 페이지 인덱스로 이동
             pagesContainer.GetChild(currentPageIndex).gameObject.SetActive(true); // 이전 페이지 활성화
         }
-        if (currentPageIndex == pageCount-1)
+        if (currentPageIndex == pageCount - 1) 
         {
-            pagesContainer.GetChild(pageCount).gameObject.SetActive(true);
+            pagesContainer.GetChild(pageCount).gameObject.SetActive(true); //exit 버튼 활성화
         }
     }
 
@@ -58,6 +58,10 @@ public class Deathnote : MonoBehaviour, IDragHandler, IEndDragHandler
     {
         currentPageIndex = 0;
         pagesContainer.GetChild(pageCount).gameObject.SetActive(false);
+        if (DeathNoteClick.checkdeath)
+        {
+            pagesContainer.GetChild(pageCount).gameObject.SetActive(true); //exit 버튼 활성화
+        }
     }
 
     public void Onexitclick()
