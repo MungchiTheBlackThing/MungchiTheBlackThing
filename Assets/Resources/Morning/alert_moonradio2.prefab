@@ -104,8 +104,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uB2EC\uC774 \uB72C \uBC24, \uC800\uB141 \uC5EC\uB35F \uC2DC\uBD80\uD130
-    \L\uC0C8\uBCBD \uC138 \uC2DC \uAE4C\uC9C0"
+  m_text: "\uC791\uB3D9\uD558\uC9C0 \uC54A\uB294\uB2E4.\n\uC1A1\uC2E0\uAE30\uAC00
+    \uACE0\uC7A5\uB09C\uB4EF \uD558\uB2E4."
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
   m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
@@ -184,7 +184,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7610249119206416072}
   m_Layer: 0
-  m_Name: alert_moonradio
+  m_Name: alert_moonradio2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
