@@ -107,8 +107,8 @@ MonoBehaviour:
   m_text: "\uB2EC\uC774 \uB72C \uBC24, \uC800\uB141 \uC5EC\uB35F \uC2DC\uBD80\uD130
     \L\uC0C8\uBCBD \uC138 \uC2DC \uAE4C\uC9C0"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2fe2b39dc9e404bc49954ba51950b22d, type: 2}
-  m_sharedMaterial: {fileID: 7011725699582850384, guid: 2fe2b39dc9e404bc49954ba51950b22d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+  m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 5595efc82c2144e2f9fe1676f9b05047, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f9ce047451348ea45b2d2333ed1df663, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

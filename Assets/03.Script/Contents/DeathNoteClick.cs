@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DeathNoteClick : MonoBehaviour
 {
-    static bool checkdeath = false;
+    public static bool checkdeath = false;
     public bool SUN = false;
     [SerializeField]
     GameObject _deathnote;
@@ -22,16 +22,19 @@ public class DeathNoteClick : MonoBehaviour
     // Update is called once per frame
     public void Onclick()
     {
-        checkdeath = true;
-        Destroy(this.transform.GetChild(0).gameObject);
-        if (SUN)
-        { 
-            _deathnote = Instantiate(Resources.Load<GameObject>("Sun_deathnote"), canvas.transform);
-        }
-        else
+        if(!checkdeath)
         {
-            _deathnote = Instantiate(Resources.Load<GameObject>("Moon_deathnote"), canvas.transform);
+            if (SUN)
+            {
+                _deathnote = Instantiate(Resources.Load<GameObject>("Sun_deathnote"), canvas.transform);
+            }
+            else
+            {
+                _deathnote = Instantiate(Resources.Load<GameObject>("Moon_deathnote"), canvas.transform);
+            }
+            Destroy(this.transform.GetChild(0).gameObject);
         }
+        checkdeath = true;
         _deathnote.SetActive(true);
     }
 }

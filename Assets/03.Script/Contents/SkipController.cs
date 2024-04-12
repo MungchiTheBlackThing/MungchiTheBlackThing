@@ -65,6 +65,7 @@ public class SkipController : MonoBehaviour
     OnUpdatedProgressDelegate onUpdatedProgress;
     //다이얼로그 실행
     GameObject story;
+    public static bool is_end=false;
     void Start()
     {
         onUpdatedProgress=new OnUpdatedProgressDelegate(GameObject.Find("Menu").GetComponent<MenuController>().OnUpdatedProgress);
@@ -272,6 +273,7 @@ public class SkipController : MonoBehaviour
                     SkipBackground.name = "end_animation";
                     _objManager.memoryPool.InsertMemory(SkipBackground);
                     _objManager.memoryPool.SetActiveObject(SkipBackground.name);
+                    is_end = true; //엔딩
                 }  
                 break;
         }

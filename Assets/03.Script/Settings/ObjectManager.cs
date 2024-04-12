@@ -46,7 +46,6 @@ public class ObjectManager : MonoBehaviour
     bool _isChapterUpdate = true;
     public int _chapter = 0;
     GameObject[] uiList;
-
     
     PlayerController _player;
     
@@ -120,6 +119,7 @@ public class ObjectManager : MonoBehaviour
                     break;
                 case (int)ChapterDay.END:
                     Debug.Log("end");
+                    SkipController.is_end = true;
                     EndPhase();
                     break;
                 default:
@@ -300,11 +300,13 @@ public class ObjectManager : MonoBehaviour
     {
         Debug.Log("EndPhase");
         _time.SetActive(false);
+        SkipController.is_end = true;
         if (_deathnote != null)
         {
             Destroy(_deathnote);
         }
         _deathnote = Instantiate(Resources.Load<GameObject>(_timesBackground.name + "/deathnote"), _timesBackground.transform);
+        _deathnote.transform.SetAsFirstSibling();
         _bookPile.SetActive(false);
         if (_cup != null)
         {

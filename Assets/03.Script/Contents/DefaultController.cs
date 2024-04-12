@@ -107,8 +107,18 @@ public class DefaultController : MonoBehaviour
     }
     public void InstMoonSystem()
     {
+        string alert_name = "/alert_moonradio"; //기본
 
-        GameObject alter = Resources.Load<GameObject>(this.gameObject.name + "/alert_moonradio");
+        if (SkipController.is_end == true && DeathNoteClick.checkdeath == false) //엔딩이고 유서 확인 안했을때
+            alert_name = "/alert_moonradio1";
+
+        if (SkipController.is_end == true && DeathNoteClick.checkdeath == true) //엔딩이고 유서 확인 했을때
+            alert_name = "/alert_moonradio2";
+
+        if(SkipController.is_end == false && DeathNoteClick.checkdeath == false) //일반적인 상황
+            alert_name = "/alert_moonradio";
+
+        GameObject alter = Resources.Load<GameObject>(this.gameObject.name + alert_name);
 
         if (alter == null)
         {
