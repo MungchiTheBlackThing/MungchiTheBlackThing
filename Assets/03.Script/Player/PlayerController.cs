@@ -25,8 +25,8 @@ public class PlayerController : MonoBehaviour
     {
         //앞으로 player을 동적으로 생성해서 관리할 예정.. 아직은 미리 초기화해서 사용한다.
         _player = new PlayerInfo(0, nickname, 1);
+        WritePlayerFile();
         readStringFromPlayerFile();
-        
     }
 
     void Start()
@@ -92,6 +92,7 @@ public class PlayerController : MonoBehaviour
     public void UpdateDiary()
     {
 
+        Debug.Log(_player.AlreadyEndedPhase);
         if(_player.AlreadyEndedPhase==3)
         {
             diaryStatus=DiaryStatus.FISRT_NONE;
