@@ -75,7 +75,6 @@ public class FallingObjectSpawner2 : MonoBehaviour
         Debug.Log(activeObjectCount);
         if (activeObjectCount >= maxActiveObjects)
         {
-            Debug.Log("왜 안되;;");
             DeactivateOldestActiveObject();
         }
         selectedObjectSetActive();

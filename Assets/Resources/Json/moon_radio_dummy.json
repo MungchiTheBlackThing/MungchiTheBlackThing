@@ -1,4 +1,5 @@
 {
+1 {
   "chapter1": [
     {
       "character": "bubble_edison",
@@ -167,5 +168,6 @@
       "speech": "♬ ######!!!"
     }
   ]
+  }
 }
 
