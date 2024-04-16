@@ -13,6 +13,6 @@ public class LoadController : MonoBehaviour
     {
         yield return new WaitForSeconds(3f); //다음에는 데이터베이스 호출 
         //씬이동
-        SceneManager.LoadScene("01.Scenes/Dialogue");
+        SceneManager.LoadScene("01.Scenes/Test");
     }
 }

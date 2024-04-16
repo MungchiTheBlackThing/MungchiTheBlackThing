@@ -27,6 +27,8 @@ public class MenuController : MonoBehaviour
     GameObject TimeUI;
     [SerializeField]
     GameObject Default;
+    [SerializeField]
+    GameObject Replay;
     #region 챕터 변수
     [SerializeField]
     GameObject checkList;
@@ -50,6 +52,13 @@ public class MenuController : MonoBehaviour
             chapterList = JsonUtility.FromJson<Chapters>(loadedJson.ToString());
         }
     }
+    //private void Update()
+    //{
+    //    if (SkipController.is_end)
+    //    {
+    //        TimeUI.SetActive(false);
+    //    }
+    //}
     public void onMenu()
     {
         if (!Icon.activeSelf)
@@ -78,7 +87,8 @@ public class MenuController : MonoBehaviour
 
     public void MenuoffExit()
     {
-        TimeUI.SetActive(true);
+        if(!SkipController.is_end)
+            TimeUI.SetActive(true);
         checkList.transform.parent.gameObject.SetActive(true);
         Icon.transform.parent.gameObject.SetActive(false);
     }
@@ -139,6 +149,11 @@ public class MenuController : MonoBehaviour
         Debug.Log("켜");
         Default.SetActive(true);
         TimeUI.SetActive(true);
+    }
+    public void replayON()
+    {
+        TimeUI.SetActive(false);
+        Replay.SetActive(true);
     }
 
     public void OnUpdatedProgress(int chapter)

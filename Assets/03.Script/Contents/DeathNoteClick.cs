@@ -11,9 +11,13 @@ public class DeathNoteClick : MonoBehaviour
 
     [SerializeField]
     GameObject canvas;
+
+    [SerializeField]
+    MenuController menu;
     // Start is called before the first frame update
     void Start()
     {
+        menu = GameObject.Find("Menu").GetComponent<MenuController>();
         canvas = GameObject.Find("Canvas");
         //이건 지금 예시임
         SUN = false;
@@ -36,5 +40,6 @@ public class DeathNoteClick : MonoBehaviour
         }
         checkdeath = true;
         _deathnote.SetActive(true);
+        menu.replayON();
     }
 }
