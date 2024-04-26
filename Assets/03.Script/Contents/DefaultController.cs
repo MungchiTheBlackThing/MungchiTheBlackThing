@@ -169,5 +169,4 @@ public class DefaultController : MonoBehaviour
         selected.transform.parent.GetComponent<Animator>().SetBool("isClose", isClose);
         isClose = !isClose;
     }
-
 }

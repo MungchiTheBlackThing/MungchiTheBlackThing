@@ -41,6 +41,13 @@ public class PlayerController : MonoBehaviour
         _elapsedTime += Time.deltaTime;
     }
 
+    public void Init()
+    {
+        diaryStatus = DiaryStatus.FISRT_NONE;
+        _player = new PlayerInfo(0, nickname, 1);
+        WritePlayerFile();
+    }
+
     public float GetTime()
     {
         return _elapsedTime;

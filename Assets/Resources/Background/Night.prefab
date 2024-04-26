@@ -2947,7 +2947,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 1579377814362055653}
         m_TargetAssemblyTypeName: DefaultController, Assembly-CSharp
         m_MethodName: OpenDoor
         m_Mode: 1

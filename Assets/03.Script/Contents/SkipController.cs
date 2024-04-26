@@ -53,8 +53,8 @@ public class SkipController : MonoBehaviour
     public int GetTimeCurIdx { get => curIdx; set => curIdx = value; }
 
     [SerializeField]
-    bool ifFirstUpdate = true;
-    bool isInit = true;
+    public bool ifFirstUpdate = true;
+    public bool isInit = true;
     [SerializeField]
     List<GameObject> curProgress;
     [SerializeField]
@@ -66,7 +66,8 @@ public class SkipController : MonoBehaviour
     //다이얼로그 실행
     GameObject story;
     public static bool is_end=false;
-    void Start()
+
+    void Awake()
     {
         onUpdatedProgress=new OnUpdatedProgressDelegate(GameObject.Find("Menu").GetComponent<MenuController>().OnUpdatedProgress);
         curProgress = new List<GameObject>();
