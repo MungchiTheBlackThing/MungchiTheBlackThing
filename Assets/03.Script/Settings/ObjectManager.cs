@@ -34,6 +34,9 @@ public class ObjectManager : MonoBehaviour
     GameObject _sub;
 
     [SerializeField]
+    GameObject _main;
+
+    [SerializeField]
     GameObject _cup; //보이기 위한 용도
 
     [SerializeField]
@@ -42,6 +45,8 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     GameObject _time;
 
+    [SerializeField]
+    GameObject _iconcheck;
 
     bool _isChapterUpdate = true;
     public int _chapter = 0;
@@ -55,7 +60,9 @@ public class ObjectManager : MonoBehaviour
         _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
         memoryPool=new MemoryPool();
         GameObject sub = Instantiate(_sub, this.transform);
+        //GameObject main = Instantiate(_main, this.transform);
         _time = GameObject.Find("TimeUI");
+        _iconcheck = GameObject.Find("icon_checklist");
     }
     void Init()
     {
@@ -300,6 +307,7 @@ public class ObjectManager : MonoBehaviour
     {
         Debug.Log("EndPhase");
         _time.SetActive(false);
+        _iconcheck.SetActive(false);
         SkipController.is_end = true;
         if (_deathnote != null)
         {

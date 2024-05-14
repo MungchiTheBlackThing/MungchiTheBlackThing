@@ -16,6 +16,9 @@ public class PlayerController : MonoBehaviour
     //임시 저장을 위한 serialize..
     [SerializeField]
     string nickname;
+    [SerializeField]
+    int currentChapter;
+
 
     public bool isDiaryCheck = false;
     bool isNextChapter=false;
@@ -32,6 +35,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         UpdateDiary();
+        Debug.Log("???????");
     }
 
     // Update is called once per frame
@@ -56,6 +60,7 @@ public class PlayerController : MonoBehaviour
     public void SetChapter()
     {
         _player.CurrentChapter += 1;
+        currentChapter = _player.CurrentChapter;
     }
     //시간 설정 : (현재 시간 - watching이 진행된 시간)+60분
     public void PassWathingTime()

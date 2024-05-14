@@ -24,6 +24,8 @@ public class SkipController : MonoBehaviour
     GameObject phaseWriting;
     [SerializeField]
     GameObject eventPlay;
+    [SerializeField]
+    GameObject MainMungchi;
     
     [SerializeField]
     Image checklist; //Time에 따라서 이미지가 변경된다.
@@ -33,6 +35,9 @@ public class SkipController : MonoBehaviour
 
     [SerializeField]
     GameObject menu;
+
+    [SerializeField]
+    GameObject _background;
 
     public List<GameObject> checkList_childs;
     [SerializeField]
@@ -65,7 +70,8 @@ public class SkipController : MonoBehaviour
     OnUpdatedProgressDelegate onUpdatedProgress;
     //다이얼로그 실행
     GameObject story;
-    public static bool is_end=false;
+    public static bool is_end = false;
+    public static bool is_Replay = false;
 
     void Awake()
     {
@@ -74,25 +80,46 @@ public class SkipController : MonoBehaviour
         checkList_childs = new List<GameObject>();
         _objManager = GameObject.FindWithTag("ObjectManager").GetComponent<ObjectManager>();
         _player = GameObject.FindWithTag("Player").GetComponent<PlayerController>();
+        //onUpdatedProgress(_player.GetChapter());
+        Debug.Log("Awake");
+    }
 
+    void Start()
+    {
+        _background = GameObject.Find("Background");
         Transform child = alter.transform.GetChild(0).transform;
-        
+
         for (int i = 0; i < child.childCount; i++)
         {
             if (child.GetChild(i).name.Contains("title"))
                 _alterText = child.GetChild(i).GetComponent<TMP_Text>();
         }
-
         for (int i = 0; i < checkList_note.transform.childCount; i++)
         {
             checkList_childs.Add(checkList_note.transform.GetChild(i).gameObject);
         }
         onUpdatedProgress(_player.GetChapter());
+        is_Replay = false;
+        Debug.Log("Start");
+    }
+
+    void OnEnable()
+    {
+        if (is_Replay)
+        {
+            for (int i = 0; i < checkList_note.transform.childCount; i++)
+            {
+                checkList_childs.Add(checkList_note.transform.GetChild(i).gameObject);
+            }
+            onUpdatedProgress(_player.GetChapter());
+            Debug.Log("리플레이");
+        }
+        is_Replay=false;
+        Debug.Log("OnEnable");
     }
 
     void Update()
     {
-
         if(isFirstTime)
         {
             load();
@@ -185,6 +212,7 @@ public class SkipController : MonoBehaviour
         ifFirstUpdate = true;
         _player.SetAlreadyEndedPhase();
         Debug.Log("Curidx: " + GetTimeCurIdx);
+        DeactiveMain();
         switch (GetTimeCurIdx)
         {
             case (int)TimeStamp.TS_WATCHING:
@@ -200,6 +228,7 @@ public class SkipController : MonoBehaviour
                 _objManager.memoryPool.SetActiveObject(SkipBackground.name);
 
                 VideoMainDialogue();
+                
                 break;
 
             case (int)TimeStamp.TS_THINKING:
@@ -212,6 +241,7 @@ public class SkipController : MonoBehaviour
                     _objManager.memoryPool.InsertMemory(SkipBackground);
                 }
                 _objManager.memoryPool.SetActiveObject(SkipBackground.name);
+               
                 break;
 
             case (int)TimeStamp.TS_WRITING:
@@ -399,11 +429,28 @@ public class SkipController : MonoBehaviour
         StartCoroutine("OpenCheckList");
 
     }
+    public void Maindial()
+    {
+        MainMungchi = _objManager.memoryPool.SearchMemory("MainMungchi");
+        if (MainMungchi == null)
+        {
+            MainMungchi = Instantiate(Resources.Load<GameObject>("MainMungchi"), _objManager.gameObject.transform);
+            MainMungchi.name = "MainMungchi";
+            _objManager.memoryPool.InsertMemory(MainMungchi);
+        }
+        _objManager.memoryPool.SetActiveObject(MainMungchi.name);
+    }
+    public void DeactiveMain()
+    {
+        if (MainMungchi != null)
+            _objManager.memoryPool.DeactivateObject(MainMungchi.name);
+    }
 
     void watcingPhase()
     {
         _objManager.Close();
         _objManager.RemoveWatchingObject();
+        Maindial();
     }
 
     void writingPhase()

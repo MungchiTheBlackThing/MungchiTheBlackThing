@@ -164,7 +164,7 @@ public class MenuController : MonoBehaviour
         for(int i=1;i<=3;i++)
         {
              if(prograssUI.ContainsKey(i) == false)
-            {
+             {
                 GameObject icon=Instantiate(dragIcon,dragScroller.transform.GetChild(0));
                 icon.name=chapterList.chapters[i].chapter;
                 DragIcon curIconScript=icon.GetComponent<DragIcon>();
@@ -174,7 +174,7 @@ public class MenuController : MonoBehaviour
 
                 //ProgressBar의 길이 조절을 위함.
                 dragScroller.GetComponent<RectTransform>().sizeDelta = new Vector2(dragScroller.GetComponent<RectTransform>().rect.width,dragScroller.GetComponent<RectTransform>().rect.height);
-            }   
+             }   
         }
 
         //5일차~14일까지

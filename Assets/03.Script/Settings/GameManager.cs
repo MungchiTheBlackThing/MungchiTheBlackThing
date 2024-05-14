@@ -11,12 +11,14 @@ using UnityEngine.Android;
 using System.IO;
 public class GameManager : MonoBehaviour
 {
-    bool isChapterUpdate=true;
+    bool isChapterUpdate = true;
     ObjectManager _objManager;
-    PlayerController _player; //현재 플레이어의 컨트롤러 
+    PlayerController _player; //현재 플레이어의 컨트롤러
+    
     const int setWidth=2796;
     const int setHeight=1920;
-
+    [SerializeField]
+    GameObject _time;
     [SerializeField]
     GameObject _background;
     //현재 시간을 보여주기 위한 UI (Test용)
@@ -26,6 +28,9 @@ public class GameManager : MonoBehaviour
     void Start(){
         SetPlayer(); //캐릭터 생성
         InitBackground(); //현재 시간에 따른 배경 생성
+        _time.SetActive(false);
+        Debug.Log("초기화");
+        _time.SetActive(true);
     }
     
     void SetPlayer()

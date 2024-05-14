@@ -33,6 +33,7 @@ public class Replay : MonoBehaviour
     public void replay()
     {
         SkipController.is_end = false;
+        SkipController.is_Replay = true;
         DeathNoteClick.checkdeath = false;
         _player.Init();
         _skipController.isInit = true;
