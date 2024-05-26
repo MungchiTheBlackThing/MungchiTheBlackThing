@@ -13,7 +13,7 @@ public class SkipController : MonoBehaviour
     //SkipController가 시간을 보관한다.
 
     public static bool isFirstEntry=false;
-    float[] _timeStamp = { 3600f, 7200f, 1800f, 3200f, 1800f};
+    float[] _timeStamp = { 3600f, 7200f, 1800f, 3600f, 1800f, 15f };
 
     [SerializeField]
     GameObject alter;
@@ -155,8 +155,87 @@ public class SkipController : MonoBehaviour
             {
                 if (GetTimeCurIdx == 0)
                     _objManager.Close();
-                GetTimeCurIdx++;
+                Debug.Log("자연스러운넘김: " + curIdx);
+                switch (GetTimeCurIdx)
+                {
+                    case (int)TimeStamp.TS_WATCHING:
+                        watcingPhase();
+                        time = _timeStamp[GetTimeCurIdx];
+                        VideoMainDialogue();
+
+                        break;
+                    case (int)TimeStamp.TS_DIALA:
+                        /*메인A*/
+                        Maindial();
+                        time = _timeStamp[GetTimeCurIdx];
+                        break;
+
+                    case (int)TimeStamp.TS_THINKING:
+                        DeactiveMain();
+                        time = _timeStamp[GetTimeCurIdx];
+                        break;
+
+                    case (int)TimeStamp.TS_DIALB:
+                        Maindial();
+                        time = _timeStamp[GetTimeCurIdx];
+                        break;
+
+                    case (int)TimeStamp.TS_WRITING:
+                        DeactiveMain();
+                        writingPhase();
+                        time = _timeStamp[GetTimeCurIdx];
+                        break;
+
+                    case (int)TimeStamp.TS_PLAY:
+                        phasePlay();
+                        break;
+                    case (int)TimeStamp.TS_NEXTCHAPTER:
+                        Debug.Log("다음챕터");
+                        ClickSkipBut();
+                        if (eventPlay != null)
+                        {
+                            _objManager.memoryPool.DeactivateObject(eventPlay.name);
+                        }
+                        //Destroy(eventPlay);
+                        //해제해야함.
+                        _objManager.NextChapter();
+                        if (_player.GetChapter() <= 14)
+                            _player.SetChapter();
+                        _objManager.transChapter(_player.GetChapter());
+                        isInit = true;
+                        //현재 시간을 가져와서, 다음날 한시까지 계산을 한다.
+                        GetTimeCurIdx = 0;
+                        time = _timeStamp[GetTimeCurIdx];
+                        alter.SetActive(false);
+
+                        SkipBackground = _objManager.memoryPool.SearchMemory("skip_sleeping");
+
+                        if (SkipBackground == null && _objManager._chapter < 15)
+                        {
+                            SkipBackground = Instantiate(Resources.Load<GameObject>("skip_sleeping"), _objManager.transform.parent.parent);
+                            SkipBackground.name = "skip_sleeping";
+                            _objManager.memoryPool.InsertMemory(SkipBackground);
+                        }
+                        if (_objManager._chapter < 15)
+                        {
+                            _objManager.memoryPool.SetActiveObject(SkipBackground.name);
+                            onUpdatedProgress(_player.GetChapter());
+                        }
+                        if (SkipBackground == null && _objManager._chapter >= 15)
+                        {
+                            SkipBackground = Instantiate(Resources.Load<GameObject>("end_animation"), _objManager.transform.parent.parent);
+                            SkipBackground.name = "end_animation";
+                            _objManager.memoryPool.InsertMemory(SkipBackground);
+                            _objManager.memoryPool.SetActiveObject(SkipBackground.name);
+                            is_end = true; //엔딩
+                        }
+                        break;
+                    default:
+                        Debug.LogError("알 수 없는 상태입니다: " + GetTimeCurIdx);
+                        break;
+                }
                 ifFirstUpdate = true;
+                
                 //ObjectManager에게 전달.
             }
 
@@ -217,6 +296,7 @@ public class SkipController : MonoBehaviour
         {
             case (int)TimeStamp.TS_WATCHING:
                 watcingPhase();
+                Debug.Log("시작");
                 ++GetTimeCurIdx;
                 time = _timeStamp[GetTimeCurIdx];
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
@@ -277,6 +357,7 @@ public class SkipController : MonoBehaviour
                 DeactiveMain();
                 writingPhase();
                 ++GetTimeCurIdx;
+                time=_timeStamp[GetTimeCurIdx];
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
                 if (SkipBackground == null){
                     SkipBackground = Instantiate(Resources.Load<GameObject>("skip_animation"), _objManager.transform.parent.parent);
@@ -299,6 +380,8 @@ public class SkipController : MonoBehaviour
                 _objManager.memoryPool.SetActiveObject(SkipBackground.name);
                 break;
             case (int)TimeStamp.TS_NEXTCHAPTER:
+
+                Debug.Log("다음챕터");
                 ClickSkipBut();
                 if(eventPlay!=null)
                 {
@@ -336,6 +419,9 @@ public class SkipController : MonoBehaviour
                     _objManager.memoryPool.SetActiveObject(SkipBackground.name);
                     is_end = true; //엔딩
                 }  
+                break;
+            default:
+                Debug.LogError("알 수 없는 상태입니다: " + GetTimeCurIdx);
                 break;
         }
        
@@ -398,7 +484,7 @@ public class SkipController : MonoBehaviour
     public void SetSleepCheckList()
     {
         ifFirstUpdate = false;
-        GetTimeCurIdx = 4;
+        GetTimeCurIdx = 6;
         _player.SetAlreadyEndedPhase();
         for (int i = 0; i < checkList_childs.Count; i++)
         {
@@ -497,16 +583,6 @@ public class SkipController : MonoBehaviour
         DateTime tomorrow = Convert.ToDateTime(format); //format 변환
         TimeSpan disTime = tomorrow - today; //두 차이를
         time = (float)disTime.TotalSeconds; //초로 변환함
-        StartCoroutine(WritingWait(15.0f));
-    }
-    IEnumerator WritingWait(float writingtime) //뭉치가 일기쓰는 시간
-    {
-        yield return new WaitForSeconds(writingtime);
-        if (phaseWriting != null)
-        {
-            _objManager.memoryPool.DeactivateObject(phaseWriting.name);
-        }
-        phasePlay();
     }
     void phasePlay()
     {
