@@ -12,7 +12,10 @@ public class DiarySystem : MonoBehaviour
     GameObject alert;
     public void AppearsWarning()
     {
-        alert.SetActive(true);
+        if (!SkipController.is_end)
+            alert.SetActive(true);
+        else
+            OpenDiary();
     }
     public void OpenDiary(){
         openDiary.gameObject.SetActive(true);

@@ -13,7 +13,7 @@ public class SkipController : MonoBehaviour
     //SkipController가 시간을 보관한다.
 
     public static bool isFirstEntry=false;
-    float[] _timeStamp = { 3600f, 7200f, 1800f };
+    float[] _timeStamp = { 3600f, 7200f, 1800f, 3200f, 1800f};
 
     [SerializeField]
     GameObject alter;
@@ -230,8 +230,23 @@ public class SkipController : MonoBehaviour
                 VideoMainDialogue();
                 
                 break;
+            case (int)TimeStamp.TS_DIALA:
+                /*메인A*/
+                Maindial();
+                ++GetTimeCurIdx;
+                time = _timeStamp[GetTimeCurIdx];
+                SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
+                if (SkipBackground == null)
+                {
+                    SkipBackground = Instantiate(Resources.Load<GameObject>("skip_animation"), _objManager.transform.parent.parent);
+                    SkipBackground.name = "skip_animation";
+                    _objManager.memoryPool.InsertMemory(SkipBackground);
+                }
+                _objManager.memoryPool.SetActiveObject(SkipBackground.name);
+                break;
 
             case (int)TimeStamp.TS_THINKING:
+                DeactiveMain();
                 ++GetTimeCurIdx;
                 time = _timeStamp[GetTimeCurIdx];
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
@@ -243,8 +258,23 @@ public class SkipController : MonoBehaviour
                 _objManager.memoryPool.SetActiveObject(SkipBackground.name);
                
                 break;
+            case (int)TimeStamp.TS_DIALB:
+                /*메인B*/
+                Maindial();
+                ++GetTimeCurIdx;
+                time = _timeStamp[GetTimeCurIdx];
+                SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
+                if (SkipBackground == null)
+                {
+                    SkipBackground = Instantiate(Resources.Load<GameObject>("skip_animation"), _objManager.transform.parent.parent);
+                    SkipBackground.name = "skip_animation";
+                    _objManager.memoryPool.InsertMemory(SkipBackground);
+                }
+                _objManager.memoryPool.SetActiveObject(SkipBackground.name);
+                break;
 
             case (int)TimeStamp.TS_WRITING:
+                DeactiveMain();
                 writingPhase();
                 ++GetTimeCurIdx;
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
@@ -450,7 +480,6 @@ public class SkipController : MonoBehaviour
     {
         _objManager.Close();
         _objManager.RemoveWatchingObject();
-        Maindial();
     }
 
     void writingPhase()
@@ -533,18 +562,34 @@ public class SkipController : MonoBehaviour
         {
             case (int)TimeStamp.TS_WATCHING://object에서 생성    //3.26 변경 페이즈 관련 부분 공부중
             break;
+
+            case (int)TimeStamp.TS_DIALA://object에서 생성    //3.26 변경 페이즈 관련 부분 공부중
+            Maindial();
+            watcingPhase();
+            break;
+
             case (int)TimeStamp.TS_THINKING:
+            DeactiveMain();
             watcingPhase();
             //Dialogue 시작
             break;
+
+            case (int)TimeStamp.TS_DIALB://object에서 생성    //3.26 변경 페이즈 관련 부분 공부중
+            Maindial();
+            watcingPhase();
+            break;
+
             case (int)TimeStamp.TS_WRITING:
+            DeactiveMain();
             watcingPhase();
             writingPhase();
             break;
+
             case (int)TimeStamp.TS_PLAY:
             watcingPhase();
             phasePlay();
             break;
+
             case (int)TimeStamp.TS_NEXTCHAPTER:
             isFirstEntry=true;
             watcingPhase();

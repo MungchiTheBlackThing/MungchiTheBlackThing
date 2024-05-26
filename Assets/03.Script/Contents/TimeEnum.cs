@@ -18,7 +18,9 @@ namespace Assets.Script.TimeEnum
     public enum TimeStamp : int
     {
         TS_WATCHING,
+        TS_DIALA,
         TS_THINKING,
+        TS_DIALB,
         TS_WRITING,
         TS_PLAY,
         TS_NEXTCHAPTER,

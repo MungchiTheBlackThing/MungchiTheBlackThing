@@ -324,6 +324,8 @@ public class ObjectManager : MonoBehaviour
                 _bread.SetActive(true);
             }
         }
+        PlayerController.diaryStatus = DiaryStatus.READ;
+
     }
 
     void Update()
