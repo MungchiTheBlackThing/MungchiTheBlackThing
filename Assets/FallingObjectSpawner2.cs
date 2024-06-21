@@ -140,7 +140,7 @@ public class FallingObjectSpawner2 : MonoBehaviour
         }
     }
 
-    IEnumerator MoveObject(Transform objTransform,Vector3 position, float duration)
+    IEnumerator MoveObject(Transform objTransform, Vector3 position, float duration)
     {
         float elapsedTime = 0f;
         Vector3 initialPosition = position; 

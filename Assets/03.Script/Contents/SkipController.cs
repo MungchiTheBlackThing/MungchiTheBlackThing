@@ -13,7 +13,7 @@ public class SkipController : MonoBehaviour
     //SkipController가 시간을 보관한다.
 
     public static bool isFirstEntry=false;
-    float[] _timeStamp = { 3600f, 7200f, 1800f, 3600f, 1800f, 15f };
+    float[] _timeStamp = { 3600f, 1800f, 7200f, 1800f, 1800f};
 
     [SerializeField]
     GameObject alter;
@@ -189,6 +189,7 @@ public class SkipController : MonoBehaviour
                     case (int)TimeStamp.TS_PLAY:
                         phasePlay();
                         break;
+
                     case (int)TimeStamp.TS_NEXTCHAPTER:
                         Debug.Log("다음챕터");
                         ClickSkipBut();
@@ -292,12 +293,15 @@ public class SkipController : MonoBehaviour
         _player.SetAlreadyEndedPhase();
         Debug.Log("Curidx: " + GetTimeCurIdx);
         DeactiveMain();
+        if (curIdx < 6)
+        {
+            ++GetTimeCurIdx;
+        }
         switch (GetTimeCurIdx)
         {
             case (int)TimeStamp.TS_WATCHING:
                 watcingPhase();
                 Debug.Log("시작");
-                ++GetTimeCurIdx;
                 time = _timeStamp[GetTimeCurIdx];
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
                 if (SkipBackground == null){
@@ -313,7 +317,6 @@ public class SkipController : MonoBehaviour
             case (int)TimeStamp.TS_DIALA:
                 /*메인A*/
                 Maindial();
-                ++GetTimeCurIdx;
                 time = _timeStamp[GetTimeCurIdx];
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
                 if (SkipBackground == null)
@@ -327,7 +330,6 @@ public class SkipController : MonoBehaviour
 
             case (int)TimeStamp.TS_THINKING:
                 DeactiveMain();
-                ++GetTimeCurIdx;
                 time = _timeStamp[GetTimeCurIdx];
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
                 if (SkipBackground == null){
@@ -341,7 +343,6 @@ public class SkipController : MonoBehaviour
             case (int)TimeStamp.TS_DIALB:
                 /*메인B*/
                 Maindial();
-                ++GetTimeCurIdx;
                 time = _timeStamp[GetTimeCurIdx];
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
                 if (SkipBackground == null)
@@ -356,7 +357,6 @@ public class SkipController : MonoBehaviour
             case (int)TimeStamp.TS_WRITING:
                 DeactiveMain();
                 writingPhase();
-                ++GetTimeCurIdx;
                 time=_timeStamp[GetTimeCurIdx];
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
                 if (SkipBackground == null){
@@ -369,7 +369,6 @@ public class SkipController : MonoBehaviour
 
             case (int)TimeStamp.TS_PLAY:
                 phasePlay();
-                ++GetTimeCurIdx;
                 SkipBackground = _objManager.memoryPool.SearchMemory("skip_animation");
                 if (SkipBackground == null)
                 {
@@ -380,7 +379,6 @@ public class SkipController : MonoBehaviour
                 _objManager.memoryPool.SetActiveObject(SkipBackground.name);
                 break;
             case (int)TimeStamp.TS_NEXTCHAPTER:
-
                 Debug.Log("다음챕터");
                 ClickSkipBut();
                 if(eventPlay!=null)
@@ -564,6 +562,7 @@ public class SkipController : MonoBehaviour
 
     void watcingPhase()
     {
+        Debug.Log("watchingPhase");
         _objManager.Close();
         _objManager.RemoveWatchingObject();
     }
@@ -633,10 +632,11 @@ public class SkipController : MonoBehaviour
         GetTimeCurIdx = _player.GetAlreadyEndedPhase();
         if(GetTimeCurIdx<_timeStamp.Length)
             time = _timeStamp[GetTimeCurIdx];
-        Debug.Log(GetTimeCurIdx);
+        Debug.Log("처음시작:"+GetTimeCurIdx);
         switch(GetTimeCurIdx)
         {
-            case (int)TimeStamp.TS_WATCHING://object에서 생성    //3.26 변경 페이즈 관련 부분 공부중
+            case (int)TimeStamp.TS_WATCHING:
+            watcingPhase();   //3.26 변경 페이즈 관련 부분 공부중
             break;
 
             case (int)TimeStamp.TS_DIALA://object에서 생성    //3.26 변경 페이즈 관련 부분 공부중
@@ -668,7 +668,6 @@ public class SkipController : MonoBehaviour
 
             case (int)TimeStamp.TS_NEXTCHAPTER:
             isFirstEntry=true;
-            watcingPhase();
             phasePlay();
             break;
         }

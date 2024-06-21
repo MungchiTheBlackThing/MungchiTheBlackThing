@@ -108,9 +108,11 @@ public class ObjectManager : MonoBehaviour
                 case (int)ChapterDay.C_5DAY:
                 case (int)ChapterDay.C_8DAY:
                 case (int)ChapterDay.C_10DAY:
+                case (int)ChapterDay.C_13DAY:
                 //현재 phase가 watch일 때
                     GoToOther();
                     SetBino();
+                    Debug.Log("바이노 켜져라");
                     //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
                     break;
                 case (int)ChapterDay.C_4DAY:

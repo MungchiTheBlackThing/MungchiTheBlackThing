@@ -11,6 +11,9 @@ public class MainDialClick : MonoBehaviour
     GameObject MainDialogue;
 
     [SerializeField]
+    MenuController MenuControll;
+
+    [SerializeField]
     Vector2[] positions;
     // 다이얼로그 자식들
     [SerializeField]
@@ -25,6 +28,11 @@ public class MainDialClick : MonoBehaviour
     
     void OnEnable()
     {
+        MenuControll = GameObject.Find("Menu").GetComponent<MenuController>();
+
+        //메인 다일어로그 시작할때 스킵 불가능하게 하는 함수
+        //MenuControll.onlyskipoff();
+
         Background = GameObject.Find("Background");
         MainDialogue = GameObject.Find("MainDialogue");
         rectTransform = this.GetComponent<RectTransform>();
@@ -76,6 +84,7 @@ public class MainDialClick : MonoBehaviour
         {
             if (backname.Contains(dialogueNames[i]))
             {
+                MenuControll.skipoff();
                 // 해당하는 다이얼로그 자식을 활성화
                 dialogues[i].SetActive(true);
                 if (randomindex == 0) //테이블
