@@ -723,8 +723,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Background: {fileID: 0}
   MainDialogue: {fileID: 0}
+  MenuControll: {fileID: 0}
   positions:
   - {x: -952, y: -255}
   - {x: -235, y: -315}
   - {x: 1160, y: -25}
   - {x: 1010, y: -465}
+  dialogues: []
+  DialMungchiPos:
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  - {x: 0, y: 0}
+  randomindex: 0

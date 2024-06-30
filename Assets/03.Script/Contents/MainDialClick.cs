@@ -19,6 +19,9 @@ public class MainDialClick : MonoBehaviour
     [SerializeField]
     List<GameObject> dialogues = new List<GameObject>();
 
+    [SerializeField]
+    Vector2[] DialMungchiPos;
+
     RectTransform rectTransform;
     // 다이얼로그 자식의 이름
     string[] dialogueNames = {"Morning", "Evening", "Night", "Dawn"};

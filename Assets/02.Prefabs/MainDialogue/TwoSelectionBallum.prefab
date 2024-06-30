@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 2973110970073685435}
   - component: {fileID: 7906201930668901324}
   - component: {fileID: 6745640849970198609}
-  - component: {fileID: 6522971854893162920}
+  - component: {fileID: 7050018095100133520}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -105,7 +105,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &6522971854893162920
+--- !u!114 &7050018095100133520
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -213,7 +213,7 @@ GameObject:
   - component: {fileID: 8671420482528022506}
   - component: {fileID: 2249912877844656979}
   - component: {fileID: 4864399064218786024}
-  - component: {fileID: 5274365371328308802}
+  - component: {fileID: 290576958940157317}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -306,7 +306,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &5274365371328308802
+--- !u!114 &290576958940157317
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -493,7 +493,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 496.04, y: -186.87}
-  m_SizeDelta: {x: 992.0776, y: 654.2698}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &7049312530067409482
 MonoBehaviour:
@@ -751,7 +751,7 @@ GameObject:
   - component: {fileID: 7943564455869014003}
   - component: {fileID: 1689003811310289682}
   - component: {fileID: 214691788382562528}
-  - component: {fileID: 6142870992797459449}
+  - component: {fileID: 1908004102411973812}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -844,7 +844,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &6142870992797459449
+--- !u!114 &1908004102411973812
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -870,7 +870,7 @@ GameObject:
   - component: {fileID: 285153343398181576}
   - component: {fileID: 3423947654202883245}
   - component: {fileID: 80702097823865328}
-  - component: {fileID: 7822802937495657208}
+  - component: {fileID: 7216671283696565253}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -963,7 +963,7 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &7822802937495657208
+--- !u!114 &7216671283696565253
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

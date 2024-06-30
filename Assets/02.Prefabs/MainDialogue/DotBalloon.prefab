@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8191282493246755756}
   - component: {fileID: 8191282493246755757}
   - component: {fileID: 8191282493246755754}
-  - component: {fileID: 8191282493246755755}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -105,20 +104,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &8191282493246755755
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8191282493246755753}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 2
 --- !u!1 &8191282493487322633
 GameObject:
   m_ObjectHideFlags: 0
@@ -266,7 +251,6 @@ GameObject:
   - component: {fileID: 8191282493626895395}
   - component: {fileID: 8191282493626895392}
   - component: {fileID: 8191282493626895397}
-  - component: {fileID: 8191282493626895394}
   m_Layer: 0
   m_Name: Background
   m_TagString: Untagged
@@ -293,7 +277,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: 1024, y: 286}
   m_Pivot: {x: 0, y: 1}
 --- !u!222 &8191282493626895395
 CanvasRenderer:
@@ -359,20 +343,6 @@ MonoBehaviour:
   m_ChildScaleWidth: 1
   m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
---- !u!114 &8191282493626895394
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8191282493626895406}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_HorizontalFit: 2
-  m_VerticalFit: 2
 --- !u!1 &8191282493912826662
 GameObject:
   m_ObjectHideFlags: 0
@@ -383,6 +353,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8191282493912826649}
   - component: {fileID: 8191282493912826648}
+  - component: {fileID: 1856210650551827245}
   m_Layer: 0
   m_Name: DotBalloon
   m_TagString: Untagged
@@ -409,7 +380,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 433.0153, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8191282493912826648
 MonoBehaviour:
@@ -437,3 +408,17 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!114 &1856210650551827245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8191282493912826662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
