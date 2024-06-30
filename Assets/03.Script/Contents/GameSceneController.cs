@@ -12,7 +12,8 @@ public class GameSceneController : MonoBehaviour
     {
         binocular=GameObject.FindWithTag("Binocular").gameObject;
     }
-    void Start(){
+    void Start()
+    {
         DialogueUI=GameObject.Find("Canvas").transform;
     }
     public void exit(){
@@ -21,7 +22,7 @@ public class GameSceneController : MonoBehaviour
             if(DialogueUI.GetChild(i).gameObject.name.Contains("skip")==false)
                 DialogueUI.GetChild(i).gameObject.SetActive(true);
         }
-        Destroy(binocular);//삭제하는데, Click_Alarm을 꺼줘야함.
+        Destroy(binocular);//삭제하는데, Click_Alarm을 꺼줘야함
         Destroy(this.gameObject);
     }
 }

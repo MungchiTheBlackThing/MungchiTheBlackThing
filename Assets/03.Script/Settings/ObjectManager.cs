@@ -239,9 +239,9 @@ public class ObjectManager : MonoBehaviour
     /* - chapter : Watching */
     public void SetBino()
     {
-
         if (_binocular != null)
         {
+            Debug.Log("바이노 왜 안켜짐 ㅠ");
             _binocular.transform.GetChild(0).gameObject.SetActive(true);
         }
     }

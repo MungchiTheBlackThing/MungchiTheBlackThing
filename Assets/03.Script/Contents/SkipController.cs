@@ -545,6 +545,7 @@ public class SkipController : MonoBehaviour
     }
     public void Maindial()
     {
+        _objManager.Close();
         MainMungchi = _objManager.memoryPool.SearchMemory("MainMungchi");
         if (MainMungchi == null)
         {
@@ -563,7 +564,7 @@ public class SkipController : MonoBehaviour
     void watcingPhase()
     {
         Debug.Log("watchingPhase");
-        _objManager.Close();
+        //_objManager.Close();
         _objManager.RemoveWatchingObject();
     }
 

@@ -26,7 +26,12 @@ public class MungchiClick : MonoBehaviour
             animator[i].SetTrigger("Trigger");
             animator[i].SetBool("BoolAni", true);
         }
-        StartCoroutine("FadeOutBino");
+        StartCoroutine(Fade());
+    }
+    IEnumerator Fade()
+    {
+        yield return new WaitForSeconds(1.2f);
+        StartCoroutine(FadeOutBino());
     }
 
     IEnumerator FadeOutBino(){
