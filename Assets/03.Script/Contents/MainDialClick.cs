@@ -22,6 +22,9 @@ public class MainDialClick : MonoBehaviour
     [SerializeField]
     Vector2[] DialMungchiPos;
 
+    [SerializeField]
+    DialogueManager DialogueManager;
+
     RectTransform rectTransform;
     // 다이얼로그 자식의 이름
     string[] dialogueNames = {"Morning", "Evening", "Night", "Dawn"};
@@ -38,6 +41,7 @@ public class MainDialClick : MonoBehaviour
 
         Background = GameObject.Find("Background");
         MainDialogue = GameObject.Find("MainDialogue");
+        DialogueManager = MainDialogue.GetComponent<DialogueManager>();
         rectTransform = this.GetComponent<RectTransform>();
         // 스크립트가 활성화될 때 랜덤한 위치를 활성화
         ActivateRandomPosition();
@@ -82,6 +86,8 @@ public class MainDialClick : MonoBehaviour
         // 백그라운드의 이름 가져오기
         string backname = Background.transform.GetChild(0).name;
         Debug.Log(backname);
+
+        DialogueManager.st();
         // 다이얼로그 자식을 찾아서 활성화
         for (int i = 0; i < dialogueNames.Length; i++)
         {

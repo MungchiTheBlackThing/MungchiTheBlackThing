@@ -7,6 +7,7 @@ public class Text
 {
     public string textKor;
     public string textEng;
+    internal string text;
 }
 
 [System.Serializable]

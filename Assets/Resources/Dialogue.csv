@@ -1,0 +1,9 @@
+Character,Type,Dialogue
+Dot,text,너도 인간을 실제로 본 적이 있니?
+Player,text,어라라?
+Player,text,(이게 대체 뭐지?)
+Player,text,그… 쑥스럽네. 내가 인간인걸?
+Dot,text,네가 인간이라고?
+Dot,text,… 말도 안 돼.
+Player,selection,정말이야.|믿거나 말거나!
+Dot,text,인간의 특성. 동그란\n머리… 팔 두 개….
