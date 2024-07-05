@@ -754,6 +754,7 @@ MonoBehaviour:
   - {fileID: 2454806914045745626}
   DotsText: {fileID: 5451919494603848105}
   poems: {fileID: 6960957339033095538, guid: 5a8562d01217d44eb822cb5094e91309, type: 3}
+  afterPlay: {fileID: 0}
 --- !u!1 &5451919494720253256
 GameObject:
   m_ObjectHideFlags: 0

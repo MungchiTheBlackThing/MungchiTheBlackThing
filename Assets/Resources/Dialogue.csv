@@ -7,3 +7,7 @@ Dot,text,네가 인간이라고?
 Dot,text,… 말도 안 돼.
 Player,selection,정말이야.|믿거나 말거나!
 Dot,text,인간의 특성. 동그란\n머리… 팔 두 개….
+Player,textbox,"보다 개인적인 정의를 하자면, 나에게 사랑은…"
+Player,checkbox4,"처절한 눈물로 점철된|집착으로 뒤틀려 있는|설렘 없이 편하기만 한|감정들을 나는 사랑이 아니라 생각하지만,"
+Player,checkbox3,처절한 눈물로 점철된|집착으로 뒤틀려 있는|설렘 없이 편하기만
+Dot,text,그렇구나
