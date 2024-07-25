@@ -30005,12 +30005,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DotTextUI: {fileID: 0}
   PlayTextUI: {fileID: 0}
-  temp: {fileID: 0}
+  InputTextUI: {fileID: 0}
   DotPanel: {fileID: 0}
   PlayPanel: {fileID: 0}
+  InputPanel: {fileID: 0}
   selectionPanel: {fileID: 0}
+  checkbox3Panel: {fileID: 0}
+  checkbox4Panel: {fileID: 0}
   nextButton: {fileID: 0}
-  MainDial: {fileID: 1968898310}
   dialogueEntries: []
   dialogueIndex: 0
 --- !u!1 &1971052396

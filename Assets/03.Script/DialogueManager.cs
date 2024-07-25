@@ -6,9 +6,15 @@ using TMPro;
 [System.Serializable]
 public class DialogueEntry
 {
+    public int LineKey;
+    public string Color;
+    public string DotAnim;
     public string Character;
     public string Type;
     public string Dialogue;
+    public string EngText;
+    public string NextLineKey;
+    public string DeathNote;
 }
 
 public class DialogueManager : MonoBehaviour
@@ -30,6 +36,11 @@ public class DialogueManager : MonoBehaviour
     void Start()
     {
         InitializePanels();
+    }
+
+    string ApplyLineBreaks(string text)
+    {
+        return text.Replace(@"\n", "\n");
     }
 
     void InitializePanels()
@@ -75,13 +86,19 @@ public class DialogueManager : MonoBehaviour
             {
                 string line = lines[i];
                 string[] parts = ParseCSVLine(line);
-                if (parts.Length >= 3)
+                if (parts.Length >= 9)
                 {
                     DialogueEntry entry = new DialogueEntry
                     {
-                        Character = parts[0],
-                        Type = parts[1],
-                        Dialogue = parts[2]
+                        LineKey = int.Parse(parts[0]),
+                        Color = parts[1],
+                        Character = parts[2],
+                        DotAnim = parts[3],
+                        Type = parts[4],
+                        Dialogue = ApplyLineBreaks(parts[5]),
+                        EngText = ApplyLineBreaks(parts[6]),
+                        NextLineKey = parts[7],
+                        DeathNote = parts[8]
                     };
                     dialogueEntries.Add(entry);
                 }

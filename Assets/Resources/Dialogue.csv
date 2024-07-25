@@ -1,13 +1,19 @@
-Character,Type,Dialogue
-Dot,text,너도 인간을 실제로 본 적이 있니?
-Player,text,어라라?
-Player,text,(이게 대체 뭐지?)
-Player,text,그… 쑥스럽네. 내가 인간인걸?
-Dot,text,네가 인간이라고?
-Dot,text,… 말도 안 돼.
-Player,selection,정말이야.|믿거나 말거나!
-Dot,text,인간의 특성. 동그란\n머리… 팔 두 개….
-Player,textbox,"보다 개인적인 정의를 하자면, 나에게 사랑은…"
-Player,checkbox4,"처절한 눈물로 점철된|집착으로 뒤틀려 있는|설렘 없이 편하기만 한|감정들을 나는 사랑이 아니라 생각하지만,"
-Player,checkbox3,처절한 눈물로 점철된|집착으로 뒤틀려 있는|설렘 없이 편하기만
-Dot,text,그렇구나
+LineKey,Color,Actor,DotAnim,TextType,KorText,EngText,NextLineKey,DeathNote
+1,0,Dot,anim_eyescorner,text,지구의 밝음과 아름다움 사이를 탐험\n하느라 몸이 조금 저리게 되었지만,My body aches a bit from\nexploring Earth’s bright beauty.,2,
+2,0,Dot,anim_eyescorner,text,그럴 만한 가치가 있었지.\n이곳을 찾게 되었으니!,But it was worth it, since\nI discovered this place!,3,
+3,0,Dot,anim_eyescorner,text,작고 구석진 모퉁이. 나를 닮은 곳.,A small, outlying corner.\nIt’s a lot like me.,4,
+4,0,Dot,anim_eyesside,text,아이, 어두워. 비좁아. 지저분해.,Dark. Cramped. Grimy.,5,
+5,0,Dot,anim_eyesside,text,끈적한 그림자가 감싸는 것 같지.,As if a sticky shadow is embracing it.,6,
+6,0,Dot,anim_eyesside_turn,text,이곳일까? 나의 멋진\n‘인간’을 만나게 될 곳?,Is this it? Is this where I’ll meet\nmy very own amazing ‘human’?,,
+7,0,Dot,anim_eyesblink,text,으아아!,Ahh!,8,
+8,0,Player,anim_eyesblink,text,으아아아아!,Ahhhh!,9,
+9,0,Dot,anim_eyesblink,text,으아아아아아아아!,Ahhhhhhh!,10,
+10,0,Dot,,text,나의 어둠. 나의 어둠이 사라졌어.,My darkness. My darkness is gone.,11,
+11,0,Dot,,text,내 지구에서의 여정은 따가운 빛에 물어뜯기다\n저 거대한 괴물에 발에 밟히며 끝나겠구나….,It seems my journey on Earth now ends under the feet of this humongous monster.,12,
+12,0,Dot,,text,역시 삶은 덧없는 것이었나?,Is life really this fleeting?,13,
+13,0,Dot,,text,꿈 구슬처럼 영롱히 빛나다가도,One day shining radiantly\nlike a dream marble,,14,
+14,0,Dot,,text,언제든지 포악한 구덩이의 진창\n속으로 빠져 버릴 수 있는 것?,And dropped into a vicious,\nmuddy pit the next?,15,
+15,0,Dot,,text,나는 대체 무엇을 위해\n지구를 바라보며 꿈을 꾸었지?,For what did I dream, staring\nat Earth all this time?,16,
+16,0,Player,,selection,(저게 뭐야? 무섭다. 하지만 티를 낼 수는 없지.)|(’거대 괴물’이라니…! 난 착한 인간이다…..),(What’s that? I’m scared, but I won’t show it.)|(’Humongous monster’?! I’m human, a nice one, even…….),17|22,passive|active
+17,0,Player,,text,괴물, 꿈 구슬, 구덩이? 뭐?,Monster, dream marble, pit? What?,18,
+18,0,Player,,text,(외계인인가? 괴물? 이게\n뭐든… ‘말’을 하고 있어...!),(Is it an alien? A monster?\nWhatever it is, it’s talking…!),19,
