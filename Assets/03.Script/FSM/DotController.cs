@@ -17,9 +17,26 @@ public class DotController : MonoBehaviour
     //private State[] states; //모든 상태
     private State currentState; //현재 상태
     private Dictionary<DotState, State> states;
+    private DotAnimState animKey;
+    private int position;
 
-    DotAnimState animKey;
-    int Position;
+    [SerializeField]
+    private Animator animatior;
+
+    public Animator Animator
+    { get { return animatior; } }
+
+    public int Position
+    {
+        get { return position; }
+        set { position = value; }
+    }
+
+    public DotAnimState AnimKey
+    {
+        get { return animKey; }
+        set { animKey = value; }
+    }
 
     void Start()
     {
@@ -27,24 +44,31 @@ public class DotController : MonoBehaviour
         states.Clear();
         states.Add(DotState.Idle, new Idle());
 
-        currentState = states[DotState.Idle];
+        animatior = GetComponent<Animator>();
+
+        //currentState = states[DotState.Idle];
         Position = -1;
+        ChangeState(DotState.Idle);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ChangeState(DotState state, DotAnimState OutAnimKey = DotAnimState.anim_default, int OutPos = -1)
     {
-        
-    }
+        Debug.Log(1);
 
-    public void ChangeState(DotState state)
-    {
-        
-    }
+        if (states.ContainsKey(state) == null)
+        {
+            return;
+        }
 
-    void UpdateState()
-    {
-        //상태에 따른 동작을 수행
-        //델리게이트로 못만드나?
+        if(currentState != null)
+        {
+           currentState.Exit(this); //이전 값을 나가주면서, 값을 초기화 시킨다.
+        }
+
+        Position = OutPos; //Update
+        animKey = OutAnimKey; 
+        //OutPos 가 있다면 해당 Position으로 바껴야함.
+        currentState = states[state];
+        currentState.Enter(this); //실행
     }
 }

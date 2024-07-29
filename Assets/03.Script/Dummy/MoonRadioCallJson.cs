@@ -26,7 +26,7 @@ public class MoonRadioCallJson : MonoBehaviour
     void Start()
     {
         var moonRadioJson = Resources.Load<TextAsset>("Json/moon_radio_dummy");
-        Debug.Log(moonRadioJson);
+
         if(moonRadioJson)
         {
             radioScript = JsonUtility.FromJson<MoonRadioScript>(moonRadioJson.ToString());

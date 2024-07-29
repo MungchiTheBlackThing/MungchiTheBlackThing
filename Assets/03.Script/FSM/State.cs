@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum DotAnimState
 {
-    anim_default = 0,
-    anim_bed,
-    anim_reading,
-    anim_writing,
-    anim_mold,
-    anim_bounce,
+    anim_default = 0, //0
+    anim_bed, //1
+    anim_reading, //2
+    anim_writing, //3
+    anim_mold, //4
+    anim_bounce, //5
     anim_laptop,
     anim_walking,
     anim_mold2,
@@ -79,10 +82,45 @@ public enum DotAnimState
 //Enter 입장 시
 // 실행 
 //나가
+[System.Serializable]
+public class DotData
+{
+    public float dotPosition;
+    public int X;
+    public int Y;
+}
+
+[System.Serializable]
+public class Coordinate
+{
+    public List<DotData> data;
+}
 public abstract class State
 {
-    //상태를 시작할 때 1회 호출 -> Position 랜덤으로 선택
+    protected Dictionary<float, Vector2> position;
 
+    public Vector2 GetCoordinate(float idx) { return position[idx]; }
+
+    public State()
+    {
+        position = new Dictionary<float, Vector2>();
+        ReadJson();
+    }
+
+    void ReadJson()
+    {
+        TextAsset jsonFile = Resources.Load<TextAsset>("FSM/DotPosition");
+        Coordinate dotData = JsonUtility.FromJson<Coordinate>(jsonFile.text);
+
+        // Example usage: Print all dot positions
+        foreach (var Data in dotData.data)
+        {
+            Vector2 vector = new Vector2(Data.X, Data.Y);
+            position.Add(Data.dotPosition, vector);
+            Debug.Log($"Dot Position: {Data.dotPosition}, X: {Data.X}, Y: {Data.Y}");
+        }
+    }
+    //상태를 시작할 때 1회 호출 -> Position 랜덤으로 선택
     public abstract void Init(DotAnimState state, List<float> pos); //해당 상태 초기화를 위해서 필요하다.
     public abstract void Enter(DotController dot);
     //상태를 업데이트할 때마다 매 프레임 호출 -> 있을 필요 없음.
