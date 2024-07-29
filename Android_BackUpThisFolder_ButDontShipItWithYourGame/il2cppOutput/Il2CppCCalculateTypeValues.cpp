@@ -5955,12 +5955,24 @@ struct DiagnosticsConfigurationHandler_t0C4B611E2C6EA17B288C43070FAF65F96DCA96E7
 // DialogueEntry
 struct DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8  : public RuntimeObject
 {
+	// System.Int32 DialogueEntry::LineKey
+	int32_t ___LineKey_0;
+	// System.String DialogueEntry::Color
+	String_t* ___Color_1;
+	// System.String DialogueEntry::DotAnim
+	String_t* ___DotAnim_2;
 	// System.String DialogueEntry::Character
-	String_t* ___Character_0;
+	String_t* ___Character_3;
 	// System.String DialogueEntry::Type
-	String_t* ___Type_1;
+	String_t* ___Type_4;
 	// System.String DialogueEntry::Dialogue
-	String_t* ___Dialogue_2;
+	String_t* ___Dialogue_5;
+	// System.String DialogueEntry::EngText
+	String_t* ___EngText_6;
+	// System.String DialogueEntry::NextLineKey
+	String_t* ___NextLineKey_7;
+	// System.String DialogueEntry::DeathNote
+	String_t* ___DeathNote_8;
 };
 
 // System.IO.Directory
@@ -13473,12 +13485,12 @@ struct DelegateEntry_tEF8C32582207CB5E2FE7AE07C62560D8CDA846DC  : public Runtime
 	DelegateEntry_tEF8C32582207CB5E2FE7AE07C62560D8CDA846DC* ___delegateEntry_6;
 };
 
-// DialogueManager/<>c__DisplayClass19_0
-struct U3CU3Ec__DisplayClass19_0_tE95C8E2214190D2DF75FDCA955A44941635DDAFD  : public RuntimeObject
+// DialogueManager/<>c__DisplayClass20_0
+struct U3CU3Ec__DisplayClass20_0_t527E593097597D1F0A1023DEC2C37DF944F8EFCA  : public RuntimeObject
 {
-	// System.Int32 DialogueManager/<>c__DisplayClass19_0::index
+	// System.Int32 DialogueManager/<>c__DisplayClass20_0::index
 	int32_t ___index_0;
-	// DialogueManager DialogueManager/<>c__DisplayClass19_0::<>4__this
+	// DialogueManager DialogueManager/<>c__DisplayClass20_0::<>4__this
 	DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E* ___U3CU3E4__this_1;
 };
 
@@ -57511,7 +57523,7 @@ const Il2CppTypeDefinitionSizes g_typeDefinitionSize3284 = { sizeof(SubDialogueM
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize3285;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize3285 = { sizeof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize3286;
-const Il2CppTypeDefinitionSizes g_typeDefinitionSize3286 = { sizeof(U3CU3Ec__DisplayClass19_0_tE95C8E2214190D2DF75FDCA955A44941635DDAFD), -1, 0, 0 };
+const Il2CppTypeDefinitionSizes g_typeDefinitionSize3286 = { sizeof(U3CU3Ec__DisplayClass20_0_t527E593097597D1F0A1023DEC2C37DF944F8EFCA), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize3287;
 const Il2CppTypeDefinitionSizes g_typeDefinitionSize3287 = { sizeof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E), -1, 0, 0 };
 extern const Il2CppTypeDefinitionSizes g_typeDefinitionSize3288;
