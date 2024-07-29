@@ -815,12 +815,24 @@ struct Chapters_t846E7AE5BFC9391F833E0422BEC055A04FFE6313  : public RuntimeObjec
 // DialogueEntry
 struct DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8  : public RuntimeObject
 {
+	// System.Int32 DialogueEntry::LineKey
+	int32_t ___LineKey_0;
+	// System.String DialogueEntry::Color
+	String_t* ___Color_1;
+	// System.String DialogueEntry::DotAnim
+	String_t* ___DotAnim_2;
 	// System.String DialogueEntry::Character
-	String_t* ___Character_0;
+	String_t* ___Character_3;
 	// System.String DialogueEntry::Type
-	String_t* ___Type_1;
+	String_t* ___Type_4;
 	// System.String DialogueEntry::Dialogue
-	String_t* ___Dialogue_2;
+	String_t* ___Dialogue_5;
+	// System.String DialogueEntry::EngText
+	String_t* ___EngText_6;
+	// System.String DialogueEntry::NextLineKey
+	String_t* ___NextLineKey_7;
+	// System.String DialogueEntry::DeathNote
+	String_t* ___DeathNote_8;
 };
 
 // System.Text.RegularExpressions.ExclusiveReference
@@ -1995,12 +2007,12 @@ struct U3CCloseAlterU3Ed__19_tB077FC30396133726FD0CB81B48DD817B1F2AAF4  : public
 	GameObject_t76FEDD663AB33C991A9C9A23129337651094216F* ___alter_2;
 };
 
-// DialogueManager/<>c__DisplayClass19_0
-struct U3CU3Ec__DisplayClass19_0_tE95C8E2214190D2DF75FDCA955A44941635DDAFD  : public RuntimeObject
+// DialogueManager/<>c__DisplayClass20_0
+struct U3CU3Ec__DisplayClass20_0_t527E593097597D1F0A1023DEC2C37DF944F8EFCA  : public RuntimeObject
 {
-	// System.Int32 DialogueManager/<>c__DisplayClass19_0::index
+	// System.Int32 DialogueManager/<>c__DisplayClass20_0::index
 	int32_t ___index_0;
-	// DialogueManager DialogueManager/<>c__DisplayClass19_0::<>4__this
+	// DialogueManager DialogueManager/<>c__DisplayClass20_0::<>4__this
 	DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E* ___U3CU3E4__this_1;
 };
 
@@ -9611,12 +9623,12 @@ IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3283[3] =
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3284[7] = 
 {
 	static_cast<int32_t>(offsetof(SubDialogueManager_tEC738AA8C754C9893618F88924E946A90B60F04F_StaticFields, ___instance_4)),static_cast<int32_t>(offsetof(SubDialogueManager_tEC738AA8C754C9893618F88924E946A90B60F04F, ___eventID_5)),static_cast<int32_t>(offsetof(SubDialogueManager_tEC738AA8C754C9893618F88924E946A90B60F04F, ___scriptData_6)),static_cast<int32_t>(offsetof(SubDialogueManager_tEC738AA8C754C9893618F88924E946A90B60F04F, ___inputEventID_7)),static_cast<int32_t>(offsetof(SubDialogueManager_tEC738AA8C754C9893618F88924E946A90B60F04F, ___scriptText_8)),static_cast<int32_t>(offsetof(SubDialogueManager_tEC738AA8C754C9893618F88924E946A90B60F04F, ___type_9)),static_cast<int32_t>(offsetof(SubDialogueManager_tEC738AA8C754C9893618F88924E946A90B60F04F, ___currentTextIndex_10)),};
-IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3285[3] = 
+IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3285[9] = 
 {
-	static_cast<int32_t>(offsetof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8, ___Character_0)),static_cast<int32_t>(offsetof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8, ___Type_1)),static_cast<int32_t>(offsetof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8, ___Dialogue_2)),};
+	static_cast<int32_t>(offsetof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8, ___LineKey_0)),static_cast<int32_t>(offsetof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8, ___Color_1)),static_cast<int32_t>(offsetof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8, ___DotAnim_2)),static_cast<int32_t>(offsetof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8, ___Character_3)),static_cast<int32_t>(offsetof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8, ___Type_4)),static_cast<int32_t>(offsetof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8, ___Dialogue_5)),static_cast<int32_t>(offsetof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8, ___EngText_6)),static_cast<int32_t>(offsetof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8, ___NextLineKey_7)),static_cast<int32_t>(offsetof(DialogueEntry_t9274CFDF71406D020BCE41DFB631C94434EDCEB8, ___DeathNote_8)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3286[2] = 
 {
-	static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass19_0_tE95C8E2214190D2DF75FDCA955A44941635DDAFD, ___index_0)),static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass19_0_tE95C8E2214190D2DF75FDCA955A44941635DDAFD, ___U3CU3E4__this_1)),};
+	static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass20_0_t527E593097597D1F0A1023DEC2C37DF944F8EFCA, ___index_0)),static_cast<int32_t>(offsetof(U3CU3Ec__DisplayClass20_0_t527E593097597D1F0A1023DEC2C37DF944F8EFCA, ___U3CU3E4__this_1)),};
 IL2CPP_EXTERN_C const int32_t g_FieldOffsetTable3287[12] = 
 {
 	static_cast<int32_t>(offsetof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E, ___DotTextUI_4)),static_cast<int32_t>(offsetof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E, ___PlayTextUI_5)),static_cast<int32_t>(offsetof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E, ___InputTextUI_6)),static_cast<int32_t>(offsetof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E, ___DotPanel_7)),static_cast<int32_t>(offsetof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E, ___PlayPanel_8)),static_cast<int32_t>(offsetof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E, ___InputPanel_9)),static_cast<int32_t>(offsetof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E, ___selectionPanel_10)),static_cast<int32_t>(offsetof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E, ___checkbox3Panel_11)),static_cast<int32_t>(offsetof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E, ___checkbox4Panel_12)),static_cast<int32_t>(offsetof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E, ___nextButton_13)),static_cast<int32_t>(offsetof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E, ___dialogueEntries_14)),static_cast<int32_t>(offsetof(DialogueManager_t9C5A5026BF70075C3D71B589FB5D5EA74A3B9B1E, ___dialogueIndex_15)),};
