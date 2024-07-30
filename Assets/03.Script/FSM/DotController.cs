@@ -19,12 +19,19 @@ public class DotController : MonoBehaviour
     private Dictionary<DotState, State> states;
     private DotAnimState animKey;
     private int position;
+    private int chapter;
 
     [SerializeField]
     private Animator animatior;
 
     public Animator Animator
     { get { return animatior; } }
+
+    public int Chapter
+    { 
+        get { return chapter; }
+        set { chapter = value; }
+    }
 
     public int Position
     {

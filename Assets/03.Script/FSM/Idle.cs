@@ -36,9 +36,14 @@ public class Idle : State
         //IdlePos[animKey][position]을 동작한다(애니메이션 상태전환).
         Debug.Log($"Animation: {dot.AnimKey}, Positions: {string.Join(", ", dot.Position)}");
 
-        dot.transform.localPosition = GetCoordinate(dot.Position);
-        //dot.transform.position = GetCoordinate(dot.Position); //위치 업데이트
+        dot.transform.localPosition = GetCoordinate(dot.Position); //위치 업데이트
         dot.Animator.SetInteger("DotAnimState", (int)dot.AnimKey); //애니메이션 업데이트
+
+        if (dot.AnimKey == DotAnimState.anim_mud)
+        {
+            //챕터를 파악해서, mold를 변경시킬 때 사용.
+            dot.Animator.SetInteger("Chapter", dot.Chapter);
+        }
     }
 
     //상태를 업데이트할 때마다 매 프레임 호출 -> 있을 필요 없음.
