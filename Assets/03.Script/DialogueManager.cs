@@ -3,64 +3,32 @@ using UnityEngine.UI;
 using System;
 using System.Collections.Generic;
 using TMPro;
-
-[System.Serializable]
-public class DialogueEntry
-{
-    public int ScriptKey;
-    public int LineKey;
-    public string Background;
-    public string DotAnim;
-    public string Actor;
-    public string AnimState;
-    public string DotBody;
-    public string DotExpression;
-    public string TextType;
-    public string KorText;
-    public string EngText;
-    public string NextLineKey;
-    public string AnimScene;
-    public string AfterScript;
-    public string Deathnote;
-}
-
-public class SubDialogueEntry
-{
-    public int ScriptKey;
-    public int LineKey;
-    public string Color;
-    public string Actor;
-    public string AnimState;
-    public string DotAnim;
-    public string TextType;
-    public string KorText;
-    public string EngText;
-    public string NextLineKey;
-    public string Deathnote;
-    public string AfterScript;
-}
+using Assets.Script.DialClass;
+using Assets.Script.DialLanguage;
 
 public class DialogueManager : MonoBehaviour
 {
-    public TextMeshProUGUI DotTextUI;
-    public TextMeshProUGUI PlayTextUI;
-    public TextMeshProUGUI InputTextUI;
-    public GameObject DotPanel;
-    public GameObject PlayPanel;
-    public GameObject InputPanel;
-    public GameObject SelectionPanel;
-    public GameObject Checkbox3Panel;
-    public GameObject Checkbox4Panel;
-    public Button NextButton;
+    [SerializeField] TextMeshProUGUI DotTextUI;
+    [SerializeField] TextMeshProUGUI PlayTextUI;
+    [SerializeField] TextMeshProUGUI InputTextUI;
+    [SerializeField] GameObject DotPanel;
+    [SerializeField] GameObject PlayPanel;
+    [SerializeField] GameObject InputPanel;
+    [SerializeField] GameObject SelectionPanel;
+    [SerializeField] GameObject Checkbox3Panel;
+    [SerializeField] GameObject Checkbox4Panel;
+    [SerializeField] Button NextButton;
 
-    public List<DialogueEntry> DialogueEntries;
-    public List<SubDialogueEntry> SubDialogueEntries;
-    private List<object> currentDialogueList;
-    private int dialogueIndex = 0;
+    [SerializeField] List<DialogueEntry> DialogueEntries;
+    [SerializeField] List<SubDialogueEntry> SubDialogueEntries;
+    public List<object> currentDialogueList;
+    public int dialogueIndex = 0;
+
 
     void Start()
     {
         InitializePanels();
+        Debug.Log("패널 초기화");
     }
 
     void InitializePanels()
@@ -89,6 +57,14 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string fileName)
     {
+        if (DialogueEntries != null)
+        {
+            DialogueEntries.Clear();
+        }
+        if (SubDialogueEntries != null)
+        {
+            SubDialogueEntries.Clear();
+        }
         LoadDialogue(fileName);
     }
 
@@ -110,45 +86,62 @@ public class DialogueManager : MonoBehaviour
         SubDialogueEntries.Clear();
         currentDialogueList = new List<object>();
 
-        if (fileName == "main")
+        if (fileName == "main_test")
         {
+            Debug.Log("Loading main dialogue");
             for (int i = 1; i < lines.Length; i++)
             {
                 string line = lines[i];
                 string[] parts = ParseCSVLine(line);
+
+                // Log each parsed line for debugging
+                Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
+
                 if (parts.Length >= 14)
                 {
-                    DialogueEntries.Add(new DialogueEntry
+                    DialogueEntry entry = new DialogueEntry
                     {
                         ScriptKey = int.Parse(parts[0]),
                         LineKey = int.Parse(parts[1]),
                         Background = parts[2],
-                        DotAnim = parts[3],
-                        Actor = parts[4],
-                        AnimState = parts[5],
-                        DotBody = parts[6],
-                        DotExpression = parts[7],
-                        TextType = parts[8],
-                        KorText = ApplyLineBreaks(parts[9]),
-                        EngText = ApplyLineBreaks(parts[10]),
-                        NextLineKey = parts[11],
-                        AnimScene = parts[12],
-                        AfterScript = parts[13],
-                        Deathnote = parts[14]
-                    });
-                    currentDialogueList.Add(DialogueEntries[DialogueEntries.Count - 1]);
+                        Actor = parts[3],
+                        AnimState = parts[4],
+                        DotBody = parts[5],
+                        DotExpression = parts[6],
+                        TextType = parts[7],
+                        KorText = ApplyLineBreaks(parts[8]),
+                        EngText = ApplyLineBreaks(parts[9]),
+                        NextLineKey = parts[10],
+                        AnimScene = parts[11],
+                        AfterScript = parts[12],
+                        Deathnote = parts[13]
+                    };
+                    DialogueEntries.Add(entry);
+                    currentDialogueList.Add(entry);
+
+                    // Log the added entry for debugging
+                    Debug.Log($"Added DialogueEntry: {entry.KorText}");
+                }
+                else
+                {
+                    Debug.LogError($"Line {i} does not have enough parts: {line}");
                 }
             }
         }
-        else if (fileName == "sub")
+        else if (fileName == "sub_test")
         {
+            Debug.Log("Loading sub dialogue");
             for (int i = 1; i < lines.Length; i++)
             {
                 string line = lines[i];
                 string[] parts = ParseCSVLine(line);
+
+                // Log each parsed line for debugging
+                Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
+
                 if (parts.Length >= 12)
                 {
-                    SubDialogueEntries.Add(new SubDialogueEntry
+                    SubDialogueEntry entry = new SubDialogueEntry
                     {
                         ScriptKey = int.Parse(parts[0]),
                         LineKey = int.Parse(parts[1]),
@@ -162,8 +155,16 @@ public class DialogueManager : MonoBehaviour
                         NextLineKey = parts[9],
                         Deathnote = parts[10],
                         AfterScript = parts[11]
-                    });
-                    currentDialogueList.Add(SubDialogueEntries[SubDialogueEntries.Count - 1]);
+                    };
+                    SubDialogueEntries.Add(entry);
+                    currentDialogueList.Add(entry);
+
+                    // Log the added entry for debugging
+                    Debug.Log($"Added SubDialogueEntry: {entry.KorText}");
+                }
+                else
+                {
+                    Debug.LogError($"Line {i} does not have enough parts: {line}");
                 }
             }
         }
