@@ -1,42 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
+using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum DotAnimState
 {
-    anim_default = 0,
-    anim_bed,
-    anim_reading,
-    anim_writing,
-    anim_mold,
-    anim_bounce,
-    anim_laptop,
-    anim_walking,
-    anim_mold2,
-    anim_happy,
-    anim_spiderweb1,
-    anim_spiderweb2,
-    anim_eyesclosed,
-    anim_eyescorner,
-    anim_eyesdown,
-    anim_eyesside,
-    anim_eyesup,
-    anim_sleepy_bed,
-    anim_sleepy_spiderweb,
-    anim_mud_ch1,
-    anim_mud_ch2,
-    anim_mud_ch3,
-    anim_mud_ch4,
-    anim_mud_ch5,
-    anim_mud_ch6,
-    anim_mud_ch7,
-    anim_mud_ch8,
-    anim_mud_ch9,
-    anim_mud_ch10,
-    anim_mud_ch11,
-    anim_mud_ch12,
-    anim_mud_ch13,
-    anim_mud_ch14,
+    anim_default = 0, //0
+    anim_bed, //1
+    anim_reading, //2
+    anim_writing, //3
+    anim_mold, //4
+    anim_bounce, //5
+    anim_laptop, //6
+    anim_walking, //7
+    anim_mold2, //8
+    anim_happy, //9
+    anim_spiderweb1, //10
+    anim_spiderweb2, //11
+    anim_eyesclosed,//12
+    anim_eyescorner,//13
+    anim_eyesdown,//14
+    anim_eyesside,//15
+    anim_eyesup,//16
+    anim_sleepy_bed,//17
+    anim_sleepy_spiderweb, //18
+    anim_mud, //DotAnimState 19 - Chapter 
     anim_eyeswide, /*Idle*/
     anim_eyesblink,
     anim_eyesclosed_turn,
@@ -79,10 +69,45 @@ public enum DotAnimState
 //Enter 입장 시
 // 실행 
 //나가
+[System.Serializable]
+public class DotData
+{
+    public float dotPosition;
+    public int X;
+    public int Y;
+}
+
+[System.Serializable]
+public class Coordinate
+{
+    public List<DotData> data;
+}
 public abstract class State
 {
-    //상태를 시작할 때 1회 호출 -> Position 랜덤으로 선택
+    static protected Dictionary<float, Vector2> position; //State 클래스 1개에 모두 공유할 수 있도록 함.
 
+    public Vector2 GetCoordinate(float idx) { return position[idx]; }
+
+    public State()
+    {
+        position = new Dictionary<float, Vector2>();
+        ReadJson();
+    }
+
+    void ReadJson()
+    {
+        TextAsset jsonFile = Resources.Load<TextAsset>("FSM/DotPosition");
+        Coordinate dotData = JsonUtility.FromJson<Coordinate>(jsonFile.text);
+
+        // Example usage: Print all dot positions
+        foreach (var Data in dotData.data)
+        {
+            Vector2 vector = new Vector2(Data.X, Data.Y);
+            position.Add(Data.dotPosition, vector);
+            Debug.Log($"Dot Position: {Data.dotPosition}, X: {Data.X}, Y: {Data.Y}");
+        }
+    }
+    //상태를 시작할 때 1회 호출 -> Position 랜덤으로 선택
     public abstract void Init(DotAnimState state, List<float> pos); //해당 상태 초기화를 위해서 필요하다.
     public abstract void Enter(DotController dot);
     //상태를 업데이트할 때마다 매 프레임 호출 -> 있을 필요 없음.
