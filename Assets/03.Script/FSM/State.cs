@@ -28,7 +28,7 @@ public enum DotAnimState
     anim_sleepy_spiderweb, //18
     anim_mud, //DotAnimState 19 - Chapter 
     anim_eyeswide, /*Idle*/
-    anim_eyesblink,
+    anim_eyesblink, 
     anim_eyesclosed_turn,
     anim_eyescorner_turn,
     anim_eyesdown_turn,
@@ -112,8 +112,6 @@ public abstract class State
     //상태를 시작할 때 1회 호출 -> Position 랜덤으로 선택
     public abstract void Init(DotAnimState state, List<float> pos); //해당 상태 초기화를 위해서 필요하다.
     public abstract void Enter(DotController dot);
-    //상태를 업데이트할 때마다 매 프레임 호출 -> 있을 필요 없음.
-    public abstract void Execute(DotController dot);
     //상태를 나갈 때 1회 호출 -> Position -1로 변경
     public abstract void Exit(DotController dot);
 

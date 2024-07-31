@@ -52,6 +52,7 @@ public class DotController : MonoBehaviour
         states = new Dictionary<DotState, State>();
         states.Clear();
         states.Add(DotState.Idle, new Idle());
+        states.Add(DotState.Sub, new Sub());
 
         animatior = GetComponent<Animator>();
 
@@ -60,7 +61,7 @@ public class DotController : MonoBehaviour
         ChangeState(DotState.Idle);
     }
 
-    public void ChangeState(DotState state, DotAnimState OutAnimKey = DotAnimState.anim_default, int OutPos = -1)
+    public void ChangeState(DotState state = DotState.Idle, DotAnimState OutAnimKey = DotAnimState.anim_default, int OutPos = -1)
     {
         Debug.Log(1);
 
