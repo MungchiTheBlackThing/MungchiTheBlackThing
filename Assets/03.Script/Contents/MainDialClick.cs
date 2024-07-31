@@ -87,7 +87,7 @@ public class MainDialClick : MonoBehaviour
         string backname = Background.transform.GetChild(0).name;
         Debug.Log(backname);
 
-        DialogueManager.StartDialogue("Dialogue");
+        DialogueManager.StartDialogue("main_test");
         // 다이얼로그 자식을 찾아서 활성화
         for (int i = 0; i < dialogueNames.Length; i++)
         {

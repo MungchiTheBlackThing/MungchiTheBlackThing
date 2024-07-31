@@ -1,8 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public class DialClass : MonoBehaviour
+namespace Assets.Script.DialClass
 {
     [System.Serializable]
     public class DialogueEntry
@@ -10,7 +6,6 @@ public class DialClass : MonoBehaviour
         public int ScriptKey;
         public int LineKey;
         public string Background;
-        public string DotAnim;
         public string Actor;
         public string AnimState;
         public string DotBody;
@@ -24,14 +19,15 @@ public class DialClass : MonoBehaviour
         public string Deathnote;
     }
 
+    [System.Serializable]
     public class SubDialogueEntry
     {
         public int ScriptKey;
         public int LineKey;
-        public string color;
+        public string Color;
         public string Actor;
         public string AnimState;
-        public string dotAnim;
+        public string DotAnim;
         public string TextType;
         public string KorText;
         public string EngText;
@@ -40,3 +36,4 @@ public class DialClass : MonoBehaviour
         public string AfterScript;
     }
 }
+
