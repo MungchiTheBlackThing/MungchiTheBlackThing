@@ -7135,6 +7135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cb8d433833b94cab9a0e61b8e364d8a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _time: {fileID: 0}
   _background: {fileID: 8776045310070094100}
 --- !u!4 &357375707
 Transform:
@@ -10106,7 +10107,11 @@ MonoBehaviour:
   Helper: {fileID: 625362963}
   MyPageUI: {fileID: 1825811694}
   TimeUI: {fileID: 1676796745}
+  Default: {fileID: 0}
+  Replay: {fileID: 0}
   checkList: {fileID: 308971763}
+  dragIcon: {fileID: 0}
+  dragScroller: {fileID: 0}
 --- !u!95 &540397718
 Animator:
   serializedVersion: 4
@@ -16622,7 +16627,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chapter: 0
   isInstant: 0
-  dragIcon: {fileID: 4986148054760185222, guid: c611c0afa3f0849e6ab24d4dfc0e7ce5, type: 3}
   dragScroller: {fileID: 450643642}
   alter: {fileID: 180254149}
   detailed_popup: {fileID: 1884108246}
@@ -18833,6 +18837,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nickname: "\uC1A1\uC218\uC601"
+  currentChapter: 0
   isDiaryCheck: 0
 --- !u!1 &1117989752
 GameObject:
@@ -30117,10 +30122,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   alter: {fileID: 138716863}
   _timeText: {fileID: 1392459056}
+  phaseWriting: {fileID: 0}
   eventPlay: {fileID: 0}
+  MainMungchi: {fileID: 0}
   checklist: {fileID: 662365646}
   checkList_note: {fileID: 308971763}
   menu: {fileID: 540397715}
+  _background: {fileID: 0}
   checkList_childs: []
   curIdx: 0
   fly_icon:
@@ -30129,7 +30137,9 @@ MonoBehaviour:
   - {fileID: 21300000, guid: ec7338e8174ef47fa95c4ffdf502c856, type: 3}
   - {fileID: 21300000, guid: 592004e39afbd4f4eaa298310ae03efc, type: 3}
   ifFirstUpdate: 1
+  isInit: 1
   curProgress: []
+  TimeUI: {fileID: 0}
 --- !u!4 &1776814404
 Transform:
   m_ObjectHideFlags: 0
@@ -32229,6 +32239,8 @@ MonoBehaviour:
   - {fileID: 1417731225}
   title: {fileID: 124580364}
   sentence: {fileID: 164874182}
+  subPhaseUI: []
+  subPhaseUIObject: []
 --- !u!1 &1884872211
 GameObject:
   m_ObjectHideFlags: 0
@@ -37946,3 +37958,10 @@ MonoBehaviour:
   _dotOrder: {fileID: 0}
   _bookPile: {fileID: 0}
   _dots: {fileID: 0}
+  _sub: {fileID: 0}
+  _main: {fileID: 0}
+  _cup: {fileID: 0}
+  _deathnote: {fileID: 0}
+  _time: {fileID: 0}
+  _iconcheck: {fileID: 0}
+  _chapter: 0
