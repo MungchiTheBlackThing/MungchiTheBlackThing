@@ -23,12 +23,6 @@ public class Sub : State
 
     }
 
-    //상태를 업데이트할 때마다 매 프레임 호출 -> 있을 필요 없음.
-    public override void Execute(DotController dot)
-    {
-
-    }
-
     //상태를 나갈 때 1회 호출 -> Position -1로 변경
     public override void Exit(DotController dot)
     {
