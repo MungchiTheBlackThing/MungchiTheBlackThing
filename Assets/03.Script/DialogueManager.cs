@@ -24,6 +24,9 @@ public class DialogueManager : MonoBehaviour
     public List<object> currentDialogueList;
     public int dialogueIndex = 0;
 
+    [SerializeField]
+    public LanguageType CurrentLanguage = LanguageType.Kor;
+
 
     void Start()
     {
@@ -116,6 +119,10 @@ public class DialogueManager : MonoBehaviour
                         AfterScript = parts[12],
                         Deathnote = parts[13]
                     };
+
+                    string displayedText = CurrentLanguage == LanguageType.Kor ? entry.KorText : entry.EngText;
+                    entry.KorText = displayedText; // Overwrite KorText with the selected language text
+
                     DialogueEntries.Add(entry);
                     currentDialogueList.Add(entry);
 
@@ -156,6 +163,10 @@ public class DialogueManager : MonoBehaviour
                         Deathnote = parts[10],
                         AfterScript = parts[11]
                     };
+
+                    string displayedText = CurrentLanguage == LanguageType.Kor ? entry.KorText : entry.EngText;
+                    entry.KorText = displayedText; // Overwrite KorText with the selected language text
+
                     SubDialogueEntries.Add(entry);
                     currentDialogueList.Add(entry);
 

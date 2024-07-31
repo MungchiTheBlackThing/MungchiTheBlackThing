@@ -30009,12 +30009,14 @@ MonoBehaviour:
   DotPanel: {fileID: 0}
   PlayPanel: {fileID: 0}
   InputPanel: {fileID: 0}
-  selectionPanel: {fileID: 0}
-  checkbox3Panel: {fileID: 0}
-  checkbox4Panel: {fileID: 0}
-  nextButton: {fileID: 0}
-  dialogueEntries: []
+  SelectionPanel: {fileID: 0}
+  Checkbox3Panel: {fileID: 0}
+  Checkbox4Panel: {fileID: 0}
+  NextButton: {fileID: 0}
+  DialogueEntries: []
+  SubDialogueEntries: []
   dialogueIndex: 0
+  CurrentLanguage: 1
 --- !u!1 &1971052396
 GameObject:
   m_ObjectHideFlags: 0
