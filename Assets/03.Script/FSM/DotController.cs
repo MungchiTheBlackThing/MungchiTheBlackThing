@@ -19,6 +19,8 @@ public class DotController : MonoBehaviour
     private Dictionary<DotState, State> states;
     private DotAnimState animKey;
     private int position;
+
+    [SerializeField]
     private int chapter;
 
     [SerializeField]
@@ -53,8 +55,8 @@ public class DotController : MonoBehaviour
 
         animatior = GetComponent<Animator>();
 
-        //currentState = states[DotState.Idle];
         Position = -1;
+        chapter = 1;
         ChangeState(DotState.Idle);
     }
 

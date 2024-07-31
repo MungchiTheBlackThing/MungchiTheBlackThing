@@ -12,7 +12,6 @@ public class Idle : State
     public Idle()
     {
         IdlePos = new Dictionary<DotAnimState, List<float>>();
-        StateReader reader = new StateReader();
         reader.ReadJson(this, Resources.Load<TextAsset>("FSM/IdleState"));
     }
 

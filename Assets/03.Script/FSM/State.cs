@@ -85,11 +85,12 @@ public class Coordinate
 public abstract class State
 {
     static protected Dictionary<float, Vector2> position; //State 클래스 1개에 모두 공유할 수 있도록 함.
-
+    static protected StateReader reader;
     public Vector2 GetCoordinate(float idx) { return position[idx]; }
 
     public State()
     {
+        reader = new StateReader();
         position = new Dictionary<float, Vector2>();
         ReadJson();
     }
@@ -107,6 +108,7 @@ public abstract class State
             Debug.Log($"Dot Position: {Data.dotPosition}, X: {Data.X}, Y: {Data.Y}");
         }
     }
+
     //상태를 시작할 때 1회 호출 -> Position 랜덤으로 선택
     public abstract void Init(DotAnimState state, List<float> pos); //해당 상태 초기화를 위해서 필요하다.
     public abstract void Enter(DotController dot);
