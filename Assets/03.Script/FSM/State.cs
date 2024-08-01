@@ -34,7 +34,6 @@ public enum DotAnimState
     anim_eyesdown_turn,
     anim_eyesside_turn,
     anim_eyesup_turn,
-    anim_eyeswide_turn,
     anim_sub_wish,
     anim_sub_birdanddot,
     anim_sub_birdnest,
@@ -64,6 +63,7 @@ public enum DotAnimState
     anim_sleep,
     anim_watching,  /*Phase*/
     anim_trigger_play /*Trigger*/
+        //몽퉁
 }
 //추상 클래스로 선언
 //Enter 입장 시
