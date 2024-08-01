@@ -7,10 +7,14 @@ public class MainExit : MonoBehaviour
     [SerializeField]
     MenuController menuController;
 
+    [SerializeField]
+    DialogueManager dialogueManager;   
+
     // Start is called before the first frame update
     private void OnEnable()
     {
         menuController = GameObject.Find("Menu").GetComponent<MenuController>();
+        dialogueManager = GameObject.Find("MainDialogue").GetComponent<DialogueManager>();
     }
     public void menuexit()
     {
@@ -26,6 +30,7 @@ public class MainExit : MonoBehaviour
                 }
             }
         }
+        dialogueManager.DialEnd();
         this.transform.parent.gameObject.SetActive(false);
         menuController.skipon();
     }
