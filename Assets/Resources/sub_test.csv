@@ -105,12 +105,9 @@ scriptNumber,lineKey,color,actor,AnimState,dotAnim,TextType,TextKor,TextEng,Next
 5,104,0,Dot,,anim_default,text,"꿈, 꿈, 동화, 동화, 파란, 파란.\n이 단어들로 하나의 문장을 만들어 줄래?","Blue, blue, sound, sound,\nand present, present.",105,,
 5,105,0,Dot,,anim_default,text,"소통 오류의 가능성을 극대화하며,","A sentence that maximizes the\npotential for confusion,",106,,
 5,106,0,Dot,,anim_default,text,인간 언어의 매력을 최대로\n증폭한 문장을 말이야!,and makes the human\nlanguage as charming as can be!,107,,
-5,107,0,Player,,anim_default,textbox,"우선, 꿈과 꿈을 사용해 보자면…
-(textbox)","First, blue and blue.",108,,
-5,108,0,Player,,anim_default,textbox,"다음은 동화와 동화였던가?
-(textbox)","Next, sound and sound.",109,,
-5,109,0,Player,,anim_default,textbox,"마지막으로, 파란과 파란.
-(textbox)","And finally, present and present.",110,,
+5,107,0,Player,,anim_default,textbox,"우선, 꿈과 꿈을 사용해 보자면…(textbox)","First, blue and blue.",108,,
+5,108,0,Player,,anim_default,textbox,"다음은 동화와 동화였던가?(textbox)","Next, sound and sound.",109,,
+5,109,0,Player,,anim_default,textbox,"마지막으로, 파란과 파란.(textbox)","And finally, present and present.",110,,
 5,110,0,Dot,,anim_default,text,두 배로 재미있어졌어!,Now its twice as much fun!,111,,
 5,111,0,Dot,,anim_default,text,"<name>, 언어라는 건 날 들뜨게 하는 동시에…\n아주, 아주, 아주 어렵고 혼란하게 해.","<name>, language excites me…\nbut confuses me very, very, very much.",112,,
 5,112,0,Dot,,anim_default,text,"이제 다시 돌아갈게, 나의 모서리로.\n더 많은 구슬들을 발음해 보고 싶어.",I’ll return to my corner now. I’d like\nto try out more of these marbles.,,,

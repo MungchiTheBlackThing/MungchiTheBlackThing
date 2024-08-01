@@ -55,8 +55,7 @@ ScriptKey,LineKey,Background,Actor,AnimState,DotBody,DotExpression,TextType,KorT
 1,54,main_door_open,Dot,main,body_default1,face_staryeyes,text,"불꽃놀이, 열대야, 어쩌면 뜨거운 키스 같은!","Like fireworks, a hot summer night,\nor perhaps a searing-hot kiss!",55,,,
 1,55,main_door_open,Player,main,body_default1,face_blink,text,그렇게나 강렬한 감정이 실존한다니. 모든\n인간이 그런 것들을 감각하며 살고 있다니!,"It’s hard to believe such a powerful\nemotion exists, that all humans feel that way!",56,,,
 1,56,main_door_open,Dot,main,body_bounce,face_staryeyes,text,그들의 말이 맞았어.\n인간들은 정말 멋진 존재야.,They were right. Humans\nare truly amazing.,57,,,
-1,57,main_door_open,Dot,main,body_default1,"face_staryeyes
-",text,"아, 음, 아니- 아니. 그저\n내가 정의하는 사랑일 뿐이야.","Uh, um, no- No. It’s just how I define love.",58,,,
+1,57,main_door_open,Dot,main,body_default1,"face_staryeyes",text,"아, 음, 아니- 아니. 그저\n내가 정의하는 사랑일 뿐이야.","Uh, um, no- No. It’s just how I define love.",58,,,
 1,58,main_door_open,Player,main,body_default1,face_blink,text,"사람마다 정의가 다를 수도, 정의란\n걸 아예 내리지 못했을 수도 있어.","Each person may define it differently,\nor be unable to define it at all.",59,,,
 1,59,main_door_open,Player,main,body_default1,face_noblink,text,"웃기지만 매일, 매순간 모양이\n변하는 게 사랑이기도 하지.","The shape of love can even\nchange every day, every second.",60,,,
 1,60,main_door_open,Player,main,body_default1,face_blink,text,사랑은… 복잡미묘하고 어렵거든.,Because love is… Complex.\nSubtle. Enigmatic.,61,,,

@@ -30013,10 +30013,12 @@ MonoBehaviour:
   Checkbox3Panel: {fileID: 0}
   Checkbox4Panel: {fileID: 0}
   NextButton: {fileID: 0}
+  PlayerController: {fileID: 1113454817}
   DialogueEntries: []
   SubDialogueEntries: []
   dialogueIndex: 0
-  CurrentLanguage: 1
+  Day: 0
+  CurrentLanguage: 0
 --- !u!1 &1971052396
 GameObject:
   m_ObjectHideFlags: 0

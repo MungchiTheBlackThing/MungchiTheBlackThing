@@ -8,6 +8,7 @@ using Assets.Script.DialLanguage;
 
 public class DialogueManager : MonoBehaviour
 {
+    // UI elements
     [SerializeField] TextMeshProUGUI DotTextUI;
     [SerializeField] TextMeshProUGUI PlayTextUI;
     [SerializeField] TextMeshProUGUI InputTextUI;
@@ -19,17 +20,25 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject Checkbox4Panel;
     [SerializeField] Button NextButton;
 
+    // Reference to the player controller
+    [SerializeField] PlayerController PlayerController;
+
+    // Lists to store dialogue entries
     [SerializeField] List<DialogueEntry> DialogueEntries;
     [SerializeField] List<SubDialogueEntry> SubDialogueEntries;
-    public List<object> currentDialogueList;
-    public int dialogueIndex = 0;
 
+    public List<object> currentDialogueList;  // Current dialogue list
+    public int dialogueIndex = 0;  // Current dialogue index
+    public int Day = 0;  // Current day
+
+    // Language setting
     [SerializeField]
     public LanguageType CurrentLanguage = LanguageType.Kor;
 
-
     void Start()
     {
+        Day = PlayerController.GetChapter();
+        Debug.Log("대화 날짜: " + Day);
         InitializePanels();
         Debug.Log("패널 초기화");
     }
@@ -92,19 +101,36 @@ public class DialogueManager : MonoBehaviour
         if (fileName == "main_test")
         {
             Debug.Log("Loading main dialogue");
-            for (int i = 1; i < lines.Length; i++)
+            LoadMainDialogue(lines);
+        }
+        else if (fileName == "sub_test")
+        {
+            Debug.Log("Loading sub dialogue");
+            LoadSubDialogue(lines);
+        }
+        ShowNextDialogue();
+    }
+
+    void LoadMainDialogue(string[] lines)
+    {
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string line = lines[i];
+            if (string.IsNullOrEmpty(line))
             {
-                string line = lines[i];
-                string[] parts = ParseCSVLine(line);
+                continue;
+            }
+            string[] parts = ParseCSVLine(line);
+            Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
 
-                // Log each parsed line for debugging
-                Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
-
-                if (parts.Length >= 14)
+            if (parts.Length >= 14)
+            {
+                int scriptKey = int.Parse(parts[0]);
+                if (scriptKey == Day)
                 {
                     DialogueEntry entry = new DialogueEntry
                     {
-                        ScriptKey = int.Parse(parts[0]),
+                        ScriptKey = scriptKey,
                         LineKey = int.Parse(parts[1]),
                         Background = parts[2],
                         Actor = parts[3],
@@ -121,36 +147,41 @@ public class DialogueManager : MonoBehaviour
                     };
 
                     string displayedText = CurrentLanguage == LanguageType.Kor ? entry.KorText : entry.EngText;
-                    entry.KorText = displayedText; // Overwrite KorText with the selected language text
+                    entry.KorText = displayedText;
 
                     DialogueEntries.Add(entry);
                     currentDialogueList.Add(entry);
 
-                    // Log the added entry for debugging
-                    Debug.Log($"Added DialogueEntry: {entry.KorText}");
-                }
-                else
-                {
-                    Debug.LogError($"Line {i} does not have enough parts: {line}");
+                    Debug.Log($"Added DialogueEntry: {displayedText}");
                 }
             }
-        }
-        else if (fileName == "sub_test")
-        {
-            Debug.Log("Loading sub dialogue");
-            for (int i = 1; i < lines.Length; i++)
+            else
             {
-                string line = lines[i];
-                string[] parts = ParseCSVLine(line);
+                Debug.LogError($"Line {i} does not have enough parts: {line}");
+            }
+        }
+    }
 
-                // Log each parsed line for debugging
-                Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
+    void LoadSubDialogue(string[] lines)
+    {
+        for (int i = 1; i < lines.Length; i++)
+        {
+            string line = lines[i];
+            if (string.IsNullOrEmpty(line))
+            {
+                continue;
+            }
+            string[] parts = ParseCSVLine(line);
+            Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
 
-                if (parts.Length >= 12)
+            if (parts.Length >= 12)
+            {
+                int scriptKey = int.Parse(parts[0]);
+                if (scriptKey == Day)
                 {
                     SubDialogueEntry entry = new SubDialogueEntry
                     {
-                        ScriptKey = int.Parse(parts[0]),
+                        ScriptKey = scriptKey,
                         LineKey = int.Parse(parts[1]),
                         Color = parts[2],
                         Actor = parts[3],
@@ -165,21 +196,19 @@ public class DialogueManager : MonoBehaviour
                     };
 
                     string displayedText = CurrentLanguage == LanguageType.Kor ? entry.KorText : entry.EngText;
-                    entry.KorText = displayedText; // Overwrite KorText with the selected language text
+                    entry.KorText = displayedText;
 
                     SubDialogueEntries.Add(entry);
                     currentDialogueList.Add(entry);
 
-                    // Log the added entry for debugging
-                    Debug.Log($"Added SubDialogueEntry: {entry.KorText}");
-                }
-                else
-                {
-                    Debug.LogError($"Line {i} does not have enough parts: {line}");
+                    Debug.Log($"Added SubDialogueEntry: {displayedText}");
                 }
             }
+            else
+            {
+                Debug.LogError($"Line {i} does not have enough parts: {line}");
+            }
         }
-        ShowNextDialogue();
     }
 
     string[] ParseCSVLine(string line)
@@ -219,18 +248,11 @@ public class DialogueManager : MonoBehaviour
 
     void ShowNextDialogue()
     {
-        DotPanel.SetActive(false);
-        PlayPanel.SetActive(false);
-        SelectionPanel.SetActive(false);
-        InputPanel.SetActive(false);
-        Checkbox3Panel.SetActive(false);
-        Checkbox4Panel.SetActive(false);
+        PanelOff();
 
         if (dialogueIndex >= currentDialogueList.Count)
         {
-            Debug.Log("Dialogue ended.");
-            currentDialogueList.Clear();  // Clear the list for the next dialogue session
-            dialogueIndex = 0;  // Reset index for the next session
+            DialEnd();
             return;
         }
 
@@ -277,6 +299,90 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    void ShowSelection(string options)
+    {
+        string[] selections = options.Split('|');
+        for (int i = 0; i < selections.Length; i++)
+        {
+            Button button = SelectionPanel.transform.GetChild(i).GetComponent<Button>();
+            TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+            buttonText.text = selections[i];
+            int index = i;
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() => OnSelectionClicked(index));
+        }
+    }
+
+    void ShowCheckboxOptions(GameObject checkboxPanel, string options)
+    {
+        string[] selections = options.Split('|');
+        for (int i = 0; i < selections.Length; i++)
+        {
+            TextMeshProUGUI text = checkboxPanel.transform.GetChild(2).GetChild(0).GetChild(i).GetComponentInChildren<TextMeshProUGUI>();
+            text.text = selections[i];
+        }
+    }
+
+    void OnSelectionClicked(int index)
+    {
+        var currentEntry = currentDialogueList[dialogueIndex] as DialogueEntry;
+        if (currentEntry != null)
+        {
+            Debug.Log($"Current LineKey: {currentEntry.LineKey}");
+            string[] nextKeys = currentEntry.NextLineKey.Split('|');
+            int nextLineKey = int.Parse(nextKeys[index]);
+            Debug.Log($"Next LineKey: {nextLineKey}");
+            dialogueIndex = currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+        }
+
+        SelectionPanel.SetActive(false);
+        ShowNextDialogue();
+    }
+
+    void NextDialogue()
+    {
+        var currentEntry = currentDialogueList[dialogueIndex] as DialogueEntry;
+        if (currentEntry != null)
+        {
+            if (currentEntry.TextType == "selection")
+            {
+                Debug.Log($"Current LineKey: {currentEntry.LineKey}");
+                return;
+            }
+
+            if (int.TryParse(currentEntry.NextLineKey, out int nextLineKey))
+            {
+                Debug.Log($"Current LineKey: {currentEntry.LineKey}");
+                Debug.Log($"Next LineKey: {nextLineKey}");
+                dialogueIndex = currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+            }
+            else
+            {
+                dialogueIndex++;
+            }
+        }
+
+        ShowNextDialogue();
+    }
+
+    public void DialEnd()
+    {
+        Debug.Log("Dialogue ended.");
+        PanelOff();
+        currentDialogueList.Clear();
+        dialogueIndex = 0;
+    }
+
+    void PanelOff()
+    {
+        DotPanel.SetActive(false);
+        PlayPanel.SetActive(false);
+        SelectionPanel.SetActive(false);
+        InputPanel.SetActive(false);
+        Checkbox3Panel.SetActive(false);
+        Checkbox4Panel.SetActive(false);
+    }
+
     string GetTextType(object entry)
     {
         if (entry is DialogueEntry)
@@ -307,43 +413,6 @@ public class DialogueManager : MonoBehaviour
     void RegisterNextButton(Button button)
     {
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => NextDialogue());
-    }
-
-    void ShowSelection(string options)
-    {
-        string[] selections = options.Split('|');
-        for (int i = 0; i < selections.Length; i++)
-        {
-            Button button = SelectionPanel.transform.GetChild(i).GetComponent<Button>();
-            TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = selections[i];
-            int index = i;
-            button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => OnSelectionClicked(index));
-        }
-    }
-
-    void ShowCheckboxOptions(GameObject checkboxPanel, string options)
-    {
-        string[] selections = options.Split('|');
-        for (int i = 0; i < selections.Length; i++)
-        {
-            TextMeshProUGUI text = checkboxPanel.transform.GetChild(2).GetChild(0).GetChild(i).GetComponentInChildren<TextMeshProUGUI>();
-            text.text = selections[i];
-        }
-    }
-
-    void NextDialogue()
-    {
-        dialogueIndex++;
-        ShowNextDialogue();
-    }
-
-    void OnSelectionClicked(int index)
-    {
-        SelectionPanel.SetActive(false);
-        dialogueIndex++;
-        ShowNextDialogue();
+        button.onClick.AddListener(NextDialogue);
     }
 }
