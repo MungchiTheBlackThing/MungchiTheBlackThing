@@ -299,6 +299,90 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
+    void ShowSelection(string options)
+    {
+        string[] selections = options.Split('|');
+        for (int i = 0; i < selections.Length; i++)
+        {
+            Button button = SelectionPanel.transform.GetChild(i).GetComponent<Button>();
+            TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
+            buttonText.text = selections[i];
+            int index = i;
+            button.onClick.RemoveAllListeners();
+            button.onClick.AddListener(() => OnSelectionClicked(index));
+        }
+    }
+
+    void ShowCheckboxOptions(GameObject checkboxPanel, string options)
+    {
+        string[] selections = options.Split('|');
+        for (int i = 0; i < selections.Length; i++)
+        {
+            TextMeshProUGUI text = checkboxPanel.transform.GetChild(2).GetChild(0).GetChild(i).GetComponentInChildren<TextMeshProUGUI>();
+            text.text = selections[i];
+        }
+    }
+
+    void OnSelectionClicked(int index)
+    {
+        var currentEntry = currentDialogueList[dialogueIndex] as DialogueEntry;
+        if (currentEntry != null)
+        {
+            Debug.Log($"Current LineKey: {currentEntry.LineKey}");
+            string[] nextKeys = currentEntry.NextLineKey.Split('|');
+            int nextLineKey = int.Parse(nextKeys[index]);
+            Debug.Log($"Next LineKey: {nextLineKey}");
+            dialogueIndex = currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+        }
+
+        SelectionPanel.SetActive(false);
+        ShowNextDialogue();
+    }
+
+    void NextDialogue()
+    {
+        var currentEntry = currentDialogueList[dialogueIndex] as DialogueEntry;
+        if (currentEntry != null)
+        {
+            if (currentEntry.TextType == "selection")
+            {
+                Debug.Log($"Current LineKey: {currentEntry.LineKey}");
+                return;
+            }
+
+            if (int.TryParse(currentEntry.NextLineKey, out int nextLineKey))
+            {
+                Debug.Log($"Current LineKey: {currentEntry.LineKey}");
+                Debug.Log($"Next LineKey: {nextLineKey}");
+                dialogueIndex = currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+            }
+            else
+            {
+                dialogueIndex++;
+            }
+        }
+
+        ShowNextDialogue();
+    }
+
+    public void DialEnd()
+    {
+        Debug.Log("Dialogue ended.");
+        PanelOff();
+        currentDialogueList.Clear();
+        dialogueIndex = 0;
+    }
+
+    void PanelOff()
+    {
+        DotPanel.SetActive(false);
+        PlayPanel.SetActive(false);
+        SelectionPanel.SetActive(false);
+        InputPanel.SetActive(false);
+        Checkbox3Panel.SetActive(false);
+        Checkbox4Panel.SetActive(false);
+    }
+
     string GetTextType(object entry)
     {
         if (entry is DialogueEntry)
@@ -329,61 +413,6 @@ public class DialogueManager : MonoBehaviour
     void RegisterNextButton(Button button)
     {
         button.onClick.RemoveAllListeners();
-        button.onClick.AddListener(() => NextDialogue());
-    }
-
-    void ShowSelection(string options)
-    {
-        string[] selections = options.Split('|');
-        for (int i = 0; i < selections.Length; i++)
-        {
-            Button button = SelectionPanel.transform.GetChild(i).GetComponent<Button>();
-            TextMeshProUGUI buttonText = button.GetComponentInChildren<TextMeshProUGUI>();
-            buttonText.text = selections[i];
-            int index = i;
-            button.onClick.RemoveAllListeners();
-            button.onClick.AddListener(() => OnSelectionClicked(index));
-        }
-    }
-
-    void ShowCheckboxOptions(GameObject checkboxPanel, string options)
-    {
-        string[] selections = options.Split('|');
-        for (int i = 0; i < selections.Length; i++)
-        {
-            TextMeshProUGUI text = checkboxPanel.transform.GetChild(2).GetChild(0).GetChild(i).GetComponentInChildren<TextMeshProUGUI>();
-            text.text = selections[i];
-        }
-    }
-
-    void NextDialogue()
-    {
-        dialogueIndex++;
-        ShowNextDialogue();
-    }
-
-    void OnSelectionClicked(int index)
-    {
-        SelectionPanel.SetActive(false);
-        dialogueIndex++;
-        ShowNextDialogue();
-    }
-
-    public void DialEnd()
-    {
-        Debug.Log("Dialogue ended.");
-        PanelOff();
-        currentDialogueList.Clear();  // Clear the list for the next dialogue session
-        dialogueIndex = 0;  // Reset index for the next session
-    }
-
-    void PanelOff()
-    {
-        DotPanel.SetActive(false);
-        PlayPanel.SetActive(false);
-        SelectionPanel.SetActive(false);
-        InputPanel.SetActive(false);
-        Checkbox3Panel.SetActive(false);
-        Checkbox4Panel.SetActive(false);
+        button.onClick.AddListener(NextDialogue);
     }
 }
