@@ -209,6 +209,7 @@ public class DialogueManager : MonoBehaviour
                 Debug.LogError($"Line {i} does not have enough parts: {line}");
             }
         }
+        Debug.Log("현재 인덱스 숫자: "+ currentDialogueList.Count);
     }
 
     string[] ParseCSVLine(string line)
@@ -266,14 +267,14 @@ public class DialogueManager : MonoBehaviour
             case "text":
                 if (actor == "Dot")
                 {
-                    DotPanel.SetActive(true);
                     DotTextUI.text = $"{actor}: {korText}";
+                    DotPanel.SetActive(true);
                     RegisterNextButton(DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>());
                 }
                 else if (actor == "Player")
                 {
-                    PlayPanel.SetActive(true);
                     PlayTextUI.text = $"{actor}: {korText}";
+                    PlayPanel.SetActive(true);
                     RegisterNextButton(PlayPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>());
                 }
                 break;
@@ -330,9 +331,35 @@ public class DialogueManager : MonoBehaviour
         {
             Debug.Log($"Current LineKey: {currentEntry.LineKey}");
             string[] nextKeys = currentEntry.NextLineKey.Split('|');
-            int nextLineKey = int.Parse(nextKeys[index]);
-            Debug.Log($"Next LineKey: {nextLineKey}");
-            dialogueIndex = currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+
+            if (index < nextKeys.Length && int.TryParse(nextKeys[index], out int nextLineKey))
+            {
+                Debug.Log($"Next LineKey: {nextLineKey}");
+                int nextIndex = currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+
+                if (nextIndex != -1)
+                {
+                    dialogueIndex = nextIndex;
+                }
+                else
+                {
+                    Debug.Log("Next LineKey not found in dialogue list. Ending dialogue.");
+                    DialEnd();
+                    return;
+                }
+            }
+            else
+            {
+                Debug.Log("Invalid NextLineKey index or parse failure. Ending dialogue.");
+                DialEnd();
+                return;
+            }
+        }
+        else
+        {
+            Debug.Log("Current entry is null. Ending dialogue.");
+            DialEnd();
+            return;
         }
 
         SelectionPanel.SetActive(false);
@@ -344,26 +371,36 @@ public class DialogueManager : MonoBehaviour
         var currentEntry = currentDialogueList[dialogueIndex] as DialogueEntry;
         if (currentEntry != null)
         {
-            if (currentEntry.TextType == "selection")
-            {
-                Debug.Log($"Current LineKey: {currentEntry.LineKey}");
-                return;
-            }
-
             if (int.TryParse(currentEntry.NextLineKey, out int nextLineKey))
             {
-                Debug.Log($"Current LineKey: {currentEntry.LineKey}");
-                Debug.Log($"Next LineKey: {nextLineKey}");
-                dialogueIndex = currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+                int nextIndex = currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+
+                if (nextIndex != -1)
+                {
+                    dialogueIndex = nextIndex;
+                }
+                else
+                {
+                    DialEnd();
+                    return;
+                }
             }
             else
             {
+                Debug.Log("NextLineKey is not a valid integer. Moving to the next entry by index.");
                 dialogueIndex++;
             }
+        }
+        else
+        {
+            Debug.Log("Current entry is null. Ending dialogue.");
+            DialEnd();
+            return;
         }
 
         ShowNextDialogue();
     }
+
 
     public void DialEnd()
     {
