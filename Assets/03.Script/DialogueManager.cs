@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using Assets.Script.DialClass;
@@ -48,23 +48,29 @@ public class DialogueManager : MonoBehaviour
         DotPanel = Instantiate(Resources.Load("DotBalloon") as GameObject, transform);
         DotTextUI = DotPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
         DotPanel.SetActive(false);
+        DotPanel.AddComponent<CanvasGroup>();
 
         PlayPanel = Instantiate(Resources.Load("PlayerOneLineBallum") as GameObject, transform);
         PlayTextUI = PlayPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
         PlayPanel.SetActive(false);
+        PlayPanel.AddComponent<CanvasGroup>();
 
         InputPanel = Instantiate(Resources.Load("InputPlayerOpinion") as GameObject, transform);
         InputTextUI = InputPanel.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         InputPanel.SetActive(false);
+        InputPanel.AddComponent<CanvasGroup>();
 
         Checkbox3Panel = Instantiate(Resources.Load("CheckBox3Selection") as GameObject, transform);
         Checkbox3Panel.SetActive(false);
+        Checkbox3Panel.AddComponent<CanvasGroup>();
 
         Checkbox4Panel = Instantiate(Resources.Load("CheckBox4Selection") as GameObject, transform);
         Checkbox4Panel.SetActive(false);
+        Checkbox4Panel.AddComponent <CanvasGroup>();
 
         SelectionPanel = Instantiate(Resources.Load("TwoSelectionBallum") as GameObject, transform);
         SelectionPanel.SetActive(false);
+        SelectionPanel.AddComponent<CanvasGroup>();
     }
 
     public void StartDialogue(string fileName)
@@ -267,34 +273,40 @@ public class DialogueManager : MonoBehaviour
             case "text":
                 if (actor == "Dot")
                 {
-                    DotTextUI.text = $"{actor}: {korText}";
+                    DotTextUI.text = $"{korText}";
                     DotPanel.SetActive(true);
+                    StartCoroutine(FadeIn(DotPanel.GetComponent<CanvasGroup>(), 0.5f, DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>()));
                     RegisterNextButton(DotPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>());
                 }
                 else if (actor == "Player")
                 {
-                    PlayTextUI.text = $"{actor}: {korText}";
+                    PlayTextUI.text = $"{korText}";
                     PlayPanel.SetActive(true);
+                    StartCoroutine(FadeIn(PlayPanel.GetComponent<CanvasGroup>(), 0.5f, PlayPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>()));
                     RegisterNextButton(PlayPanel.transform.GetChild(0).GetChild(0).GetComponent<Button>());
                 }
                 break;
             case "selection":
                 SelectionPanel.SetActive(true);
+                StartCoroutine(FadeIn(SelectionPanel.GetComponent<CanvasGroup>(), 0.5f, SelectionPanel.transform.GetComponentInChildren<Button>()));
                 ShowSelection(korText);
                 break;
             case "textbox":
                 InputPanel.SetActive(true);
                 InputTextUI.text = korText;
+                StartCoroutine(FadeIn(InputPanel.GetComponent<CanvasGroup>(), 0.5f, InputPanel.transform.GetChild(1).GetComponent<Button>()));
                 RegisterNextButton(InputPanel.transform.GetChild(1).GetComponent<Button>());
                 break;
             case "checkbox3":
                 Checkbox3Panel.SetActive(true);
                 ShowCheckboxOptions(Checkbox3Panel, korText);
+                StartCoroutine(FadeIn(Checkbox3Panel.GetComponent<CanvasGroup>(), 0.5f, Checkbox3Panel.transform.GetChild(1).GetComponent<Button>()));
                 RegisterNextButton(Checkbox3Panel.transform.GetChild(1).GetComponent<Button>());
                 break;
             case "checkbox4":
                 Checkbox4Panel.SetActive(true);
                 ShowCheckboxOptions(Checkbox4Panel, korText);
+                StartCoroutine(FadeIn(Checkbox4Panel.GetComponent<CanvasGroup>(), 0.5f, Checkbox4Panel.transform.GetChild(1).GetComponent<Button>()));
                 RegisterNextButton(Checkbox4Panel.transform.GetChild(1).GetComponent<Button>());
                 break;
         }
@@ -451,5 +463,19 @@ public class DialogueManager : MonoBehaviour
     {
         button.onClick.RemoveAllListeners();
         button.onClick.AddListener(NextDialogue);
+    }
+
+    IEnumerator FadeIn(CanvasGroup canvasGroup, float duration, Button button)
+    {
+        float counter = 0f;
+        button.interactable = false;
+        while (counter < duration)
+        {
+            counter += Time.deltaTime;
+            canvasGroup.alpha = Mathf.Lerp(0, 1, counter / duration);
+            yield return null;
+        }
+        canvasGroup.alpha = 1;
+        button.interactable = true;
     }
 }
