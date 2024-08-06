@@ -732,6 +732,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFour: 0
+  options:
+  - {fileID: 6527005240975850250}
+  - {fileID: 6527005240065117383}
+  - {fileID: 6527005240845276135}
+  - {fileID: 6527005240856572953}
 --- !u!1 &6527005240039723017
 GameObject:
   m_ObjectHideFlags: 0
