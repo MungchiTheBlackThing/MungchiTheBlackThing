@@ -52,13 +52,14 @@ public class DotController : MonoBehaviour
         states = new Dictionary<DotState, State>();
         states.Clear();
         states.Add(DotState.Idle, new Idle());
-        states.Add(DotState.Sub, new Sub());
+        states.Add(DotState.Phase, new Phase());
+        //states.Add(DotState.Sub, new Sub());
 
         animatior = GetComponent<Animator>();
 
         Position = -1;
         chapter = 1;
-        ChangeState(DotState.Idle);
+        ChangeState(DotState.Phase, DotAnimState.anim_diary);
     }
 
     public void ChangeState(DotState state = DotState.Idle, DotAnimState OutAnimKey = DotAnimState.anim_default, int OutPos = -1)
@@ -70,11 +71,14 @@ public class DotController : MonoBehaviour
             return;
         }
 
-        if(currentState != null)
+        Debug.Log(2);
+
+        if (currentState != null)
         {
            currentState.Exit(this); //이전 값을 나가주면서, 값을 초기화 시킨다.
         }
 
+        animatior.SetInteger("DotState", (int)state);
         Position = OutPos; //Update
         animKey = OutAnimKey; 
         //OutPos 가 있다면 해당 Position으로 바껴야함.

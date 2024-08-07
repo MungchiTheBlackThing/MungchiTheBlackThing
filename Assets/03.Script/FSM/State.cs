@@ -57,13 +57,34 @@ public enum DotAnimState
     anim_sub_hurt1,
     anim_sub_hurt2,
     anim_sub_letter,
+    anim_sub_light,
     anim_move,
     anim_idle, /*Sub*/
     anim_diary,
     anim_sleep,
     anim_watching,  /*Phase*/
-    anim_trigger_play /*Trigger*/
-        //몽퉁
+    anim_trigger_play, /*Trigger*/
+    body_default1, /*Main Body*/
+    body_default2,
+    body_default2_turn,
+    body_bounce,
+    body_move,
+    body_rhythm,
+    body_spikey,
+    body_spikey_turn,
+    body_hmm,
+    body_hmm_turn,
+    body_mud,
+    body_mud_turn,
+    body_trembling,
+    body_ch2,
+    body_ch2tremble,
+    body_ch2drop,
+    body_draw,
+    body_draw2,
+    body_cup,
+    body_cu2,
+    //몽퉁
 }
 //추상 클래스로 선언
 //Enter 입장 시
