@@ -109,12 +109,12 @@ public class DialogueManager : MonoBehaviour
         SubDialogueEntries.Clear();
         currentDialogueList = new List<object>();
 
-        if (fileName == "main_ch1")
+        if (fileName.Contains("main"))
         {
             Debug.Log("Loading main dialogue");
             LoadMainDialogue(lines);
         }
-        else if (fileName == "sub_test")
+        else if (fileName.Contains("sub"))
         {
             Debug.Log("Loading sub dialogue");
             LoadSubDialogue(lines);
