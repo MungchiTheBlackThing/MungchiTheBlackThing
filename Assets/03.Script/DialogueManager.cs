@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using TMPro;
 using Assets.Script.DialClass;
 using Assets.Script.DialLanguage;
+using Assets.Script.TimeEnum;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -19,6 +20,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject Checkbox3Panel;
     [SerializeField] GameObject Checkbox4Panel;
     [SerializeField] Button NextButton;
+    [SerializeField] SkipController SkipController;
 
     // Reference to the player controller
     [SerializeField] PlayerController PlayerController;
@@ -31,50 +33,53 @@ public class DialogueManager : MonoBehaviour
     public int dialogueIndex = 0;  // Current dialogue index
     public int Day = 0;  // Current day
 
+    public int Dial;
+
     // Language setting
     [SerializeField]
     public LanguageType CurrentLanguage = LanguageType.Kor;
 
     void Start()
     {
-        Day = PlayerController.GetChapter();
-        Debug.Log("대화 날짜: " + Day);
         InitializePanels();
         Debug.Log("패널 초기화");
     }
 
     void InitializePanels()
     {
-        DotPanel = Instantiate(Resources.Load("DotBalloon") as GameObject, transform);
+        DotPanel = Instantiate(Resources.Load("DialBalloon/DotBalloon") as GameObject, transform);
         DotTextUI = DotPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
         DotPanel.SetActive(false);
         DotPanel.AddComponent<CanvasGroup>();
 
-        PlayPanel = Instantiate(Resources.Load("PlayerOneLineBallum") as GameObject, transform);
+        PlayPanel = Instantiate(Resources.Load("DialBalloon/PlayerOneLineBallum") as GameObject, transform);
         PlayTextUI = PlayPanel.transform.GetChild(0).GetChild(0).GetChild(0).GetComponent<TextMeshProUGUI>();
         PlayPanel.SetActive(false);
         PlayPanel.AddComponent<CanvasGroup>();
 
-        InputPanel = Instantiate(Resources.Load("InputPlayerOpinion") as GameObject, transform);
+        InputPanel = Instantiate(Resources.Load("DialBalloon/InputPlayerOpinion") as GameObject, transform);
         InputTextUI = InputPanel.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
         InputPanel.SetActive(false);
         InputPanel.AddComponent<CanvasGroup>();
 
-        Checkbox3Panel = Instantiate(Resources.Load("CheckBox3Selection") as GameObject, transform);
+        Checkbox3Panel = Instantiate(Resources.Load("DialBalloon/CheckBox3Selection") as GameObject, transform);
         Checkbox3Panel.SetActive(false);
         Checkbox3Panel.AddComponent<CanvasGroup>();
 
-        Checkbox4Panel = Instantiate(Resources.Load("CheckBox4Selection") as GameObject, transform);
+        Checkbox4Panel = Instantiate(Resources.Load("DialBalloon/CheckBox4Selection") as GameObject, transform);
         Checkbox4Panel.SetActive(false);
         Checkbox4Panel.AddComponent <CanvasGroup>();
 
-        SelectionPanel = Instantiate(Resources.Load("TwoSelectionBallum") as GameObject, transform);
+        SelectionPanel = Instantiate(Resources.Load("DialBalloon/TwoSelectionBallum") as GameObject, transform);
         SelectionPanel.SetActive(false);
         SelectionPanel.AddComponent<CanvasGroup>();
     }
 
     public void StartDialogue(string fileName)
     {
+        Dial = SkipController.GetTimeCurIdx;
+        Day = PlayerController.GetChapter();
+        Debug.Log("대화 날짜: " + Day);
         if (DialogueEntries != null)
         {
             DialogueEntries.Clear();
@@ -88,14 +93,14 @@ public class DialogueManager : MonoBehaviour
 
     void LoadDialogue(string fileName)
     {
-        TextAsset dialogueData = Resources.Load<TextAsset>(fileName);
+        TextAsset dialogueData = Resources.Load<TextAsset>("MainDial/" + fileName);
 
         if (dialogueData == null)
         {
             Debug.LogError("Dialogue file not found in Resources folder.");
             return;
         }
-
+        Debug.Log(fileName);
         Debug.Log("Dialogue file loaded successfully.");
         string[] lines = dialogueData.text.Split('\n');
 
@@ -104,7 +109,7 @@ public class DialogueManager : MonoBehaviour
         SubDialogueEntries.Clear();
         currentDialogueList = new List<object>();
 
-        if (fileName == "main_test")
+        if (fileName == "main_ch1")
         {
             Debug.Log("Loading main dialogue");
             LoadMainDialogue(lines);
@@ -129,27 +134,28 @@ public class DialogueManager : MonoBehaviour
             string[] parts = ParseCSVLine(line);
             Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
 
-            if (parts.Length >= 14)
+            if (parts.Length >= 15)
             {
-                int scriptKey = int.Parse(parts[0]);
-                if (scriptKey == Day)
+                int main = int.Parse(parts[0]);
+                if (main == Dial)
                 {
                     DialogueEntry entry = new DialogueEntry
                     {
-                        ScriptKey = scriptKey,
-                        LineKey = int.Parse(parts[1]),
-                        Background = parts[2],
-                        Actor = parts[3],
-                        AnimState = parts[4],
-                        DotBody = parts[5],
-                        DotExpression = parts[6],
-                        TextType = parts[7],
-                        KorText = ApplyLineBreaks(parts[8]),
-                        EngText = ApplyLineBreaks(parts[9]),
-                        NextLineKey = parts[10],
-                        AnimScene = parts[11],
-                        AfterScript = parts[12],
-                        Deathnote = parts[13]
+                        Main = main,
+                        ScriptKey = int.Parse(parts[1]),
+                        LineKey = int.Parse(parts[2]),
+                        Background = parts[3],
+                        Actor = parts[4],
+                        AnimState = parts[5],
+                        DotBody = parts[6],
+                        DotExpression = parts[7],
+                        TextType = parts[8],
+                        KorText = ApplyLineBreaks(parts[9]),
+                        EngText = ApplyLineBreaks(parts[10]),
+                        NextLineKey = parts[11],
+                        AnimScene = parts[12],
+                        AfterScript = parts[13],
+                        Deathnote = parts[14]
                     };
 
                     string displayedText = CurrentLanguage == LanguageType.Kor ? entry.KorText : entry.EngText;

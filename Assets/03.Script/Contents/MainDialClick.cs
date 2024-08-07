@@ -22,6 +22,8 @@ public class MainDialClick : MonoBehaviour
     [SerializeField]
     Vector2[] DialMungchiPos;
 
+    [SerializeField] PlayerController PlayerController;
+
     [SerializeField]
     DialogueManager DialogueManager;
 
@@ -31,11 +33,14 @@ public class MainDialClick : MonoBehaviour
 
     public int randomindex;
     // 활성화될 때 호출되는 함수
-    
+
+    public int Day = 0;  // Current day
+
     void OnEnable()
     {
         MenuControll = GameObject.Find("Menu").GetComponent<MenuController>();
-
+        PlayerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        Day = PlayerController.GetChapter();
         //메인 다일어로그 시작할때 스킵 불가능하게 하는 함수
         //MenuControll.onlyskipoff();
 
@@ -87,7 +92,7 @@ public class MainDialClick : MonoBehaviour
         string backname = Background.transform.GetChild(0).name;
         Debug.Log(backname);
 
-        DialogueManager.StartDialogue("main_test");
+        DialogueManager.StartDialogue("main_ch"+Day);
         // 다이얼로그 자식을 찾아서 활성화
         for (int i = 0; i < dialogueNames.Length; i++)
         {

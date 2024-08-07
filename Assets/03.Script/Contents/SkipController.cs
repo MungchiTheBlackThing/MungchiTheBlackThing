@@ -168,6 +168,7 @@ public class SkipController : MonoBehaviour
                         /*메인A*/
                         Maindial();
                         time = _timeStamp[GetTimeCurIdx];
+                        Debug.Log(curIdx);
                         break;
 
                     case (int)TimeStamp.TS_THINKING:

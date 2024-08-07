@@ -6191,6 +6191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuController: {fileID: 0}
+  dialogueManager: {fileID: 0}
 --- !u!114 &400981394
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7053,6 +7054,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuController: {fileID: 0}
+  dialogueManager: {fileID: 0}
 --- !u!114 &462256704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16796,6 +16798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuController: {fileID: 0}
+  dialogueManager: {fileID: 0}
 --- !u!114 &1158414892
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21324,6 +21327,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   menuController: {fileID: 0}
+  dialogueManager: {fileID: 0}
 --- !u!114 &1482962414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30013,11 +30017,13 @@ MonoBehaviour:
   Checkbox3Panel: {fileID: 0}
   Checkbox4Panel: {fileID: 0}
   NextButton: {fileID: 0}
+  SkipController: {fileID: 1776814403}
   PlayerController: {fileID: 1113454817}
   DialogueEntries: []
   SubDialogueEntries: []
   dialogueIndex: 0
   Day: 0
+  Dial: 0
   CurrentLanguage: 0
 --- !u!1 &1971052396
 GameObject:

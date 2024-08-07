@@ -3,6 +3,7 @@ namespace Assets.Script.DialClass
     [System.Serializable]
     public class DialogueEntry
     {
+        public int Main;
         public int ScriptKey;
         public int LineKey;
         public string Background;
