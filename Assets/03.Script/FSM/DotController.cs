@@ -9,7 +9,8 @@ public enum DotState
     Idle = 0,
     Sub = 1,
     Main = 2,
-    Phase = 3
+    Phase = 3,
+    Tirgger = 4
 };
 
 public class DotController : MonoBehaviour

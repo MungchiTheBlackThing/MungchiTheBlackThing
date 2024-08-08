@@ -7,59 +7,62 @@ using UnityEngine.UIElements;
 
 public enum DotAnimState
 {
-    anim_default = 0, //0
-    anim_bed, //1
-    anim_reading, //2
-    anim_writing, //3
-    anim_mold, //4
-    anim_bounce, //5
-    anim_laptop, //6
-    anim_walking, //7
-    anim_mold2, //8
-    anim_happy, //9
-    anim_spiderweb1, //10
-    anim_spiderweb2, //11
-    anim_eyesclosed,//12
-    anim_eyescorner,//13
-    anim_eyesdown,//14
-    anim_eyesside,//15
-    anim_eyesup,//16
-    anim_sleepy_bed,//17
-    anim_sleepy_spiderweb, //18
-    anim_mud, //DotAnimState 19 - Chapter 
-    anim_eyeswide, /*Idle*/
-    anim_eyesblink, 
-    anim_eyesclosed_turn,
-    anim_eyescorner_turn,
-    anim_eyesdown_turn,
-    anim_eyesside_turn,
-    anim_eyesup_turn,
-    anim_sub_wish,
-    anim_sub_birdanddot,
-    anim_sub_birdnest,
-    anim_sub_caterpillar1,
-    anim_sub_caterpillar2,
-    anim_sub_deadbug1,
-    anim_sub_deadbug2,
-    anim_sub_dottoflamingo,
-    anim_sub_flamingotodot,
-    anim_sub_flamingo,
-    anim_sub_dreamcatcher1,
-    anim_sub_dreamcatcher2,
-    anim_sub_roundthings1,
-    anim_sub_roundthings2,
-    anim_sub_spiderdot,
-    anim_sub_raggedyann1,
-    anim_sub_raggedyann2,
-    anim_sub_raggedyann3,
-    anim_sub_hands,
-    anim_sub_heart,
-    anim_sub_hurt1,
-    anim_sub_hurt2,
-    anim_sub_letter,
-    anim_sub_light,
-    anim_move,
-    anim_idle, /*Sub*/
+    anim_default = 0, //1
+    anim_bed, //2
+    anim_reading, //3
+    anim_writing, //4
+    anim_mold, //5
+    anim_bounce, //6
+    anim_laptop, //7
+    anim_walking, //8
+    anim_mold2, //9
+    anim_happy, //10
+    anim_spiderweb1, //11
+    anim_spiderweb2, //12
+    anim_eyesclosed,//13
+    anim_eyescorner,//14
+    anim_eyesdown,//15
+    anim_eyesside,//16
+    anim_eyesup,//17
+    anim_sleepy_bed,//18
+    anim_sleepy_spiderweb, //19
+    anim_mud, //DotAnimState 20 - Chapter 
+    anim_eyeswide, /*Idle 20*/ 
+
+    anim_eyesblink, //21
+    anim_eyesclosed_turn, //22
+    anim_eyescorner_turn, //23
+    anim_eyesdown_turn, //24
+    anim_eyesside_turn, //25
+    anim_eyesup_turn, //26
+    anim_sub_wish, //27
+    anim_sub_birdanddot, //28
+    anim_sub_birdnest, //29
+    anim_sub_caterpillar1, //30
+    anim_sub_caterpillar2, //31
+    anim_sub_deadbug1, //32
+    anim_sub_deadbug2, //33
+    anim_sub_dottoflamingo, //34
+    anim_sub_flamingotodot, //35
+    anim_sub_flamingo, //36
+    anim_sub_dreamcatcher1, //37
+    anim_sub_dreamcatcher2, //38
+    anim_sub_roundthings1, //39
+    anim_sub_roundthings2, //40
+    anim_sub_spiderdot, //41
+    anim_sub_raggedyann1, //42
+    anim_sub_raggedyann2, //43
+    anim_sub_raggedyann3, //44
+    anim_sub_hands, //45
+    anim_sub_heart, //46
+    anim_sub_hurt1, //47
+    anim_sub_hurt2, //48
+    anim_sub_letter, //49
+    anim_move, //50
+    anim_idle, //51
+    anim_sub_ch_heart, //52
+    anim_sub_light, /*Sub 53*/
+
     anim_diary,
     anim_sleep,
     anim_watching,  /*Phase*/
