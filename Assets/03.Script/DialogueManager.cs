@@ -19,6 +19,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject SelectionPanel;
     [SerializeField] GameObject Checkbox3Panel;
     [SerializeField] GameObject Checkbox4Panel;
+    [SerializeField] GameObject Selection3Panel;
+    [SerializeField] GameObject Selection4Panel;
     [SerializeField] Button NextButton;
     [SerializeField] SkipController SkipController;
 
@@ -73,6 +75,14 @@ public class DialogueManager : MonoBehaviour
         SelectionPanel = Instantiate(Resources.Load("DialBalloon/TwoSelectionBallum") as GameObject, transform);
         SelectionPanel.SetActive(false);
         SelectionPanel.AddComponent<CanvasGroup>();
+
+        Selection3Panel = Instantiate(Resources.Load("DialBalloon/Selection3Selection") as GameObject, transform);
+        Selection3Panel.SetActive(false);
+        Selection3Panel.AddComponent<CanvasGroup>();
+
+        Selection4Panel = Instantiate(Resources.Load("DialBalloon/Selection4Selection") as GameObject, transform);
+        Selection4Panel.SetActive(false);
+        Selection4Panel.AddComponent<CanvasGroup>();
     }
 
     public void StartDialogue(string fileName)
@@ -315,6 +325,19 @@ public class DialogueManager : MonoBehaviour
                 StartCoroutine(FadeIn(Checkbox4Panel.GetComponent<CanvasGroup>(), 0.5f, Checkbox4Panel.transform.GetChild(1).GetComponent<Button>()));
                 RegisterNextButton(Checkbox4Panel.transform.GetChild(1).GetComponent<Button>());
                 break;
+
+            case "selection3":
+                Selection3Panel.SetActive(true);
+                ShowSelectionOptions(Selection3Panel, korText);
+                StartCoroutine(FadeIn(Selection3Panel.GetComponent<CanvasGroup>(), 0.5f, Selection3Panel.transform.GetChild(1).GetComponent<Button>()));
+                break;
+
+            case "selection4":
+                Selection4Panel.SetActive(true);
+                ShowSelectionOptions(Selection4Panel, korText);
+                StartCoroutine(FadeIn(Selection4Panel.GetComponent<CanvasGroup>(), 0.5f, Selection4Panel.transform.GetChild(1).GetComponent<Button>()));
+                break;
+
         }
     }
 
@@ -342,7 +365,17 @@ public class DialogueManager : MonoBehaviour
         }
     }
 
-    void OnSelectionClicked(int index)
+    void ShowSelectionOptions(GameObject checkboxPanel, string options)
+    {
+        string[] selections = options.Split('|');
+        for (int i = 0; i < selections.Length; i++)
+        {
+            TextMeshProUGUI text = checkboxPanel.transform.GetChild(2).GetChild(0).GetChild(i).GetComponentInChildren<TextMeshProUGUI>();
+            text.text = selections[i];
+        }
+    }
+
+    public void OnSelectionClicked(int index)
     {
         var currentEntry = currentDialogueList[dialogueIndex] as DialogueEntry;
         if (currentEntry != null)
@@ -381,6 +414,8 @@ public class DialogueManager : MonoBehaviour
         }
 
         SelectionPanel.SetActive(false);
+        Selection3Panel.SetActive(false);
+        Selection4Panel.SetActive(false);
         ShowNextDialogue();
     }
 
@@ -436,6 +471,8 @@ public class DialogueManager : MonoBehaviour
         InputPanel.SetActive(false);
         Checkbox3Panel.SetActive(false);
         Checkbox4Panel.SetActive(false);
+        Selection3Panel.SetActive(false);
+        Selection4Panel.SetActive(false);
     }
 
     string GetTextType(object entry)

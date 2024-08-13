@@ -523,10 +523,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isFour: 0
-  options:
-  - {fileID: 6527005240703624279}
-  - {fileID: 6527005239951607727}
-  - {fileID: 6527005240404184443}
+  actionButton: {fileID: 6527005240290878438}
 --- !u!1 &6527005239951607727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1099,7 +1096,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6527005240290878439
 RectTransform:
   m_ObjectHideFlags: 0

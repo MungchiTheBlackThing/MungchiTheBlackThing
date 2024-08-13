@@ -30016,6 +30016,8 @@ MonoBehaviour:
   SelectionPanel: {fileID: 0}
   Checkbox3Panel: {fileID: 0}
   Checkbox4Panel: {fileID: 0}
+  Selection3Panel: {fileID: 0}
+  Selection4Panel: {fileID: 0}
   NextButton: {fileID: 0}
   SkipController: {fileID: 1776814403}
   PlayerController: {fileID: 1113454817}
