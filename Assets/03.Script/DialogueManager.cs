@@ -6,6 +6,9 @@ using TMPro;
 using Assets.Script.DialClass;
 using Assets.Script.DialLanguage;
 using Assets.Script.TimeEnum;
+using UnityEngine.XR;
+using Unity.VisualScripting;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -40,6 +43,13 @@ public class DialogueManager : MonoBehaviour
     // Language setting
     [SerializeField]
     public LanguageType CurrentLanguage = LanguageType.Kor;
+
+
+    /*뭉치 애니메이션 동작 확인을 위해서 잠시, 송수영이 추가함.*/
+    [SerializeField]
+    DotController dot;
+
+    /**/
 
     void Start()
     {
@@ -283,6 +293,25 @@ public class DialogueManager : MonoBehaviour
         string textType = GetTextType(entry);
         string actor = GetActor(entry);
         string korText = GetKorText(entry);
+        string state = GetState(entry);
+        /*송수영이 추가한 부분 테스트*/
+        DotState stateEnum;
+        if (Enum.TryParse(state, true, out stateEnum))
+        {
+            string body = "";
+            string eyes = "";
+            if (stateEnum == DotState.Main)
+            {
+                body = GetBody(entry);
+                eyes = GetExpression(entry);
+            }
+
+            Debug.Log($"현재 body {body} eyes {eyes}");
+
+            dot.ChangeState(stateEnum, body, -1, eyes);
+        }
+        /**/
+
 
         switch (textType)
         {
@@ -499,6 +528,27 @@ public class DialogueManager : MonoBehaviour
             return (entry as DialogueEntry).Actor;
         if (entry is SubDialogueEntry)
             return (entry as SubDialogueEntry).Actor;
+        return "";
+    }
+    string GetState(object entry)
+    {
+        if (entry is DialogueEntry)
+            return (entry as DialogueEntry).AnimState;
+        if (entry is SubDialogueEntry)
+            return (entry as SubDialogueEntry).AnimState;
+        return "";
+    }
+
+    string GetBody(object entry)
+    {
+        if (entry is DialogueEntry)
+            return (entry as DialogueEntry).DotBody;
+        return "";
+    }
+    string GetExpression(object entry)
+    {
+        if (entry is DialogueEntry)
+            return (entry as DialogueEntry).DotExpression;
         return "";
     }
 

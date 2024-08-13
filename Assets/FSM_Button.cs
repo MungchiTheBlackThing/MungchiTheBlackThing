@@ -8,19 +8,22 @@ public class FSM_Button : MonoBehaviour
 {
     private DotController dotController;
 
+    [SerializeField]
+    string body;
+    [SerializeField]
+    string eyes;
+
     public void Start()
     {
         dotController = GameObject.Find("Dot").GetComponent<DotController>();
     }
-    public void OnClick(string state)
+    public void OnClick()
     {
-        DotAnimState dotState;
-
-        DotState dot = DotState.Idle;
+        DotState dot = DotState.Main;
 
         if(dotController)
         {
-            dotController.ChangeState(dot, state);
+            dotController.ChangeState(dot, body, -1, eyes);
         }
 
         //DotController을 가져와서

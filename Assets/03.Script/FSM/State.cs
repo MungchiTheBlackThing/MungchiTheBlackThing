@@ -66,8 +66,10 @@ public enum DotAnimState
     anim_diary,
     anim_sleep,
     anim_watching,  /*Phase*/
+
     anim_trigger_play, /*Trigger*/
-    body_default1, /*Main Body*/
+
+    body_default1, /*Main Body 58*/
     body_default2,
     body_default2_turn,
     body_bounce,
@@ -80,13 +82,20 @@ public enum DotAnimState
     body_mud,
     body_mud_turn,
     body_trembling,
-    body_ch2,
-    body_ch2tremble,
-    body_ch2drop,
+    body_ch2_tremble,
+    body_ch2_drop,
     body_draw,
     body_draw2,
     body_cup,
-    body_cu2,
+    body_cup2,
+    body_spiderweb_move,
+    body_mudtodefault,
+    body_ch_heart,
+    body_ch_heartdown,
+    body_ch_heartup,
+    body_black_heart_1,
+    body_black_heart_2,
+    body_black_heart_3
     //몽퉁
 }
 //추상 클래스로 선언
