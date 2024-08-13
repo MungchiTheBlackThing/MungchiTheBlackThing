@@ -15,15 +15,12 @@ public class FSM_Button : MonoBehaviour
     public void OnClick(string state)
     {
         DotAnimState dotState;
-        if(Enum.TryParse(state, true, out dotState))
+
+        DotState dot = DotState.Idle;
+
+        if(dotController)
         {
-            DotState dot = DotState.Idle;
-
-            if(dotController)
-            {
-                dotController.ChangeState(dot, dotState);
-            }
-
+            dotController.ChangeState(dot, state);
         }
 
         //DotController을 가져와서

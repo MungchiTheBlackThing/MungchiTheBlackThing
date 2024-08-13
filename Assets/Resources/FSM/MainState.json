@@ -1,0 +1,257 @@
+{
+  "animations": [
+      {
+          "key": "body_default1",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_default2",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_default2_turn",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_bounce",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_move",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_rhythm",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_spikey",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_spikey_turn",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_hmm",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_hmm_turn",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_mud",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_mud_turn",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_trembling",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_ch2",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_ch2tremble",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_ch2drop",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_draw",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_draw2",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_cup",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_cup2",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+          "key": "body_spiderweb_move",
+          "value": {
+              "positions": [12]
+          }
+      },
+      {
+        "key": "body_heart",
+        "value": {
+            "positions": [12]
+        }
+    },
+    {
+        "key": "body_heartdown",
+        "value": {
+            "positions": [12]
+        }
+    },
+    {
+        "key": "body_heartup",
+        "value": {
+            "positions": [12]
+        }
+    },
+    {
+        "key": "body_black_heart",
+        "value": {
+            "positions": [12]
+        }
+    },
+    {
+        "key": "face_null",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_blink",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_noblink",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_squeeze",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_close_turn",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_close",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_open",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_eyeroll",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_eyeroll2",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_eyeroll3",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_mad",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_staryeyes",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_thinking",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_omg",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_sad",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_draw",
+        "value": {
+            "positions": [13]
+        }
+    },
+    {
+        "key": "face_eyeroll3_stay",
+        "value": {
+            "positions": [13]
+        }
+    }
+
+  ]
+}

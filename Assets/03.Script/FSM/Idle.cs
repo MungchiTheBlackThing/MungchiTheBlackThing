@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting.Dependencies.Sqlite;
@@ -21,28 +22,38 @@ public class Idle : State
     }
     public override void Enter(DotController dot)
     {
-        //dot의 position이 지정되어있는가 확인한다. -1은 지정되지 않음, n은 지정
-        //지정된 경우, IdlePos[animKey][position]을 동작한다(애니메이션 상태전환).
-        if(dot.Position == -1)
-        {
-            int maxIdx = IdlePos[dot.AnimKey].Count;
-           
-            dot.Position = Random.Range(0, maxIdx);
-        }
 
         //dot의 animKey를 가져온다.
         //animKey의 저장된 List<float> Length 값 중 Random.Range 함수를 사용해서 뽑는다.
         //IdlePos[animKey][position]을 동작한다(애니메이션 상태전환).
-        Debug.Log($"Animation: {dot.AnimKey}, Positions: {string.Join(", ", dot.Position)}");
+   
+        DotAnimState anim;
 
-        dot.transform.localPosition = GetCoordinate(dot.Position); //위치 업데이트
-        dot.Animator.SetInteger("DotAnimState", (int)dot.AnimKey); //애니메이션 업데이트
-
-        if (dot.AnimKey == DotAnimState.anim_mud)
+        if (Enum.TryParse(dot.AnimKey, true, out anim))
         {
-            //챕터를 파악해서, mold를 변경시킬 때 사용.
-            dot.Animator.SetInteger("Chapter", dot.Chapter);
+
+            //dot의 position이 지정되어있는가 확인한다. -1은 지정되지 않음, n은 지정
+            //지정된 경우, IdlePos[animKey][position]을 동작한다(애니메이션 상태전환).
+            if (dot.Position == -1)
+            {
+                int maxIdx = IdlePos[anim].Count;
+
+                dot.Position = UnityEngine.Random.Range(0, maxIdx);
+            }
+
+            Debug.Log($"Animation: {dot.AnimKey}, Positions: {string.Join(", ", dot.Position)}");
+
+            dot.transform.localPosition = GetCoordinate(dot.Position); //위치 업데이트
+
+            dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
+
+            if (anim == DotAnimState.anim_mud)
+            {
+                //챕터를 파악해서, mold를 변경시킬 때 사용.
+                dot.Animator.SetInteger("Chapter", dot.Chapter);
+            }
         }
+
     }
 
     //상태를 나갈 때 1회 호출 -> Position -1로 변경

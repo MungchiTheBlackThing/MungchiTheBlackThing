@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,7 +24,12 @@ public class Phase : State
         Debug.Log(2);
 
         Debug.Log(dot.AnimKey);
-        dot.Animator.SetInteger("DotAnimState", (int)dot.AnimKey); //애니메이션 업데이트
+
+        DotAnimState anim;
+        if (Enum.TryParse(dot.AnimKey, true, out anim))
+        {
+            dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
+        }
     }
 
     //상태를 나갈 때 1회 호출 -> Position -1로 변경

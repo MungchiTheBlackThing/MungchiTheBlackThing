@@ -4,12 +4,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-/*[System.Serializable]
-public class AnimationData
-{
-    public Dictionary<string, List<float>> animations;
-}*/
-
 [Serializable]
 public class AnimationEntry
 {

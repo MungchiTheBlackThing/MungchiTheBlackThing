@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public enum DotEyes
 {
@@ -27,14 +29,18 @@ public class Main : State
 {
     [SerializeField]
     Dictionary<DotAnimState, List<float>> MainPos;
-
-    DotEyes dotEyes;
+    GameObject dotEyes;
+    Animator dotEyesAnim; // 눈 애니메이터도 가지고 있는다.
 
     //상태를 시작할 때 1회 호출 -> Position 랜덤으로 선택
     public Main()
     {
         MainPos = new Dictionary<DotAnimState, List<float>>();
         reader.ReadJson(this, Resources.Load<TextAsset>("FSM/MainState"));
+
+        //1. 꺼져있는 자식 중 Eyes를 찾아서 dotEyes에 대입해 놓는다.
+        dotEyes = GameObject.Find("Dot").transform.Find("DotEyes").gameObject;
+        dotEyesAnim = dotEyes.GetComponent<Animator>();
     }
 
     public override void Init(DotAnimState state, List<float> pos)
@@ -43,6 +49,23 @@ public class Main : State
     }
     public override void Enter(DotController dot)
     {
+        //2. eyes를 킨다.
+        dotEyes.SetActive(true);
+
+        DotEyes eyes;
+       
+        if (Enum.TryParse(dot.DotExpression, true, out eyes))
+        {
+            dotEyesAnim.SetInteger("FaceKey", (int)eyes);
+        }
+
+        DotAnimState anim;
+        if (Enum.TryParse(dot.AnimKey, true, out anim))
+        {
+            dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
+        }
+
+        //dot.transform.localPosition = GetCoordinate(dot.Position); //위치 업데이트
 
     }
 
