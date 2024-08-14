@@ -62,15 +62,16 @@ public class DotController : MonoBehaviour
         states = new Dictionary<DotState, State>();
         states.Clear();
         states.Add(DotState.Idle, new Idle());
-        //states.Add(DotState.Phase, new Phase());
+        states.Add(DotState.Phase, new Phase());
         states.Add(DotState.Main, new Main());
+        states.Add(DotState.Sub, new Sub());
 
         animatior = GetComponent<Animator>();
 
         Position = -1;
         dotExpression = "";
         chapter = 1;
-        ChangeState(DotState.Main, "body_bounce");
+        ChangeState(DotState.Idle, "anim_mud"); //처음 default
     }
 
     public void ChangeState(DotState state = DotState.Idle, string OutAnimKey = "", int OutPos = -1, string OutExpression = "")

@@ -48,12 +48,17 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     GameObject _iconcheck;
 
+    [SerializeField]
+    DotController dotController;
+
     bool _isChapterUpdate = true;
     public int _chapter = 0;
     GameObject[] uiList;
     
     PlayerController _player;
-    
+
+    DotState dotState = DotState.Idle;
+    string animState = "anim_mud";
     bool isFirstUpdate=true;
     void Start()
     {
@@ -97,7 +102,8 @@ public class ObjectManager : MonoBehaviour
     void SetChapterUpdate()
     {
         //현재 gameManager가 전달한 chapter을 받아서 background 설치 
-        if(isFirstUpdate)
+        //초반에, 뭉치 외출을 조절하는 로직같음
+        if (isFirstUpdate)
         {
             Debug.Log("챕터: "+_chapter);
             switch (_chapter)
@@ -112,19 +118,25 @@ public class ObjectManager : MonoBehaviour
                 //현재 phase가 watch일 때
                     GoToOther();
                     SetBino();
-                    Debug.Log("바이노 켜져라");
                     //passTime을 누를 시 player time+=60, case문 적용 안되도록 한다.
                     break;
                 case (int)ChapterDay.C_4DAY:
                 case (int)ChapterDay.C_6DAY:
+                    /*뭉치 등장*/
+                    dotController.gameObject.SetActive(true);
                     break;
                 case (int)ChapterDay.C_9DAY:
+                    /*뭉치 등장*/
                     ChangeFromBreadToCup();
+                    dotController.gameObject.SetActive(true);
                     break;
-                case (int)ChapterDay.C_14DAY:
+                case (int)ChapterDay.C_12DAY:
+                    /*뭉치 등장*/
+                case (int)ChapterDay.C_14DAY:              
                     ChangeFromBreadToCup();
                     isAtHome();
                     SetLetter();
+                    dotController.gameObject.SetActive(true);
                     break;
                 case (int)ChapterDay.END:
                     Debug.Log("end");

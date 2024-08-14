@@ -293,10 +293,11 @@ public class DialogueManager : MonoBehaviour
         string textType = GetTextType(entry);
         string actor = GetActor(entry);
         string korText = GetKorText(entry);
-        string state = GetState(entry);
+        string animState = GetAnimState(entry);
+        
         /*송수영이 추가한 부분 테스트*/
         DotState stateEnum;
-        if (Enum.TryParse(state, true, out stateEnum))
+        if (Enum.TryParse(animState, true, out stateEnum))
         {
             string body = "";
             string eyes = "";
@@ -306,8 +307,7 @@ public class DialogueManager : MonoBehaviour
                 eyes = GetExpression(entry);
             }
 
-            Debug.Log($"현재 body {body} eyes {eyes}");
-
+            Debug.Log($"현재 {animState}, body {body} eyes {eyes}");
             dot.ChangeState(stateEnum, body, -1, eyes);
         }
         /**/
@@ -530,7 +530,8 @@ public class DialogueManager : MonoBehaviour
             return (entry as SubDialogueEntry).Actor;
         return "";
     }
-    string GetState(object entry)
+
+    string GetAnimState(object entry)
     {
         if (entry is DialogueEntry)
             return (entry as DialogueEntry).AnimState;

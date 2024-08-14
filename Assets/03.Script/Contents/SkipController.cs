@@ -73,6 +73,9 @@ public class SkipController : MonoBehaviour
     public static bool is_end = false;
     public static bool is_Replay = false;
 
+    [SerializeField]
+    DotController dotController;
+
     void Awake()
     {
         onUpdatedProgress=new OnUpdatedProgressDelegate(GameObject.Find("Menu").GetComponent<MenuController>().OnUpdatedProgress);
@@ -298,6 +301,9 @@ public class SkipController : MonoBehaviour
         {
             ++GetTimeCurIdx;
         }
+
+        /*외출 단계 빼고는 뭉치가 존재하기 때문에, true로 만들어준다.*/
+        dotController.gameObject.SetActive(true);
         switch (GetTimeCurIdx)
         {
             case (int)TimeStamp.TS_WATCHING:
