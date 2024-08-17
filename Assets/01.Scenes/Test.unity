@@ -6138,6 +6138,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 1}
+--- !u!1 &388139709 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1787100057675854310, guid: 82d208604e75c7b4da861b94b744b128, type: 3}
+  m_PrefabInstance: {fileID: 1672806732}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &400981391
 GameObject:
   m_ObjectHideFlags: 0
@@ -6951,6 +6956,7 @@ RectTransform:
   - {fileID: 1968898311}
   - {fileID: 1471180552}
   - {fileID: 1558086494}
+  - {fileID: 1973218614}
   m_Father: {fileID: 1564433123}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -24905,7 +24911,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 1968898311}
+    m_TransformParent: {fileID: 456680785}
     m_Modifications:
     - target: {fileID: 1787100057675854306, guid: 82d208604e75c7b4da861b94b744b128, type: 3}
       propertyPath: m_Sprite
@@ -24929,7 +24935,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1787100057675854311, guid: 82d208604e75c7b4da861b94b744b128, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1787100057675854311, guid: 82d208604e75c7b4da861b94b744b128, type: 3}
       propertyPath: m_AnchorMax.x
@@ -25006,6 +25012,14 @@ PrefabInstance:
     - target: {fileID: 1787100057950334550, guid: 82d208604e75c7b4da861b94b744b128, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9100244910363265304, guid: 82d208604e75c7b4da861b94b744b128, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1973218620}
+    - target: {fileID: 9100244910363265304, guid: 82d208604e75c7b4da861b94b744b128, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ActiveDialouge
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 82d208604e75c7b4da861b94b744b128, type: 3}
@@ -30128,7 +30142,6 @@ RectTransform:
   - {fileID: 46562013}
   - {fileID: 460489886}
   - {fileID: 1883771488}
-  - {fileID: 1973218614}
   m_Father: {fileID: 456680785}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -30259,12 +30272,34 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 1787100057675854305, guid: 82d208604e75c7b4da861b94b744b128, type: 3}
   m_PrefabInstance: {fileID: 1672806732}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 388139709}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62e7e61abb1e83d49b4c2fdffd7d7208, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1973218620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 388139709}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b2fd2c8a2a096f2459ce1e5691e7679c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Background: {fileID: 0}
+  MainDialogue: {fileID: 0}
+  MenuControll: {fileID: 0}
+  positions: []
+  dialogues: []
+  DialMungchiPos: []
+  PlayerController: {fileID: 0}
+  DialogueManager: {fileID: 0}
+  randomindex: 0
+  Day: 0
 --- !u!1 &1976929111
 GameObject:
   m_ObjectHideFlags: 0
@@ -33999,5 +34034,4 @@ MonoBehaviour:
   _deathnote: {fileID: 0}
   _time: {fileID: 0}
   _iconcheck: {fileID: 0}
-  dotController: {fileID: 1973218616}
   _chapter: 0

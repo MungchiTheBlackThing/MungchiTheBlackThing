@@ -6,6 +6,7 @@ using TMPro;
 using System;
 using Assets.Script.TimeEnum;
 using UnityEngine.SceneManagement;
+using UnityEngine.XR;
 
 public class SkipController : MonoBehaviour
 {
@@ -104,6 +105,8 @@ public class SkipController : MonoBehaviour
         onUpdatedProgress(_player.GetChapter());
         is_Replay = false;
         Debug.Log("Start");
+
+        SetDotState();
     }
 
     void OnEnable()
@@ -121,6 +124,7 @@ public class SkipController : MonoBehaviour
         Debug.Log("OnEnable");
     }
 
+   
     void Update()
     {
         if(isFirstTime)
@@ -269,6 +273,49 @@ public class SkipController : MonoBehaviour
 
     }
 
+    /*SetDotState는 매 분기점, 즉 phase가 진행될 때 등장해야할 뭉치의 첫번째 애니메이션을 넣기 위해 만들어진 함수이다.
+     예를 들어, tsv-dev url의 scriptList를 보면, ScriptKey 마다 변경되어야할 DotAnim이 있다.
+     이 부분이 모두 SkipController 즉, 시간을 관리하는 이 클래스에서 이루어지기 때문에 해당 함수를 호출할 경우 해당 챕터리스트의
+     AnimState로 변경하는 것을 목표로 한다. 
+     하지만 예외의 경우가 있다.
+     파서에 의해 csv가 만들어지면 아래 함수를 수정할 예정.
+     */
+    void SetDotState()
+    {
+        /*현재 챕터를 가져온다.*/
+        ChapterDay curEChapter = (ChapterDay)_player.GetChapter();
+
+        if(dotController.Chapter!=curEChapter)
+            dotController.Chapter = curEChapter;
+        /*다를 때만 dot의 챕터를 옮겨준다.*/
+        dotController.gameObject.SetActive(true);
+
+        /*진행 Phase를 가져온다.*/
+        if (curIdx == 0)
+        {
+            //Phase Watching 
+            bool result = curEChapter == ChapterDay.C_4DAY || curEChapter == ChapterDay.C_6DAY || curEChapter == ChapterDay.C_9DAY || curEChapter == ChapterDay.C_12DAY || curEChapter == ChapterDay.C_14DAY;
+
+            if (result == false)
+            {
+                //아닐 경우
+                dotController.gameObject.SetActive(false);
+                return;
+            }
+            
+            //Phase Watching true일 경우에 해당 애니메이션으로 변경
+            dotController.ChangeState(DotState.Defualt, "anim_mud"); //처음 default, player의 chaper을 이용해야함.
+        }
+        else
+        {
+            //나머지는 스크립트 리스트에 적혀있음 - Main으로 넘어갈때를 체크해야함.
+            dotController.TriggerMain();
+
+            dotController.ChangeState(DotState.Defualt, "anim_default", 3);
+        }
+        /*뭉치 애니메이션을 시작할때 변화시킨다.*/
+    }
+
     public void ClickSkipBut()
     {
         if (alter != null)
@@ -304,6 +351,7 @@ public class SkipController : MonoBehaviour
 
         /*외출 단계 빼고는 뭉치가 존재하기 때문에, true로 만들어준다.*/
         dotController.gameObject.SetActive(true);
+        SetDotState();
         switch (GetTimeCurIdx)
         {
             case (int)TimeStamp.TS_WATCHING:

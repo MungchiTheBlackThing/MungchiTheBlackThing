@@ -49,7 +49,7 @@ public class MainDialClick : MonoBehaviour
         DialogueManager = MainDialogue.GetComponent<DialogueManager>();
         rectTransform = this.GetComponent<RectTransform>();
         // 스크립트가 활성화될 때 랜덤한 위치를 활성화
-        ActivateRandomPosition();
+        //ActivateRandomPosition();
     }
     public void ActiveDialouge()
     {

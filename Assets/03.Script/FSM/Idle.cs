@@ -50,7 +50,7 @@ public class Idle : State
             if (anim == DotAnimState.anim_mud)
             {
                 //챕터를 파악해서, mold를 변경시킬 때 사용.
-                dot.Animator.SetInteger("Chapter", dot.Chapter);
+                dot.Animator.SetInteger("Chapter", (int)dot.Chapter);
             }
         }
 

@@ -48,16 +48,13 @@ public class ObjectManager : MonoBehaviour
     [SerializeField]
     GameObject _iconcheck;
 
-    [SerializeField]
-    DotController dotController;
-
     bool _isChapterUpdate = true;
     public int _chapter = 0;
     GameObject[] uiList;
     
     PlayerController _player;
 
-    DotState dotState = DotState.Idle;
+    DotState dotState = DotState.Defualt;
     string animState = "anim_mud";
     bool isFirstUpdate=true;
     void Start()
@@ -122,21 +119,19 @@ public class ObjectManager : MonoBehaviour
                     break;
                 case (int)ChapterDay.C_4DAY:
                 case (int)ChapterDay.C_6DAY:
-                    /*뭉치 등장*/
-                    dotController.gameObject.SetActive(true);
+
                     break;
                 case (int)ChapterDay.C_9DAY:
-                    /*뭉치 등장*/
+
                     ChangeFromBreadToCup();
-                    dotController.gameObject.SetActive(true);
+           
                     break;
                 case (int)ChapterDay.C_12DAY:
-                    /*뭉치 등장*/
+
                 case (int)ChapterDay.C_14DAY:              
                     ChangeFromBreadToCup();
                     isAtHome();
                     SetLetter();
-                    dotController.gameObject.SetActive(true);
                     break;
                 case (int)ChapterDay.END:
                     Debug.Log("end");

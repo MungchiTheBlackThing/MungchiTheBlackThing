@@ -1,3 +1,4 @@
+using Assets.Script.TimeEnum;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq.Expressions;
@@ -7,7 +8,7 @@ using UnityEngine;
 //뭉치가 할 수 있는 애니메이션의 열거형
 public enum DotState
 {
-    Idle = 0,
+    Defualt = 0,
     Sub = 1,
     Main = 2,
     Phase = 3,
@@ -24,16 +25,18 @@ public class DotController : MonoBehaviour
     private string dotExpression; //CSV에 의해서 string 들어옴
     private string animKey; //CSV에 의해서 string으로 들어옴 파싱 해줘야한다.
 
-    [SerializeField]
-    private int chapter;
+    GameObject mainAlert;
 
     [SerializeField]
-    private Animator animatior;
+    private ChapterDay chapter;
+
+    [SerializeField]
+    private Animator animator;
 
     public Animator Animator
-    { get { return animatior; } }
+    { get { return animator; } }
 
-    public int Chapter
+    public ChapterDay Chapter
     { 
         get { return chapter; }
         set { chapter = value; }
@@ -59,23 +62,31 @@ public class DotController : MonoBehaviour
 
     void Start()
     {
+        mainAlert = GameObject.Find("Dot").transform.Find("MainAlert").gameObject;
         states = new Dictionary<DotState, State>();
         states.Clear();
-        states.Add(DotState.Idle, new Idle());
+        states.Add(DotState.Defualt, new Idle());
         states.Add(DotState.Phase, new Phase());
         states.Add(DotState.Main, new Main());
         states.Add(DotState.Sub, new Sub());
 
-        animatior = GetComponent<Animator>();
+        animator = GetComponent<Animator>();
 
         Position = -1;
         dotExpression = "";
-        chapter = 1;
-        ChangeState(DotState.Idle, "anim_mud"); //처음 default
+        chapter = ChapterDay.C_1DAY;
+        ChangeState(DotState.Defualt, "anim_mud"); //처음 default
     }
 
-    public void ChangeState(DotState state = DotState.Idle, string OutAnimKey = "", int OutPos = -1, string OutExpression = "")
+    public void TriggerMain()
     {
+        mainAlert.SetActive(true);
+        /*여기서 OnClick 함수도 연결해준다.*/
+    }
+
+    public void ChangeState(DotState state = DotState.Defualt, string OutAnimKey = "", int OutPos = -1, string OutExpression = "")
+    {
+        if (states == null) return;
 
         if (states.ContainsKey(state) == null)
         {
@@ -87,7 +98,9 @@ public class DotController : MonoBehaviour
            currentState.Exit(this); //이전 값을 나가주면서, 값을 초기화 시킨다.
         }
 
-        animatior.SetInteger("DotState", (int)state); //현재 상태를 변경해준다.
+        /*Main으로 넘어가기 전에 anim_default가 뜬다.*/
+
+        animator.SetInteger("DotState", (int)state); //현재 상태를 변경해준다.
         position = OutPos; //이전 위치를 초기화함, 그렇게 하면 모든 상태로 입장했을 때 -1이 아니여서 랜덤으로 뽑지않는다.
         dotExpression = OutExpression; //Update, Main에서만 사용하기 때문에 다른 곳에서는 사용하지 않음.
         animKey = OutAnimKey; 
