@@ -80,7 +80,7 @@ public class DialogueManager : MonoBehaviour
 
         Checkbox4Panel = Instantiate(Resources.Load("DialBalloon/CheckBox4Selection") as GameObject, transform);
         Checkbox4Panel.SetActive(false);
-        Checkbox4Panel.AddComponent <CanvasGroup>();
+        Checkbox4Panel.AddComponent<CanvasGroup>();
 
         SelectionPanel = Instantiate(Resources.Load("DialBalloon/TwoSelectionBallum") as GameObject, transform);
         SelectionPanel.SetActive(false);
@@ -113,7 +113,7 @@ public class DialogueManager : MonoBehaviour
 
     void LoadDialogue(string fileName)
     {
-        TextAsset dialogueData = Resources.Load<TextAsset>("MainDial/" + fileName);
+        TextAsset dialogueData = Resources.Load<TextAsset>("Dial/" + fileName);
 
         if (dialogueData == null)
         {
@@ -241,7 +241,7 @@ public class DialogueManager : MonoBehaviour
                 Debug.LogError($"Line {i} does not have enough parts: {line}");
             }
         }
-        Debug.Log("현재 인덱스 숫자: "+ currentDialogueList.Count);
+        Debug.Log("현재 인덱스 숫자: " + currentDialogueList.Count);
     }
 
     string[] ParseCSVLine(string line)
@@ -294,7 +294,7 @@ public class DialogueManager : MonoBehaviour
         string actor = GetActor(entry);
         string korText = GetKorText(entry);
         string animState = GetAnimState(entry);
-        
+
         /*송수영이 추가한 부분 테스트*/
         DotState stateEnum;
         if (Enum.TryParse(animState, true, out stateEnum))

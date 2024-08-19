@@ -30783,6 +30783,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0a11db73e96564536b2e0c86e16b3392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DialogueEntries: []
+  SubDialogueEntries: []
+  Day: 0
+  Dial: 0
+  SkipController: {fileID: 1776814403}
+  CurrentLanguage: 0
+  PlayerController: {fileID: 1113454817}
 --- !u!1 &2005021054
 GameObject:
   m_ObjectHideFlags: 0
