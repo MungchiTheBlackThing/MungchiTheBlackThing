@@ -26,6 +26,7 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] GameObject Selection4Panel;
     [SerializeField] Button NextButton;
     [SerializeField] SkipController SkipController;
+    [SerializeField] DialogueDataAsset DialogueDataAsset;
 
     // Reference to the player controller
     [SerializeField] PlayerController PlayerController;
@@ -34,11 +35,8 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] List<DialogueEntry> DialogueEntries;
     [SerializeField] List<SubDialogueEntry> SubDialogueEntries;
 
-    public List<object> currentDialogueList;  // Current dialogue list
     public int dialogueIndex = 0;  // Current dialogue index
     public int Day = 0;  // Current day
-
-    public int Dial;
 
     // Language setting
     [SerializeField]
@@ -97,8 +95,6 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(string fileName)
     {
-        Dial = SkipController.GetTimeCurIdx;
-        Day = PlayerController.GetChapter();
         Debug.Log("대화 날짜: " + Day);
         if (DialogueEntries != null)
         {
@@ -127,169 +123,34 @@ public class DialogueManager : MonoBehaviour
         // Clear previous dialogue entries
         DialogueEntries.Clear();
         SubDialogueEntries.Clear();
-        currentDialogueList = new List<object>();
+        DialogueDataAsset.currentDialogueList = new List<object>();
 
         if (fileName.Contains("main"))
         {
             Debug.Log("Loading main dialogue");
-            LoadMainDialogue(lines);
+            DialogueDataAsset.LoadMainDialogue(lines);
         }
         else if (fileName.Contains("sub"))
         {
             Debug.Log("Loading sub dialogue");
-            LoadSubDialogue(lines);
+            DialogueDataAsset.LoadSubDialogue(lines);
         }
         ShowNextDialogue();
     }
 
-    void LoadMainDialogue(string[] lines)
-    {
-        for (int i = 1; i < lines.Length; i++)
-        {
-            string line = lines[i];
-            if (string.IsNullOrEmpty(line))
-            {
-                continue;
-            }
-            string[] parts = ParseCSVLine(line);
-            Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
 
-            if (parts.Length >= 15)
-            {
-                int main = int.Parse(parts[0]);
-                if (main == Dial)
-                {
-                    DialogueEntry entry = new DialogueEntry
-                    {
-                        Main = main,
-                        ScriptKey = int.Parse(parts[1]),
-                        LineKey = int.Parse(parts[2]),
-                        Background = parts[3],
-                        Actor = parts[4],
-                        AnimState = parts[5],
-                        DotBody = parts[6],
-                        DotExpression = parts[7],
-                        TextType = parts[8],
-                        KorText = ApplyLineBreaks(parts[9]),
-                        EngText = ApplyLineBreaks(parts[10]),
-                        NextLineKey = parts[11],
-                        AnimScene = parts[12],
-                        AfterScript = parts[13],
-                        Deathnote = parts[14]
-                    };
-
-                    string displayedText = CurrentLanguage == LanguageType.Kor ? entry.KorText : entry.EngText;
-                    entry.KorText = displayedText;
-
-                    DialogueEntries.Add(entry);
-                    currentDialogueList.Add(entry);
-
-                    Debug.Log($"Added DialogueEntry: {displayedText}");
-                }
-            }
-            else
-            {
-                Debug.LogError($"Line {i} does not have enough parts: {line}");
-            }
-        }
-    }
-
-    void LoadSubDialogue(string[] lines)
-    {
-        for (int i = 1; i < lines.Length; i++)
-        {
-            string line = lines[i];
-            if (string.IsNullOrEmpty(line))
-            {
-                continue;
-            }
-            string[] parts = ParseCSVLine(line);
-            Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
-
-            if (parts.Length >= 12)
-            {
-                int scriptKey = int.Parse(parts[0]);
-                if (scriptKey == Day)
-                {
-                    SubDialogueEntry entry = new SubDialogueEntry
-                    {
-                        ScriptKey = scriptKey,
-                        LineKey = int.Parse(parts[1]),
-                        Color = parts[2],
-                        Actor = parts[3],
-                        AnimState = parts[4],
-                        DotAnim = parts[5],
-                        TextType = parts[6],
-                        KorText = ApplyLineBreaks(parts[7]),
-                        EngText = ApplyLineBreaks(parts[8]),
-                        NextLineKey = parts[9],
-                        Deathnote = parts[10],
-                        AfterScript = parts[11]
-                    };
-
-                    string displayedText = CurrentLanguage == LanguageType.Kor ? entry.KorText : entry.EngText;
-                    entry.KorText = displayedText;
-
-                    SubDialogueEntries.Add(entry);
-                    currentDialogueList.Add(entry);
-
-                    Debug.Log($"Added SubDialogueEntry: {displayedText}");
-                }
-            }
-            else
-            {
-                Debug.LogError($"Line {i} does not have enough parts: {line}");
-            }
-        }
-        Debug.Log("현재 인덱스 숫자: " + currentDialogueList.Count);
-    }
-
-    string[] ParseCSVLine(string line)
-    {
-        List<string> result = new List<string>();
-        bool inQuotes = false;
-        string value = "";
-
-        foreach (char c in line)
-        {
-            if (c == '"')
-            {
-                inQuotes = !inQuotes;
-            }
-            else if (c == ',' && !inQuotes)
-            {
-                result.Add(value.Trim());
-                value = "";
-            }
-            else
-            {
-                value += c;
-            }
-        }
-
-        if (!string.IsNullOrEmpty(value))
-        {
-            result.Add(value.Trim());
-        }
-        return result.ToArray();
-    }
-
-    string ApplyLineBreaks(string text)
-    {
-        return text.Replace(@"\n", "\n");
-    }
 
     void ShowNextDialogue()
     {
         PanelOff();
 
-        if (dialogueIndex >= currentDialogueList.Count)
+        if (dialogueIndex >= DialogueDataAsset.currentDialogueList.Count)
         {
             DialEnd();
             return;
         }
 
-        var entry = currentDialogueList[dialogueIndex];
+        var entry = DialogueDataAsset.currentDialogueList[dialogueIndex];
         string textType = GetTextType(entry);
         string actor = GetActor(entry);
         string korText = GetKorText(entry);
@@ -406,7 +267,7 @@ public class DialogueManager : MonoBehaviour
 
     public void OnSelectionClicked(int index)
     {
-        var currentEntry = currentDialogueList[dialogueIndex] as DialogueEntry;
+        var currentEntry = DialogueDataAsset.currentDialogueList[dialogueIndex] as DialogueEntry;
         if (currentEntry != null)
         {
             Debug.Log($"Current LineKey: {currentEntry.LineKey}");
@@ -415,7 +276,7 @@ public class DialogueManager : MonoBehaviour
             if (index < nextKeys.Length && int.TryParse(nextKeys[index], out int nextLineKey))
             {
                 Debug.Log($"Next LineKey: {nextLineKey}");
-                int nextIndex = currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+                int nextIndex = DialogueDataAsset.currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
 
                 if (nextIndex != -1)
                 {
@@ -450,12 +311,12 @@ public class DialogueManager : MonoBehaviour
 
     void NextDialogue()
     {
-        var currentEntry = currentDialogueList[dialogueIndex] as DialogueEntry;
+        var currentEntry = DialogueDataAsset.currentDialogueList[dialogueIndex] as DialogueEntry;
         if (currentEntry != null)
         {
             if (int.TryParse(currentEntry.NextLineKey, out int nextLineKey))
             {
-                int nextIndex = currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
+                int nextIndex = DialogueDataAsset.currentDialogueList.FindIndex(entry => (entry as DialogueEntry)?.LineKey == nextLineKey);
 
                 if (nextIndex != -1)
                 {
@@ -488,7 +349,7 @@ public class DialogueManager : MonoBehaviour
     {
         Debug.Log("Dialogue ended.");
         PanelOff();
-        currentDialogueList.Clear();
+        DialogueDataAsset.currentDialogueList.Clear();
         dialogueIndex = 0;
     }
 

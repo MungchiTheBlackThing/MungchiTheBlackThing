@@ -36,5 +36,18 @@ namespace Assets.Script.DialClass
         public string Deathnote;
         public string AfterScript;
     }
+
+    [System.Serializable]
+    
+    public class ScriptList
+    {
+        public int ID;
+        public string ScriptType;
+        public int ScriptNumber;
+        public string ScriptKey;
+        public string AnimState;
+        public string DotAnim;
+        public int DotPosition;
+    }
 }
 

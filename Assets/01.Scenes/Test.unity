@@ -30175,12 +30175,12 @@ MonoBehaviour:
   Selection4Panel: {fileID: 0}
   NextButton: {fileID: 0}
   SkipController: {fileID: 1776814403}
+  DialogueDataAsset: {fileID: 1993817706}
   PlayerController: {fileID: 1113454817}
   DialogueEntries: []
   SubDialogueEntries: []
   dialogueIndex: 0
   Day: 0
-  Dial: 0
   CurrentLanguage: 0
   dot: {fileID: 1973218616}
 --- !u!1 &1971052396
@@ -30749,6 +30749,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1993817705}
   - component: {fileID: 1993817706}
+  - component: {fileID: 1993817707}
   m_Layer: 0
   m_Name: DataManager
   m_TagString: Untagged
@@ -30790,6 +30791,20 @@ MonoBehaviour:
   SkipController: {fileID: 1776814403}
   CurrentLanguage: 0
   PlayerController: {fileID: 1113454817}
+--- !u!114 &1993817707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1993817704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 594a865194d37624793f56a7e069dfa9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  csvFile: {fileID: 0}
+  ScriptLists: []
 --- !u!1 &2005021054
 GameObject:
   m_ObjectHideFlags: 0
