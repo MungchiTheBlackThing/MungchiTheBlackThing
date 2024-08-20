@@ -41,8 +41,6 @@ public class Idle : State
                 dot.Position = UnityEngine.Random.Range(0, maxIdx);
             }
 
-            Debug.Log($"Animation: {dot.AnimKey}, Positions: {string.Join(", ", dot.Position)}");
-
             dot.transform.localPosition = GetCoordinate(dot.Position); //위치 업데이트
 
             dot.Animator.SetInteger("DotAnimState", (int)anim); //애니메이션 업데이트
