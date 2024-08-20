@@ -25,7 +25,7 @@ public class DotController : MonoBehaviour
     private string dotExpression; //CSV에 의해서 string 들어옴
     private string animKey; //CSV에 의해서 string으로 들어옴 파싱 해줘야한다.
 
-    GameObject mainAlert;
+    [SerializeField] GameObject mainAlert;
 
     [SerializeField]
     private ChapterDay chapter;
@@ -62,7 +62,6 @@ public class DotController : MonoBehaviour
 
     void Start()
     {
-        mainAlert = GameObject.Find("Dot").transform.Find("MainAlert").gameObject;
         states = new Dictionary<DotState, State>();
         states.Clear();
         states.Add(DotState.Defualt, new Idle());
@@ -76,6 +75,11 @@ public class DotController : MonoBehaviour
         dotExpression = "";
         chapter = ChapterDay.C_1DAY;
         ChangeState(DotState.Defualt, "anim_mud"); //처음 default
+    }
+
+    private void OnEnable()
+    {
+        mainAlert = GameObject.Find("Dot").transform.Find("MainAlert").gameObject;
     }
 
     public void TriggerMain()

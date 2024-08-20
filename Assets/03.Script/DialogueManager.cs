@@ -157,20 +157,20 @@ public class DialogueManager : MonoBehaviour
         string animState = GetAnimState(entry);
 
         /*송수영이 추가한 부분 테스트*/
-        DotState stateEnum;
-        if (Enum.TryParse(animState, true, out stateEnum))
-        {
-            string body = "";
-            string eyes = "";
-            if (stateEnum == DotState.Main)
-            {
-                body = GetBody(entry);
-                eyes = GetExpression(entry);
-            }
+        //DotState stateEnum;
+        //if (Enum.TryParse(animState, true, out stateEnum))
+        //{
+        //    string body = "";
+        //    string eyes = "";
+        //    if (stateEnum == DotState.Main)
+        //    {
+        //        body = GetBody(entry);
+        //        eyes = GetExpression(entry);
+        //    }
 
-            Debug.Log($"현재 {animState}, body {body} eyes {eyes}");
-            dot.ChangeState(stateEnum, body, -1, eyes);
-        }
+        //    Debug.Log($"현재 {animState}, body {body} eyes {eyes}");
+        //    dot.ChangeState(stateEnum, body, -1, eyes);
+        //}
         /**/
 
 
