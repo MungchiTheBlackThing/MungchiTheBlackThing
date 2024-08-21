@@ -7,7 +7,7 @@ public class MenuController : MonoBehaviour
 
     /*Menu 변수*/
     #region Chapter 정보를 가진 변수,오직 한개만 존재해야하고, 수정해선 안된다.
-    public static Chapters chapterList;
+    protected static Chapters chapterList;
     #endregion
 
     [SerializeField]
@@ -29,6 +29,7 @@ public class MenuController : MonoBehaviour
     GameObject Default;
     [SerializeField]
     GameObject Replay;
+    
     #region 챕터 변수
     [SerializeField]
     GameObject checkList;
@@ -41,6 +42,7 @@ public class MenuController : MonoBehaviour
     GameObject dragScroller;
     float dragScrollWidth=0.0f;
     #endregion
+
     void Start()
     {   
         prograssUI=new Dictionary<int, GameObject>();
@@ -52,13 +54,7 @@ public class MenuController : MonoBehaviour
             chapterList = JsonUtility.FromJson<Chapters>(loadedJson.ToString());
         }
     }
-    //private void Update()
-    //{
-    //    if (SkipController.is_end)
-    //    {
-    //        TimeUI.SetActive(false);
-    //    }
-    //}
+
     public void onMenu()
     {
         if (!Icon.activeSelf)

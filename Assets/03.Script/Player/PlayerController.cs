@@ -35,7 +35,6 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         UpdateDiary();
-        Debug.Log("???????");
     }
 
     // Update is called once per frame
