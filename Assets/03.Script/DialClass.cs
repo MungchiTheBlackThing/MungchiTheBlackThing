@@ -49,5 +49,16 @@ namespace Assets.Script.DialClass
         public string DotAnim;
         public int DotPosition;
     }
+
+    [System.Serializable]
+
+    public class MoonRadidDial
+    {
+        public int ID;
+        public int MoonNumber;
+        public string Actor;
+        public string KorText;
+        public string EngText;
+    }
 }
 

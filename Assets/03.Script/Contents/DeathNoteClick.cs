@@ -5,7 +5,8 @@ using UnityEngine;
 public class DeathNoteClick : MonoBehaviour
 {
     public static bool checkdeath = false;
-    public bool SUN = false;
+    public static int SUN_COUNT = 0;
+    public static int MOON_COUNT = 0;
     [SerializeField]
     GameObject _deathnote;
 
@@ -19,8 +20,6 @@ public class DeathNoteClick : MonoBehaviour
     {
         menu = GameObject.Find("Menu").GetComponent<MenuController>();
         canvas = GameObject.Find("Canvas");
-        //이건 지금 예시임
-        SUN = false;
     }
 
     // Update is called once per frame
@@ -28,7 +27,7 @@ public class DeathNoteClick : MonoBehaviour
     {
         if(!checkdeath)
         {
-            if (SUN)
+            if (SUN_COUNT>=MOON_COUNT)
             {
                 _deathnote = Instantiate(Resources.Load<GameObject>("Sun_deathnote"), canvas.transform);
             }
