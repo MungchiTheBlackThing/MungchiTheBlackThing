@@ -68,7 +68,7 @@ public class ProgressUIController : MonoBehaviour
                     break;
                 }
             }
-            detailed_popup.GetComponent<ChapterProgressManager>().PassData(MenuController.chapterList.chapters[findChapter],player);
+            //detailed_popup.GetComponent<ChapterProgressManager>().PassData(MenuController.chapterList.chapters[findChapter],player);
         }
     }
 

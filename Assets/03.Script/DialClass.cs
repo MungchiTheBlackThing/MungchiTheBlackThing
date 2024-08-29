@@ -23,6 +23,7 @@ namespace Assets.Script.DialClass
     [System.Serializable]
     public class SubDialogueEntry
     {
+        public int Sub;
         public int ScriptKey;
         public int LineKey;
         public string Color;

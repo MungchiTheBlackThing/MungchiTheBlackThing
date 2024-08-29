@@ -119,25 +119,26 @@ public class DialogueDataAsset : MonoBehaviour
             string[] parts = ParseCSVLine(line);
             Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
 
-            if (parts.Length >= 12)
+            if (parts.Length >= 13)
             {
-                int scriptKey = int.Parse(parts[0]);
-                if (scriptKey == Day)
+                int sub = int.Parse(parts[0]);
+                if (sub == 1) //****************테스트용으로 1을 넣어놨음**************** (서브 트리거 작동을 아직 모름)
                 {
                     SubDialogueEntry entry = new SubDialogueEntry
                     {
-                        ScriptKey = scriptKey,
-                        LineKey = int.Parse(parts[1]),
-                        Color = parts[2],
-                        Actor = parts[3],
-                        AnimState = parts[4],
-                        DotAnim = parts[5],
-                        TextType = parts[6],
-                        KorText = ApplyLineBreaks(parts[7]),
-                        EngText = ApplyLineBreaks(parts[8]),
-                        NextLineKey = parts[9],
-                        Deathnote = parts[10],
-                        AfterScript = parts[11]
+                        Sub = sub,
+                        ScriptKey = int.Parse(parts[1]),
+                        LineKey = int.Parse(parts[2]),
+                        Color = parts[3],
+                        Actor = parts[4],
+                        AnimState = parts[5],
+                        DotAnim = parts[6],
+                        TextType = parts[7],
+                        KorText = ApplyLineBreaks(parts[8]),
+                        EngText = ApplyLineBreaks(parts[9]),
+                        NextLineKey = parts[10],
+                        Deathnote = parts[11],
+                        AfterScript = parts[12]
                     };
 
                     string displayedText = CurrentLanguage == LanguageType.Kor ? entry.KorText : entry.EngText;

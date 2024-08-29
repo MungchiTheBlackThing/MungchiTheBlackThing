@@ -308,8 +308,8 @@ MonoBehaviour:
     \uD76C\uBA40\uAC8B\uC9C0\uB9CC \L\uD0C4\uB825 \uC788\uB294 \uD638\uD761\uC73C\uB85C
     \uC874\uC7AC\uD558\uB294 \uB098\uC758 \uCE68\uB300."
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 2fe2b39dc9e404bc49954ba51950b22d, type: 2}
-  m_sharedMaterial: {fileID: 7011725699582850384, guid: 2fe2b39dc9e404bc49954ba51950b22d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
+  m_sharedMaterial: {fileID: -5985080876634333599, guid: 6aedf712f452c4494b30405bb4c3828d, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []

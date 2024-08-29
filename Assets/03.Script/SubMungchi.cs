@@ -6,11 +6,11 @@ using UnityEngine.UI;
 public class SubMungchi : MonoBehaviour
 {
     public GameObject triggericon;
-    private SubDialEvent subdial;
+    public SubDialEvent subdial;
     // Start is called before the first frame update
-    void Start()
+    void OnEnable()
     {
-        
+        triggericon = this.transform.GetChild(0).gameObject;
     }
 
     // Update is called once per frame
@@ -18,8 +18,7 @@ public class SubMungchi : MonoBehaviour
     {
         
     }
-
-    public void OnMouseUp()
+    public void triggerStart()
     {
         triggericon.SetActive(false);  
     }

@@ -17,13 +17,14 @@ public class SubDialEvent : MonoBehaviour
     public ScrollRect scroll;
     public RectTransform backrect;
     private RectTransform rect;
+    public SubMungchi subMungchi;
     private int randomIndex;
     private float smoothTime = 0.5f;
     private void Start()
     {
         this.transform.parent.transform.SetAsLastSibling();
-        scroll= background.GetComponent<ScrollRect>();
-        backrect= background.GetComponent<RectTransform>();
+        //scroll= background.GetComponent<ScrollRect>();
+        //backrect= background.GetComponent<RectTransform>();
         // 처음에 모든 자식 오브젝트를 비활성화
         foreach (var childCameraData in childCameras)
         {
@@ -39,7 +40,7 @@ public class SubDialEvent : MonoBehaviour
         }
         scroll = this.transform.parent.GetComponent<ScrollRect>();
         backrect = this.transform.parent.GetComponent<RectTransform>();
-        /* backrect.anchoredPosition = Vector2.zero;*/ //이거 위치를 고정해야지만 뭉치 위치가 변하지 않음 --> 근데 문제는 순간적으로 싹 움직이는게 맘에 안듬
+        //backrect.anchoredPosition = Vector2.zero; //이거 위치를 고정해야지만 뭉치 위치가 변하지 않음 --> 근데 문제는 순간적으로 싹 움직이는게 맘에 안듬
         //if (parentObj != null)
         //{
         //    this.transform.parent = parentObj;
@@ -106,5 +107,7 @@ public class SubDialEvent : MonoBehaviour
     {
         Debug.Log("아니 왜 안켜짐?");
         childCameras[randomIndex].childTransform.SetActive(true);
+        subMungchi = childCameras[randomIndex].childTransform.GetComponent<SubMungchi>();
+
     }
 }
