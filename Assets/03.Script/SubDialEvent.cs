@@ -20,6 +20,17 @@ public class SubDialEvent : MonoBehaviour
     public SubMungchi subMungchi;
     private int randomIndex;
     private float smoothTime = 0.5f;
+
+    [SerializeField] 
+    PlayerController PlayerController;
+
+    [SerializeField]
+    DialogueManager DialogueManager;
+
+    [SerializeField]
+    GameObject MainDialogue;
+
+    public int Day = 0;  // Current day
     private void Start()
     {
         this.transform.parent.transform.SetAsLastSibling();
@@ -34,6 +45,10 @@ public class SubDialEvent : MonoBehaviour
     
     public void OnEnable()
     {
+        MainDialogue = GameObject.Find("MainDialogue");
+        DialogueManager = MainDialogue.GetComponent<DialogueManager>();
+        PlayerController = GameObject.Find("Player").GetComponent<PlayerController>();
+        Day = PlayerController.GetChapter();
         foreach (var childCameraData in childCameras)
         {
             childCameraData.childTransform.SetActive(false);
@@ -102,12 +117,13 @@ public class SubDialEvent : MonoBehaviour
 
         // 부드러운 이동 완료 후 정확한 목표 위치로 설정
         backrect.transform.position = targetPosition;
+        subMungchi.triggerStart();
+        DialogueManager.StartDialogue("sub_ch" + Day);
     }
     public void active()
     {
         Debug.Log("아니 왜 안켜짐?");
         childCameras[randomIndex].childTransform.SetActive(true);
         subMungchi = childCameras[randomIndex].childTransform.GetComponent<SubMungchi>();
-
     }
 }
