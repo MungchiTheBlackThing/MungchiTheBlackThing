@@ -10,7 +10,7 @@ using UnityEngine.XR;
 using Unity.VisualScripting;
 using System;
 
-public class SKipSleepingParser : MonoBehaviour
+public class SkipSleepingParser : MonoBehaviour
 {
 
     [SerializeField] List<SkipSleeping> Skips;
@@ -19,7 +19,7 @@ public class SKipSleepingParser : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        TextAsset dialogueData = Resources.Load<TextAsset>("Dial/moonradio");
+        TextAsset dialogueData = Resources.Load<TextAsset>("Dial/skip_sleeping");
 
         if (dialogueData == null)
         {
