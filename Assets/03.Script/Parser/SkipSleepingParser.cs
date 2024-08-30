@@ -10,10 +10,10 @@ using UnityEngine.XR;
 using Unity.VisualScripting;
 using System;
 
-public class MoonRadioParser : MonoBehaviour
+public class SKipSleepingParser : MonoBehaviour
 {
 
-    [SerializeField] List<MoonRadidDial> MoonRadios;
+    [SerializeField] List<SkipSleeping> Skips;
     [SerializeField] public List<object> currentDialogueList = new List<object>();
     [SerializeField] public LanguageType CurrentLanguage = LanguageType.Kor;
     // Start is called before the first frame update
@@ -28,10 +28,10 @@ public class MoonRadioParser : MonoBehaviour
         }
         Debug.Log("Dialogue file loaded successfully.");
         string[] lines = dialogueData.text.Split('\n');
-        LoadMoonRadioDial(lines);
+        LoadSkipSleeping(lines);
     }
 
-    public void LoadMoonRadioDial(string[] lines)
+    public void LoadSkipSleeping(string[] lines)
     {
         for (int i = 1; i < lines.Length; i++)
         {
@@ -43,19 +43,18 @@ public class MoonRadioParser : MonoBehaviour
             string[] parts = ParseCSVLine(line);
             //Debug.Log($"Parsed line {i}: {string.Join(", ", parts)}");
 
-            if (parts.Length >= 5)
+            if (parts.Length >= 4)
             {
-                MoonRadidDial entry = new MoonRadidDial
+                SkipSleeping entry = new SkipSleeping
                 {
                     ID = int.Parse(parts[0]),
-                    MoonNumber = int.Parse(parts[1]),
-                    Actor = parts[2],
-                    KorText = ApplyLineBreaks(parts[3]),
-                    EngText = ApplyLineBreaks(parts[4]),
+                    Actor = parts[1],
+                    KorText = ApplyLineBreaks(parts[2]),
+                    EngText = ApplyLineBreaks(parts[3]),
                 };
                 string displayedText = CurrentLanguage == LanguageType.Kor ? entry.KorText : entry.EngText;
                 entry.KorText = displayedText;
-                MoonRadios.Add(entry);
+                Skips.Add(entry);
             }
         }
     }

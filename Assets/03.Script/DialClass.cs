@@ -61,5 +61,15 @@ namespace Assets.Script.DialClass
         public string KorText;
         public string EngText;
     }
+
+    [System.Serializable]
+
+    public class SkipSleeping
+    {
+        public int ID;
+        public string Actor;
+        public string KorText;
+        public string EngText;
+    }
 }
 
