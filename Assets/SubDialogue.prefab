@@ -4488,6 +4488,10 @@ MonoBehaviour:
   scroll: {fileID: 0}
   backrect: {fileID: 0}
   subMungchi: {fileID: 0}
+  PlayerController: {fileID: 0}
+  DialogueManager: {fileID: 0}
+  MainDialogue: {fileID: 0}
+  Day: 0
 --- !u!1 &2565282439189721839
 GameObject:
   m_ObjectHideFlags: 0

@@ -22,4 +22,8 @@ public class SubMungchi : MonoBehaviour
     {
         triggericon.SetActive(false);  
     }
+    private void OnDestroy()
+    {
+        triggericon?.SetActive(true);
+    }
 }

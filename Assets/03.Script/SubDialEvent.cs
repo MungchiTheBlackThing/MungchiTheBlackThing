@@ -33,7 +33,7 @@ public class SubDialEvent : MonoBehaviour
     public int Day = 0;  // Current day
     private void Start()
     {
-        this.transform.parent.transform.SetAsLastSibling();
+        this.transform.SetAsLastSibling();
         //scroll= background.GetComponent<ScrollRect>();
         //backrect= background.GetComponent<RectTransform>();
         // 처음에 모든 자식 오브젝트를 비활성화

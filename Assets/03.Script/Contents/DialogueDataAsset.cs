@@ -12,7 +12,7 @@ using System;
 
 public class DialogueDataAsset : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Start is called before the first frame updatead
 
     static public List<string> skipDialogue = new List<string>(); //달나라 주인공 이름, 스킵 
     static public MungchiOutingInfos outingInfos;
@@ -56,7 +56,7 @@ public class DialogueDataAsset : MonoBehaviour
 
     public void LoadMainDialogue(string[] lines)
     {
-        Dial = SkipController.GetTimeCurIdx;
+        listclear();
         for (int i = 1; i < lines.Length; i++)
         {
             string line = lines[i];
@@ -108,7 +108,7 @@ public class DialogueDataAsset : MonoBehaviour
 
     public void LoadSubDialogue(string[] lines)
     {
-        Dial = SkipController.GetTimeCurIdx;
+        listclear();
         for (int i = 1; i < lines.Length; i++)
         {
             string line = lines[i];
@@ -190,5 +190,12 @@ public class DialogueDataAsset : MonoBehaviour
     string ApplyLineBreaks(string text)
     {
         return text.Replace(@"\n", "\n");
+    }
+
+    public void listclear()
+    {
+        DialogueEntries.Clear();
+        SubDialogueEntries.Clear();
+        currentDialogueList.Clear();
     }
 }

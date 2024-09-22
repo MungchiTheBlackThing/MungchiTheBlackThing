@@ -123,6 +123,9 @@ public class DialogueManager : MonoBehaviour
         // Clear previous dialogue entries
         DialogueEntries.Clear();
         SubDialogueEntries.Clear();
+        DialogueDataAsset.currentDialogueList.Clear();
+        DialogueEntries = new List<DialogueEntry>();
+        SubDialogueEntries = new List<SubDialogueEntry>();
         DialogueDataAsset.currentDialogueList = new List<object>();
 
         if (fileName.Contains("main"))
@@ -138,8 +141,6 @@ public class DialogueManager : MonoBehaviour
         ShowNextDialogue();
     }
 
-
-
     void ShowNextDialogue()
     {
         PanelOff();
@@ -147,6 +148,7 @@ public class DialogueManager : MonoBehaviour
         if (dialogueIndex >= DialogueDataAsset.currentDialogueList.Count)
         {
             DialEnd();
+            Debug.Log("대화 끝끝끝");
             return;
         }
 
@@ -157,26 +159,27 @@ public class DialogueManager : MonoBehaviour
         string animState = GetAnimState(entry);
 
         /*송수영이 추가한 부분 테스트*/
-        DotState stateEnum;
-        if (Enum.TryParse(animState, true, out stateEnum))
-        {
-            string body = "";
-            string eyes = "";
-            if (stateEnum == DotState.Main)
-            {
-                body = GetBody(entry);
-                eyes = GetExpression(entry);
-            }
+        //DotState stateEnum;
+        //if (Enum.TryParse(animState, true, out stateEnum))
+        //{
+        //    string body = "";
+        //    string eyes = "";
+        //    if (stateEnum == DotState.Main)
+        //    {
+        //        body = GetBody(entry);
+        //        eyes = GetExpression(entry);
+        //    }
 
-            Debug.Log($"현재 {animState}, body {body} eyes {eyes}");
-            dot.ChangeState(stateEnum, body, -1, eyes);
-        }
+        //    Debug.Log($"현재 {animState}, body {body} eyes {eyes}");
+        //    dot.ChangeState(stateEnum, body, -1, eyes);
+        //}
         /**/
 
 
         switch (textType)
         {
             case "text":
+                Debug.Log("텍스트 박스 떠야함");
                 if (actor == "Dot")
                 {
                     DotTextUI.text = $"{korText}";
@@ -433,4 +436,6 @@ public class DialogueManager : MonoBehaviour
         canvasGroup.alpha = 1;
         button.interactable = true;
     }
+
+
 }
